@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.LoginController">
+      <VBox alignment="CENTER" layoutX="344.0" layoutY="219.0" prefHeight="312.0" prefWidth="313.0" spacing="20.0" AnchorPane.bottomAnchor="219.0" AnchorPane.leftAnchor="344.0" AnchorPane.rightAnchor="343.0" AnchorPane.topAnchor="219.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+<!--                  <Image url="@../../../../Downloads/logo.png" />-->
+            </ImageView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+                  <TextField fx:id="usernameField" />
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+                  <PasswordField fx:id="passwordField" />
+            </HBox>
+            <Button mnemonicParsing="false" text="Log In" onAction="#handleLogin"/>
+            <Button mnemonicParsing="false" text="Reset Password" />
+            <Button mnemonicParsing="false" text="Register" textAlignment="CENTER" onAction="#handleRegister" />
+      </VBox>
+</AnchorPane>

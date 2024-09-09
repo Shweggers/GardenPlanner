@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.RegisterController">
+      <VBox alignment="CENTER" layoutX="344.0" layoutY="219.0" prefHeight="312.0" prefWidth="313.0" spacing="20.0">
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+<!--                  <Image url="@logo.pn g" />-->
+            </ImageView>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" />
+                  <TextField fx:id="usernameField" />
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
+                  <TextField fx:id="emailField" />
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" />
+                  <PasswordField fx:id="passwordField" />
+            </HBox>
+            <Button mnemonicParsing="false" text="Register" textAlignment="CENTER" onAction="#handleRegister" />
+            <Button mnemonicParsing="false" text="Back" />
+      </VBox>
+</AnchorPane>
