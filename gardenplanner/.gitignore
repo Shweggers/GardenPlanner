@@ -11,6 +11,10 @@ target/
 *.iws
 *.iml
 *.ipr
+*.db
+.db
+/database.db
+
 
 ### Eclipse ###
 .apt_generated
@@ -36,3 +40,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+.database.db
