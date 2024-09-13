@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.HomepageController">
    <children>
       <Label layoutX="210.0" layoutY="14.0" text="PLANT IT" textFill="#499a52">
          <font>
@@ -52,22 +52,22 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="gardenButton" mnemonicParsing="false" text="Garden">
+                        <Button fx:id="gardenButton" mnemonicParsing="false" onAction="#handleButtonClick" text="Garden">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="friendButton" mnemonicParsing="false" text="Friends" GridPane.columnIndex="1">
+                        <Button fx:id="friendButton" mnemonicParsing="false" onAction="#handleButtonClick" text="Friends" GridPane.columnIndex="1">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="gardenBookButton" mnemonicParsing="false" text="Gardenbook" GridPane.rowIndex="1">
+                        <Button fx:id="gardenBookButton" mnemonicParsing="false" onAction="#handleButtonClick" text="Gardenbook" GridPane.rowIndex="1">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="logOutButton" mnemonicParsing="false" text="Logout" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#handleButtonClick" text="Logout" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="25.0" />
                            </font>
