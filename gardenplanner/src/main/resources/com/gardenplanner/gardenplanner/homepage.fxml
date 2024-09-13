@@ -52,22 +52,22 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button fx:id="gardenButton" mnemonicParsing="false" onAction="#onGardenButtonClick" text="Garden">
+                        <Button fx:id="gardenButton" mnemonicParsing="false" text="Garden">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="friendButton" mnemonicParsing="false" onAction="#onFriendButtonClick" text="Friends" GridPane.columnIndex="1">
+                        <Button fx:id="friendButton" mnemonicParsing="false" text="Friends" GridPane.columnIndex="1">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="gardenBookButton" mnemonicParsing="false" onAction="#onGardenButtonClick" text="Gardenbook" GridPane.rowIndex="1">
+                        <Button fx:id="gardenBookButton" mnemonicParsing="false" text="Gardenbook" GridPane.rowIndex="1">
                            <font>
                               <Font size="25.0" />
                            </font>
                         </Button>
-                        <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogOutButtonClick" text="Logout" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                        <Button fx:id="logOutButton" mnemonicParsing="false" text="Logout" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <font>
                               <Font size="25.0" />
                            </font>
