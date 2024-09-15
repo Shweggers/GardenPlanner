@@ -43,6 +43,10 @@ public class LoginController {
 
             if (BCrypt.checkpw(password, user.hashedPassword())) {
                 new Alert(AlertType.INFORMATION, "Login successful!").showAndWait();
+                Parent homePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml")));
+                Stage stage = (Stage) usernameField.getScene().getWindow();
+                stage.setScene(new Scene(homePage, 800, 600));
+                stage.show();
             } else {
                 new Alert(AlertType.ERROR, "Invalid password").showAndWait();
             }
@@ -53,9 +57,9 @@ public class LoginController {
 
     @FXML
     private void handleRegister() throws IOException {
-        Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/registerpage.fxml")));
+        Parent registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/registerpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.setScene(new Scene(loginPage, 800, 600));
+        stage.setScene(new Scene(registerPage, 800, 600));
         stage.show();
     }
 }

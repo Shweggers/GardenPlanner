@@ -1,10 +1,17 @@
 package com.gardenplanner.gardenplanner;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class RegisterController {
 
@@ -36,9 +43,22 @@ public class RegisterController {
             UserDAO userDAO = new UserDAO();
             userDAO.insert(user);
             new Alert(Alert.AlertType.INFORMATION, "Registration successful!").showAndWait();
+            Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
+            Stage stage = (Stage) usernameField.getScene().getWindow();
+            stage.setScene(new Scene(loginPage, 800, 600));
+            stage.show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Registration failed!").showAndWait();
         }
     }
+
+    @FXML
+    private void handleLogin() throws IOException {
+        Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+        stage.setScene(new Scene(loginPage, 800, 600));
+        stage.show();
+    }
 }
+
 

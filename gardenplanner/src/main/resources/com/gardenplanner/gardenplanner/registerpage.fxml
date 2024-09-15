@@ -23,6 +23,6 @@
                   <PasswordField fx:id="passwordField" />
             </HBox>
             <Button mnemonicParsing="false" text="Register" textAlignment="CENTER" onAction="#handleRegister" />
-            <Button mnemonicParsing="false" text="Back" />
+            <Button mnemonicParsing="false" text="Login" onAction="#handleLogin"  />
       </VBox>
 </AnchorPane>
