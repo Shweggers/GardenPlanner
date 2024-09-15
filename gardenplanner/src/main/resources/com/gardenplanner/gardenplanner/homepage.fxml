@@ -26,11 +26,7 @@
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="94.0" prefWidth="686.0">
                            <children>
-                              <Label fx:id="welcomeMsg" alignment="CENTER" contentDisplay="CENTER" layoutX="343.0" layoutY="15.0" textAlignment="CENTER">
-                                 <font>
-                                    <Font size="23.0" />
-                                 </font>
-                              </Label>
+                              <Label fx:id="welcomeMsg" layoutX="329.0" layoutY="24.0" text="Label" />
                            </children>
                         </AnchorPane>
                     </items>
