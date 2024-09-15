@@ -2,20 +2,23 @@ package com.gardenplanner.gardenplanner;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
+import javafx.scene.layout.Region;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class HomepageController {
+public class HomepageController implements Initializable {
 
+    private User theUser;
     @FXML
     private Button gardenBookButton;
 
@@ -27,6 +30,9 @@ public class HomepageController {
 
     @FXML
     private Button gardenButton;
+
+    @FXML
+    private Label welcomeMsg;
 
     @FXML
     void handleButtonClick() {
@@ -54,6 +60,14 @@ public class HomepageController {
         }
     }
 
+    public void setUser(User theUser) {
+        this.theUser = theUser;
+    }
 
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        welcomeMsg.setText("Welcome, " + theUser.username() + ".");
+        welcomeMsg.setMinWidth(Region.USE_PREF_SIZE);
+        welcomeMsg.setTextAlignment(TextAlignment.CENTER);
+    }
 }
