@@ -1,5 +1,6 @@
 package com.gardenplanner.gardenplanner;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,18 +11,16 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-
-public class FriendpageController {
-
-    @FXML
-    private Button exitButton;
+public class GardenbookController {
 
     @FXML
-    void backHome() throws IOException {
+    private Button backButton;
+
+    @FXML
+    void backButtonClicked(ActionEvent event) throws IOException {
         Parent homepage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml")));
-        Stage stage = (Stage) exitButton.getScene().getWindow();
-        stage.setScene(new Scene(homepage, 900, 600));
+        Stage stage = (Stage) backButton.getScene().getWindow();
+        stage.setScene(new Scene(homepage));
         stage.show();
-
     }
 }
