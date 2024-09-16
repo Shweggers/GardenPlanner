@@ -28,18 +28,29 @@ public class HomepageController {
     @FXML
     private Button gardenButton;
 
+    //TODO: Modify and navigate each Parent to its fxml file when it is done
     @FXML
-    void handleButtonClick() {
+    void handleGardenBook() throws IOException {
+        Parent friendPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml")));
+        Stage stage = (Stage) gardenBookButton.getScene().getWindow();
+        stage.setScene(new Scene(friendPage, 900, 600));
+        stage.show();
+    }
 
+    @FXML
+    void handleGarden() throws IOException {
+        Parent friendPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml")));
+        Stage stage = (Stage) gardenButton.getScene().getWindow();
+        stage.setScene(new Scene(friendPage, 900, 600));
+        stage.show();
     }
 
     @FXML
     void handleFriendpage() throws IOException{
         Parent friendPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml")));
         Stage stage = (Stage) friendButton.getScene().getWindow();
-        stage.setScene(new Scene(friendPage, 1000, 750));
+        stage.setScene(new Scene(friendPage, 900, 600));
         stage.show();
-
     }
 
     @FXML
@@ -62,7 +73,4 @@ public class HomepageController {
             }
         }
     }
-
-
-
 }
