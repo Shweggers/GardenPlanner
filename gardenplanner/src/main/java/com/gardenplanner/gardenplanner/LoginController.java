@@ -43,9 +43,14 @@ public class LoginController {
 
             if (BCrypt.checkpw(password, user.hashedPassword())) {
                 new Alert(AlertType.INFORMATION, "Login successful!").showAndWait();
-                Parent homePage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml")));
+
+                FXMLLoader homePage =  new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
                 Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.setScene(new Scene(homePage, 900, 600));
+                stage.setScene(new Scene(homePage.load()));
+
+                HomepageController controller = homePage.getController();
+                controller.setTheUser(user);
+
                 stage.show();
             } else {
                 new Alert(AlertType.ERROR, "Invalid password").showAndWait();

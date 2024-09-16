@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <HBox>
+            <!-- Left side: Gardens list in a VBox inside a ScrollPane -->
+            <ScrollPane prefHeight="508.0" prefWidth="200.0">
+                <content>
+                    <VBox fx:id="gardenVBox" prefHeight="528.0" prefWidth="200.0">
+                        <children>
+                            <AnchorPane>
+                                <children>
+                                    <Label prefHeight="42.0" prefWidth="148.0" text="Gardens List" />
+                                    <Button layoutX="148.0" layoutY="8.0" mnemonicParsing="false" text="New" />
+                                </children>
+                            </AnchorPane>
+                        </children>
+                    </VBox>
+                </content>
+            </ScrollPane>
+
+            <!-- Right side: Garden details -->
+            <VBox prefHeight="600.0" prefWidth="600.0">
+                <Pane nodeOrientation="LEFT_TO_RIGHT">
+                    <children>
+                        <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="66.0" text="Button" />
+                        <!-- Garden Title -->
+                        <Label fx:id="gardenTitleLabel" layoutX="342.0" layoutY="5.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="238.0" style="-fx-font-size: 24px;" text="Garden Name" />
+                    </children>
+                </Pane>
+
+                <!-- Plots TabPane -->
+                <TabPane fx:id="plotsTabPane" prefHeight="300.0">
+                    <!-- Tabs for Plot 1, Plot 2, Plot 3 -->
+                    <Tab text="Plot 1">
+                        <AnchorPane>
+                            <Label fx:id="plot1Details" text="Planted: Potatoes\nReady for Harvest: 10 October">
+                                <padding>
+                                    <Insets left="10.0" />
+                                </padding>
+                            </Label>
+                        </AnchorPane>
+                    </Tab>
+                    <Tab text="Plot 2">
+                        <AnchorPane>
+                            <Label fx:id="plot2Details" text="No plants yet." />
+                        </AnchorPane>
+                    </Tab>
+                    <Tab text="Plot 3">
+                        <AnchorPane>
+                            <Label fx:id="plot3Details" text="No plants yet." />
+                        </AnchorPane>
+                    </Tab>
+                </TabPane>
+
+                <!-- To-Do List -->
+                <Label text="To Do:">
+                    <padding>
+                        <Insets left="10.0" />
+                    </padding>
+                </Label>
+                <HBox spacing="10">
+                    <!-- Add icons and actions dynamically for each date -->
+                    <VBox>
+                        <Label text="Sep 4" />
+                        <ImageView fx:id="todo1Icon" />
+                        <Label text="Water" />
+                    </VBox>
+                    <VBox>
+                        <Label text="Sep 8" />
+                        <ImageView fx:id="todo2Icon" />
+                        <Label text="Water" />
+                    </VBox>
+                    <!-- Add more to-do items dynamically -->
+                </HBox>
+
+                <!-- Progress Bar -->
+                <ProgressBar fx:id="progressBar" prefWidth="500.0" progress="0.5" />
+
+                <!-- Action Buttons -->
+                <HBox alignment="CENTER" spacing="10">
+                    <Button fx:id="membersButton" text="Members" />
+                    <Button fx:id="replantButton" text="Replant" />
+                    <Button fx:id="leaveButton" style="-fx-background-color: red;" text="Leave Garden" />
+                </HBox>
+            </VBox>
+        </HBox>
+        <Pane prefHeight="200.0" prefWidth="200.0" />
+    </children>
+</VBox>
