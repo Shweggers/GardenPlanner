@@ -64,7 +64,7 @@ public class LoginController {
     private void handleRegister() throws IOException {
         Parent registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/registerpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.setScene(new Scene(registerPage, 800, 600));
+        stage.setScene(new Scene(registerPage, 900, 600));
         stage.show();
     }
 }

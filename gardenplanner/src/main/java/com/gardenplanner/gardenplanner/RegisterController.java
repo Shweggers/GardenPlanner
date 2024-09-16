@@ -45,7 +45,7 @@ public class RegisterController {
             new Alert(Alert.AlertType.INFORMATION, "Registration successful!").showAndWait();
             Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
             Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.setScene(new Scene(loginPage, 800, 600));
+            stage.setScene(new Scene(loginPage, 900, 600));
             stage.show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Registration failed!").showAndWait();
@@ -56,7 +56,7 @@ public class RegisterController {
     private void handleLogin() throws IOException {
         Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.setScene(new Scene(loginPage, 800, 600));
+        stage.setScene(new Scene(loginPage, 900, 600));
         stage.show();
     }
 }

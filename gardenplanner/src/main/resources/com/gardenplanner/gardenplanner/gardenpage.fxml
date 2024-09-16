@@ -1,95 +1,97 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <HBox>
-            <!-- Left side: Gardens list in a VBox inside a ScrollPane -->
-            <ScrollPane prefHeight="508.0" prefWidth="200.0">
-                <content>
-                    <VBox fx:id="gardenVBox" prefHeight="528.0" prefWidth="200.0">
-                        <children>
-                            <AnchorPane>
-                                <children>
-                                    <Label prefHeight="42.0" prefWidth="148.0" text="Gardens List" />
-                                    <Button layoutX="148.0" layoutY="8.0" mnemonicParsing="false" text="New" />
-                                </children>
-                            </AnchorPane>
-                        </children>
-                    </VBox>
-                </content>
-            </ScrollPane>
 
-            <!-- Right side: Garden details -->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+        <HBox layoutX="1.0" layoutY="1.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
+         <AnchorPane prefHeight="508.0" prefWidth="193.0">
+            <children>
+                  <!-- Left side: Gardens list in a VBox inside a ScrollPane -->
+                  <ScrollPane pannable="true" prefHeight="352.0" prefWidth="166.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                      <content>
+                          <VBox fx:id="gardenVBox" prefHeight="348.0" prefWidth="154.0">
+                              <children>
+                           <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="154.0" text="Button" textAlignment="CENTER" />
+                              </children>
+                          </VBox>
+                      </content>
+                  </ScrollPane>
+                        <Button mnemonicParsing="false" prefHeight="30.0" text="Add New" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <font>
+                     <Font name="System Bold" size="14.0" />
+                  </font>
+               </Button>
+            </children>
+         </AnchorPane>
+
+                        <!-- Right side: Garden details -->
             <VBox prefHeight="600.0" prefWidth="600.0">
-                <Pane nodeOrientation="LEFT_TO_RIGHT">
-                    <children>
-                        <Button layoutX="5.0" layoutY="5.0" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="66.0" text="Button" />
+            <AnchorPane prefHeight="40.0">
+               <children>
                         <!-- Garden Title -->
-                        <Label fx:id="gardenTitleLabel" layoutX="342.0" layoutY="5.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="238.0" style="-fx-font-size: 24px;" text="Garden Name" />
-                    </children>
-                </Pane>
+                        <Label fx:id="gardenTitleLabel" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="350.0" style="-fx-font-size: 24px;" text="Garden Name" textAlignment="CENTER" />
+                  <Button alignment="CENTER" layoutX="500.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Back" AnchorPane.rightAnchor="0.0" />
+                  <Button alignment="CENTER" layoutX="350.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Add Plot" AnchorPane.leftAnchor="360.0" />
+               </children>
+               <VBox.margin>
+                  <Insets right="5.0" />
+               </VBox.margin>
+            </AnchorPane>
 
-                <!-- Plots TabPane -->
-                <TabPane fx:id="plotsTabPane" prefHeight="300.0">
+                            <!-- Plots TabPane -->
+                <TabPane fx:id="plotsTabPane" prefHeight="227.0" prefWidth="568.8" tabMaxHeight="30.0" tabMaxWidth="568.8" tabMinHeight="30.0" tabMinWidth="80.0" VBox.vgrow="ALWAYS">
                     <!-- Tabs for Plot 1, Plot 2, Plot 3 -->
-                    <Tab text="Plot 1">
-                        <AnchorPane>
-                            <Label fx:id="plot1Details" text="Planted: Potatoes\nReady for Harvest: 10 October">
-                                <padding>
-                                    <Insets left="10.0" />
-                                </padding>
-                            </Label>
+                    <Tab closable="false" text="Plot 1">
+                        <AnchorPane prefHeight="227.0" prefWidth="558.0">
+                     <TableView editable="true" prefHeight="180.0" prefWidth="569.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                       <columns>
+                         <TableColumn prefWidth="150.0" text="Planted" />
+                         <TableColumn prefWidth="417.5999877929687" text="Harvest Date" />
+                       </columns>
+                     </TableView>
+                         <HBox layoutY="179.0" maxWidth="-Infinity" prefHeight="70.0" prefWidth="570.0" spacing="10" AnchorPane.bottomAnchor="30.0">
+                        <children>
+                           <AnchorPane prefHeight="70.0" prefWidth="70.0">
+                              <children>
+                                 <ImageView fitHeight="50.0" fitWidth="70.0" layoutY="20.0" pickOnBounds="true" />
+                                 <Label alignment="CENTER" layoutX="21.0" layoutY="5.0" prefHeight="20.0" text="Label" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              </children>
+                           </AnchorPane>
+                        </children>
+                             <!-- Add more to-do items dynamically -->
+                         </HBox>
+         
+                                     <!-- Progress Bar -->
+                         <ProgressBar fx:id="progressBar" layoutX="120.0" layoutY="249.0" prefHeight="20.0" prefWidth="569.0" progress="0.5" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" />
                         </AnchorPane>
                     </Tab>
-                    <Tab text="Plot 2">
-                        <AnchorPane>
-                            <Label fx:id="plot2Details" text="No plants yet." />
-                        </AnchorPane>
-                    </Tab>
-                    <Tab text="Plot 3">
-                        <AnchorPane>
-                            <Label fx:id="plot3Details" text="No plants yet." />
-                        </AnchorPane>
-                    </Tab>
+               <VBox.margin>
+                  <Insets right="5.0" />
+               </VBox.margin>
                 </TabPane>
 
-                <!-- To-Do List -->
-                <Label text="To Do:">
-                    <padding>
-                        <Insets left="10.0" />
-                    </padding>
-                </Label>
-                <HBox spacing="10">
-                    <!-- Add icons and actions dynamically for each date -->
-                    <VBox>
-                        <Label text="Sep 4" />
-                        <ImageView fx:id="todo1Icon" />
-                        <Label text="Water" />
-                    </VBox>
-                    <VBox>
-                        <Label text="Sep 8" />
-                        <ImageView fx:id="todo2Icon" />
-                        <Label text="Water" />
-                    </VBox>
-                    <!-- Add more to-do items dynamically -->
-                </HBox>
-
-                <!-- Progress Bar -->
-                <ProgressBar fx:id="progressBar" prefWidth="500.0" progress="0.5" />
-
-                <!-- Action Buttons -->
-                <HBox alignment="CENTER" spacing="10">
-                    <Button fx:id="membersButton" text="Members" />
-                    <Button fx:id="replantButton" text="Replant" />
-                    <Button fx:id="leaveButton" style="-fx-background-color: red;" text="Leave Garden" />
+                            <!-- Action Buttons -->
+                <HBox alignment="CENTER" prefHeight="30.0" prefWidth="574.0">
+                    <Button fx:id="membersButton" prefHeight="30.0" prefWidth="190.0" text="Members" />
+                    <Button fx:id="replantButton" prefHeight="30.0" prefWidth="190.0" text="Replant" />
+                    <Button fx:id="leaveButton" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: red;" text="Leave Garden" />
                 </HBox>
             </VBox>
         </HBox>
-        <Pane prefHeight="200.0" prefWidth="200.0" />
-    </children>
-</VBox>
+   </children>
+</AnchorPane>
