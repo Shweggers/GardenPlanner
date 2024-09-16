@@ -8,7 +8,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1000.0" fx:controller="com.gardenplanner.gardenplanner.FriendpageController" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="405.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -37,7 +37,7 @@
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Friend Name" wrappingWidth="177.076171875" />
-                        <Button mnemonicParsing="false" text="Exit" />
+                        <Button mnemonicParsing="false" text="Exit" onAction="#backHome" fx:id="exitButton"/>
                      </children>
                   </HBox>
                   <HBox prefHeight="61.0" prefWidth="600.0">
