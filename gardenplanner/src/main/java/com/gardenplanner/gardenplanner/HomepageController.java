@@ -34,6 +34,15 @@ public class HomepageController {
     }
 
     @FXML
+    void handleGardenPageNavigation() throws IOException {
+        // Load the garden page FXML
+        Parent gardenPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage.fxml")));
+        Stage stage = (Stage) gardenButton.getScene().getWindow();  // Get the current stage
+        stage.setScene(new Scene(gardenPage, 900, 600));  // Set the garden page scene
+        stage.show();  // Show the new scene
+    }
+
+    @FXML
     void handleLogOut() throws IOException {
         ButtonType YesButton = new ButtonType("Yes");
         ButtonType CancelButton = new ButtonType("Cancel");
