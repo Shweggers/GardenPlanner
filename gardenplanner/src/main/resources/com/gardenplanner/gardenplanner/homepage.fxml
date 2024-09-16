@@ -57,7 +57,7 @@
                               <Insets left="75.0" top="50.0" />
                            </GridPane.margin>
                         </Button>
-                        <Button fx:id="friendButton" mnemonicParsing="false" onAction="#handleButtonClick" prefWidth="250.0" text="Friends" GridPane.columnIndex="1">
+                        <Button fx:id="friendButton" mnemonicParsing="false" onAction="#handleFriendpage" prefWidth="250.0" text="Friends" GridPane.columnIndex="1">
                            <font>
                               <Font name="System Bold" size="35.0" />
                            </font>

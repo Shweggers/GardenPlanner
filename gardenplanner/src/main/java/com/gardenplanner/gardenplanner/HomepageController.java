@@ -34,6 +34,15 @@ public class HomepageController {
     }
 
     @FXML
+    void handleFriendpage() throws IOException{
+        Parent friendPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml")));
+        Stage stage = (Stage) friendButton.getScene().getWindow();
+        stage.setScene(new Scene(friendPage, 1000, 750));
+        stage.show();
+
+    }
+
+    @FXML
     void handleLogOut() throws IOException {
         ButtonType YesButton = new ButtonType("Yes");
         ButtonType CancelButton = new ButtonType("Cancel");
