@@ -1,21 +1,27 @@
 package com.gardenplanner.gardenplanner;
 
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
+import javafx.scene.control.*;
+import javafx.scene.layout.Region;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.ResourceBundle;
 
-public class HomepageController {
+public class HomepageController implements Initializable {
 
+    private User theUser;
     @FXML
     private Button gardenBookButton;
 
@@ -27,6 +33,8 @@ public class HomepageController {
 
     @FXML
     private Button gardenButton;
+
+    private Label welcomeMsg;
 
     //TODO: Modify and navigate each Parent to its fxml file when it is done
     @FXML
@@ -73,4 +81,18 @@ public class HomepageController {
             }
         }
     }
+
+    public void setTheUser(User user) {
+        this.theUser = user;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        Platform.runLater(() -> {
+            welcomeMsg.setText("Welcome, " + theUser.username() + ".");
+            welcomeMsg.setMinWidth(Region.USE_PREF_SIZE);
+            welcomeMsg.setAlignment(Pos.CENTER);
+        });
+    }
+
 }
