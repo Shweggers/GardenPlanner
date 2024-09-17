@@ -71,7 +71,7 @@ public class LoginController {
     private void handleResetPassword() throws IOException {
         Parent resetPasswordPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/resetpasswordpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.setScene(new Scene(resetPasswordPage, 800, 600));
+        stage.setScene(new Scene(resetPasswordPage, 900, 600));
         stage.show();
     }
 }
