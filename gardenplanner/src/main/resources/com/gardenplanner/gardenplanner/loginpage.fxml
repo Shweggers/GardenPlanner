@@ -44,7 +44,7 @@
          </children>
       </GridPane>
             <Button mnemonicParsing="false" onAction="#handleLogin" prefWidth="100.0" text="Log In" />
-            <Button mnemonicParsing="false" prefWidth="100.0" text="Reset Password" />
+            <Button mnemonicParsing="false" onAction="#handleResetPassword" prefWidth="100.0" text="Reset Password" />
             <Button mnemonicParsing="false" onAction="#handleRegister" prefWidth="100.0" text="Register" textAlignment="CENTER" />
       </VBox>
 </AnchorPane>

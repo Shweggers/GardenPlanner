@@ -34,7 +34,7 @@ public class LoginController {
 
         try {
             UserDAO userDAO = new UserDAO();
-            User user = userDAO.getUserByUsername(username);
+            User user = userDAO.getUser(username);
 
             if (user == null) {
                 new Alert(AlertType.ERROR, "User not found!").showAndWait();
@@ -42,7 +42,6 @@ public class LoginController {
             }
 
             if (BCrypt.checkpw(password, user.hashedPassword())) {
-                new Alert(AlertType.INFORMATION, "Login successful!").showAndWait();
 
                 FXMLLoader homePage =  new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
                 Stage stage = (Stage) usernameField.getScene().getWindow();
@@ -65,6 +64,14 @@ public class LoginController {
         Parent registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/registerpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
         stage.setScene(new Scene(registerPage, 900, 600));
+        stage.show();
+    }
+
+    @FXML
+    private void handleResetPassword() throws IOException {
+        Parent resetPasswordPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/resetpasswordpage.fxml")));
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+        stage.setScene(new Scene(resetPasswordPage, 800, 600));
         stage.show();
     }
 }

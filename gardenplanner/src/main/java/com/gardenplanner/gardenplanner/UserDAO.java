@@ -31,7 +31,7 @@ public class UserDAO {
         insertUser.execute();
     }
 
-    public User getUserByUsername(String username) throws SQLException {
+    public User getUser(String username) throws SQLException {
         PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
         getUser.setString(1, username);
         ResultSet rs = getUser.executeQuery();
@@ -44,5 +44,13 @@ public class UserDAO {
             );
         }
         return null;
+    }
+
+    public void updatePassword(String username, String hashedPassword) throws SQLException {
+        String updatePasswordSQL = "UPDATE users SET password = ? WHERE username = ?";
+        PreparedStatement preparedStatement = connection.prepareStatement(updatePasswordSQL);
+        preparedStatement.setString(1, hashedPassword);
+        preparedStatement.setString(2, username);
+        preparedStatement.executeUpdate();
     }
 }
