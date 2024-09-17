@@ -49,7 +49,9 @@ public class LoginController {
             }
 
             if (BCrypt.checkpw(password, user.hashedPassword())) {
-                FXMLLoader loader =  new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
+                dataStore.setCurrentUser(user);
+
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
                 loader.setControllerFactory(type -> new HomepageController(dataStore));
 
                 stage.setScene(new Scene(loader.load()));
@@ -67,7 +69,7 @@ public class LoginController {
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/registerpage.fxml"));
-        loader.setControllerFactory(type -> new HomepageController(dataStore));
+        loader.setControllerFactory(type -> new RegisterController(dataStore));
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
@@ -77,7 +79,7 @@ public class LoginController {
     private void handleResetPassword() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/resetpassword.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/resetpasswordpage.fxml"));
         loader.setControllerFactory(type -> new ResetPasswordController(dataStore));
 
         stage.setScene(new Scene(loader.load(), 900, 600));

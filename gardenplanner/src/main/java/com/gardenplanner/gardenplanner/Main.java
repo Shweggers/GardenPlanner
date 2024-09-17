@@ -10,11 +10,14 @@ import java.sql.SQLException;
 import java.util.Objects;
 
 public class Main extends Application {
+    DataStore dataStore = new DataStore();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
-        primaryStage.setScene(new Scene(root, 900, 600));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
+        loader.setControllerFactory(type -> new LoginController(dataStore));
+
+        primaryStage.setScene(new Scene(loader.load(), 900, 600));
         primaryStage.show();
     }
 
