@@ -15,18 +15,17 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.GardenController">
    <children>
         <HBox layoutX="1.0" layoutY="1.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
          <AnchorPane prefHeight="508.0" prefWidth="193.0">
             <children>
                   <!-- Left side: Gardens list in a VBox inside a ScrollPane -->
-                  <ScrollPane pannable="true" prefHeight="352.0" prefWidth="166.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="352.0" prefWidth="166.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <content>
-                          <VBox fx:id="gardenVBox" prefHeight="348.0" prefWidth="154.0">
+                          <VBox fx:id="gardenVBox" prefHeight="348.0" prefWidth="164.0">
                               <children>
-                           <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="154.0" text="Button" textAlignment="CENTER" />
+                           <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="164.0" text="Button" textAlignment="CENTER" />
                               </children>
                           </VBox>
                       </content>
@@ -45,7 +44,7 @@
                <children>
                         <!-- Garden Title -->
                         <Label fx:id="gardenTitleLabel" alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="350.0" style="-fx-font-size: 24px;" text="Garden Name" textAlignment="CENTER" />
-                  <Button fx:id="backButton" onAction="#backButtonClicked" alignment="CENTER" layoutX="500.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Back" AnchorPane.rightAnchor="0.0" />
+                  <Button fx:id="backButton" alignment="CENTER" layoutX="500.0" layoutY="5.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="30.0" prefWidth="60.0" text="Back" AnchorPane.rightAnchor="0.0" />
                   <Button alignment="CENTER" layoutX="350.0" layoutY="5.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Add Plot" AnchorPane.leftAnchor="360.0" />
                </children>
                <VBox.margin>
