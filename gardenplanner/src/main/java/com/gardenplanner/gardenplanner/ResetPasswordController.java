@@ -16,6 +16,11 @@ import java.util.Objects;
 
 public class ResetPasswordController {
 
+    private final DataStore dataStore;
+    public ResetPasswordController(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
+
     @FXML
     private TextField usernameField;
 
@@ -65,6 +70,7 @@ public class ResetPasswordController {
 
             new Alert(AlertType.INFORMATION, "Password reset successful!").showAndWait();
 
+            // TODO: navigate to login
         } catch (Exception e) {
             new Alert(AlertType.ERROR, "Password reset failed!").showAndWait();
         }
@@ -72,9 +78,12 @@ public class ResetPasswordController {
 
     @FXML
     private void handleLogin() throws IOException {
-        Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.setScene(new Scene(loginPage, 900, 600));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
+        loader.setControllerFactory(type -> new LoginController(dataStore));
+
+        stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
     }
 }
