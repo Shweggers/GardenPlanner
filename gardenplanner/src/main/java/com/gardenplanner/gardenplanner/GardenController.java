@@ -13,14 +13,22 @@ import java.util.Objects;
 
 public class GardenController {
 
+    private final DataStore dataStore;
+    public GardenController(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
+
     @FXML
     private Button backButton;
 
     @FXML
     public void backButtonClicked(ActionEvent event) throws IOException {
-        Parent homepage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml")));
         Stage stage = (Stage) backButton.getScene().getWindow();
-        stage.setScene(new Scene(homepage));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
+        loader.setControllerFactory(type -> new HomepageController(dataStore));
+
+        stage.setScene(new Scene(loader.load()));
         stage.show();
     }
 }

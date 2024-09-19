@@ -15,6 +15,11 @@ import java.util.Objects;
 
 public class RegisterController {
 
+    private final DataStore dataStore;
+    public RegisterController(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
+
     @FXML
     private TextField usernameField;
 
@@ -26,6 +31,8 @@ public class RegisterController {
 
     @FXML
     private void handleRegister() {
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+
         String username = usernameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
@@ -42,10 +49,13 @@ public class RegisterController {
         try {
             UserDAO userDAO = new UserDAO();
             userDAO.insert(user);
+
             new Alert(Alert.AlertType.INFORMATION, "Registration successful!").showAndWait();
-            Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
-            Stage stage = (Stage) usernameField.getScene().getWindow();
-            stage.setScene(new Scene(loginPage, 900, 600));
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
+            loader.setControllerFactory(type -> new LoginController(dataStore));
+
+            stage.setScene(new Scene(loader.load()));
             stage.show();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Registration failed!").showAndWait();
@@ -54,9 +64,12 @@ public class RegisterController {
 
     @FXML
     private void handleLogin() throws IOException {
-        Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.setScene(new Scene(loginPage, 900, 600));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
+        loader.setControllerFactory(type -> new LoginController(dataStore));
+
+        stage.setScene(new Scene(loader.load()));
         stage.show();
     }
 }

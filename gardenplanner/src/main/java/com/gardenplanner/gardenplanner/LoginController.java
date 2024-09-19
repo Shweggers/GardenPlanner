@@ -16,6 +16,11 @@ import java.util.Objects;
 
 public class LoginController {
 
+    private final DataStore dataStore;
+    public LoginController(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
+
     @FXML
     private TextField usernameField;
 
@@ -24,6 +29,8 @@ public class LoginController {
 
     @FXML
     private void handleLogin() {
+        Stage stage = (Stage) usernameField.getScene().getWindow();
+
         String username = usernameField.getText();
         String password = passwordField.getText();
 
@@ -42,14 +49,12 @@ public class LoginController {
             }
 
             if (BCrypt.checkpw(password, user.hashedPassword())) {
+                dataStore.setCurrentUser(user);
 
-                FXMLLoader homePage =  new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
-                Stage stage = (Stage) usernameField.getScene().getWindow();
-                stage.setScene(new Scene(homePage.load()));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
+                loader.setControllerFactory(type -> new HomepageController(dataStore));
 
-                HomepageController controller = homePage.getController();
-                controller.setTheUser(user);
-
+                stage.setScene(new Scene(loader.load()));
                 stage.show();
             } else {
                 new Alert(AlertType.ERROR, "Invalid password").showAndWait();
@@ -61,17 +66,23 @@ public class LoginController {
 
     @FXML
     private void handleRegister() throws IOException {
-        Parent registerPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/registerpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.setScene(new Scene(registerPage, 900, 600));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/registerpage.fxml"));
+        loader.setControllerFactory(type -> new RegisterController(dataStore));
+
+        stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
     }
 
     @FXML
     private void handleResetPassword() throws IOException {
-        Parent resetPasswordPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/resetpasswordpage.fxml")));
         Stage stage = (Stage) usernameField.getScene().getWindow();
-        stage.setScene(new Scene(resetPasswordPage, 900, 600));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/resetpasswordpage.fxml"));
+        loader.setControllerFactory(type -> new ResetPasswordController(dataStore));
+
+        stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
     }
 }

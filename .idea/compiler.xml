@@ -9,5 +9,8 @@
         <module name="gardenplanner" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="gardenplanner" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>

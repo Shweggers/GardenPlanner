@@ -17,9 +17,12 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class HomepageController implements Initializable {
+public class HomepageController {
 
-    private User theUser;
+    private final DataStore dataStore;
+    public HomepageController(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
 
     @FXML
     private Button gardenBookButton;
@@ -39,31 +42,42 @@ public class HomepageController implements Initializable {
     //TODO: Modify and navigate each Parent to its fxml file when it is done
     @FXML
     void handleGardenBook() throws IOException {
-        Parent friendPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbook.fxml")));
         Stage stage = (Stage) gardenBookButton.getScene().getWindow();
-        stage.setScene(new Scene(friendPage, 900, 600));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbook.fxml"));
+        loader.setControllerFactory(type -> new GardenbookController(dataStore));
+
+        stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
     }
 
     @FXML
     void handleFriendpage() throws IOException{
-        Parent friendPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml")));
         Stage stage = (Stage) friendButton.getScene().getWindow();
-        stage.setScene(new Scene(friendPage, 900, 600));
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml"));
+        loader.setControllerFactory(type -> new FriendpageController(dataStore));
+
+        stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
     }
 
     @FXML
     void handleGardenPageNavigation() throws IOException {
-        // Load the garden page FXML
-        Parent gardenPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage.fxml")));
         Stage stage = (Stage) gardenButton.getScene().getWindow();  // Get the current stage
-        stage.setScene(new Scene(gardenPage, 900, 600));  // Set the garden page scene
+
+        // Load the garden page FXML
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage.fxml"));
+        loader.setControllerFactory(type -> new GardenbookController(dataStore));
+
+        stage.setScene(new Scene(loader.load(), 900, 600));  // Set the garden page scene
         stage.show();  // Show the new scene
     }
 
     @FXML
     void handleLogOut() throws IOException {
+        Stage stage = (Stage) logOutButton.getScene().getWindow();
+
         ButtonType YesButton = new ButtonType("Yes");
         ButtonType CancelButton = new ButtonType("Cancel");
 
@@ -74,9 +88,10 @@ public class HomepageController implements Initializable {
 
         if(result.isPresent()) {
             if(result.get() == YesButton) {
-                Parent loginPage = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml")));
-                Stage stage = (Stage) logOutButton.getScene().getWindow();
-                stage.setScene(new Scene(loginPage, 900, 600));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
+                loader.setControllerFactory(type -> new LoginController(dataStore));
+
+                stage.setScene(new Scene(loader.load(), 900, 600));
                 stage.show();
             }
             else {
@@ -85,17 +100,8 @@ public class HomepageController implements Initializable {
         }
     }
 
-    public void setTheUser(User user) {
-        this.theUser = user;
+    @FXML
+    void initialize() {
+        welcomeMsg.setText(dataStore.getCurrentUser().username());
     }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        Platform.runLater(() -> {
-            welcomeMsg.setText("Welcome, " + theUser.username() + ".");
-            welcomeMsg.setMinWidth(Region.USE_PREF_SIZE);
-            welcomeMsg.setAlignment(Pos.CENTER);
-        });
-    }
-
 }
