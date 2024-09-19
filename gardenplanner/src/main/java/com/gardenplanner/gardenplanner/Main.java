@@ -22,9 +22,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) throws SQLException {
-            UserDAO userDAO = new UserDAO();
-            userDAO.createTable();
+        UserDAO userDAO = new UserDAO();
+        userDAO.createTable();
 
-            launch(args);
+        launch(args);
     }
 }
