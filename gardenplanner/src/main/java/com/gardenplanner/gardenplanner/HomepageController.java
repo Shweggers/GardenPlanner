@@ -1,21 +1,13 @@
 package com.gardenplanner.gardenplanner;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.Region;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 public class HomepageController {
 
@@ -39,7 +31,9 @@ public class HomepageController {
     @FXML
     private Label welcomeMsg;
 
-    //TODO: Modify and navigate each Parent to its fxml file when it is done
+    /**
+     * Change scene to GardenBook page upon called
+     */
     @FXML
     void handleGardenBook() throws IOException {
         Stage stage = (Stage) gardenBookButton.getScene().getWindow();
@@ -51,6 +45,9 @@ public class HomepageController {
         stage.show();
     }
 
+    /**
+     * Change scene to Friend page upon called
+     */
     @FXML
     void handleFriendpage() throws IOException{
         Stage stage = (Stage) friendButton.getScene().getWindow();
@@ -62,6 +59,9 @@ public class HomepageController {
         stage.show();
     }
 
+    /**
+     * Change scene to Garden page upon called
+     */
     @FXML
     void handleGardenPageNavigation() throws IOException {
         Stage stage = (Stage) gardenButton.getScene().getWindow();  // Get the current stage
@@ -74,6 +74,9 @@ public class HomepageController {
         stage.show();  // Show the new scene
     }
 
+    /**
+     * Change scene to Login page upon called
+     */
     @FXML
     void handleLogOut() throws IOException {
         Stage stage = (Stage) logOutButton.getScene().getWindow();
@@ -100,6 +103,9 @@ public class HomepageController {
         }
     }
 
+    /**
+     * Initialize the user data when Homepage is called
+     */
     @FXML
     void initialize() {
         welcomeMsg.setText(dataStore.getCurrentUser().username());
