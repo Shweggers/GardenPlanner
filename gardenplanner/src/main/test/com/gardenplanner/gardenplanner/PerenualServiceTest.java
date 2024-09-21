@@ -1,6 +1,7 @@
 package com.gardenplanner.gardenplanner;
 
 import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -30,16 +31,30 @@ public class PerenualServiceTest {
 
     @Test
     public void testGetPlantData() throws IOException, InterruptedException {
-        String plantId = "123";
-        String jsonResponse = "{\"id\": 123, \"name\": \"Rose\"}";
+        String plantID = "1";
+        String jsonResponse = "{\"id\": 1, \"common_name\": \"European Silver Fir\"}";
 
         when(httpResponseMock.body()).thenReturn(jsonResponse);
         when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
                 .thenReturn(httpResponseMock);
 
-        JsonObject result = perenualService.getPlantData(plantId);
+        JsonObject result = perenualService.getPlantData(plantID);
 
-        assertEquals(123, result.get("id").getAsInt());
-        assertEquals("Rose", result.get("name").getAsString());
+        assertEquals(1, result.get("id").getAsInt());
+        assertEquals("European Silver Fir", result.get("common_name").getAsString());
+    }
+
+    @Test
+    public void testGetPlantIdFromName() throws IOException, InterruptedException {
+        String plantName = "Pyramidalis Silver Fir";
+        String jsonResponse = "{\"id\": 2, \"common_name\": \"Pyramidalis Silver Fir\"}";
+
+        when(httpResponseMock.body()).thenReturn(jsonResponse);
+        when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
+                .thenReturn(httpResponseMock);
+
+        String result = perenualService.getPlantIdFromName(plantName);
+
+        assertEquals("2", result);
     }
 }
