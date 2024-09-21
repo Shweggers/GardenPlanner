@@ -22,6 +22,9 @@ public class PerenualServiceTest {
     private HttpClient httpClientMock;
     private HttpResponse<String> httpResponseMock;
 
+    /**
+     * Set up the test
+     */
     @BeforeEach
     public void setUp() {
         perenualService = new PerenualService();
@@ -29,6 +32,11 @@ public class PerenualServiceTest {
         httpResponseMock = mock(HttpResponse.class);
     }
 
+    /**
+     * Test the getPlantData method
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @Test
     public void testGetPlantData() throws IOException, InterruptedException {
         String plantID = "1";
@@ -44,6 +52,11 @@ public class PerenualServiceTest {
         assertEquals("European Silver Fir", result.get("common_name").getAsString());
     }
 
+    /**
+     * Test the getPlantIdFromName method
+     * @throws IOException
+     * @throws InterruptedException
+     */
     @Test
     public void testGetPlantIdFromName() throws IOException, InterruptedException {
         String plantName = "Pyramidalis Silver Fir";
