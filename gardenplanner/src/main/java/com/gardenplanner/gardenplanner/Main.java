@@ -25,6 +25,9 @@ public class Main extends Application {
         UserDAO userDAO = new UserDAO();
         userDAO.createTable();
 
+        FriendDAO friendDAO = new FriendDAO();
+        friendDAO.createTable();
+
         launch(args);
     }
 }

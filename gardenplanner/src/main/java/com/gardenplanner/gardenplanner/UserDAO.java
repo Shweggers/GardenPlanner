@@ -53,4 +53,14 @@ public class UserDAO {
         preparedStatement.setString(2, username);
         preparedStatement.executeUpdate();
     }
+
+    public int returnID(String username) throws SQLException {
+        PreparedStatement returnID = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
+        returnID.setString(1, username);
+        ResultSet rs = returnID.executeQuery();
+        if (rs.next()) {
+            return rs.getInt("id");
+        }
+        return -1;
+    }
 }
