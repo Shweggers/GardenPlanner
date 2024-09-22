@@ -31,8 +31,11 @@ public class HomepageController {
     @FXML
     private Label welcomeMsg;
 
+
     /**
-     * Change scene to GardenBook page upon called
+     * Change scene to Garden Book page upon called
+     * 
+     * @throws IOException
      */
     @FXML
     void handleGardenBook() throws IOException {
@@ -47,6 +50,8 @@ public class HomepageController {
 
     /**
      * Change scene to Friend page upon called
+     * 
+     * @throws IOException
      */
     @FXML
     void handleFriendpage() throws IOException{
@@ -61,6 +66,8 @@ public class HomepageController {
 
     /**
      * Change scene to Garden page upon called
+     * 
+     * @throws IOException
      */
     @FXML
     void handleGardenPageNavigation() throws IOException {
@@ -76,6 +83,8 @@ public class HomepageController {
 
     /**
      * Change scene to Login page upon called
+     * 
+     * @throws IOException
      */
     @FXML
     void handleLogOut() throws IOException {

@@ -28,7 +28,9 @@ public class LoginController {
     @FXML
     protected PasswordField passwordField;
 
-    // Method that handles the login logic when the user submits the login form
+    /**
+     * Handle the login button click event
+     */
     @FXML
     protected void handleLogin() {
         // Get the current stage (window) where the login form is displayed
@@ -76,7 +78,11 @@ public class LoginController {
         }
     }
 
-    // Method that handles navigation to the registration page when the user clicks the register button
+    /**
+     * Handle the register button click event
+     * 
+     * @throws IOException
+     */
     @FXML
     private void handleRegister() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();
@@ -88,7 +94,11 @@ public class LoginController {
         stage.show();
     }
 
-    // Method that handles navigation to the reset password page when the user clicks the forgot password button
+    /**
+     * Handle the reset password button click event
+     * 
+     * @throws IOException
+     */
     @FXML
     private void handleResetPassword() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();

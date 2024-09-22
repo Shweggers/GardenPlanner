@@ -15,24 +15,20 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.FriendpageController">
    <children>
-      <HBox layoutX="100.0" layoutY="170.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
+      <HBox layoutX="100.0" layoutY="170.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
          <children>
-            <VBox prefHeight="467.0" prefWidth="180.0">
+            <VBox prefHeight="467.0" prefWidth="180.0" style="-fx-border-color: black;">
                <children>
                   <TextField prefHeight="30.0" prefWidth="179.0" promptText="Search" />
                   <ScrollPane hbarPolicy="NEVER" prefHeight="315.0" prefWidth="180.0">
                      <content>
-                        <VBox prefHeight="312.0" prefWidth="180.0">
-                           <children>
-                              <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Name 1" />
-                           </children>
-                        </VBox>
+                        <VBox prefHeight="310.0" prefWidth="178.0" translateY="-1.0" />
                      </content>
                   </ScrollPane>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Add New Friend" />
+                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Add New Friend" translateY="-1.0" />
                </children>
             </VBox>
-            <VBox prefHeight="508.0" prefWidth="560.0">
+            <VBox prefHeight="508.0" prefWidth="560.0" style="-fx-border-color: black;">
                <children>
                   <AnchorPane minHeight="-Infinity" prefHeight="40.0" prefWidth="560.0">
                      <children>
@@ -61,8 +57,8 @@
                               </Label>
                               <GridPane alignment="CENTER" prefHeight="90.0">
                                 <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.2" minWidth="10.0" prefWidth="270.40001220703124" />
-                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="130.39998779296872" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="271.2" minWidth="10.0" prefWidth="200.79996337890626" />
+                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="273.40002288818357" minWidth="10.0" prefWidth="199.20003662109377" />
                                 </columnConstraints>
                                 <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />

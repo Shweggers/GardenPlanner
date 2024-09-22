@@ -31,7 +31,9 @@ public class ResetPasswordController {
     @FXML
     private PasswordField confirmPasswordField;
 
-    // Method that handles the password reset logic when the user submits the form
+    /**
+     * Handle the reset password button click event
+     */
     @FXML
     private void handleResetPassword() {
         // Retrieve the entered values from the input fields
@@ -84,7 +86,11 @@ public class ResetPasswordController {
         }
     }
 
-    // Method that handles navigation back to the login page
+    /**
+     * Handle the login button click event
+     * 
+     * @throws IOException
+     */
     @FXML
     private void handleLogin() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();

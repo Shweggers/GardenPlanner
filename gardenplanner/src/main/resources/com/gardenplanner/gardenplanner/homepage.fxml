@@ -18,13 +18,13 @@
                   <Font name="System Bold" size="50.0" />
               </font>
           </Label>
-          <VBox alignment="CENTER" layoutY="84.80000019073486" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+          <VBox alignment="CENTER" layoutY="80.0" prefHeight="405.0" prefWidth="740.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="85.0">
               <Label fx:id="welcomeMsg" text="Welcome, USER">
                   <font>
                       <Font size="23.0" />
                   </font>
               </Label>
-              <GridPane maxWidth="-Infinity" minHeight="-Infinity" prefHeight="200.0" prefWidth="600.0" vgap="15.0">
+              <GridPane hgap="80.0" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="225.0" prefWidth="600.0" vgap="40.0">
                   <columnConstraints>
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

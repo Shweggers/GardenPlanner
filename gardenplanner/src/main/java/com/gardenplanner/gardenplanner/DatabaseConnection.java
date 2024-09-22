@@ -15,6 +15,11 @@ public class DatabaseConnection {
         }
     }
 
+    /**
+     * Get the instance of the database connection
+     * 
+     * @return the instance of the database connection
+     */
     public static Connection getInstance() {
         if (instance == null) {
             new DatabaseConnection();
