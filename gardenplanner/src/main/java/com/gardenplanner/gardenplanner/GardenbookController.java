@@ -6,6 +6,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -15,6 +19,21 @@ public class GardenbookController {
     public GardenbookController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
+
+    @FXML
+    private Button addNewPlantButton;
+
+    @FXML
+    private TableView plantTable;
+
+    @FXML
+    private TableColumn plantColumn1;
+
+    @FXML
+    private TableColumn plantColumn2;
+
+    @FXML
+    private TextField plantSearch;
 
     @FXML
     private Button backButton;
