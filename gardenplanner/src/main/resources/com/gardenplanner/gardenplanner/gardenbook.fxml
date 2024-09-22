@@ -41,8 +41,8 @@
                      <children>
                         <TableView fx:id="plantTable" prefHeight="326.0" prefWidth="357.0">
                           <columns>
-                            <TableColumn fx:id="plantColumn1" prefWidth="170.0" text="C1" />
-                            <TableColumn fx:id="plantColumn2" minWidth="0.0" prefWidth="170.0" text="C2" />
+                            <TableColumn fx:id="plantColumn1" prefWidth="170.0" resizable="false" text="Info Type" />
+                            <TableColumn fx:id="plantColumn2" minWidth="0.0" prefWidth="170.0" resizable="false" text="Details" />
                           </columns>
                         </TableView>
                      </children>

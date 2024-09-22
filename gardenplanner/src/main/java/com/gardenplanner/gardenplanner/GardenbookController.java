@@ -24,13 +24,13 @@ public class GardenbookController {
     private Button addNewPlantButton;
 
     @FXML
-    private TableView plantTable;
-
+    private TableView<Plant> plantTable;
+    
     @FXML
-    private TableColumn plantColumn1;
-
+    private TableColumn<Plant, String> plantColumn1;
+    
     @FXML
-    private TableColumn plantColumn2;
+    private TableColumn<Plant, String> plantColumn2;
 
     @FXML
     private TextField plantSearch;

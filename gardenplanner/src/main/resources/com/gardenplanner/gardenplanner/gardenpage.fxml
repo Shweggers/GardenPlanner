@@ -9,7 +9,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ToolBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -59,37 +59,30 @@
                         <AnchorPane prefHeight="227.0" prefWidth="558.0">
                      <TableView editable="true" prefHeight="180.0" prefWidth="569.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                        <columns>
-                         <TableColumn prefWidth="150.0" text="Planted" />
-                         <TableColumn prefWidth="417.5999877929687" text="Harvest Date" />
+                         <TableColumn prefWidth="150.0" resizable="false" text="Planted" />
+                         <TableColumn prefWidth="424.0" resizable="false" text="Harvest Date" />
                        </columns>
                      </TableView>
-                         <HBox layoutY="179.0" maxWidth="-Infinity" prefHeight="70.0" prefWidth="570.0" spacing="10" AnchorPane.bottomAnchor="30.0">
-                        <children>
-                           <AnchorPane prefHeight="70.0" prefWidth="70.0">
-                              <children>
-                                 <ImageView fitHeight="50.0" fitWidth="70.0" layoutY="20.0" pickOnBounds="true" />
-                                 <Label alignment="CENTER" layoutX="21.0" layoutY="5.0" prefHeight="20.0" text="Label" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                              </children>
-                           </AnchorPane>
-                        </children>
-                             <!-- Add more to-do items dynamically -->
-                         </HBox>
+                         <HBox layoutY="179.0" maxWidth="-Infinity" prefHeight="70.0" prefWidth="570.0" spacing="10" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          
                                      <!-- Progress Bar -->
                          <ProgressBar fx:id="progressBar" layoutX="120.0" layoutY="249.0" prefHeight="20.0" prefWidth="569.0" progress="0.5" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" />
                         </AnchorPane>
                     </Tab>
                <VBox.margin>
-                  <Insets right="5.0" />
+                  <Insets left="5.0" right="5.0" />
                </VBox.margin>
                 </TabPane>
-
-                            <!-- Action Buttons -->
-                <HBox alignment="CENTER" prefHeight="30.0" prefWidth="574.0" translateY="-1.0">
-                    <Button fx:id="membersButton" prefHeight="30.0" prefWidth="190.0" text="Members" translateX="-7.0" />
-                    <Button fx:id="replantButton" prefHeight="30.0" prefWidth="190.0" text="Replant" />
-                    <Button fx:id="leaveButton" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: red;" text="Leave Garden" translateX="6.0" />
-                </HBox>
+            <ToolBar maxWidth="-Infinity" minHeight="-Infinity" prefHeight="30.0" prefWidth="584.0" translateY="-1.0" VBox.vgrow="ALWAYS">
+              <items>
+                       <Button fx:id="membersButton" minHeight="-Infinity" prefHeight="30.0" prefWidth="185.0" text="Members" translateX="-2.0" />
+                       <Button fx:id="replantButton" minHeight="-Infinity" prefHeight="30.0" prefWidth="185.0" text="Replant" />
+                       <Button fx:id="leaveButton" minHeight="-Infinity" prefHeight="30.0" prefWidth="185.0" style="-fx-background-color: red;" text="Leave Garden" translateX="2.0" />
+              </items>
+               <VBox.margin>
+                  <Insets left="3.0" right="2.0" />
+               </VBox.margin>
+            </ToolBar>
             </VBox>
         </HBox>
    </children>
