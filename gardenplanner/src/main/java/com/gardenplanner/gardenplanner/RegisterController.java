@@ -27,7 +27,9 @@ public class RegisterController {
     @FXML
     private PasswordField passwordField;
 
-    // Method that handles the user registration logic when the Register button is clicked
+    /**
+     * Handle the register button click event
+     */
     @FXML
     private void handleRegister() {
         Stage stage = (Stage) usernameField.getScene().getWindow();
@@ -68,7 +70,11 @@ public class RegisterController {
         }
     }
 
-    // Method that navigates the user back to the login page when the "Login" button is clicked
+    /**
+     * Handle the login button click event
+     * 
+     * @throws IOException
+     */
     @FXML
     private void handleLogin() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();

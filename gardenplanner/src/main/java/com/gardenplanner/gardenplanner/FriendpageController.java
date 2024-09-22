@@ -18,6 +18,10 @@ public class FriendpageController {
     @FXML
     private Button exitButton;
 
+    /**
+     * Handle the back button click event
+     * @throws IOException
+     */
     @FXML
     void backHome() throws IOException {
         Stage stage = (Stage) exitButton.getScene().getWindow();

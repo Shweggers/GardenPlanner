@@ -11,7 +11,11 @@ public class UserDAO {
         connection = DatabaseConnection.getInstance();
     }
 
-    // Method that creates the "users" table if it does not already exist
+    /**
+     * creates the 'users' table in the database if it does not already exist.
+     * 
+     * @throws SQLException
+     */
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(

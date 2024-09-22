@@ -19,6 +19,11 @@ public class GardenController {
     @FXML
     private Button backButton;
 
+    /**
+     * Handle the back button click event
+     * @param event
+     * @throws IOException
+     */
     @FXML
     public void backButtonClicked(ActionEvent event) throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
