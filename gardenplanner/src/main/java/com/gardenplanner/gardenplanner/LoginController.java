@@ -20,13 +20,13 @@ public class LoginController {
     }
 
     @FXML
-    private TextField usernameField;
+    protected TextField usernameField;
 
     @FXML
-    private PasswordField passwordField;
+    protected PasswordField passwordField;
 
     @FXML
-    private void handleLogin() {
+    protected void handleLogin() {
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
         String username = usernameField.getText();
