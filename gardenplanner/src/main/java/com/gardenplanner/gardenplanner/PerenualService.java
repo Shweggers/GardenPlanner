@@ -14,10 +14,17 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
 public class PerenualService {
-    // sk-ZtM366ec7a8690cc16915
     private static final String API_KEY = "sk-ZtM366ec7a8690cc16915";
     private static final String BASE_URL = "https://perenual.com/api/";
 
+    /**
+     * Get plant data from the Perenual API
+     *
+     * @param plantID the ID of the plant
+     * @return the plant data
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public JsonObject getPlantData(String plantID) throws IOException, InterruptedException {
         String url = BASE_URL + "species/details/" + plantID + "?key=" + API_KEY;
         HttpRequest request = HttpRequest.newBuilder()
@@ -30,6 +37,14 @@ public class PerenualService {
         return new Gson().fromJson(response.body(), JsonObject.class);
     }
 
+    /**
+     * Get the ID of a plant from its name
+     *
+     * @param plantName the name of the plant
+     * @return the ID of the plant
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public String getPlantIdFromName(String plantName) throws IOException, InterruptedException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(plantName, "UTF-8");
 
