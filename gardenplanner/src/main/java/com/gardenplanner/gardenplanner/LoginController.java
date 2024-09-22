@@ -80,6 +80,7 @@ public class LoginController {
 
     /**
      * Handle the register button click event
+     * 
      * @throws IOException
      */
     @FXML
@@ -95,6 +96,7 @@ public class LoginController {
 
     /**
      * Handle the reset password button click event
+     * 
      * @throws IOException
      */
     @FXML

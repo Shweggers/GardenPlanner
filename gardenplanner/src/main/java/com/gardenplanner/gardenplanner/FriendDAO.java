@@ -11,6 +11,7 @@ public class FriendDAO {
 
     /**
      * Creates the 'friends' table in the database if it does not already exist.
+     * 
      * @throws SQLException if a database access error occurs
      */
     public void createTable() throws SQLException {
@@ -27,6 +28,7 @@ public class FriendDAO {
     /**
      * Inserts a pair of friends into the 'friends' table.
      * This method inserts the pair in both orders (friend1, friend2) and (friend2, friend1).
+     * 
      * @param friend1 the first friend
      * @param friend2 the second friend
      * @throws SQLException if a database access error occurs

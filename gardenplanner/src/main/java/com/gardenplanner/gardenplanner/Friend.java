@@ -4,6 +4,7 @@ public record Friend(String friend1, String friend2) {
 
     /**
      * Returns a string representation of the Friend record.
+     * 
      * @return a string representation of the Friend record
      */
     @Override

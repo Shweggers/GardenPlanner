@@ -34,6 +34,7 @@ public class HomepageController {
 
     /**
      * Change scene to Garden Book page upon called
+     * 
      * @throws IOException
      */
     @FXML
@@ -49,6 +50,7 @@ public class HomepageController {
 
     /**
      * Change scene to Friend page upon called
+     * 
      * @throws IOException
      */
     @FXML
@@ -64,6 +66,7 @@ public class HomepageController {
 
     /**
      * Change scene to Garden page upon called
+     * 
      * @throws IOException
      */
     @FXML
@@ -80,6 +83,7 @@ public class HomepageController {
 
     /**
      * Change scene to Login page upon called
+     * 
      * @throws IOException
      */
     @FXML

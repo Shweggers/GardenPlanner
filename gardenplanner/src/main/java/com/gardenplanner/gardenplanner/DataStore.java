@@ -5,6 +5,7 @@ public class DataStore {
 
     /**
      * Set the current user
+     * 
      * @param currentUser
      */
     public void setCurrentUser(User currentUser) {
@@ -13,6 +14,7 @@ public class DataStore {
 
     /**
      * Get the current user
+     * 
      * @return the current user
      */
     public User getCurrentUser() {

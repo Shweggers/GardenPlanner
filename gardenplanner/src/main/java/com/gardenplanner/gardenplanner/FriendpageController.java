@@ -20,6 +20,7 @@ public class FriendpageController {
 
     /**
      * Handle the back button click event
+     * 
      * @throws IOException
      */
     @FXML
