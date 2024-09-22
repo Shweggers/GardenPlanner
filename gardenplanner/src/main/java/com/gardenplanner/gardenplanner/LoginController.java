@@ -14,54 +14,69 @@ import java.io.IOException;
 
 public class LoginController {
 
+    // Used to hold the logged-in user's session data
     private final DataStore dataStore;
+
+    // Constructor for the LoginController
     public LoginController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
     @FXML
-    private TextField usernameField;
+    protected TextField usernameField;
 
     @FXML
-    private PasswordField passwordField;
+    protected PasswordField passwordField;
 
+    // Method that handles the login logic when the user submits the login form
     @FXML
-    private void handleLogin() {
+    protected void handleLogin() {
+        // Get the current stage (window) where the login form is displayed
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
+        // Retrieve the entered username and password from the respective fields
         String username = usernameField.getText();
         String password = passwordField.getText();
 
+        // If either field is empty, show an error alert and stop the login process
         if (username.isEmpty() || password.isEmpty()) {
             new Alert(AlertType.ERROR, "Please fill in all fields").showAndWait();
             return;
         }
 
         try {
+            // Create a new instance of UserDAO to retrieve the users data
             UserDAO userDAO = new UserDAO();
             User user = userDAO.getUser(username);
 
+            // If the user does not exist, show an error alert and stop the login process
             if (user == null) {
                 new Alert(AlertType.ERROR, "User not found!").showAndWait();
                 return;
             }
 
+            // Check if the entered password matches the stored hashed password
             if (BCrypt.checkpw(password, user.hashedPassword())) {
+                // If the password is correct, set the current user in the DataStore
                 dataStore.setCurrentUser(user);
 
+                // Load the homepage FXML file and switch the scene to the homepage
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
                 loader.setControllerFactory(type -> new HomepageController(dataStore));
 
                 stage.setScene(new Scene(loader.load()));
                 stage.show();
             } else {
+                // If the password is incorrect, show an error alert
                 new Alert(AlertType.ERROR, "Invalid password").showAndWait();
             }
         } catch (Exception e) {
+            // If there is an exception during login, show an error alert
             new Alert(AlertType.ERROR, "Login failed!").showAndWait();
         }
     }
 
+    // Method that handles navigation to the registration page when the user clicks the register button
     @FXML
     private void handleRegister() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();
@@ -73,6 +88,7 @@ public class LoginController {
         stage.show();
     }
 
+    // Method that handles navigation to the reset password page when the user clicks the forgot password button
     @FXML
     private void handleResetPassword() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();

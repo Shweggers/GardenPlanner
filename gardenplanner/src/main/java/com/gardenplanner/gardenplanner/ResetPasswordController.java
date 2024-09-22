@@ -31,41 +31,51 @@ public class ResetPasswordController {
     @FXML
     private PasswordField confirmPasswordField;
 
+    // Method that handles the password reset logic when the user submits the form
     @FXML
     private void handleResetPassword() {
+        // Retrieve the entered values from the input fields
         String username = usernameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
+        // Validate that none of the fields are empty
         if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             new Alert(AlertType.ERROR, "All fields must be filled in!").showAndWait();
             return;
         }
 
+        // Ensure the two password fields match
         if (!password.equals(confirmPassword)) {
             new Alert(AlertType.ERROR, "Passwords do not match!").showAndWait();
             return;
         }
 
         try {
+            // Retrieve the user from the database using the UserDAO
             UserDAO userDAO = new UserDAO();
             User user = userDAO.getUser(username);
 
+            // Check if the user exists in the database
             if (user == null) {
                 new Alert(AlertType.ERROR, "User not found!").showAndWait();
                 return;
             }
 
+            // Verify that the entered email matches the one stored for this user
             if (!user.email().equals(email)) {
                 new Alert(AlertType.ERROR, "Email does not match our records!").showAndWait();
                 return;
             }
 
+            // Hash the new password using BCrypt
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
+            // Update the user's password in the database using the UserDAO
             userDAO.updatePassword(username, hashedPassword);
 
+            // Confirmation message after successful reset
             new Alert(AlertType.INFORMATION, "Password reset successful!").showAndWait();
 
             // TODO: navigate to login
@@ -74,6 +84,7 @@ public class ResetPasswordController {
         }
     }
 
+    // Method that handles navigation back to the login page
     @FXML
     private void handleLogin() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();

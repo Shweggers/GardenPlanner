@@ -3,12 +3,15 @@ package com.gardenplanner.gardenplanner;
 import java.sql.*;
 
 public class UserDAO {
+    // Connection to the database
     private final Connection connection;
 
+    // Constructor that initialises the database connection
     public UserDAO() {
         connection = DatabaseConnection.getInstance();
     }
 
+    // Method that creates the "users" table if it does not already exist
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(
@@ -21,6 +24,7 @@ public class UserDAO {
         );
     }
 
+    // Method that inserts a new user into the database
     public void insert(User user) throws SQLException {
         PreparedStatement insertUser = connection.prepareStatement(
                 "INSERT INTO users (username, email, password) VALUES (?, ?, ?)"
@@ -31,6 +35,7 @@ public class UserDAO {
         insertUser.execute();
     }
 
+    // Method that retrieves a user by their username from the database
     public User getUser(String username) throws SQLException {
         PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
         getUser.setString(1, username);
@@ -46,6 +51,7 @@ public class UserDAO {
         return null;
     }
 
+    // Method that updates a users password by username
     public void updatePassword(String username, String hashedPassword) throws SQLException {
         String updatePasswordSQL = "UPDATE users SET password = ? WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(updatePasswordSQL);

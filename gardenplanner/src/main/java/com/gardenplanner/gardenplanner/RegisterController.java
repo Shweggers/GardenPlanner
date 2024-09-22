@@ -27,29 +27,37 @@ public class RegisterController {
     @FXML
     private PasswordField passwordField;
 
+    // Method that handles the user registration logic when the Register button is clicked
     @FXML
     private void handleRegister() {
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
+        // Retrieve the entered values from the input fields
         String username = usernameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
 
+        // Validate that none of the fields are empty
         if (username.isEmpty() || email.isEmpty() || password.isEmpty()) {
             new Alert(Alert.AlertType.ERROR, "All fields must be filled in!").showAndWait();
             return;
         }
 
+        // Hash the password using BCrypt for secure storage
         String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
+        // Create a new User object with the entered username, email, and hashed password
         User user = new User(username, email, hashedPassword);
 
         try {
+            // Insert the new user into the database using UserDAO
             UserDAO userDAO = new UserDAO();
             userDAO.insert(user);
 
+            // Confirmation message that registration went through
             new Alert(Alert.AlertType.INFORMATION, "Registration successful!").showAndWait();
 
+            // Load the login page FXML and switch to the login scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
             loader.setControllerFactory(type -> new LoginController(dataStore));
 
@@ -60,6 +68,7 @@ public class RegisterController {
         }
     }
 
+    // Method that navigates the user back to the login page when the "Login" button is clicked
     @FXML
     private void handleLogin() throws IOException {
         Stage stage = (Stage) usernameField.getScene().getWindow();
