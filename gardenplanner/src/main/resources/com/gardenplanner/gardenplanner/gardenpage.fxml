@@ -18,19 +18,19 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.GardenController">
    <children>
         <HBox layoutX="1.0" layoutY="1.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
-         <AnchorPane prefHeight="508.0" prefWidth="193.0">
+         <AnchorPane prefHeight="508.0" prefWidth="166.0" style="-fx-border-color: black;">
             <children>
                   <!-- Left side: Gardens list in a VBox inside a ScrollPane -->
-                  <ScrollPane hbarPolicy="NEVER" pannable="true" prefHeight="352.0" prefWidth="166.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ScrollPane hbarPolicy="NEVER" layoutX="1.6" layoutY="-2.4000000000000004" pannable="true" prefHeight="352.0" prefWidth="152.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <content>
-                          <VBox fx:id="gardenVBox" prefHeight="348.0" prefWidth="164.0">
+                          <VBox fx:id="gardenVBox" prefHeight="346.0" prefWidth="150.0">
                               <children>
                            <Button alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="164.0" text="Button" textAlignment="CENTER" />
                               </children>
                           </VBox>
                       </content>
                   </ScrollPane>
-                        <Button mnemonicParsing="false" prefHeight="30.0" text="Add New" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                        <Button mnemonicParsing="false" prefHeight="30.0" text="Add New" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                   <font>
                      <Font name="System Bold" size="14.0" />
                   </font>
@@ -39,7 +39,7 @@
          </AnchorPane>
 
                         <!-- Right side: Garden details -->
-            <VBox prefHeight="600.0" prefWidth="600.0">
+            <VBox prefHeight="600.0" prefWidth="600.0" style="-fx-border-color: black;">
             <AnchorPane prefHeight="40.0">
                <children>
                         <!-- Garden Title -->
@@ -85,10 +85,10 @@
                 </TabPane>
 
                             <!-- Action Buttons -->
-                <HBox alignment="CENTER" prefHeight="30.0" prefWidth="574.0">
-                    <Button fx:id="membersButton" prefHeight="30.0" prefWidth="190.0" text="Members" />
+                <HBox alignment="CENTER" prefHeight="30.0" prefWidth="574.0" translateY="-1.0">
+                    <Button fx:id="membersButton" prefHeight="30.0" prefWidth="190.0" text="Members" translateX="-7.0" />
                     <Button fx:id="replantButton" prefHeight="30.0" prefWidth="190.0" text="Replant" />
-                    <Button fx:id="leaveButton" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: red;" text="Leave Garden" />
+                    <Button fx:id="leaveButton" prefHeight="30.0" prefWidth="190.0" style="-fx-background-color: red;" text="Leave Garden" translateX="6.0" />
                 </HBox>
             </VBox>
         </HBox>
