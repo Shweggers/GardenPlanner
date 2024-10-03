@@ -30,7 +30,6 @@ public class PerenualService {
                 .build();
 
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(new Gson().fromJson(response.body(), JsonObject.class));
         return new Gson().fromJson(response.body(), JsonObject.class);
     }
 
