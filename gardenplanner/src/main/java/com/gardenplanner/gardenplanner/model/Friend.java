@@ -1,4 +1,4 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.model;
 
 public record Friend(String friend1, String friend2) {
 

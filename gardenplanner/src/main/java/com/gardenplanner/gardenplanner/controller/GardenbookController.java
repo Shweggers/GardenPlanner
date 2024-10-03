@@ -1,5 +1,7 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.DataStore;
+import com.gardenplanner.gardenplanner.model.Plant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +11,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 

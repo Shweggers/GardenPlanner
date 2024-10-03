@@ -3,9 +3,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * A class to manage the database connection
+ */
 public class DatabaseConnection {
     private static Connection instance = null;
 
+    /**
+     * Create a new database connection
+     */
     private DatabaseConnection() {
         String url = "jdbc:sqlite:database.db";
         try {

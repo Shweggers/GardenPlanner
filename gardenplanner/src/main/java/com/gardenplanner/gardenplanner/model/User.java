@@ -1,4 +1,4 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.model;
 
 // Record class representing a User in the system with a username, email, and hashed password
 public record User(String username, String email, String hashedPassword) {

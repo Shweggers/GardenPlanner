@@ -1,5 +1,6 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.DataStore;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -32,6 +33,5 @@ public class FriendpageController {
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
-
     }
 }

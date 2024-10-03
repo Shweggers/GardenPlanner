@@ -1,5 +1,7 @@
 package com.gardenplanner.gardenplanner;
 
+import com.gardenplanner.gardenplanner.model.User;
+
 public class DataStore {
     private User currentUser;
 

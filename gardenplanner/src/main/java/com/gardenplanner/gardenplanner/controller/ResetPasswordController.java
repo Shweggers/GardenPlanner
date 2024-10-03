@@ -1,5 +1,8 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.DataStore;
+import com.gardenplanner.gardenplanner.model.User;
+import com.gardenplanner.gardenplanner.model.UserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
