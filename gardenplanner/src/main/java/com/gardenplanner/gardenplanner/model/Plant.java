@@ -5,14 +5,20 @@ import java.sql.Date;
 /**
  * A class to represent a plant
  */
-public record Plant(String userid, String id, Date datePlanted) {
+public record Plant(String id, String userid, Date datePlanted) {
+
 
     /**
-     * Get the field
+     * Returns a string representation of the Plant record.
      *
-     * @return the field
+     * @return a string representation of the Plant record
      */
-    public String getField() {
-        return null;
+    @Override
+    public String toString() {
+        return "Plant{" +
+                "id='" + id + '\'' +
+                ", userid='" + userid + '\'' +
+                ", datePlanted=" + datePlanted +
+                '}';
     }
 }

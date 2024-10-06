@@ -16,9 +16,9 @@
          <children>
             <VBox prefHeight="467.0" prefWidth="180.0" style="-fx-border-color: black;">
                <children>
-                  <TextField prefHeight="30.0" prefWidth="179.0" promptText="Search" />
-                  <ListView prefHeight="306.0" prefWidth="178.0" />
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Add New Friend" translateY="-1.0" />
+                  <TextField fx:id="friendsSearch" prefHeight="30.0" prefWidth="179.0" promptText="Search" />
+                  <ListView fx:id="friendsList" prefHeight="306.0" prefWidth="178.0" />
+                  <Button fx:id="addFriend" mnemonicParsing="false" prefHeight="40.0" prefWidth="180.0" text="Add New Friend" translateY="-1.0" />
                </children>
             </VBox>
             <VBox prefHeight="508.0" prefWidth="560.0" style="-fx-border-color: black;">
@@ -30,7 +30,7 @@
                               <Font name="System Bold" size="24.0" />
                            </font>
                         </Label>
-                        <Button fx:id="exitButton" layoutX="524.0" layoutY="8.0" mnemonicParsing="false" onAction="#backHome" prefWidth="80.0" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                        <Button fx:id="backButton" layoutX="524.0" layoutY="8.0" mnemonicParsing="false" onAction="#backHome" prefWidth="80.0" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="340.0" prefWidth="560.0">
@@ -38,33 +38,34 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" />
                      </VBox.margin>
                      <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="0.0">
+                        <VBox prefHeight="200.0" prefWidth="360.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Label prefHeight="30.0" prefWidth="400.0" text="These are your friends gardens">
-                                 <padding>
-                                    <Insets left="10.0" />
-                                 </padding>
+                              <Label prefHeight="30.0" prefWidth="550.0" text="These are your friends gardens">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                                  <VBox.margin>
-                                    <Insets />
+                                    <Insets left="10.0" />
                                  </VBox.margin>
                               </Label>
-                              <HBox prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
-                                 <children>
-                                    <ListView prefHeight="270.0" prefWidth="200.0" />
-                                    <ListView prefHeight="200.0" prefWidth="150.0" />
-                                 </children>
+                              <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
+                                 <VBox.margin>
+                                    <Insets left="10.0" />
+                                 </VBox.margin>
                               </HBox>
                            </children>
                         </VBox>
-                        <Button layoutX="484.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Remove Friend" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+                        <Button layoutX="484.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Remove Friend" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                      </children>
                   </AnchorPane>
                </children>
             </VBox>
          </children>
       </HBox>
+      <Label layoutX="350.0" layoutY="24.0" prefHeight="80.0" text="PLANT IT" textFill="#499a52" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="15.0">
+         <font>
+            <Font name="System Bold" size="50.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

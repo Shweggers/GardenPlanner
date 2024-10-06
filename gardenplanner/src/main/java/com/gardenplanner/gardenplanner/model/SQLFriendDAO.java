@@ -1,13 +1,11 @@
 package com.gardenplanner.gardenplanner.model;
 
-import com.gardenplanner.gardenplanner.DatabaseConnection;
-
 import java.sql.*;
 
-public class FriendDAO {
+public class SQLFriendDAO implements IFriendDAO {
     private final Connection connection;
 
-    public FriendDAO() {
+    public SQLFriendDAO() {
         connection = DatabaseConnection.getInstance();
     }
 
@@ -16,13 +14,14 @@ public class FriendDAO {
      * 
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(
                 "CREATE TABLE IF NOT EXISTS friends ("
-                        + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "friend1 string NOT NULL, "
-                        + "friend2 string NOT NULL"
+                        + "id       INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "friend1  STRING NOT NULL, "
+                        + "friend2  STRING NOT NULL"
                         + ")"
         );
     }
@@ -35,6 +34,7 @@ public class FriendDAO {
      * @param friend2 the second friend
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public void insert(String friend1, String friend2) throws SQLException {
         PreparedStatement insertFriend = connection.prepareStatement(
                 "INSERT INTO friends (friend1, friend2) VALUES (?, ?)"
@@ -61,6 +61,7 @@ public class FriendDAO {
      * @param friend2 the second friend
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public void delete(String friend1, String friend2) throws SQLException {
         PreparedStatement deleteFriend = connection.prepareStatement(
                 "DELETE FROM friends WHERE friend1 = ? AND friend2 = ?"
@@ -87,6 +88,7 @@ public class FriendDAO {
      * @return true if the pair (friend1, friend2) exists in the 'friends' table, false otherwise
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public boolean areFriends(String friend1, String friend2) throws SQLException {
         PreparedStatement areFriends = connection.prepareStatement(
                 "SELECT * FROM friends WHERE friend1 = ? AND friend2 = ?"
@@ -104,6 +106,7 @@ public class FriendDAO {
      * @return an array of friends' names
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public String[] getFriends(String friend1) throws SQLException {
         PreparedStatement getFriends = connection.prepareStatement(
                 "SELECT friend2 FROM friends WHERE friend1 = ?"
@@ -118,5 +121,4 @@ public class FriendDAO {
         }
         return friends;
     }
-
 }

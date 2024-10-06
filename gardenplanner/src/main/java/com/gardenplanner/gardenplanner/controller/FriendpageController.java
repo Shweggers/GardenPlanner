@@ -17,7 +17,7 @@ public class FriendpageController {
     }
 
     @FXML
-    private Button exitButton;
+    private Button backButton;
 
     /**
      * Handle the back button click event
@@ -26,7 +26,7 @@ public class FriendpageController {
      */
     @FXML
     void backHome() throws IOException {
-        Stage stage = (Stage) exitButton.getScene().getWindow();
+        Stage stage = (Stage) backButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
         loader.setControllerFactory(type -> new HomepageController(dataStore));

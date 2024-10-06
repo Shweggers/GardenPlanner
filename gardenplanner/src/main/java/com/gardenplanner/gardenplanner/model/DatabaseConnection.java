@@ -1,4 +1,4 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.model;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

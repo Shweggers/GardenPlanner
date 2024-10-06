@@ -1,8 +1,8 @@
 package com.gardenplanner.gardenplanner;
 
 import com.gardenplanner.gardenplanner.controller.LoginController;
-import com.gardenplanner.gardenplanner.model.FriendDAO;
-import com.gardenplanner.gardenplanner.model.UserDAO;
+import com.gardenplanner.gardenplanner.model.SQLFriendDAO;
+import com.gardenplanner.gardenplanner.model.SQLUserDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -38,11 +38,11 @@ public class Main extends Application {
      * @throws SQLException
      */
     public static void main(String[] args) throws SQLException {
-        UserDAO userDAO = new UserDAO();
-        userDAO.createTable();
+        SQLUserDAO SQLUserDAO = new SQLUserDAO();
+        SQLUserDAO.createTable();
 
-        FriendDAO friendDAO = new FriendDAO();
-        friendDAO.createTable();
+        SQLFriendDAO SQLFriendDAO = new SQLFriendDAO();
+        SQLFriendDAO.createTable();
 
         launch(args);
     }

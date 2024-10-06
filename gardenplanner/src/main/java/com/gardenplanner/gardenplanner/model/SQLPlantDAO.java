@@ -1,13 +1,11 @@
 package com.gardenplanner.gardenplanner.model;
 
-import com.gardenplanner.gardenplanner.DatabaseConnection;
-
 import java.sql.*;
 
-public class PlantDAO {
+public class SQLPlantDAO implements IPlantDAO {
     private final Connection connection;
 
-    public PlantDAO() {
+    public SQLPlantDAO() {
         connection = DatabaseConnection.getInstance();
     }
 
@@ -16,13 +14,15 @@ public class PlantDAO {
      *
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(
                 "CREATE TABLE IF NOT EXISTS plants ("
-                        + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "userid string NOT NULL, "
-                        + "plantid string NOT NULL, "
+                        + "id       INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "userid   STRING  FOREIGN KEY REFERENCES users(id), "
+                        + "plantid  STRING  NOT NULL, "
+                        + "datePlanted DATE"
                         + ")"
         );
     }
@@ -33,9 +33,11 @@ public class PlantDAO {
      * @param plant the plant to insert
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public void insert(Plant plant) throws SQLException {
         PreparedStatement insertPlant = connection.prepareStatement(
-                "INSERT INTO plants (userid, plantid) VALUES (?, ?)"
+                "INSERT INTO plants (userid, plantid)" +
+                        "VALUES (?, ?)"
         );
 
         insertPlant.setString(1, plant.userid());
@@ -50,6 +52,7 @@ public class PlantDAO {
      * @param plant the plant to delete
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public void delete(Plant plant) throws SQLException {
         PreparedStatement deletePlant = connection.prepareStatement(
                 "DELETE FROM plants WHERE userid = ? AND plantid = ?"
@@ -66,6 +69,7 @@ public class PlantDAO {
      * @return a ResultSet containing all plants
      * @throws SQLException if a database access error occurs
      */
+    @Override
     public ResultSet getPlants(int userID) throws SQLException {
         PreparedStatement getPlants = connection.prepareStatement(
                 "SELECT * FROM plants WHERE userid = ?"

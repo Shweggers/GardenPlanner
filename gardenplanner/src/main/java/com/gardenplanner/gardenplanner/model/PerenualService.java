@@ -1,4 +1,4 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.model;
 
 import java.io.IOException;
 import java.net.URI;

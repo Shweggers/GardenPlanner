@@ -2,7 +2,7 @@ package com.gardenplanner.gardenplanner.controller;
 
 import com.gardenplanner.gardenplanner.DataStore;
 import com.gardenplanner.gardenplanner.model.User;
-import com.gardenplanner.gardenplanner.model.UserDAO;
+import com.gardenplanner.gardenplanner.model.SQLUserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -59,7 +59,7 @@ public class ResetPasswordController {
 
         try {
             // Retrieve the user from the database using the UserDAO
-            UserDAO userDAO = new UserDAO();
+            SQLUserDAO userDAO = new SQLUserDAO();
             User user = userDAO.getUser(username);
 
             // Check if the user exists in the database

@@ -1,15 +1,13 @@
 package com.gardenplanner.gardenplanner.model;
 
-import com.gardenplanner.gardenplanner.DatabaseConnection;
-
 import java.sql.*;
 
-public class UserDAO {
+public class SQLUserDAO implements IUserDAO {
     // Connection to the database
     private final Connection connection;
 
     // Constructor that initialises the database connection
-    public UserDAO() {
+    public SQLUserDAO() {
         connection = DatabaseConnection.getInstance();
     }
 
@@ -18,19 +16,21 @@ public class UserDAO {
      * 
      * @throws SQLException
      */
+    @Override
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(
                 "CREATE TABLE IF NOT EXISTS users ("
-                        + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "id       INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + "username TEXT NOT NULL, "
-                        + "email TEXT NOT NULL, "
+                        + "email    TEXT NOT NULL, "
                         + "password TEXT NOT NULL"
                         + ")"
         );
     }
 
     // Method that inserts a new user into the database
+    @Override
     public void insert(User user) throws SQLException {
         PreparedStatement insertUser = connection.prepareStatement(
                 "INSERT INTO users (username, email, password) VALUES (?, ?, ?)"
@@ -42,6 +42,7 @@ public class UserDAO {
     }
 
     // Method that retrieves a user by their username from the database
+    @Override
     public User getUser(String username) throws SQLException {
         PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
         getUser.setString(1, username);
@@ -58,6 +59,7 @@ public class UserDAO {
     }
 
     // Method that updates a users password by username
+    @Override
     public void updatePassword(String username, String hashedPassword) throws SQLException {
         String updatePasswordSQL = "UPDATE users SET password = ? WHERE username = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(updatePasswordSQL);
@@ -66,6 +68,7 @@ public class UserDAO {
         preparedStatement.executeUpdate();
     }
 
+    @Override
     public int returnID(String username) throws SQLException {
         PreparedStatement returnID = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
         returnID.setString(1, username);
