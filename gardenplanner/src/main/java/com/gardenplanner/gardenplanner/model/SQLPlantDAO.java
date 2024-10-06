@@ -14,7 +14,6 @@ public class SQLPlantDAO implements IPlantDAO {
      *
      * @throws SQLException if a database access error occurs
      */
-    @Override
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(

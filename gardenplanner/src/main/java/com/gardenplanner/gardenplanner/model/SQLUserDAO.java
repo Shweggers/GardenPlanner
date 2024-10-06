@@ -16,7 +16,6 @@ public class SQLUserDAO implements IUserDAO {
      * 
      * @throws SQLException
      */
-    @Override
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(

@@ -15,7 +15,6 @@ public class SQLFriendDAO implements IFriendDAO {
      * 
      * @throws SQLException if a database access error occurs
      */
-    @Override
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(
@@ -36,24 +35,31 @@ public class SQLFriendDAO implements IFriendDAO {
      * @throws SQLException if a database access error occurs
      */
     @Override
-    public void insert(String friend1, String friend2) throws SQLException {
-        PreparedStatement insertFriend = connection.prepareStatement(
-                "INSERT INTO friends (friend1, friend2) VALUES (?, ?)"
-        );
+    public void insert(String friend1, String friend2) {
+        try {
+            friend1 = friend1.toLowerCase();
+            friend2 = friend2.toLowerCase();
 
-        PreparedStatement insertFriend2 = connection.prepareStatement(
-                "INSERT INTO friends (friend1, friend2) VALUES (?, ?)"
-        );
+            PreparedStatement insertFriend = connection.prepareStatement(
+                    "INSERT INTO friends (friend1, friend2) VALUES (?, ?)"
+            );
 
-        insertFriend2.setString(1, friend2);
-        insertFriend2.setString(2, friend1);
+            PreparedStatement insertFriend2 = connection.prepareStatement(
+                    "INSERT INTO friends (friend1, friend2) VALUES (?, ?)"
+            );
 
-        insertFriend2.execute();
+            insertFriend2.setString(1, friend2);
+            insertFriend2.setString(2, friend1);
 
-        insertFriend.setString(1, friend1);
-        insertFriend.setString(2, friend2);
+            insertFriend2.execute();
 
-        insertFriend.execute();
+            insertFriend.setString(1, friend1);
+            insertFriend.setString(2, friend2);
+
+            insertFriend.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -65,24 +71,28 @@ public class SQLFriendDAO implements IFriendDAO {
      * @throws SQLException if a database access error occurs
      */
     @Override
-    public void delete(String friend1, String friend2) throws SQLException {
-        PreparedStatement deleteFriend = connection.prepareStatement(
-                "DELETE FROM friends WHERE friend1 = ? AND friend2 = ?"
-        );
+    public void delete(String friend1, String friend2) {
+        try {
+            PreparedStatement deleteFriend = connection.prepareStatement(
+                    "DELETE FROM friends WHERE friend1 = ? AND friend2 = ?"
+            );
 
-        PreparedStatement deleteFriend2 = connection.prepareStatement(
-                "DELETE FROM friends WHERE friend1 = ? AND friend2 = ?"
-        );
+            PreparedStatement deleteFriend2 = connection.prepareStatement(
+                    "DELETE FROM friends WHERE friend1 = ? AND friend2 = ?"
+            );
 
-        deleteFriend2.setString(1, friend2);
-        deleteFriend2.setString(2, friend1);
+            deleteFriend2.setString(1, friend2);
+            deleteFriend2.setString(2, friend1);
 
-        deleteFriend2.execute();
+            deleteFriend2.execute();
 
-        deleteFriend.setString(1, friend1);
-        deleteFriend.setString(2, friend2);
+            deleteFriend.setString(1, friend1);
+            deleteFriend.setString(2, friend2);
 
-        deleteFriend.execute();
+            deleteFriend.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -94,15 +104,20 @@ public class SQLFriendDAO implements IFriendDAO {
      * @throws SQLException if a database access error occurs
      */
     @Override
-    public boolean areFriends(String friend1, String friend2) throws SQLException {
-        PreparedStatement areFriends = connection.prepareStatement(
-                "SELECT * FROM friends WHERE friend1 = ? AND friend2 = ?"
-        );
-        areFriends.setString(1, friend1);
-        areFriends.setString(2, friend2);
+    public boolean areFriends(String friend1, String friend2) {
+        try {
+            PreparedStatement areFriends = connection.prepareStatement(
+                    "SELECT * FROM friends WHERE friend1 = ? AND friend2 = ?"
+            );
+            areFriends.setString(1, friend1);
+            areFriends.setString(2, friend2);
 
-        ResultSet rs = areFriends.executeQuery();
-        return rs.next();
+            ResultSet rs = areFriends.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     /**
@@ -113,21 +128,25 @@ public class SQLFriendDAO implements IFriendDAO {
      * @throws SQLException if a database access error occurs
      */
     @Override
-    public ArrayList<String> getFriends(String friend1) throws SQLException {
-        PreparedStatement getFriends = connection.prepareStatement(
-                "SELECT friend2 FROM friends WHERE friend1 = ?"
-        );
-        getFriends.setString(1, friend1);
-
-        ResultSet rs = getFriends.executeQuery();
-
+    public String[] getFriends(String friend1) {
         ArrayList<String> friends = new ArrayList<>();
 
-        int i = 0;
-        while (rs.next()) {
-            friends.set(i, rs.getString("friend2"));
-            i++;
+        try {
+            PreparedStatement getFriends = connection.prepareStatement(
+                    "SELECT friend2 FROM friends WHERE friend1 = ?"
+            );
+            getFriends.setString(1, friend1);
+
+            ResultSet rs = getFriends.executeQuery();
+
+            while (rs.next()) {
+                friends.add(rs.getString("friend2"));
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return friends;
+        return friends.toArray(new String[0]);
+
     }
 }

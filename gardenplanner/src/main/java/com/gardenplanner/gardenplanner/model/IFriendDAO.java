@@ -4,13 +4,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public interface IFriendDAO {
-    void createTable() throws SQLException;
 
-    void insert(String friend1, String friend2) throws SQLException;
+    void insert(String friend1, String friend2);
 
-    void delete(String friend1, String friend2) throws SQLException;
+    void delete(String friend1, String friend2);
 
-    boolean areFriends(String friend1, String friend2) throws SQLException;
+    boolean areFriends(String friend1, String friend2);
 
-    ArrayList<String> getFriends(String friend1) throws SQLException;
+    String[] getFriends(String friend1);
 }

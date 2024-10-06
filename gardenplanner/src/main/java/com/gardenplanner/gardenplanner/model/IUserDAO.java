@@ -3,7 +3,6 @@ package com.gardenplanner.gardenplanner.model;
 import java.sql.SQLException;
 
 public interface IUserDAO {
-    void createTable() throws SQLException;
 
     // Method that inserts a new user into the database
     void insert(User user) throws SQLException;

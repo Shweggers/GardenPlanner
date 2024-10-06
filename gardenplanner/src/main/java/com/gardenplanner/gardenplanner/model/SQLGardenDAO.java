@@ -9,7 +9,6 @@ public class SQLGardenDAO implements IGardenDAO {
         connection = DatabaseConnection.getInstance();
     }
 
-    @Override
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(
@@ -45,6 +44,7 @@ public class SQLGardenDAO implements IGardenDAO {
             deleteGarden.execute();
         } catch (SQLException e) {
             e.printStackTrace();
+        }
     }
 
     @Override

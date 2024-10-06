@@ -1,6 +1,11 @@
 package com.gardenplanner.gardenplanner.model;
 
 public record Friend(String friend1, String friend2) {
+    public static int id;
+
+    public void setID(int id) {
+        this.id = id;
+    }
 
     /**
      * Returns a string representation of the Friend record.
@@ -10,6 +15,7 @@ public record Friend(String friend1, String friend2) {
     @Override
     public String toString() {
         return "Friend{" +
+                "id=" + id + '\'' +
                 "friend1='" + friend1 + '\'' +
                 ", friend2='" + friend2 + '\'' +
                 '}';
