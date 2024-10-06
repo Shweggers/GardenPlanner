@@ -41,7 +41,8 @@ public class SQLPlantDAO implements IPlantDAO {
         );
 
         insertPlant.setString(1, plant.userid());
-        insertPlant.setString(2, plant.id());
+        insertPlant.setString(2, plant.plantid());
+
         insertPlant.execute();
     }
 
@@ -59,7 +60,8 @@ public class SQLPlantDAO implements IPlantDAO {
         );
 
         deletePlant.setString(1, plant.userid());
-        deletePlant.setString(2, plant.id());
+        deletePlant.setString(2, plant.plantid());
+
         deletePlant.execute();
     }
 
@@ -75,6 +77,7 @@ public class SQLPlantDAO implements IPlantDAO {
                 "SELECT * FROM plants WHERE userid = ?"
         );
         getPlants.setString(1, String.valueOf(userID));
+
         return getPlants.executeQuery();
     }
 }

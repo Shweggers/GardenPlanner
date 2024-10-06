@@ -1,6 +1,6 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.DataStore;
+import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.User;
 import com.gardenplanner.gardenplanner.model.SQLUserDAO;
 import javafx.fxml.FXML;

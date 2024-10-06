@@ -1,6 +1,6 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.DataStore;
+import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.Plant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

@@ -1,6 +1,7 @@
 package com.gardenplanner.gardenplanner.model;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class SQLFriendDAO implements IFriendDAO {
     private final Connection connection;
@@ -46,10 +47,12 @@ public class SQLFriendDAO implements IFriendDAO {
 
         insertFriend2.setString(1, friend2);
         insertFriend2.setString(2, friend1);
+
         insertFriend2.execute();
 
         insertFriend.setString(1, friend1);
         insertFriend.setString(2, friend2);
+
         insertFriend.execute();
     }
 
@@ -73,10 +76,12 @@ public class SQLFriendDAO implements IFriendDAO {
 
         deleteFriend2.setString(1, friend2);
         deleteFriend2.setString(2, friend1);
+
         deleteFriend2.execute();
 
         deleteFriend.setString(1, friend1);
         deleteFriend.setString(2, friend2);
+
         deleteFriend.execute();
     }
 
@@ -95,6 +100,7 @@ public class SQLFriendDAO implements IFriendDAO {
         );
         areFriends.setString(1, friend1);
         areFriends.setString(2, friend2);
+
         ResultSet rs = areFriends.executeQuery();
         return rs.next();
     }
@@ -103,20 +109,23 @@ public class SQLFriendDAO implements IFriendDAO {
      * Retrieves a list of friends for a given person.
      *
      * @param friend1 the person whose friends are to be retrieved
-     * @return an array of friends' names
+     * @return a list of friends' names
      * @throws SQLException if a database access error occurs
      */
     @Override
-    public String[] getFriends(String friend1) throws SQLException {
+    public ArrayList<String> getFriends(String friend1) throws SQLException {
         PreparedStatement getFriends = connection.prepareStatement(
                 "SELECT friend2 FROM friends WHERE friend1 = ?"
         );
         getFriends.setString(1, friend1);
+
         ResultSet rs = getFriends.executeQuery();
-        String[] friends = new String[100];
+
+        ArrayList<String> friends = new ArrayList<>();
+
         int i = 0;
         while (rs.next()) {
-            friends[i] = rs.getString("friend2");
+            friends.set(i, rs.getString("friend2"));
             i++;
         }
         return friends;

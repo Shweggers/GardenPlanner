@@ -5,7 +5,7 @@ import java.sql.Date;
 /**
  * A class to represent a plant
  */
-public record Plant(String id, String userid, Date datePlanted) {
+public record Plant(String userid, String plantid, Date datePlanted) {
 
 
     /**
@@ -16,7 +16,6 @@ public record Plant(String id, String userid, Date datePlanted) {
     @Override
     public String toString() {
         return "Plant{" +
-                "id='" + id + '\'' +
                 ", userid='" + userid + '\'' +
                 ", datePlanted=" + datePlanted +
                 '}';
