@@ -1,5 +1,3 @@
-package com.gardenplanner.gardenplanner;
-
 import com.gardenplanner.gardenplanner.model.PerenualService;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,5 +1,3 @@
-package com.gardenplanner.gardenplanner;
-
 import com.gardenplanner.gardenplanner.model.DAO.MockGardenDAO;
 
 import com.gardenplanner.gardenplanner.model.Garden;
