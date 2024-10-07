@@ -1,10 +1,9 @@
 package com.gardenplanner.gardenplanner;
 
+import com.gardenplanner.gardenplanner.model.PerenualService;
 import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
@@ -16,6 +15,9 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+/**
+ * A class to test the PerenualService class
+ */
 public class PerenualServiceTest {
 
     private PerenualService perenualService;

@@ -9,4 +9,10 @@ module com.gardenplanner.gardenplanner {
 
     opens com.gardenplanner.gardenplanner to javafx.fxml;
     exports com.gardenplanner.gardenplanner;
+    exports com.gardenplanner.gardenplanner.controller;
+    opens com.gardenplanner.gardenplanner.controller to javafx.fxml;
+    exports com.gardenplanner.gardenplanner.model;
+    opens com.gardenplanner.gardenplanner.model to javafx.fxml;
+    exports com.gardenplanner.gardenplanner.model.DAO;
+    opens com.gardenplanner.gardenplanner.model.DAO to javafx.fxml;
 }

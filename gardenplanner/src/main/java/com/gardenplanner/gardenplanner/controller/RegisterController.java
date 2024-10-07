@@ -1,5 +1,8 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.model.DataStore;
+import com.gardenplanner.gardenplanner.model.User;
+import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -53,8 +56,8 @@ public class RegisterController {
 
         try {
             // Insert the new user into the database using UserDAO
-            UserDAO userDAO = new UserDAO();
-            userDAO.insert(user);
+            SQLUserDAO SQLUserDAO = new SQLUserDAO();
+            SQLUserDAO.insert(user);
 
             // Confirmation message that registration went through
             new Alert(Alert.AlertType.INFORMATION, "Registration successful!").showAndWait();
