@@ -31,3 +31,7 @@ jobs:
       run: mvn -B package --file ./gardenplanner/pom.xml
     - name: Generate Javadoc
       run: mvn javadoc:javadoc -file ./gardenplanner/pom.xml
+    - name: Publish Javadoc
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: target/docs/javadoc
