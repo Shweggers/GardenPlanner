@@ -1,9 +1,11 @@
 package com.gardenplanner.gardenplanner;
 
-import com.gardenplanner.gardenplanner.model.*;
 import com.gardenplanner.gardenplanner.model.DAO.MockGardenDAO;
 
-import org.junit.jupiter.api.*;
+import com.gardenplanner.gardenplanner.model.Garden;
+import com.gardenplanner.gardenplanner.model.GardenManager;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 

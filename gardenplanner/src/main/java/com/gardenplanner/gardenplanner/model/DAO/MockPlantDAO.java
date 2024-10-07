@@ -2,12 +2,11 @@ package com.gardenplanner.gardenplanner.model.DAO;
 
 import com.gardenplanner.gardenplanner.model.Plant;
 
-import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MockPlantDAO implements IPlantDAO {
-    ArrayList<Plant> plants = new ArrayList<Plant>();
+    private final ArrayList<Plant> plants = new ArrayList<Plant>();
     private int autoIncrementedId = 0;
 
     @Override

@@ -1,11 +1,11 @@
 package com.gardenplanner.gardenplanner;
 
-import com.gardenplanner.gardenplanner.model.*;
 import com.gardenplanner.gardenplanner.model.DAO.MockPlantDAO;
+import com.gardenplanner.gardenplanner.model.Plant;
+import com.gardenplanner.gardenplanner.model.PlantManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,20 +14,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PlantManagerTest {
     private PlantManager plantManager;
 
-    LocalDate plantedTime = LocalDate.now();
     private final Plant[] plants = {
-            new Plant(1, "Tomato", plantedTime),
-            new Plant(1, "Potato", plantedTime),
-            new Plant(1, "Carrot", plantedTime),
-            new Plant(1, "Baby Cucumber", plantedTime),
-            new Plant(1, "Cucumber", plantedTime),
-            new Plant(1, "Melon", plantedTime),
-            new Plant(2, "Carrot", plantedTime),
-            new Plant(2, "Tomato", plantedTime),
-            new Plant(2, "Blueberry", plantedTime),
-            new Plant(2, "Banana", plantedTime),
-            new Plant(2, "Pineapple", plantedTime),
-            new Plant(2, "Strawberry", plantedTime),
+            new Plant(1, "Tomato"),
+            new Plant(1, "Potato"),
+            new Plant(1, "Carrot"),
+            new Plant(1, "Baby Cucumber"),
+            new Plant(1, "Cucumber"),
+            new Plant(1, "Melon"),
+            new Plant(2, "Carrot"),
+            new Plant(2, "Tomato"),
+            new Plant(2, "Blueberry"),
+            new Plant(2, "Banana"),
+            new Plant(2, "Pineapple"),
+            new Plant(2, "Strawberry"),
     };
 
     @BeforeEach

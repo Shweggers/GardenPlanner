@@ -1,10 +1,12 @@
 package com.gardenplanner.gardenplanner;
 
-import com.gardenplanner.gardenplanner.model.*;
 import com.gardenplanner.gardenplanner.model.DAO.MockPlotDAO;
+import com.gardenplanner.gardenplanner.model.Plot;
+import com.gardenplanner.gardenplanner.model.PlotManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -13,13 +15,17 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class PlotManagerTest {
     private PlotManager plotManager;
 
+    LocalDate plantedTime = LocalDate.now();
     private final Plot[] plots = {
-            new Plot(1, "Tomato"),
-            new Plot(1, "Potato"),
-            new Plot(1, "Potato"),
-            new Plot(1, "Raspberry"),
-            new Plot(1, "Blueberry"),
-            new Plot(1, "Blackberry"),
+            new Plot(1, "Tomato", plantedTime),
+            new Plot(1, "Potato", plantedTime),
+            new Plot(1, "Potato", plantedTime),
+            new Plot(1, "Raspberry", plantedTime),
+            new Plot(1, "Blueberry", plantedTime),
+            new Plot(1, "Blackberry", plantedTime),
+            new Plot(2, "Tomato", plantedTime),
+            new Plot(2, "Raspberry", plantedTime),
+            new Plot(2, "Blueberry", plantedTime),
     };
 
     @BeforeEach

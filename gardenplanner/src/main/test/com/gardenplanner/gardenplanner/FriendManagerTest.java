@@ -1,13 +1,16 @@
 package com.gardenplanner.gardenplanner;
 
-import com.gardenplanner.gardenplanner.model.*;
-
 import com.gardenplanner.gardenplanner.model.DAO.MockFriendDAO;
-import org.junit.jupiter.api.*;
+import com.gardenplanner.gardenplanner.model.Friend;
+import com.gardenplanner.gardenplanner.model.FriendManager;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FriendManagerTest {
     private FriendManager friendManager;

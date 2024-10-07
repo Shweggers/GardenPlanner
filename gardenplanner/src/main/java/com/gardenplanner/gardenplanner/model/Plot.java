@@ -1,8 +1,8 @@
 package com.gardenplanner.gardenplanner.model;
 
-import java.util.List;
+import java.time.LocalDate;
 
-public record Plot(int userID, String plant) {
+public record Plot(int userID, String plant, LocalDate datePlanted) {
     public static int ID;
 
     public void setID(int id) {
@@ -18,7 +18,8 @@ public record Plot(int userID, String plant) {
     public String toString() {
         return "Plot{" +
                 ", userID='" + userID + '\'' +
-                ", plants=" + plant +
+                ", plants=" + plant + '\'' +
+                ", datePlanted=" + datePlanted +
                 '}';
     }
 }

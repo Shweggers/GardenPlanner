@@ -1,11 +1,9 @@
 package com.gardenplanner.gardenplanner.model;
 
-import java.time.*;
-
 /**
  * A class to represent a plant
  */
-public record Plant(int userID, String plantID, LocalDate datePlanted) {
+public record Plant(int userID, String plantID) {
     public static int ID;
 
     public void setID(int id) {
@@ -21,8 +19,7 @@ public record Plant(int userID, String plantID, LocalDate datePlanted) {
     public String toString() {
         return "Plant{" +
                 ", userid='" + userID + '\'' +
-                ", datePlanted=" + datePlanted +
-                ", plantID='" + plantID + '\'' +
+                ", plantID='" + plantID +
                 '}';
     }
 }

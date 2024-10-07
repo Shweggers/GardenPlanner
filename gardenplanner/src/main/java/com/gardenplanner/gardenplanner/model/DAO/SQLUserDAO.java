@@ -35,18 +35,21 @@ public class SQLUserDAO implements IUserDAO {
      * Method that inserts a user into the database
      *
      * @param user the user to insert
-     * @throws SQLException if a database access error occurs
      */
     @Override
-    public void insert(User user) throws SQLException {
-        PreparedStatement insertUser = connection.prepareStatement(
-                "INSERT INTO users (username, email, password) VALUES (?, ?, ?)"
-        );
-        insertUser.setString(1, user.username());
-        insertUser.setString(2, user.email());
-        insertUser.setString(3, user.hashedPassword());
+    public void insert(User user) {
+        try {
+            PreparedStatement insertUser = connection.prepareStatement(
+                    "INSERT INTO users (username, email, password) VALUES (?, ?, ?)"
+            );
+            insertUser.setString(1, user.username());
+            insertUser.setString(2, user.email());
+            insertUser.setString(3, user.hashedPassword());
 
-        insertUser.execute();
+            insertUser.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -54,20 +57,23 @@ public class SQLUserDAO implements IUserDAO {
      *
      * @param username the username to search for
      * @return the user
-     * @throws SQLException if a database access error occurs
      */
     @Override
-    public User getUser(String username) throws SQLException {
-        PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
-        getUser.setString(1, username);
+    public User getUser(String username) {
+        try {
+            PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+            getUser.setString(1, username);
 
-        ResultSet rs = getUser.executeQuery();
-        if (rs.next()) {
-            return new User(
-                    rs.getString("username"),
-                    rs.getString("email"),
-                    rs.getString("password")
-            );
+            ResultSet rs = getUser.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return null;
     }
@@ -77,15 +83,18 @@ public class SQLUserDAO implements IUserDAO {
      *
      * @param username the username to search for
      * @param hashedPassword the new hashed password
-     * @throws SQLException if a database access error occurs
      */
     @Override
-    public void updatePassword(String username, String hashedPassword) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("UPDATE users SET password = ? WHERE username = ?");
-        preparedStatement.setString(1, hashedPassword);
-        preparedStatement.setString(2, username);
+    public void updatePassword(String username, String hashedPassword) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE users SET password = ? WHERE username = ?");
+            preparedStatement.setString(1, hashedPassword);
+            preparedStatement.setString(2, username);
 
-        preparedStatement.executeUpdate();
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -93,16 +102,19 @@ public class SQLUserDAO implements IUserDAO {
      *
      * @param username the username to search for
      * @return the ID of the user
-     * @throws SQLException if a database access error occurs
      */
     @Override
-    public int returnID(String username) throws SQLException {
-        PreparedStatement returnID = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
-        returnID.setString(1, username);
+    public int returnID(String username) {
+        try {
+            PreparedStatement returnID = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
+            returnID.setString(1, username);
 
-        ResultSet rs = returnID.executeQuery();
-        if (rs.next()) {
-            return rs.getInt("id");
+            ResultSet rs = returnID.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("id");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
         return -1;
     }

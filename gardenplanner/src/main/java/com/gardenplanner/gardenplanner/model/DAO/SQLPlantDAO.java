@@ -26,7 +26,6 @@ public class SQLPlantDAO implements IPlantDAO {
                         + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + "userid       INTEGER FOREIGN KEY REFERENCES users(id), "
                         + "plantid      STRING  NOT NULL, "
-                        + "datePlanted  DATE"
                         + ")"
         );
     }
@@ -47,7 +46,6 @@ public class SQLPlantDAO implements IPlantDAO {
 
             insertPlant.setInt(1, plant.userID());
             insertPlant.setString(2, plant.plantID());
-            insertPlant.setDate(3, Date.valueOf(plant.datePlanted()));
 
             insertPlant.execute();
         } catch (SQLException e) {
@@ -97,8 +95,7 @@ public class SQLPlantDAO implements IPlantDAO {
             while (rs.next()) {
                 plants.add(new Plant(
                         rs.getInt("userID"),
-                        rs.getString("plantID"),
-                        rs.getDate("datePlanted").toLocalDate()
+                        rs.getString("plantID")
                 ));
             }
         } catch (SQLException e) {
