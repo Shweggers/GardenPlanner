@@ -2,7 +2,7 @@ package com.gardenplanner.gardenplanner.controller;
 
 import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.User;
-import com.gardenplanner.gardenplanner.model.SQLUserDAO;
+import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

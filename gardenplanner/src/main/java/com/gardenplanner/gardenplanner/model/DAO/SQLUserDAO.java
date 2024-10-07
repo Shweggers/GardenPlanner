@@ -1,4 +1,7 @@
-package com.gardenplanner.gardenplanner.model;
+package com.gardenplanner.gardenplanner.model.DAO;
+
+import com.gardenplanner.gardenplanner.model.DatabaseConnection;
+import com.gardenplanner.gardenplanner.model.User;
 
 import java.sql.*;
 

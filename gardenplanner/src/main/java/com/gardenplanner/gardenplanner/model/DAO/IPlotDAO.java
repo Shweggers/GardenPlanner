@@ -1,4 +1,6 @@
-package com.gardenplanner.gardenplanner.model;
+package com.gardenplanner.gardenplanner.model.DAO;
+
+import com.gardenplanner.gardenplanner.model.Plot;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

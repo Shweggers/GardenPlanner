@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
-    <file url="file://$PROJECT_DIR$/gardenplanner/src/main/java/com/gardenplanner/gardenplanner/model/SQLFriendDAO.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/gardenplanner/src/main/java/com/gardenplanner/gardenplanner/model/SQLGardenDAO.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/gardenplanner/src/main/java/com/gardenplanner/gardenplanner/model/SQLPlantDAO.java" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/gardenplanner/src/main/java/com/gardenplanner/gardenplanner/model/SQLUserDAO.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/gardenplanner/src/main/java/com/gardenplanner/gardenplanner/model/DAO/SQLFriendDAO.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/gardenplanner/src/main/java/com/gardenplanner/gardenplanner/model/DAO/SQLGardenDAO.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/gardenplanner/src/main/java/com/gardenplanner/gardenplanner/model/DAO/SQLPlantDAO.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/gardenplanner/src/main/java/com/gardenplanner/gardenplanner/model/DAO/SQLUserDAO.java" dialect="GenericSQL" />
   </component>
 </project>

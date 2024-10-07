@@ -2,22 +2,24 @@ package com.gardenplanner.gardenplanner;
 
 import com.gardenplanner.gardenplanner.model.*;
 
+import com.gardenplanner.gardenplanner.model.DAO.MockFriendDAO;
 import org.junit.jupiter.api.*;
 
-import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 
 public class FriendManagerTest {
     private FriendManager friendManager;
     private Friend[] friends = {
-        new Friend("John", "Jane"),
-        new Friend("John", "Smith"),
-        new Friend("John", "Johnson"),
-        new Friend("Smith", "Williams"),
-        new Friend("Smith", "Brown"),
-        new Friend("Smith", "Johnson")
+        new Friend(1, 2, "Jane"),
+        new Friend(1, 3, "JaneSmith"),
+        new Friend(1, 4, "Smith"),
+        new Friend(1, 5, "Smithers"),
+        new Friend(1, 6, "Williams"),
+        new Friend(1, 7, "Will"),
+        new Friend(1, 8, "Brownson"),
+        new Friend(1, 9, "Johnson"),
     };
 
     @BeforeEach
@@ -26,80 +28,103 @@ public class FriendManagerTest {
     }
 
     @Test
-    public void testSearchInOneFriend() {
-        friendManager.insert(friends[0].friend1(), friends[0].friend2());
-        assertEquals(1, friendManager.getFriends(friends[0].friend1()).length);
-        assertEquals(1, friendManager.getFriends(friends[1].friend1()).length);
-        assertEquals(friendManager.getFriends(friends[0].friend1()).length, friendManager.getFriends(friends[1].friend1()).length);
-    }
+    public void testSearchFriendsInOneFriend() {
+        friendManager.insert(friends[0]);
 
-    @Test
-    public void testSearchInMultipleFriends() {
-        for (Friend friend : friends) {
-            friendManager.insert(friend.friend1(), friend.friend2());
+        List<Friend> friendslist = friendManager.searchFriends(1, "Jane");
+        assertEquals(1, friendslist.size());
+        for (Friend friend : friendslist) {
+            assertEquals("Jane", friend.friendName());
         }
-        assertEquals(5, friendManager.getFriends(friends[0].friend1()).length);
-        assertEquals(1, friendManager.getFriends(friends[0].friend2()).length);
-        assertEquals(4, friendManager.getFriends(friends[1].friend2()).length);
-        assertEquals(2, friendManager.getFriends(friends[2].friend2()).length);
-        assertEquals(1, friendManager.getFriends(friends[4].friend2()).length);
     }
 
     @Test
-    public void testSearchNoResults() {
+    public void testSearchFriendsInMultipleFriends() {
         for (Friend friend : friends) {
-            friendManager.insert(friend.friend1(), friend.friend2());
+            friendManager.insert(friend);
         }
-        assertEquals(0, friendManager.getFriends("Dan").length);
+
+        List<Friend> friendslist = friendManager.searchFriends(1, "Smithers");
+        assertEquals(1, friendslist.size());
+        for (Friend friend : friendslist) {
+            assertEquals("Smithers", friend.friendName());
+        }
     }
 
     @Test
-    public void testSearchEmptyQuery() {
+    public void testSearchFriendsNoResults() {
         for (Friend friend : friends) {
-            friendManager.insert(friend.friend1(), friend.friend2());
+            friendManager.insert(friend);
         }
-        assertEquals(12, friendManager.getFriends("").length);
+
+        List<Friend> friendslist = friendManager.searchFriends(1, "Dan");
+        assertEquals(0, friendslist.size());
     }
 
     @Test
-    public void testSearchNullQuery() {
+    public void testSearchFriendsEmptyQuery() {
         for (Friend friend : friends) {
-            friendManager.insert(friend.friend1(), friend.friend2());
+            friendManager.insert(friend);
         }
-        assertEquals(12, friendManager.getFriends(null).length);
+
+        List<Friend> friendslist = friendManager.searchFriends(1, "");
+        assertEquals(8, friendslist.size());
     }
 
     @Test
-    public void testSearchCaseInsensitive() {
+    public void testSearchFriendsNullQuery() {
         for (Friend friend : friends) {
-            friendManager.insert(friend.friend1(), friend.friend2());
+            friendManager.insert(friend);
         }
-        assertEquals(1, friendManager.getFriends("jane").length);
+
+        List<Friend> friendslist = friendManager.searchFriends(1 ,null);
+        assertEquals(8, friendslist.size());
     }
 
     @Test
-    public void testSearchPartialQuery() {
+    public void testSearchFriendsCaseInsensitive() {
         for (Friend friend : friends) {
-            friendManager.insert(friend.friend1(), friend.friend2());
+            friendManager.insert(friend);
         }
-        assertEquals(5, friendManager.getFriends("Jo").length);
+
+        List<Friend> friendslist = friendManager.searchFriends(1, "will");
+        assertEquals(2, friendslist.size());
+        for (Friend friend : friendslist) {
+            assertTrue(friend.friendName().equals("Will") || friend.friendName().equals("Williams"));
+        }
     }
 
     @Test
-    public void testSearchEmptyFriends() {
-        assertEquals(0, friendManager.getFriends("John").length);
-    }
-
-    @Test
-    public void testAreFriends() {
+    public void testSearchFriendsPartialQuery() {
         for (Friend friend : friends) {
-            friendManager.insert(friend.friend1(), friend.friend2());
+            friendManager.insert(friend);
         }
-        assertTrue(friendManager.areFriends(friends[0].friend1(), friends[0].friend2()));
-        assertTrue(friendManager.areFriends(friends[1].friend1(), friends[1].friend2()));
-        assertTrue(friendManager.areFriends(friends[2].friend1(), friends[2].friend2()));
-        assertTrue(friendManager.areFriends(friends[3].friend1(), friends[3].friend2()));
-        assertTrue(friendManager.areFriends(friends[4].friend1(), friends[4].friend2()));
-        assertTrue(friendManager.areFriends(friends[5].friend1(), friends[5].friend2()));
+
+        List<Friend> friendslist = friendManager.searchFriends(1, "ith");
+        assertEquals(3, friendslist.size());
+        for (Friend friend : friendslist) {
+            assertTrue(friend.friendName().equals("JaneSmith") || friend.friendName().equals("Smith") || friend.friendName().equals("Smithers"));
+        }
+    }
+
+    @Test
+    public void testSearchFriendsEmptyFriends() {
+        List<Friend> friendslist = friendManager.searchFriends(1, "Smith");
+        assertEquals(0, friendslist.size());
+    }
+
+    @Test
+    public void testAreFriendsOneFriend() {
+        friendManager.insert(friends[0]);
+
+        // TODO: Add test case
+    }
+
+    @Test
+    public void testAreFriendsMultipleFriends() {
+        for (Friend friend : friends) {
+            friendManager.insert(friend);
+        }
+        // TODO: Add test case
     }
 }

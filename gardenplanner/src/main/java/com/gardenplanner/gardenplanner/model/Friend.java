@@ -1,10 +1,10 @@
 package com.gardenplanner.gardenplanner.model;
 
-public record Friend(String friend1, String friend2) {
-    public static int id;
+public record Friend(int userID, int friendID, String friendName) {
+    public static int ID;
 
-    public void setID(int id) {
-        this.id = id;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
     /**
@@ -15,9 +15,9 @@ public record Friend(String friend1, String friend2) {
     @Override
     public String toString() {
         return "Friend{" +
-                "id=" + id + '\'' +
-                "friend1='" + friend1 + '\'' +
-                ", friend2='" + friend2 + '\'' +
+                ", userID='" + userID + '\'' +
+                ", friendID='" + friendID + '\'' +
+                ", friendName='" + friendName + '\'' +
                 '}';
     }
 }

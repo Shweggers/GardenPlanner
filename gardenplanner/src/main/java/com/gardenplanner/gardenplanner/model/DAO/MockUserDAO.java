@@ -1,4 +1,6 @@
-package com.gardenplanner.gardenplanner.model;
+package com.gardenplanner.gardenplanner.model.DAO;
+
+import com.gardenplanner.gardenplanner.model.User;
 
 public class MockUserDAO implements IUserDAO {
 

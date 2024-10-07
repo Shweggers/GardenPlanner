@@ -2,6 +2,8 @@ package com.gardenplanner.gardenplanner.controller;
 
 import com.gardenplanner.gardenplanner.model.*;
 
+import com.gardenplanner.gardenplanner.model.DAO.SQLGardenDAO;
+import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -127,8 +129,8 @@ public class HomepageController {
 
         welcomeMsg.setText("Welcome " + currentUser.username());
 
-        if (SQLGardenDAO.getGardens(SQLUserDAO.returnID(currentUser.username())) == null) {
+        /*if (SQLGardenDAO.getGardens(SQLUserDAO.returnID(currentUser.username())) == null) {
             SQLGardenDAO.insert(new Garden("My Garden", SQLUserDAO.returnID(currentUser.username())));
-        }
+        }*/
     }
 }

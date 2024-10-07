@@ -2,6 +2,7 @@ package com.gardenplanner.gardenplanner;
 
 import com.gardenplanner.gardenplanner.controller.LoginController;
 import com.gardenplanner.gardenplanner.model.*;
+import com.gardenplanner.gardenplanner.model.DAO.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
