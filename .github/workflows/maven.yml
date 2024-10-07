@@ -30,4 +30,4 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file ./gardenplanner/pom.xml
     - name: Generate Javadoc
-      run: mvn javadoc:javadoc
+      run: mvn javadoc:javadoc -file ./gardenplanner/pom.xml
