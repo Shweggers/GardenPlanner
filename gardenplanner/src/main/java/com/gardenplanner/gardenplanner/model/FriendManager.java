@@ -35,7 +35,7 @@ public class FriendManager {
     }
 
     private boolean isFriendMatched(Friend friend, String query) {
-        query = query == null ? "" : query;
-        return friend.friendName().toLowerCase().contains(query.toLowerCase());
+        query = query == null ? "" : query.toLowerCase();
+        return query.isEmpty() || friend.friendName().toLowerCase().contains(query);
     }
 }

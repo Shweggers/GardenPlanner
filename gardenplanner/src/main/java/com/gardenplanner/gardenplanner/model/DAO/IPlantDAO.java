@@ -4,12 +4,13 @@ import com.gardenplanner.gardenplanner.model.Plant;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 public interface IPlantDAO {
 
-    void insert(Plant plant) throws SQLException;
+    void insert(Plant plant);
 
-    void delete(Plant plant) throws SQLException;
+    void delete(Plant plant);
 
-    ResultSet getPlants(int userID) throws SQLException;
+    List<Plant> getPlants(int userID);
 }

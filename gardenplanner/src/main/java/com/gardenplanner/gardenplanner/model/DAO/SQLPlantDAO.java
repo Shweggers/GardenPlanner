@@ -4,6 +4,8 @@ import com.gardenplanner.gardenplanner.model.DatabaseConnection;
 import com.gardenplanner.gardenplanner.model.Plant;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLPlantDAO implements IPlantDAO {
     private final Connection connection;
@@ -21,10 +23,10 @@ public class SQLPlantDAO implements IPlantDAO {
         Statement createTable = connection.createStatement();
         createTable.execute(
                 "CREATE TABLE IF NOT EXISTS plants ("
-                        + "id       INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "userid   STRING  FOREIGN KEY REFERENCES users(id), "
-                        + "plantid  STRING  NOT NULL, "
-                        + "datePlanted DATE"
+                        + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
+                        + "userid       INTEGER FOREIGN KEY REFERENCES users(id), "
+                        + "plantid      STRING  NOT NULL, "
+                        + "datePlanted  DATE"
                         + ")"
         );
     }
@@ -36,16 +38,21 @@ public class SQLPlantDAO implements IPlantDAO {
      * @throws SQLException if a database access error occurs
      */
     @Override
-    public void insert(Plant plant) throws SQLException {
-        PreparedStatement insertPlant = connection.prepareStatement(
-                "INSERT INTO plants (userid, plantid)" +
-                        "VALUES (?, ?)"
-        );
+    public void insert(Plant plant) {
+        try {
+            PreparedStatement insertPlant = connection.prepareStatement(
+                    "INSERT INTO plants (userID, plantID, datePlanted)" +
+                            "VALUES (?, ?, ?)"
+            );
 
-        insertPlant.setString(1, plant.userid());
-        insertPlant.setString(2, plant.plantid());
+            insertPlant.setInt(1, plant.userID());
+            insertPlant.setString(2, plant.plantID());
+            insertPlant.setDate(3, Date.valueOf(plant.datePlanted()));
 
-        insertPlant.execute();
+            insertPlant.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
 
@@ -56,15 +63,19 @@ public class SQLPlantDAO implements IPlantDAO {
      * @throws SQLException if a database access error occurs
      */
     @Override
-    public void delete(Plant plant) throws SQLException {
-        PreparedStatement deletePlant = connection.prepareStatement(
-                "DELETE FROM plants WHERE userid = ? AND plantid = ?"
-        );
+    public void delete(Plant plant) {
+        try {
+            PreparedStatement deletePlant = connection.prepareStatement(
+                    "DELETE FROM plants WHERE userid = ? AND plantid = ?"
+            );
 
-        deletePlant.setString(1, plant.userid());
-        deletePlant.setString(2, plant.plantid());
+            deletePlant.setInt(1, plant.userID());
+            deletePlant.setString(2, plant.plantID());
 
-        deletePlant.execute();
+            deletePlant.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -74,12 +85,25 @@ public class SQLPlantDAO implements IPlantDAO {
      * @throws SQLException if a database access error occurs
      */
     @Override
-    public ResultSet getPlants(int userID) throws SQLException {
-        PreparedStatement getPlants = connection.prepareStatement(
-                "SELECT * FROM plants WHERE userid = ?"
-        );
-        getPlants.setString(1, String.valueOf(userID));
+    public List<Plant> getPlants(int userID) {
+        List<Plant> plants = new ArrayList<>();
+        try {
+            PreparedStatement getPlants = connection.prepareStatement(
+                    "SELECT * FROM plants WHERE userid = ?"
+            );
+            getPlants.setInt(1, userID);
 
-        return getPlants.executeQuery();
+            ResultSet rs = getPlants.executeQuery();
+            while (rs.next()) {
+                plants.add(new Plant(
+                        rs.getInt("userID"),
+                        rs.getString("plantID"),
+                        rs.getDate("datePlanted").toLocalDate()
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return plants;
     }
 }

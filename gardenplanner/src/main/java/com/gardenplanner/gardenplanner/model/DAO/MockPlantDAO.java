@@ -3,24 +3,34 @@ package com.gardenplanner.gardenplanner.model.DAO;
 import com.gardenplanner.gardenplanner.model.Plant;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MockPlantDAO implements IPlantDAO {
+    ArrayList<Plant> plants = new ArrayList<Plant>();
+    private int autoIncrementedId = 0;
 
     @Override
     public void insert(Plant plant) {
-        // TODO Auto-generated method stub
+        plant.setID(autoIncrementedId);
+        autoIncrementedId++;
 
+        plants.add(plant);
     }
 
     @Override
     public void delete(Plant plant) {
-        // TODO Auto-generated method stub
-
+        plants.remove(plant);
     }
 
     @Override
-    public ResultSet getPlants(int userID) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Plant> getPlants(int userID) {
+        ArrayList<Plant> plantsList = new ArrayList<Plant>();
+        for (Plant plant : plants) {
+            if (plant.userID() == userID) {
+                plantsList.add(plant);
+            }
+        }
+        return plantsList;
     }
 }

@@ -25,9 +25,9 @@ public class MockGardenDAO implements IGardenDAO {
     @Override
     public List<Garden> getGardens(int userID) {
         ArrayList<Garden> gardenList = new ArrayList<>();
-        for (int i = 0; i < gardens.size(); i++) {
-            if (gardens.get(i).userID() == userID) {
-                gardenList.add(gardens.get(i));
+        for (Garden garden : gardens) {
+            if (garden.userID() == userID) {
+                gardenList.add(garden);
             }
         }
         return gardenList;

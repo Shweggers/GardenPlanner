@@ -1,12 +1,16 @@
 package com.gardenplanner.gardenplanner.model;
 
-import java.sql.Date;
+import java.time.*;
 
 /**
  * A class to represent a plant
  */
-public record Plant(String userid, String plantid, Date datePlanted) {
+public record Plant(int userID, String plantID, LocalDate datePlanted) {
+    public static int ID;
 
+    public void setID(int id) {
+        ID = id;
+    }
 
     /**
      * Returns a string representation of the Plant record.
@@ -16,8 +20,9 @@ public record Plant(String userid, String plantid, Date datePlanted) {
     @Override
     public String toString() {
         return "Plant{" +
-                ", userid='" + userid + '\'' +
+                ", userid='" + userID + '\'' +
                 ", datePlanted=" + datePlanted +
+                ", plantID='" + plantID + '\'' +
                 '}';
     }
 }

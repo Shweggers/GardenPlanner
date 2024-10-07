@@ -26,7 +26,7 @@ public class GardenManager {
     }
 
     private boolean isGardenMatched(Garden garden, String query) {
-        query = query == null ? "" : query;
-        return garden.name().toLowerCase().contains(query.toLowerCase());
+        query = query == null ? "" : query.toLowerCase();
+        return query.isEmpty() || garden.name().toLowerCase().contains(query);
     }
 }
