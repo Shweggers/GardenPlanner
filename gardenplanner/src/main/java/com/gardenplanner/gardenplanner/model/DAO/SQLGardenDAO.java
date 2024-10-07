@@ -5,6 +5,8 @@ import com.gardenplanner.gardenplanner.model.Garden;
 
 import java.sql.*;
 
+import java.util.List;
+
 public class SQLGardenDAO implements IGardenDAO {
     private final Connection connection;
 
@@ -55,13 +57,7 @@ public class SQLGardenDAO implements IGardenDAO {
     }
 
     @Override
-    public Garden[] getGardens(String query) {
+    public List<Garden> getGardens(int userID) {
         return null;
     }
-
-    @Override
-    public Garden[] getGardens(String query, int userid) {
-        return new Garden[0];
-    }
-
 }

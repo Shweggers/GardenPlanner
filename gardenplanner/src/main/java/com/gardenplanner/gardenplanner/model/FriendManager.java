@@ -22,7 +22,7 @@ public class FriendManager {
         return friendDAO.areFriends(userID, friendName);
     }
 
-    private boolean areFriendsMutual(Friend friend, String friendName) {
+    public boolean areMutual(Friend friend, String friendName) {
         // TODO: Implement this method
         return false;
     }

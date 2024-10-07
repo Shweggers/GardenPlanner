@@ -3,6 +3,7 @@ package com.gardenplanner.gardenplanner.model.DAO;
 import com.gardenplanner.gardenplanner.model.Garden;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MockGardenDAO implements IGardenDAO {
     private ArrayList<Garden> gardens = new ArrayList<>();
@@ -23,13 +24,7 @@ public class MockGardenDAO implements IGardenDAO {
     }
 
     @Override
-    public Garden[] getGardens(String query) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Garden[] getGardens(String query, int userid) {
+    public List<Garden> getGardens(int userID) {
         // TODO Auto-generated method stub
         return null;
     }

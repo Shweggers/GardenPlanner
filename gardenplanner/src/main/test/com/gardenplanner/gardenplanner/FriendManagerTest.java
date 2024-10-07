@@ -12,14 +12,21 @@ import static org.junit.jupiter.api.Assertions.*;
 public class FriendManagerTest {
     private FriendManager friendManager;
     private Friend[] friends = {
-        new Friend(1, 2, "Jane"),
-        new Friend(1, 3, "JaneSmith"),
-        new Friend(1, 4, "Smith"),
-        new Friend(1, 5, "Smithers"),
-        new Friend(1, 6, "Williams"),
-        new Friend(1, 7, "Will"),
-        new Friend(1, 8, "Brownson"),
-        new Friend(1, 9, "Johnson"),
+            new Friend(1, 2, "Jane"),
+            new Friend(1, 3, "JaneSmith"),
+            new Friend(1, 4, "Smith"),
+            new Friend(1, 5, "Smithers"),
+            new Friend(1, 6, "Williams"),
+            new Friend(1, 7, "Will"),
+            new Friend(2, 1, "John"),
+            new Friend(2, 3, "JaneSmith"),
+            new Friend(2, 4, "Smith"),
+            new Friend(2, 5, "Smithers"),
+            new Friend(3, 2, "Jane"),
+            new Friend(3, 4, "Smith"),
+            new Friend(4, 2, "Jane"),
+            new Friend(4, 3, "JaneSmith"),
+            new Friend(5, 1, "John"),
     };
 
     @BeforeEach
@@ -68,7 +75,7 @@ public class FriendManagerTest {
         }
 
         List<Friend> friendslist = friendManager.searchFriends(1, "");
-        assertEquals(8, friendslist.size());
+        assertEquals(6, friendslist.size());
     }
 
     @Test
@@ -78,7 +85,7 @@ public class FriendManagerTest {
         }
 
         List<Friend> friendslist = friendManager.searchFriends(1 ,null);
-        assertEquals(8, friendslist.size());
+        assertEquals(6, friendslist.size());
     }
 
     @Test
@@ -117,7 +124,7 @@ public class FriendManagerTest {
     public void testAreFriendsOneFriend() {
         friendManager.insert(friends[0]);
 
-        // TODO: Add test case
+        assertTrue(friendManager.areFriends(1, "Jane"));
     }
 
     @Test
@@ -125,6 +132,57 @@ public class FriendManagerTest {
         for (Friend friend : friends) {
             friendManager.insert(friend);
         }
-        // TODO: Add test case
+
+        assertFalse(friendManager.areFriends(4, "Smithers"));
+    }
+
+    @Test
+    public void testAreFriendsNoResults() {
+        for (Friend friend : friends) {
+            friendManager.insert(friend);
+        }
+
+        assertFalse(friendManager.areFriends(4, "Smithers"));
+    }
+
+    @Test
+    public void testAreFriendsEmptyQuery() {
+        for (Friend friend : friends) {
+            friendManager.insert(friend);
+        }
+
+        assertFalse(friendManager.areFriends(1, ""));
+    }
+
+    @Test
+    public void testAreFriendsNullQuery() {
+        for (Friend friend : friends) {
+            friendManager.insert(friend);
+        }
+
+        assertFalse(friendManager.areFriends(1, null));
+    }
+
+    @Test
+    public void testAreFriendsCaseInsensitive() {
+        for (Friend friend : friends) {
+            friendManager.insert(friend);
+        }
+
+        assertFalse(friendManager.areFriends(2, "smith"));
+    }
+
+    @Test
+    public void testAreFriendsPartialQuery() {
+        for (Friend friend : friends) {
+            friendManager.insert(friend);
+        }
+
+        assertFalse(friendManager.areFriends(2, "ith"));
+    }
+
+    @Test
+    public void testAreFriendsEmptyFriends() {
+        assertFalse(friendManager.areFriends(3, "Smith"));
     }
 }

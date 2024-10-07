@@ -11,18 +11,16 @@ public class GardenManagerTest {
     private Garden[] gardens = {
             new Garden("Tomatoes 1", 1),
             new Garden("Tomatoes 2", 1),
-            new Garden("Potatoes 1", 1),
+            new Garden("Potatoes 1", 2),
             new Garden("New Potatoes 1", 1),
             new Garden("Garden 1", 1),
             new Garden("Garden 2", 1),
-    };
-    private Garden[] gardens2 = {
             new Garden("Garden 1", 2),
             new Garden("Garden 2", 2),
-            new Garden("Carrots", 2),
+            new Garden("Carrots", 1),
             new Garden("Tomatoes", 2),
             new Garden("Potatoes", 2),
-            new Garden("Garden 3", 2),
+            new Garden("Garden 3", 2)
     };
 
     @BeforeEach

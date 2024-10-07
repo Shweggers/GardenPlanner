@@ -2,6 +2,8 @@ package com.gardenplanner.gardenplanner.model;
 
 import com.gardenplanner.gardenplanner.model.DAO.IGardenDAO;
 
+import java.util.List;
+
 public class GardenManager {
     private IGardenDAO gardenDAO;
     public GardenManager(IGardenDAO gardenDao) {
@@ -12,13 +14,7 @@ public class GardenManager {
         gardenDAO.insert(garden);
     }
 
-    public Garden[] getGardens(String query) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    public Garden[] getGardens(String query, int userid) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<Garden> searchGardens(int userID, String query) {
+        return gardenDAO.getGardens(userID);
     }
 }
