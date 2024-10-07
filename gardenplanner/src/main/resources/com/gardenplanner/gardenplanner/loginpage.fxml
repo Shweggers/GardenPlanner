@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -11,18 +12,6 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.LoginController">
-
-    <!-- Placeholder for Plant It Title Image -->
-    <!--
-    <VBox alignment="CENTER" prefHeight="150.0" prefWidth="900.0" AnchorPane.topAnchor="30.0">
-        <ImageView fitHeight="100.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@../../../../../../assets/banana.jpg" />
-            </image>
-        </ImageView>
-    </VBox>
-    -->
-
     <!-- Title -->
     <VBox alignment="CENTER" prefHeight="150.0" prefWidth="900.0" AnchorPane.topAnchor="30.0">
         <Text text="PLANT IT" fill="green">
@@ -55,15 +44,6 @@
         <!-- Register Button -->
         <Button mnemonicParsing="false" onAction="#handleRegister" prefWidth="280.0" text="REGISTER"
                 style="-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-size: 18px;" />
+      
     </VBox>
-
-    <!-- Placeholder for Background Plants Image -->
-    <!--
-    <ImageView fitHeight="150.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-        <image>
-            <Image url="@../../../../../../assets/banana.jpg" />
-        </image>
-    </ImageView>
-    -->
-
 </AnchorPane>

@@ -1,6 +1,6 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.controller;
 
-import javafx.event.ActionEvent;
+import com.gardenplanner.gardenplanner.model.DataStore;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,10 +9,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class GardenController {
+public class FriendpageController {
 
     private final DataStore dataStore;
-    public GardenController(DataStore dataStore) {
+    public FriendpageController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
@@ -22,17 +22,16 @@ public class GardenController {
     /**
      * Handle the back button click event
      * 
-     * @param event
      * @throws IOException
      */
     @FXML
-    public void backButtonClicked(ActionEvent event) throws IOException {
+    void backHome() throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
         loader.setControllerFactory(type -> new HomepageController(dataStore));
 
-        stage.setScene(new Scene(loader.load()));
+        stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
     }
 }

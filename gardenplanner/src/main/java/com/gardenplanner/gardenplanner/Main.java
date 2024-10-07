@@ -1,5 +1,8 @@
 package com.gardenplanner.gardenplanner;
 
+import com.gardenplanner.gardenplanner.controller.LoginController;
+import com.gardenplanner.gardenplanner.model.*;
+import com.gardenplanner.gardenplanner.model.DAO.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,9 +10,18 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
+/**
+ * The main class
+ */
 public class Main extends Application {
     DataStore dataStore = new DataStore();
 
+    /**
+     * Start the application
+     *
+     * @param primaryStage the primary stage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
@@ -19,12 +31,27 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    /**
+     * Main method
+     *
+     * @param args the arguments
+     * @throws SQLException
+     */
     public static void main(String[] args) throws SQLException {
-        UserDAO userDAO = new UserDAO();
-        userDAO.createTable();
+        SQLUserDAO SQLUserDAO = new SQLUserDAO();
+        SQLUserDAO.createTable();
 
-        FriendDAO friendDAO = new FriendDAO();
-        friendDAO.createTable();
+        SQLFriendDAO SQLFriendDAO = new SQLFriendDAO();
+        SQLFriendDAO.createTable();
+
+        SQLGardenDAO SQLGardenDAO = new SQLGardenDAO();
+        SQLGardenDAO.createTable();
+
+        SQLPlotDAO SQLPlotDAO = new SQLPlotDAO();
+        SQLPlotDAO.createTable();
+
+        SQLPlantDAO SQLPlantDAO = new SQLPlantDAO();
+        SQLPlantDAO.createTable();
 
         launch(args);
     }

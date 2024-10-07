@@ -1,5 +1,9 @@
-package com.gardenplanner.gardenplanner;
+package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.model.*;
+
+import com.gardenplanner.gardenplanner.model.DAO.SQLGardenDAO;
+import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -7,6 +11,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Optional;
 
 public class HomepageController {
@@ -116,7 +121,16 @@ public class HomepageController {
      * Initialize the user data when Homepage is called
      */
     @FXML
-    void initialize() {
-        welcomeMsg.setText(dataStore.getCurrentUser().username());
+    void initialize() throws SQLException {
+        SQLGardenDAO SQLGardenDAO = new SQLGardenDAO();
+        SQLUserDAO SQLUserDAO = new SQLUserDAO();
+
+        User currentUser = dataStore.getCurrentUser();
+
+        welcomeMsg.setText("Welcome " + currentUser.username());
+
+        /*if (SQLGardenDAO.getGardens(SQLUserDAO.returnID(currentUser.username())) == null) {
+            SQLGardenDAO.insert(new Garden("My Garden", SQLUserDAO.returnID(currentUser.username())));
+        }*/
     }
 }
