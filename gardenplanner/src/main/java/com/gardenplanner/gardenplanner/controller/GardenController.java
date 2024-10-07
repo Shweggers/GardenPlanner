@@ -37,8 +37,8 @@ public class GardenController {
     /**
      * Returns the user to the home page when the back button is clicked.
      * 
-     * @param event
-     * @throws IOException
+     * @param event event details
+     * @throws IOException if an I/O error occurs
      */
     @FXML
     public void backButtonClicked(ActionEvent event) throws IOException {

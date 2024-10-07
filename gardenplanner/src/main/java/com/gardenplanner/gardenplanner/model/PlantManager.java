@@ -8,7 +8,16 @@ import java.util.List;
  * PlantManager is a class that manages the Plant objects.
  */
 public class PlantManager {
+    /**
+     * The plant DAO
+     */
     private final IPlantDAO plantDAO;
+
+    /**
+     * Create a new PlantManager object.
+     *
+     * @param plantDAO the plant DAO
+     */
     public PlantManager(IPlantDAO plantDAO) {
         this.plantDAO = plantDAO;
     }
@@ -35,6 +44,7 @@ public class PlantManager {
      * Get a list of plants for a user.
      *
      * @param userID the user ID
+     * @param query the query
      * @return a list of plants
      */
     public List<Plant> searchPlants(int userID, String query) {

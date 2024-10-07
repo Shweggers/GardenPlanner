@@ -8,7 +8,16 @@ import java.util.List;
  * GardenManager is a class that manages the Garden objects.
  */
 public class GardenManager {
+    /**
+     * The garden DAO
+     */
     private final IGardenDAO gardenDAO;
+
+    /**
+     * Create a new GardenManager object.
+     *
+     * @param gardenDao the garden DAO
+     */
     public GardenManager(IGardenDAO gardenDao) {
         this.gardenDAO = gardenDao;
     }
@@ -35,6 +44,7 @@ public class GardenManager {
      * Get a list of gardens for a user.
      *
      * @param userID the user ID
+     * @param query the query
      * @return a list of gardens
      */
     public List<Garden> searchGardens(int userID, String query) {

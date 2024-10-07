@@ -8,7 +8,16 @@ import java.util.List;
  * FriendManager is a class that manages the Friend objects.
  */
 public class FriendManager {
+    /**
+     * The friend DAO
+     */
     private final IFriendDAO friendDAO;
+
+    /**
+     * Create a new FriendManager object.
+     *
+     * @param friendDao the friend DAO
+     */
     public FriendManager(IFriendDAO friendDao) {
         this.friendDAO = friendDao;
     }
@@ -35,6 +44,7 @@ public class FriendManager {
      * Get a list of friends for a user.
      *
      * @param userID the user ID
+     * @param friendName the friend name
      * @return a list of friends
      */
     public boolean areFriends(int userID, String friendName) {

@@ -34,7 +34,8 @@ public class SQLGardenDAO implements IGardenDAO {
                 "CREATE TABLE IF NOT EXISTS gardens ("
                         + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
                         + "gardenName   TEXT    NOT NULL, "
-                        + "userID       INTEGER FOREIGN KEY REFERENCES users(id), "
+                        + "userID       INTEGER NOT NULL, "
+                        + "FOREIGN KEY(userID)  REFERENCES users(id), "
                         + "UNIQUE(gardenName, userID)"
                         + ")"
         );

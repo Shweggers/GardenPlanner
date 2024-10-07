@@ -10,6 +10,7 @@ public class DataStore {
      * Set the current user
      * 
      * @param currentUser
+     * the current user
      */
     public void setCurrentUser(User currentUser) {
         this.currentUser = currentUser;

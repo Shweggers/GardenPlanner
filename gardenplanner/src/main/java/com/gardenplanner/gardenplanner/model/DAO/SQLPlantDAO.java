@@ -33,8 +33,9 @@ public class SQLPlantDAO implements IPlantDAO {
         createTable.execute(
                 "CREATE TABLE IF NOT EXISTS plants ("
                         + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "userid       INTEGER FOREIGN KEY REFERENCES users(id), "
+                        + "userid       INTEGER NOT NULL, "
                         + "plantid      STRING  NOT NULL, "
+                        + "FOREIGN KEY(userid) REFERENCES users(id)"
                         + ")"
         );
     }

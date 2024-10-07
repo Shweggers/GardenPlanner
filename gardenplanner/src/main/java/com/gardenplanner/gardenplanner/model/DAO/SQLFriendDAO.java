@@ -33,9 +33,11 @@ public class SQLFriendDAO implements IFriendDAO {
         createTable.execute(
                 "CREATE TABLE IF NOT EXISTS friends ("
                         + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "userID       INTEGER FOREIGN KEY REFERENCES users(id), "
-                        + "friendID     INTEGER FOREIGN KEY REFERENCES users(id), "
-                        + "friendName   STRING  NOT NULL"
+                        + "userID       INTEGER NOT NULL, "
+                        + "friendID     INTEGER NOT NULL, "
+                        + "friendName   STRING  NOT NULL, "
+                        + "FOREIGN KEY(userID) REFERENCES users(id), "
+                        + "FOREIGN KEY(friendID) REFERENCES users(id), "
                         + "UNIQUE(userID, friendID)"
                         + ")"
         );

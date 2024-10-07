@@ -15,6 +15,9 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 
+/**
+ * The LoginController class is a controller for the login page
+ */
 public class LoginController {
 
     /**
@@ -24,6 +27,8 @@ public class LoginController {
 
     /**
      * Constructor for the LoginController
+     *
+     * @param dataStore the data store
     */
     public LoginController(DataStore dataStore) {
         this.dataStore = dataStore;

@@ -23,8 +23,8 @@ public class PerenualService {
      *
      * @param plantID the ID of the plant
      * @return the plant data
-     * @throws IOException
-     * @throws InterruptedException
+     * @throws IOException if an I/O error occurs
+     * @throws InterruptedException if the operation is interrupted
      */
     public JsonObject getPlantData(String plantID) throws IOException, InterruptedException {
         String url = BASE_URL + "species/details/" + plantID + "?key=" + API_KEY;
@@ -42,8 +42,8 @@ public class PerenualService {
      *
      * @param plantName the name of the plant
      * @return the ID of the plant
-     * @throws IOException
-     * @throws InterruptedException
+     * @throws IOException if an I/O error occurs
+     * @throws InterruptedException if the operation is interrupted
      */
     public String getPlantIdFromName(String plantName) throws IOException, InterruptedException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(plantName, StandardCharsets.UTF_8);

@@ -20,7 +20,7 @@ public class Main extends Application {
      * Start the application
      *
      * @param primaryStage the primary stage
-     * @throws Exception
+     * @throws Exception if an exception occurs
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -35,7 +35,7 @@ public class Main extends Application {
      * Main method
      *
      * @param args the arguments
-     * @throws SQLException
+     * @throws SQLException if an SQL exception occurs
      */
     public static void main(String[] args) throws SQLException {
         SQLUserDAO SQLUserDAO = new SQLUserDAO();

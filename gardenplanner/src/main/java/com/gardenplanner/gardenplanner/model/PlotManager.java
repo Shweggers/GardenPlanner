@@ -8,7 +8,16 @@ import java.util.List;
  * PlotManager is a class that manages the Plot objects.
  */
 public class PlotManager {
+    /**
+     * The plot DAO
+     */
     private final IPlotDAO plotDAO;
+
+    /**
+     * Create a new PlotManager object.
+     *
+     * @param plotDAO the plot DAO
+     */
     public PlotManager(IPlotDAO plotDAO) {
         this.plotDAO = plotDAO;
     }
@@ -35,6 +44,7 @@ public class PlotManager {
      * Get a list of plots for a user.
      *
      * @param userID the user ID
+     * @param query the query
      * @return a list of plots
      */
     public List<Plot> searchPlots(int userID, String query) {

@@ -5,11 +5,18 @@ import com.gardenplanner.gardenplanner.model.User;
 
 import java.sql.*;
 
+/**
+ * SQL implementation of the UserDAO class
+ */
 public class SQLUserDAO implements IUserDAO {
-    // Connection to the database
+    /**
+     * The database connection
+     */
     private final Connection connection;
 
-    // Constructor that initialises the database connection
+    /**
+     * Create a new SQLUserDAO object.
+     */
     public SQLUserDAO() {
         connection = DatabaseConnection.getInstance();
     }
@@ -17,7 +24,7 @@ public class SQLUserDAO implements IUserDAO {
     /**
      * creates the 'users' table in the database if it does not already exist.
      * 
-     * @throws SQLException
+     * @throws SQLException if an error occurs
      */
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
