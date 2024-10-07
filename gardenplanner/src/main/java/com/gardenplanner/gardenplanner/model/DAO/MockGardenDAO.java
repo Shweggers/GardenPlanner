@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MockGardenDAO implements IGardenDAO {
-    private ArrayList<Garden> gardens = new ArrayList<>();
+    private final ArrayList<Garden> gardens = new ArrayList<>();
     private int autoIncrementedId = 0;
 
     @Override

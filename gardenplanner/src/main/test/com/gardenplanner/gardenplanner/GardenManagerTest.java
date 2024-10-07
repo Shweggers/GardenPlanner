@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GardenManagerTest {
     private GardenManager gardenManager;
-    private Garden[] gardens = {
+    private final Garden[] gardens = {
             new Garden("Tomatoes 1", 1),
             new Garden("Tomatoes 2", 1),
             new Garden("New Potatoes 1", 1),

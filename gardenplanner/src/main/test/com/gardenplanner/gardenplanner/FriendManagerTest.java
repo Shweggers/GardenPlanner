@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class FriendManagerTest {
     private FriendManager friendManager;
-    private Friend[] friends = {
+    private final Friend[] friends = {
             new Friend(1, 2, "Jane"),
             new Friend(1, 3, "JaneSmith"),
             new Friend(1, 4, "Smith"),

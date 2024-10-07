@@ -4,7 +4,7 @@ public record Friend(int userID, int friendID, String friendName) {
     public static int ID;
 
     public void setID(int ID) {
-        this.ID = ID;
+        Friend.ID = ID;
     }
 
     /**

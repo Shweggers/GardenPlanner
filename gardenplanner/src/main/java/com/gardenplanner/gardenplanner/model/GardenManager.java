@@ -5,7 +5,7 @@ import com.gardenplanner.gardenplanner.model.DAO.IGardenDAO;
 import java.util.List;
 
 public class GardenManager {
-    private IGardenDAO gardenDAO;
+    private final IGardenDAO gardenDAO;
     public GardenManager(IGardenDAO gardenDao) {
         this.gardenDAO = gardenDao;
     }

@@ -4,7 +4,7 @@ public record Garden(String name, int userID) {
     public static int ID;
 
     public void setID(int ID) {
-        this.ID = ID;
+        Garden.ID = ID;
     }
     /**
      * Returns a string representation of the Garden record.

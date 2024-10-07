@@ -15,7 +15,7 @@ public class PlantManagerTest {
     private PlantManager plantManager;
 
     LocalDate plantedTime = LocalDate.now();
-    private Plant[] plants = {
+    private final Plant[] plants = {
             new Plant(1, "Tomato", plantedTime),
             new Plant(1, "Potato", plantedTime),
             new Plant(1, "Carrot", plantedTime),

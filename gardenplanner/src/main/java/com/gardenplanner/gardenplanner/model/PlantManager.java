@@ -6,7 +6,7 @@ import com.gardenplanner.gardenplanner.model.DAO.IPlantDAO;
 import java.util.List;
 
 public class PlantManager {
-    private IPlantDAO plantDAO;
+    private final IPlantDAO plantDAO;
     public PlantManager(IPlantDAO plantDAO) {
         this.plantDAO = plantDAO;
     }

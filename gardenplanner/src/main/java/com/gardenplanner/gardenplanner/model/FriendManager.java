@@ -5,7 +5,7 @@ import com.gardenplanner.gardenplanner.model.DAO.IFriendDAO;
 import java.util.List;
 
 public class FriendManager {
-    private IFriendDAO friendDAO;
+    private final IFriendDAO friendDAO;
     public FriendManager(IFriendDAO friendDao) {
         this.friendDAO = friendDao;
     }
