@@ -2,7 +2,8 @@ package com.gardenplanner.gardenplanner.model.DAO;
 
 import com.gardenplanner.gardenplanner.model.Plot;
 
-import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SQLPlotDAO implements IPlotDAO {
     public void createTable() {
@@ -17,7 +18,7 @@ public class SQLPlotDAO implements IPlotDAO {
     }
 
     @Override
-    public ResultSet getPlots(int userID) {
+    public List<Plot> getPlots(int userID) {
         return null;
     }
 }

@@ -1,6 +1,5 @@
 package com.gardenplanner.gardenplanner.model;
 
-import com.gardenplanner.gardenplanner.model.Plant;
 import com.gardenplanner.gardenplanner.model.DAO.IPlantDAO;
 
 import java.util.List;

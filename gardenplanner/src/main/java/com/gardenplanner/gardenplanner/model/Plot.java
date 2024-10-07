@@ -2,7 +2,12 @@ package com.gardenplanner.gardenplanner.model;
 
 import java.util.List;
 
-public record Plot(String id, List<Plant> plants) {
+public record Plot(int userID, String plant) {
+    public static int ID;
+
+    public void setID(int id) {
+        ID = id;
+    }
 
     /**
      * Returns a string representation of the Plot record.
@@ -12,8 +17,8 @@ public record Plot(String id, List<Plant> plants) {
     @Override
     public String toString() {
         return "Plot{" +
-                ", id='" + id + '\'' +
-                ", plants=" + plants +
+                ", userID='" + userID + '\'' +
+                ", plants=" + plant +
                 '}';
     }
 }

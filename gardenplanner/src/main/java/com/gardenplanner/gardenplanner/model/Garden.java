@@ -3,8 +3,8 @@ package com.gardenplanner.gardenplanner.model;
 public record Garden(String name, int userID) {
     public static int ID;
 
-    public void setID(int ID) {
-        Garden.ID = ID;
+    public void setID(int id) {
+        ID = id;
     }
     /**
      * Returns a string representation of the Garden record.

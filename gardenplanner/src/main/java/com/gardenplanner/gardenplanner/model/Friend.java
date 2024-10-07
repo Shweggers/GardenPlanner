@@ -3,8 +3,8 @@ package com.gardenplanner.gardenplanner.model;
 public record Friend(int userID, int friendID, String friendName) {
     public static int ID;
 
-    public void setID(int ID) {
-        Friend.ID = ID;
+    public void setID(int id) {
+        ID = id;
     }
 
     /**
