@@ -19,13 +19,17 @@ public class MockGardenDAO implements IGardenDAO {
 
     @Override
     public void delete(Garden garden) {
-        // TODO Auto-generated method stub
-
+        gardens.remove(garden);
     }
 
     @Override
     public List<Garden> getGardens(int userID) {
-        // TODO Auto-generated method stub
-        return null;
+        ArrayList<Garden> gardenList = new ArrayList<>();
+        for (int i = 0; i < gardens.size(); i++) {
+            if (gardens.get(i).userID() == userID) {
+                gardenList.add(gardens.get(i));
+            }
+        }
+        return gardenList;
     }
 }

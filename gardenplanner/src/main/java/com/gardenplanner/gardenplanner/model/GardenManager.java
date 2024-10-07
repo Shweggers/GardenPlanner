@@ -14,7 +14,19 @@ public class GardenManager {
         gardenDAO.insert(garden);
     }
 
+    public void delete(Garden garden) {
+        gardenDAO.delete(garden);
+    }
+
     public List<Garden> searchGardens(int userID, String query) {
-        return gardenDAO.getGardens(userID);
+        return gardenDAO.getGardens(userID)
+                .stream()
+                .filter(garden -> isGardenMatched(garden, query))
+                .toList();
+    }
+
+    private boolean isGardenMatched(Garden garden, String query) {
+        query = query == null ? "" : query;
+        return garden.name().toLowerCase().contains(query.toLowerCase());
     }
 }
