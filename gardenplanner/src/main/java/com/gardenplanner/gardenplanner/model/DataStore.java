@@ -1,5 +1,8 @@
 package com.gardenplanner.gardenplanner.model;
 
+/**
+ * DataStore is a class that represents a data store.
+ */
 public class DataStore {
     private User currentUser;
 

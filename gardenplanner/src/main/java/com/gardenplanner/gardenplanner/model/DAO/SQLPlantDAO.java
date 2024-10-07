@@ -7,9 +7,18 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * SQL implementation of the PlantDAO class
+ */
 public class SQLPlantDAO implements IPlantDAO {
+    /**
+     * Connection to the database
+     */
     private final Connection connection;
 
+    /**
+     * Constructor for the SQLPlantDAO class
+     */
     public SQLPlantDAO() {
         connection = DatabaseConnection.getInstance();
     }
@@ -34,7 +43,6 @@ public class SQLPlantDAO implements IPlantDAO {
      * Inserts a plant into the 'plants' table.
      *
      * @param plant the plant to insert
-     * @throws SQLException if a database access error occurs
      */
     @Override
     public void insert(Plant plant) {
@@ -58,7 +66,6 @@ public class SQLPlantDAO implements IPlantDAO {
      * Deletes a plant from the 'plants' table.
      *
      * @param plant the plant to delete
-     * @throws SQLException if a database access error occurs
      */
     @Override
     public void delete(Plant plant) {
@@ -79,8 +86,8 @@ public class SQLPlantDAO implements IPlantDAO {
     /**
      * Retrieves all plants from the 'plants' table for a user.
      *
-     * @return a ResultSet containing all plants
-     * @throws SQLException if a database access error occurs
+     * @param userID the user ID to search for
+     * @return a List containing all plants
      */
     @Override
     public List<Plant> getPlants(int userID) {

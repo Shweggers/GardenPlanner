@@ -11,9 +11,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * A class to test the PlantManager class
+ */
 public class PlantManagerTest {
+    /**
+     * The PlantManager object to test
+     */
     private PlantManager plantManager;
 
+    /**
+     * The Plant objects to use in the tests
+     */
     private final Plant[] plants = {
             new Plant(1, "Tomato"),
             new Plant(1, "Potato"),
@@ -29,11 +38,17 @@ public class PlantManagerTest {
             new Plant(2, "Strawberry"),
     };
 
+    /**
+     * Set up the test
+     */
     @BeforeEach
     public void setUp() {
         plantManager = new PlantManager(new MockPlantDAO());
     }
 
+    /**
+     * Test searching for plants in a list with one plant
+     */
     @Test
     public void testSearchInOnePlant() {
         plantManager.insert(plants[0]);
@@ -45,6 +60,9 @@ public class PlantManagerTest {
         }
     }
 
+    /**
+     * Test searching for plants in a list with multiple plants
+     */
     @Test
     public void testSearchInMultiplePlants() {
         for (Plant plant : plants) {
@@ -58,6 +76,9 @@ public class PlantManagerTest {
         }
     }
 
+    /**
+     * Test searching for plants in a list with no results
+     */
     @Test
     public void testSearchNoResults() {
         for (Plant plant : plants) {
@@ -68,6 +89,9 @@ public class PlantManagerTest {
         assertEquals(0, plantList.size());
     }
 
+    /**
+     * Test searching for plants in a list with an empty query
+     */
     @Test
     public void testSearchEmptyQuery() {
         for (Plant plant : plants) {
@@ -78,6 +102,9 @@ public class PlantManagerTest {
         assertEquals(6, plantList.size());
     }
 
+    /**
+     * Test searching for plants in a list with a null query
+     */
     @Test
     public void testSearchNullQuery() {
         for (Plant plant : plants) {
@@ -88,6 +115,9 @@ public class PlantManagerTest {
         assertEquals(6, plantList.size());
     }
 
+    /**
+     * Test searching for plants in a list with a case insensitive query
+     */
     @Test
     public void testSearchCaseInsensitive() {
         for (Plant plant : plants) {
@@ -101,6 +131,9 @@ public class PlantManagerTest {
         }
     }
 
+    /**
+     * Test searching for plants in a list with a partial query
+     */
     @Test
     public void testSearchPartialQuery() {
         for (Plant plant : plants) {
@@ -114,6 +147,9 @@ public class PlantManagerTest {
         }
     }
 
+    /**
+     * Test searching for plants in a list with no plants
+     */
     @Test
     public void testSearchEmptyPlants() {
         List<Plant> plantList = plantManager.searchPlants(1, "Tomato");

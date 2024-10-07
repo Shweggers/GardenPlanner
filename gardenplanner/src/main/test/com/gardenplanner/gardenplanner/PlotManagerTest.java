@@ -12,10 +12,23 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * A class to test the PlotManager class
+ */
 public class PlotManagerTest {
+    /**
+     * The PlotManager object to test
+     */
     private PlotManager plotManager;
 
+    /**
+     * The planted time of the plots
+     */
     LocalDate plantedTime = LocalDate.now();
+
+    /**
+     * The Plot objects to use in the tests
+     */
     private final Plot[] plots = {
             new Plot(1, "Tomato", plantedTime),
             new Plot(1, "Potato", plantedTime),
@@ -28,11 +41,17 @@ public class PlotManagerTest {
             new Plot(2, "Blueberry", plantedTime),
     };
 
+    /**
+     * Set up the test
+     */
     @BeforeEach
     public void setUp() {
         plotManager = new PlotManager(new MockPlotDAO());
     }
 
+    /**
+     * Test searching for plots in a list with one plot
+     */
     @Test
     public void testSearchInOnePlot() {
         plotManager.insert(plots[0]);
@@ -44,6 +63,9 @@ public class PlotManagerTest {
         }
     }
 
+    /**
+     * Test searching for plots in a list with multiple plots
+     */
     @Test
     public void testSearchInMultiplePlots() {
         for (Plot plot : plots) {
@@ -57,6 +79,9 @@ public class PlotManagerTest {
         }
     }
 
+    /**
+     * Test searching for plots in a list with no results
+     */
     @Test
     public void testSearchNoResults() {
         for (Plot plot : plots) {
@@ -67,6 +92,9 @@ public class PlotManagerTest {
         assertEquals(0, plotList.size());
     }
 
+    /**
+     * Test searching for plots in a list with no results
+     */
     @Test
     public void testSearchEmptyQuery() {
         for (Plot plot : plots) {
@@ -77,6 +105,9 @@ public class PlotManagerTest {
         assertEquals(6, plotList.size());
     }
 
+    /**
+     * Test searching for plots in a list with no results
+     */
     @Test
     public void testSearchNullQuery() {
         for (Plot plot : plots) {
@@ -87,6 +118,9 @@ public class PlotManagerTest {
         assertEquals(6, plotList.size());
     }
 
+    /**
+     * Test searching for plots in a list with no results
+     */
     @Test
     public void testSearchCaseInsensitive() {
         for (Plot plot : plots) {
@@ -100,6 +134,9 @@ public class PlotManagerTest {
         }
     }
 
+    /**
+     * Test searching for plots in a list with no results
+     */
     @Test
     public void testSearchPartialQuery() {
         for (Plot plot : plots) {
@@ -113,6 +150,9 @@ public class PlotManagerTest {
         }
     }
 
+    /**
+     * Test searching for plots in a list with no results
+     */
     @Test
     public void testSearchEmptyPlots() {
         List<Plot> plotList = plotManager.searchPlots(1, "Tomato");

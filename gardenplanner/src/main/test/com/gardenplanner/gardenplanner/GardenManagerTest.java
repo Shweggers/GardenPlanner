@@ -12,8 +12,18 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Tests for the GardenManager class
+ */
 public class GardenManagerTest {
+    /**
+     * The test garden manager
+     */
     private GardenManager gardenManager;
+
+    /**
+     * The test gardens
+     */
     private final Garden[] gardens = {
             new Garden("Tomatoes 1", 1),
             new Garden("Tomatoes 2", 1),
@@ -29,11 +39,17 @@ public class GardenManagerTest {
             new Garden("Potatoes 1", 2)
     };
 
+    /**
+     * Set up the test garden manager
+     */
     @BeforeEach
     public void setUp() {
         gardenManager = new GardenManager(new MockGardenDAO());
     }
 
+    /**
+     * Test searching for gardens in a list with one garden
+     */
     @Test
     public void testSearchInOneGarden() {
         gardenManager.insert(gardens[0]);
@@ -45,6 +61,9 @@ public class GardenManagerTest {
         }
     }
 
+    /**
+     * Test searching for gardens in a list with multiple gardens
+     */
     @Test
     public void testSearchInMultipleGardens() {
         for (Garden garden : gardens) {
@@ -59,6 +78,9 @@ public class GardenManagerTest {
         }
     }
 
+    /**
+     * Test searching for gardens in a list with multiple gardens with no results
+     */
     @Test
     public void testSearchNoResults() {
         for (Garden garden : gardens) {
@@ -69,6 +91,9 @@ public class GardenManagerTest {
         assertEquals(0, gardenList.size());
     }
 
+    /**
+     * Test searching for gardens in a list with multiple gardens with an empty query
+     */
     @Test
     public void testSearchEmptyQuery() {
         for (Garden garden : gardens) {
@@ -79,6 +104,9 @@ public class GardenManagerTest {
         assertEquals(6, gardenList.size());
     }
 
+    /**
+     * Test searching for gardens in a list with multiple gardens with a null query
+     */
     @Test
     public void testSearchNullQuery() {
         for (Garden garden : gardens) {
@@ -89,6 +117,9 @@ public class GardenManagerTest {
         assertEquals(6, gardenList.size());
     }
 
+    /**
+     * Test searching for gardens in a list with multiple gardens with a case-insensitive query
+     */
     @Test
     public void testSearchCaseInsensitive() {
         for (Garden garden : gardens) {
@@ -102,6 +133,9 @@ public class GardenManagerTest {
         }
     }
 
+    /**
+     * Test searching for gardens in a list with multiple gardens with a partial query
+     */
     @Test
     public void testSearchPartialQuery() {
         for (Garden garden : gardens) {
@@ -115,6 +149,9 @@ public class GardenManagerTest {
         }
     }
 
+    /**
+     * Test searching for gardens in an empty list
+     */
     @Test
     public void testSearchEmptyGardens() {
         List<Garden> gardenList = gardenManager.searchGardens(1, "Tomatoes");

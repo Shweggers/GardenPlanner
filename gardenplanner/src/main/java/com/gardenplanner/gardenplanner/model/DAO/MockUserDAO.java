@@ -4,10 +4,25 @@ import com.gardenplanner.gardenplanner.model.User;
 
 import java.util.ArrayList;
 
+/**
+ * Mock implementation of the UserDAO class
+ */
 public class MockUserDAO implements IUserDAO {
+    /**
+     * List of users
+     */
     private final ArrayList<User> users = new ArrayList<User>();
+
+    /**
+     * Auto-incremented ID
+     */
     private int autoIncrementedId = 0;
 
+    /**
+     * Insert a user into the database
+     *
+     * @param user the user to insert
+     */
     @Override
     public void insert(User user) {
         user.setID(autoIncrementedId);
@@ -16,6 +31,12 @@ public class MockUserDAO implements IUserDAO {
         users.add(user);
     }
 
+    /**
+     * Get a user from the database
+     *
+     * @param username the username of the user
+     * @return the user
+     */
     @Override
     public User getUser(String username) {
         for (User user : users) {
@@ -26,6 +47,12 @@ public class MockUserDAO implements IUserDAO {
         return null;
     }
 
+    /**
+     * Update a user's password
+     *
+     * @param username the username
+     * @param password the password
+     */
     @Override
     public void updatePassword(String username, String password) {
         User user = getUser(username);
@@ -40,6 +67,12 @@ public class MockUserDAO implements IUserDAO {
         users.add(newUser);
     }
 
+    /**
+     * Check if a user exists
+     *
+     * @param username the username
+     * @return true if the user exists, false otherwise
+     */
     @Override
     public int returnID(String username) {
         return getUser(username).getID();

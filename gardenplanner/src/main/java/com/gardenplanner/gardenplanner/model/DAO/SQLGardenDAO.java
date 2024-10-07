@@ -7,13 +7,27 @@ import java.sql.*;
 
 import java.util.List;
 
+/**
+ * SQL class for the GardenDAO class
+ */
 public class SQLGardenDAO implements IGardenDAO {
+    /**
+     * Connection to the database
+     */
     private final Connection connection;
 
+    /**
+     * Constructor
+     */
     public SQLGardenDAO() {
         connection = DatabaseConnection.getInstance();
     }
 
+    /**
+     * Create the gardens table
+     *
+     * @throws SQLException if there is an error creating the table
+     */
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(
@@ -26,6 +40,11 @@ public class SQLGardenDAO implements IGardenDAO {
         );
     }
 
+    /**
+     * Insert a garden into the database
+     *
+     * @param garden the garden to insert
+     */
     @Override
     public void insert(Garden garden) {
         try {
@@ -41,6 +60,11 @@ public class SQLGardenDAO implements IGardenDAO {
         }
     }
 
+    /**
+     * Delete a garden from the database
+     *
+     * @param garden the garden to delete
+     */
     @Override
     public void delete(Garden garden) {
         try {
@@ -56,6 +80,12 @@ public class SQLGardenDAO implements IGardenDAO {
         }
     }
 
+    /**
+     * Get a list of gardens for a user
+     *
+     * @param userID the user ID
+     * @return a list of gardens
+     */
     @Override
     public List<Garden> getGardens(int userID) {
         return null;

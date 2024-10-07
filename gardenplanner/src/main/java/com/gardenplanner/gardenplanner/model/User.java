@@ -1,11 +1,28 @@
 package com.gardenplanner.gardenplanner.model;
 
-// Record class representing a User in the system with a username, email, and hashed password
+/**
+ * User is a public record class that represents a user.
+ */
 public record User(String username, String email, String hashedPassword) {
+    /**
+     * The ID of the User record.
+     */
     private static int ID;
+
+    /**
+     * Sets the ID of the User record.
+     *
+     * @param id the ID of the User record
+     */
     public void setID(int id) {
         ID = id;
     }
+
+    /**
+     * Returns the ID of the User record.
+     *
+     * @return the ID of the User record
+     */
     public int getID() {
         return ID;
     }

@@ -15,27 +15,50 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 
+/**
+ * ResetPasswordController is a class that represents a controller for the reset password page.
+ */
 public class ResetPasswordController {
-
+    /**
+     * The data store
+     */
     private final DataStore dataStore;
+
+    /**
+     * Constructs a new ResetPasswordController with the specified data store.
+     *
+     * @param dataStore the data store
+     */
     public ResetPasswordController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
+    /**
+     * The username field
+     */
     @FXML
     private TextField usernameField;
 
+    /**
+     * The email field
+     */
     @FXML
     private TextField emailField;
 
+    /**
+     * The password field
+     */
     @FXML
     private PasswordField passwordField;
 
+    /**
+     * The password confirmation field
+     */
     @FXML
     private PasswordField confirmPasswordField;
 
     /**
-     * Handle the reset password button click event
+     * Reset the user's password with the entered information
      */
     @FXML
     private void handleResetPassword() {

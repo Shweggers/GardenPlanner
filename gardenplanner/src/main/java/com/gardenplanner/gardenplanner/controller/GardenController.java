@@ -10,18 +10,32 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * GardenController is a class that represents a controller for the garden page.
+ */
 public class GardenController {
-
+    /**
+     * The data store
+     */
     private final DataStore dataStore;
+
+    /**
+     * Constructs a new GardenController with the specified data store.
+     *
+     * @param dataStore the data store
+     */
     public GardenController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
+    /**
+     * The back button
+     */
     @FXML
     private Button backButton;
 
     /**
-     * Handle the back button click event
+     * Returns the user to the home page when the back button is clicked.
      * 
      * @param event
      * @throws IOException

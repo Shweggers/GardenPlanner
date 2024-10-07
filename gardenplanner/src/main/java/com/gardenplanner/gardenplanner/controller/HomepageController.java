@@ -14,25 +14,51 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
+/**
+ * HomepageController is a class that represents a controller for the homepage.
+ */
 public class HomepageController {
-
+    /**
+     * The data store
+     */
     private final DataStore dataStore;
+
+    /**
+     * Constructs a new HomepageController with the specified data store.
+     *
+     * @param dataStore the data store
+     */
     public HomepageController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
+    /**
+     * The garden book button
+     */
     @FXML
     private Button gardenBookButton;
 
+    /**
+     * The logout button
+     */
     @FXML
     private Button logOutButton;
 
+    /**
+     * The friend button
+     */
     @FXML
     private Button friendButton;
 
+    /**
+     * The garden button
+     */
     @FXML
     private Button gardenButton;
 
+    /**
+     * The welcome message
+     */
     @FXML
     private Label welcomeMsg;
 
@@ -119,6 +145,8 @@ public class HomepageController {
 
     /**
      * Initialize the user data when Homepage is called
+     *
+     * @throws SQLException
      */
     @FXML
     void initialize() throws SQLException {

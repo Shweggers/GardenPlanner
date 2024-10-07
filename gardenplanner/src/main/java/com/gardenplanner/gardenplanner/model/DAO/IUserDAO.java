@@ -2,16 +2,39 @@ package com.gardenplanner.gardenplanner.model.DAO;
 
 import com.gardenplanner.gardenplanner.model.User;
 
+/**
+ * Interface for the UserDAO class
+ */
 public interface IUserDAO {
 
-    // Method that inserts a new user into the database
+    /**
+     * Insert a user into the database
+     *
+     * @param user the user to insert
+     */
     void insert(User user);
 
-    // Method that retrieves a user by their username from the database
+    /**
+     * Get a user by username
+     *
+     * @param username the username
+     * @return the user
+     */
     User getUser(String username);
 
-    // Method that updates a users password by username
+    /**
+     * Update a user's password
+     *
+     * @param username the username
+     * @param hashedPassword the hashed password
+     */
     void updatePassword(String username, String hashedPassword);
 
+    /**
+     * Get a user's ID by username
+     *
+     * @param username the username
+     * @return the user ID
+     */
     int returnID(String username);
 }

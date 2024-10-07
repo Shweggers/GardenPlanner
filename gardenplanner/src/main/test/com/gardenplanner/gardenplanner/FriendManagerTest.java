@@ -12,8 +12,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Tests for the FriendManager class
+ */
 public class FriendManagerTest {
+    /**
+     * The test friend manager
+     */
     private FriendManager friendManager;
+
+    /**
+     * The test friends
+     */
     private final Friend[] friends = {
             new Friend(1, 2, "Jane"),
             new Friend(1, 3, "JaneSmith"),
@@ -32,11 +42,17 @@ public class FriendManagerTest {
             new Friend(5, 1, "John"),
     };
 
+    /**
+     * Set up the test friend manager
+     */
     @BeforeEach
     public void setUp() {
         friendManager = new FriendManager(new MockFriendDAO());
     }
 
+    /**
+     * Test searching for friends in a list with one friend
+     */
     @Test
     public void testSearchFriendsInOneFriend() {
         friendManager.insert(friends[0]);
@@ -48,6 +64,9 @@ public class FriendManagerTest {
         }
     }
 
+    /**
+     * Test searching for friends in a list with multiple friends
+     */
     @Test
     public void testSearchFriendsInMultipleFriends() {
         for (Friend friend : friends) {
@@ -61,6 +80,9 @@ public class FriendManagerTest {
         }
     }
 
+    /**
+     * Test searching for friends in a list with no results
+     */
     @Test
     public void testSearchFriendsNoResults() {
         for (Friend friend : friends) {
@@ -71,6 +93,9 @@ public class FriendManagerTest {
         assertEquals(0, friendslist.size());
     }
 
+    /**
+     * Test searching for friends with an empty query
+     */
     @Test
     public void testSearchFriendsEmptyQuery() {
         for (Friend friend : friends) {
@@ -81,6 +106,9 @@ public class FriendManagerTest {
         assertEquals(6, friendslist.size());
     }
 
+    /**
+     * Test searching for friends with a null query
+     */
     @Test
     public void testSearchFriendsNullQuery() {
         for (Friend friend : friends) {
@@ -91,6 +119,9 @@ public class FriendManagerTest {
         assertEquals(6, friendslist.size());
     }
 
+    /**
+     * Test searching for friends with a case-insensitive query
+     */
     @Test
     public void testSearchFriendsCaseInsensitive() {
         for (Friend friend : friends) {
@@ -104,6 +135,9 @@ public class FriendManagerTest {
         }
     }
 
+    /**
+     * Test searching for friends with a partial query
+     */
     @Test
     public void testSearchFriendsPartialQuery() {
         for (Friend friend : friends) {
@@ -117,12 +151,18 @@ public class FriendManagerTest {
         }
     }
 
+    /**
+     * Test searching for friends in an empty list
+     */
     @Test
     public void testSearchFriendsEmptyFriends() {
         List<Friend> friendslist = friendManager.searchFriends(1, "Smith");
         assertEquals(0, friendslist.size());
     }
 
+    /**
+     * Test checking a user has friended another user with one friend in the list
+     */
     @Test
     public void testAreFriendsOneFriend() {
         friendManager.insert(friends[0]);
@@ -130,6 +170,9 @@ public class FriendManagerTest {
         assertTrue(friendManager.areFriends(1, "Jane"));
     }
 
+    /**
+     * Test checking a user has friended another user with multiple friends in the list
+     */
     @Test
     public void testAreFriendsMultipleFriends() {
         for (Friend friend : friends) {
@@ -139,6 +182,9 @@ public class FriendManagerTest {
         assertFalse(friendManager.areFriends(4, "Smithers"));
     }
 
+    /**
+     * Test checking a user has not friended another user with no results
+     */
     @Test
     public void testAreFriendsNoResults() {
         for (Friend friend : friends) {
@@ -148,6 +194,9 @@ public class FriendManagerTest {
         assertFalse(friendManager.areFriends(4, "Smithers"));
     }
 
+    /**
+     * Test checking a user has not friended another user with an empty query
+     */
     @Test
     public void testAreFriendsEmptyQuery() {
         for (Friend friend : friends) {
@@ -157,6 +206,9 @@ public class FriendManagerTest {
         assertFalse(friendManager.areFriends(1, ""));
     }
 
+    /**
+     * Test checking a user has not friended another user with a null query
+     */
     @Test
     public void testAreFriendsNullQuery() {
         for (Friend friend : friends) {
@@ -166,6 +218,9 @@ public class FriendManagerTest {
         assertFalse(friendManager.areFriends(1, null));
     }
 
+    /**
+     * Test checking a user has not friended another user with a case-insensitive query
+     */
     @Test
     public void testAreFriendsCaseInsensitive() {
         for (Friend friend : friends) {
@@ -175,6 +230,9 @@ public class FriendManagerTest {
         assertFalse(friendManager.areFriends(2, "smith"));
     }
 
+    /**
+     * Test checking a user has not friended another user with a partial query
+     */
     @Test
     public void testAreFriendsPartialQuery() {
         for (Friend friend : friends) {
@@ -184,6 +242,9 @@ public class FriendManagerTest {
         assertFalse(friendManager.areFriends(2, "ith"));
     }
 
+    /**
+     * Test checking a user has not friended another user with an empty list
+     */
     @Test
     public void testAreFriendsEmptyFriends() {
         assertFalse(friendManager.areFriends(3, "Smith"));

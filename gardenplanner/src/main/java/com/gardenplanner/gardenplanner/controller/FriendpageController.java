@@ -9,18 +9,32 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * FriendpageController is a class that represents a controller for the friend page.
+ */
 public class FriendpageController {
-
+    /**
+     * The data store
+     */
     private final DataStore dataStore;
+
+    /**
+     * Constructs a new FriendpageController with the specified data store.
+     *
+     * @param dataStore the data store
+     */
     public FriendpageController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
+    /**
+     * The back button
+     */
     @FXML
     private Button backButton;
 
     /**
-     * Handle the back button click event
+     * Returns the user to the home page when the back button is clicked.
      * 
      * @throws IOException
      */

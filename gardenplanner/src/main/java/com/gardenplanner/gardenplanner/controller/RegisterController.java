@@ -14,24 +14,44 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.io.IOException;
 
+/**
+ * RegisterController is a class that represents a controller for the registration page.
+ */
 public class RegisterController {
-
+    /**
+     * The data store
+     */
     private final DataStore dataStore;
+
+    /**
+     * Constructs a new RegisterController with the specified data store.
+     *
+     * @param dataStore the data store
+     */
     public RegisterController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
+    /**
+     * The username field
+     */
     @FXML
     private TextField usernameField;
 
+    /**
+     * The email field
+     */
     @FXML
     private TextField emailField;
 
+    /**
+     * The password field
+     */
     @FXML
     private PasswordField passwordField;
 
     /**
-     * Handle the register button click event
+     * Register the user with the entered information
      */
     @FXML
     private void handleRegister() {
@@ -74,7 +94,7 @@ public class RegisterController {
     }
 
     /**
-     * Handle the login button click event
+     * Redirect the user to the login page
      * 
      * @throws IOException
      */

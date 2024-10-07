@@ -7,13 +7,27 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * SQL implementation of the FriendDAO class
+ */
 public class SQLFriendDAO implements IFriendDAO {
+    /**
+     * Connection to the database
+     */
     private final Connection connection;
 
+    /**
+     * Constructor for the SQLFriendDAO class
+     */
     public SQLFriendDAO() {
         connection = DatabaseConnection.getInstance();
     }
 
+    /**
+     * Create the friends table
+     *
+     * @throws SQLException if there is an error creating the table
+     */
     public void createTable() throws SQLException {
         Statement createTable = connection.createStatement();
         createTable.execute(
@@ -27,6 +41,11 @@ public class SQLFriendDAO implements IFriendDAO {
         );
     }
 
+    /**
+     * Insert a friend into the database
+     *
+     * @param friend the friend to insert
+     */
     @Override
     public void insert(Friend friend) {
         try {
@@ -43,6 +62,11 @@ public class SQLFriendDAO implements IFriendDAO {
         }
     }
 
+    /**
+     * Delete a friend from the database
+     *
+     * @param friend the friend to delete
+     */
     @Override
     public void delete(Friend friend) {
         try {
@@ -58,6 +82,13 @@ public class SQLFriendDAO implements IFriendDAO {
         }
     }
 
+    /**
+     * Check if a user has friended another user
+     *
+     * @param userID the user ID
+     * @param friendName the friend name
+     * @return true if the user has friended the other user, false otherwise
+     */
     @Override
     public boolean areFriends(int userID , String friendName) {
         try {
@@ -75,6 +106,12 @@ public class SQLFriendDAO implements IFriendDAO {
         return false;
     }
 
+    /**
+     * Get a list of friends for a user
+     *
+     * @param userID the user ID
+     * @return a list of friends
+     */
     @Override
     public List<Friend> getFriends(int userID) {
         ArrayList<Friend> friends = new ArrayList<>();

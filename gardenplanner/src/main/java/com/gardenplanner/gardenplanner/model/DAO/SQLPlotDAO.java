@@ -2,11 +2,11 @@ package com.gardenplanner.gardenplanner.model.DAO;
 
 import com.gardenplanner.gardenplanner.model.Plot;
 
-import java.sql.Date;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * SQL implementation of the PlotDAO class
+ */
 public class SQLPlotDAO implements IPlotDAO {
     public void createTable() {
         // + "datePlanted  DATE"

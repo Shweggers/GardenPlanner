@@ -17,22 +17,32 @@ import java.io.IOException;
 
 public class LoginController {
 
-    // Used to hold the logged-in user's session data
+    /**
+     * Used to hold the logged-in user's session data
+    */
     private final DataStore dataStore;
 
-    // Constructor for the LoginController
+    /**
+     * Constructor for the LoginController
+    */
     public LoginController(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
+    /**
+     * The username field
+    */
     @FXML
     protected TextField usernameField;
 
+    /**
+     * The password field
+    */
     @FXML
     protected PasswordField passwordField;
 
     /**
-     * Handle the login button click event
+     * Handle the login process
      */
     @FXML
     protected void handleLogin() {
@@ -82,7 +92,7 @@ public class LoginController {
     }
 
     /**
-     * Handle the register button click event
+     * Redirect the user to the register page
      * 
      * @throws IOException
      */
@@ -98,7 +108,7 @@ public class LoginController {
     }
 
     /**
-     * Handle the reset password button click event
+     * Redirect the user to the reset password page
      * 
      * @throws IOException
      */
