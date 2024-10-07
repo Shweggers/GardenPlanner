@@ -1,49 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.LoginController">
-    <!-- Title -->
-    <VBox alignment="CENTER" prefHeight="150.0" prefWidth="900.0" AnchorPane.topAnchor="30.0">
-        <Text text="PLANT IT" fill="green">
-            <font>
-                <Font name="Arial Bold" size="50.0" />
-            </font>
-        </Text>
-    </VBox>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.LoginController">
+     <Text fill="green" layoutX="337.0" layoutY="59.0" text="PLANT IT" AnchorPane.topAnchor="20.0">
+         <font>
+             <Font name="Arial Bold" size="50.0" />
+         </font>
+     </Text>
 
     <!-- Form Area -->
-    <VBox alignment="CENTER" layoutX="310.0" layoutY="200.0" prefHeight="310.0" prefWidth="280.0" spacing="15.0"
-          style="-fx-border-color: lightgrey; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 20;">
+    <VBox alignment="CENTER" layoutX="310.0" layoutY="200.0" prefHeight="310.0" prefWidth="280.0" spacing="15.0" style="-fx-border-color: lightgrey; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 20;" AnchorPane.bottomAnchor="165.0" AnchorPane.topAnchor="125.0">
 
         <!-- Username Field -->
-        <TextField fx:id="usernameField" promptText="username" prefWidth="280.0"
-                   style="-fx-background-color: #dcdcdc; -fx-font-size: 18px;" />
+        <TextField fx:id="usernameField" prefWidth="280.0" promptText="username" style="-fx-background-color: #dcdcdc; -fx-font-size: 18px;" />
 
         <!-- Password Field -->
-        <PasswordField fx:id="passwordField" promptText="password" prefWidth="280.0"
-                       style="-fx-background-color: #dcdcdc; -fx-font-size: 18px;" />
+        <PasswordField fx:id="passwordField" prefWidth="280.0" promptText="password" style="-fx-background-color: #dcdcdc; -fx-font-size: 18px;" />
 
         <!-- Login Button -->
-        <Button mnemonicParsing="false" onAction="#handleLogin" prefWidth="280.0" text="LOGIN"
-                style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 18px;" />
+        <Button mnemonicParsing="false" onAction="#handleLogin" prefWidth="280.0" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-size: 18px;" text="LOGIN" />
 
         <!-- Reset Password Button -->
-        <Button mnemonicParsing="false" onAction="#handleResetPassword" prefWidth="280.0" text="RESET PASSWORD"
-                style="-fx-background-color: #A52A2A; -fx-text-fill: white; -fx-font-size: 18px;" />
+        <Button mnemonicParsing="false" onAction="#handleResetPassword" prefWidth="280.0" style="-fx-background-color: #A52A2A; -fx-text-fill: white; -fx-font-size: 18px;" text="RESET PASSWORD" />
 
         <!-- Register Button -->
-        <Button mnemonicParsing="false" onAction="#handleRegister" prefWidth="280.0" text="REGISTER"
-                style="-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-size: 18px;" />
+        <Button mnemonicParsing="false" onAction="#handleRegister" prefWidth="280.0" style="-fx-background-color: #4682B4; -fx-text-fill: white; -fx-font-size: 18px;" text="REGISTER" />
       
     </VBox>
 </AnchorPane>
