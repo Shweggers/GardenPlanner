@@ -155,4 +155,14 @@ public class GardenManagerTest {
         List<Garden> gardenList = gardenManager.searchGardens(1, "Tomatoes");
         assertEquals(0, gardenList.size());
     }
+
+    @Test
+    public void testReturnGardensToString() {
+        for (Garden garden : gardens) {gardenManager.insert(garden);}
+
+        assertEquals("Garden{" +
+                "name='" + "Tomatoes 1" + '\'' +
+                ", userID=" + 1 +
+                '}', gardens[0].toString());
+    }
 }

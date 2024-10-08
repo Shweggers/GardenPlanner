@@ -247,4 +247,30 @@ public class FriendManagerTest {
     public void testAreFriendsEmptyFriends() {
         assertFalse(friendManager.areFriends(3, "Smith"));
     }
+
+    @Test
+    public void testDeleteFriends() {
+        for (Friend friend : friends) {
+            friendManager.insert(friend);
+        }
+
+        friendManager.delete(friends[0]);
+        assertFalse(friendManager.areFriends(1, "Jane"));
+    }
+
+    /**
+     * Test the toString to return the proper argument
+     */
+    @Test
+    public void testReturnFriendsToString() {
+        for (Friend friend : friends) {
+            friendManager.insert(friend);
+        }
+
+        assertEquals("Friend{" +
+                "userID='" + 1 + '\'' +
+                ", friendID='" + 2 + '\'' +
+                ", friendName='" + "Jane" + '\'' +
+                '}', friends[0].toString());
+    }
 }
