@@ -1,0 +1,5 @@
+module:com.gardenplanner.gardenplanner
+com.gardenplanner.gardenplanner
+com.gardenplanner.gardenplanner.controller
+com.gardenplanner.gardenplanner.model
+com.gardenplanner.gardenplanner.model.DAO
