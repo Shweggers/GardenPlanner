@@ -12,23 +12,6 @@ import java.util.List;
  */
 public class SQLGardenDAO implements IGardenDAO {
     /**
-     * Singleton instance of the SQLGardenDAO class
-     */
-    private static IGardenDAO instance;
-
-    /**
-     * Get the instance of the SQLGardenDAO class
-     *
-     * @return the instance of the SQLGardenDAO class
-     */
-    public static IGardenDAO getInstance() {
-        if (instance == null) {
-            instance = new SQLGardenDAO();
-        }
-        return instance;
-    }
-
-    /**
      * Connection to the database
      */
     private final Connection connection;

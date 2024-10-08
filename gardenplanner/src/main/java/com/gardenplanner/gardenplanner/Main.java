@@ -14,7 +14,7 @@ import java.sql.SQLException;
  * The main class
  */
 public class Main extends Application {
-    public DataStore dataStore = new DataStore();
+    DataStore dataStore = new DataStore();
 
     /**
      * Start the application
@@ -44,14 +44,14 @@ public class Main extends Application {
         SQLFriendDAO SQLFriendDAO = new SQLFriendDAO();
         SQLFriendDAO.createTable();
 
-        SQLPlantDAO SQLPlantDAO = new SQLPlantDAO();
-        SQLPlantDAO.createTable();
-
         SQLGardenDAO SQLGardenDAO = new SQLGardenDAO();
         SQLGardenDAO.createTable();
 
         SQLPlotDAO SQLPlotDAO = new SQLPlotDAO();
         SQLPlotDAO.createTable();
+
+        SQLPlantDAO SQLPlantDAO = new SQLPlantDAO();
+        SQLPlantDAO.createTable();
 
         launch(args);
     }

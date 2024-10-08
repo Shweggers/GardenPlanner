@@ -12,23 +12,6 @@ import java.util.List;
  */
 public class SQLPlantDAO implements IPlantDAO {
     /**
-     * Singleton instance of the SQLPlantDAO class
-     */
-    private static IPlantDAO instance;
-
-    /**
-     * Get the instance of the SQLPlantDAO class
-     *
-     * @return the instance of the SQLPlantDAO class
-     */
-    public static IPlantDAO getInstance() {
-        if (instance == null) {
-            instance = new SQLPlantDAO();
-        }
-        return instance;
-    }
-
-    /**
      * Connection to the database
      */
     private final Connection connection;
