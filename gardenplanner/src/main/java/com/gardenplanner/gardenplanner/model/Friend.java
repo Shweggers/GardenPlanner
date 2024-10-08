@@ -26,7 +26,7 @@ public record Friend(int userID, int friendID, String friendName) {
     @Override
     public String toString() {
         return "Friend{" +
-                ", userID='" + userID + '\'' +
+                "userID='" + userID + '\'' +
                 ", friendID='" + friendID + '\'' +
                 ", friendName='" + friendName + '\'' +
                 '}';

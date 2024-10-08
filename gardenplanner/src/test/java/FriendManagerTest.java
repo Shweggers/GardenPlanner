@@ -247,4 +247,10 @@ public class FriendManagerTest {
     public void testAreFriendsEmptyFriends() {
         assertFalse(friendManager.areFriends(3, "Smith"));
     }
+
+    @Test
+    public void testFriendToString() {
+        Friend friend = new Friend(1, 2, "Jane");
+        assertEquals("Friend{userID='1', friendID='2', friendName='Jane'}", friend.toString());
+    }
 }
