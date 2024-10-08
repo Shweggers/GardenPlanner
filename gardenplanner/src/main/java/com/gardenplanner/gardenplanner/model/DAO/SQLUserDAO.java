@@ -10,6 +10,23 @@ import java.sql.*;
  */
 public class SQLUserDAO implements IUserDAO {
     /**
+     * Singleton instance of the SQLUserDAO class
+     */
+    private static IUserDAO instance;
+
+    /**
+     * Get the instance of the SQLUserDAO class
+     *
+     * @return the instance of the SQLUserDAO class
+     */
+    public static IUserDAO getInstance() {
+        if (instance == null) {
+            instance = new SQLUserDAO();
+        }
+        return instance;
+    }
+
+    /**
      * The database connection
      */
     private final Connection connection;

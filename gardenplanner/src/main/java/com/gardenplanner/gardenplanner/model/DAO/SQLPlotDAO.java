@@ -8,6 +8,14 @@ import java.util.List;
  * SQL implementation of the PlotDAO class
  */
 public class SQLPlotDAO implements IPlotDAO {
+    private static IPlotDAO instance;
+
+    public static IPlotDAO getInstance() {
+        if (instance == null) {
+            instance = new SQLPlotDAO();
+        }
+        return instance;
+    }
 
     public void createTable() {
         // + "datePlanted  DATE"

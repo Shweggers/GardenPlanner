@@ -12,6 +12,23 @@ import java.util.List;
  */
 public class SQLFriendDAO implements IFriendDAO {
     /**
+     * Singleton instance of the SQLFriendDAO class
+     */
+    private static IFriendDAO instance;
+
+    /**
+     * Get the instance of the SQLFriendDAO class
+     *
+     * @return the instance of the SQLFriendDAO class
+     */
+    public static IFriendDAO getInstance() {
+        if (instance == null) {
+            instance = new SQLFriendDAO();
+        }
+        return instance;
+    }
+
+    /**
      * Connection to the database
      */
     private final Connection connection;
