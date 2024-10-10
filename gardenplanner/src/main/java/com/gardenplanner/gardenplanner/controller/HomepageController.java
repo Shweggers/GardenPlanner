@@ -72,7 +72,7 @@ public class HomepageController {
     void handleGardenBook() throws IOException {
         Stage stage = (Stage) gardenBookButton.getScene().getWindow();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbook.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbookpage.fxml"));
         loader.setControllerFactory(type -> new GardenbookController(dataStore));
 
         stage.setScene(new Scene(loader.load(), 900, 600));

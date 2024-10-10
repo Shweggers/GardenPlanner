@@ -262,15 +262,8 @@ public class FriendManagerTest {
      * Test the toString to return the proper argument
      */
     @Test
-    public void testReturnFriendsToString() {
-        for (Friend friend : friends) {
-            friendManager.insert(friend);
-        }
-
-        assertEquals("Friend{" +
-                "userID='" + 1 + '\'' +
-                ", friendID='" + 2 + '\'' +
-                ", friendName='" + "Jane" + '\'' +
-                '}', friends[0].toString());
+    public void testFriendToString() {
+        Friend friend = new Friend(1, 2, "Jane");
+        assertEquals("Friend{userID='1', friendID='2', friendName='Jane'}", friend.toString());
     }
 }
