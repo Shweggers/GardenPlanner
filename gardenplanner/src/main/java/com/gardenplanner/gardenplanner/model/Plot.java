@@ -28,7 +28,7 @@ public record Plot(int userID, String plant, LocalDate datePlanted) {
     @Override
     public String toString() {
         return "Plot{" +
-                "userID='" + userID + '\'' +
+                "userID=" + userID +
                 ", plants='" + plant + '\'' +
                 ", datePlanted=" + datePlanted +
                 '}';
