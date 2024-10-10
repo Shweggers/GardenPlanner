@@ -4,8 +4,7 @@ import com.gardenplanner.gardenplanner.model.UserManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * A class to test the UserManager class
@@ -285,5 +284,15 @@ public class UserManagerTest {
 
         User user = userManager.getUser("John");
         assertNull(user);
+    }
+
+    @Test
+    public void testGetID() {
+    }
+
+    @Test
+    public void testUserToString() {
+        User user = new User("Sam123", "emailS", "passwordS");
+        assertEquals("User{username='Sam123', email='emailS'}", user.toString());
     }
 }
