@@ -4,6 +4,7 @@ import com.gardenplanner.gardenplanner.model.FriendManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -254,8 +255,9 @@ public class FriendManagerTest {
             friendManager.insert(friend);
         }
 
-        friendManager.delete(friends[0]);
-        assertFalse(friendManager.areFriends(1, "Jane"));
+        friendManager.delete(friends[7]);
+        List<Friend> friendslist = friendManager.searchFriends(2, "JaneSmith");
+        assertEquals(0, friendslist.size());
     }
 
     /**

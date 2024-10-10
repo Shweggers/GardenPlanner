@@ -1,4 +1,5 @@
 import com.gardenplanner.gardenplanner.model.DAO.MockPlantDAO;
+import com.gardenplanner.gardenplanner.model.Friend;
 import com.gardenplanner.gardenplanner.model.Plant;
 import com.gardenplanner.gardenplanner.model.PlantManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -6,8 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * A class to test the PlantManager class
@@ -152,5 +152,22 @@ public class PlantManagerTest {
     public void testSearchEmptyPlants() {
         List<Plant> plantList = plantManager.searchPlants(1, "Tomato");
         assertEquals(0, plantList.size());
+    }
+
+    @Test
+    public void testDeletePlants() {
+        for (Plant plant : plants) {
+            plantManager.insert(plant);
+        }
+
+        plantManager.delete(plants[0]);
+        List<Plant> plantList = plantManager.searchPlants(1, "Tomato");
+        assertEquals(0, plantList.size());
+    }
+
+    @Test
+    public void testPlantToString() {
+        Plant plant = new Plant(1, "Baby Cucumber");
+        assertEquals("Plant{userid=1, plantID='Baby Cucumber'}", plant.toString());
     }
 }
