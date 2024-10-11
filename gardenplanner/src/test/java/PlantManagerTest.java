@@ -154,6 +154,9 @@ public class PlantManagerTest {
         assertEquals(0, plantList.size());
     }
 
+    /**
+     * Test deleting a plant
+     */
     @Test
     public void testDeletePlants() {
         for (Plant plant : plants) {
@@ -165,6 +168,9 @@ public class PlantManagerTest {
         assertEquals(0, plantList.size());
     }
 
+    /**
+     * Test converting plant object toString
+     */
     @Test
     public void testPlantToString() {
         Plant plant = new Plant(1, "Baby Cucumber");

@@ -249,6 +249,9 @@ public class FriendManagerTest {
         assertFalse(friendManager.areFriends(3, "Smith"));
     }
 
+    /**
+     * Test deleting a friend
+     */
     @Test
     public void testDeleteFriends() {
         for (Friend friend : friends) {
@@ -261,7 +264,7 @@ public class FriendManagerTest {
     }
 
     /**
-     * Test the toString to return the proper argument
+     * Test converting friend object toString
      */
     @Test
     public void testFriendToString() {

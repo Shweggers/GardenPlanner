@@ -290,6 +290,9 @@ public class UserManagerTest {
     public void testGetID() {
     }
 
+    /**
+     * Test converting user object toString
+     */
     @Test
     public void testUserToString() {
         User user = new User("Sam123", "emailS", "passwordS");

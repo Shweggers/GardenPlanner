@@ -155,6 +155,9 @@ public class GardenManagerTest {
         assertEquals(0, gardenList.size());
     }
 
+    /**
+     * Test deleting a garden
+     */
     @Test
     public void testDeleteGarden() {
         for (Garden garden : gardens) {
@@ -167,6 +170,9 @@ public class GardenManagerTest {
 
     }
 
+    /**
+     * Test converting garden object toString
+     */
     @Test
     public void testGardenToString() {
         Garden garden = new Garden("Tomatoes 1", 1);

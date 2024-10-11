@@ -157,6 +157,9 @@ public class PlotManagerTest {
         assertEquals(0, plotList.size());
     }
 
+    /**
+     * Test deleting a plot
+     */
     @Test
     public void testDeletePlot() {
         for (Plot plot : plots) {
@@ -169,6 +172,9 @@ public class PlotManagerTest {
 
     }
 
+    /**
+     * Test converting plot object toString
+     */
     @Test
     public void testPlotToFriend() {
         Plot plot = new Plot(1, "Tomato", plantedTime);
