@@ -26,8 +26,8 @@ public record Plant(int userID, String plantID) {
     @Override
     public String toString() {
         return "Plant{" +
-                ", userid='" + userID + '\'' +
-                ", plantID='" + plantID +
+                "userid=" + userID +
+                ", plantID='" + plantID + '\'' +
                 '}';
     }
 }

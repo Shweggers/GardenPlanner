@@ -156,4 +156,28 @@ public class PlotManagerTest {
         List<Plot> plotList = plotManager.searchPlots(1, "Tomato");
         assertEquals(0, plotList.size());
     }
+
+    /**
+     * Test deleting a plot
+     */
+    @Test
+    public void testDeletePlot() {
+        for (Plot plot : plots) {
+            plotManager.insert(plot);
+        }
+
+        plotManager.delete(plots[0]);
+        List<Plot> plotList = plotManager.searchPlots(1, "Tomato");
+        assertEquals(0, plotList.size());
+
+    }
+
+    /**
+     * Test converting plot object toString
+     */
+    @Test
+    public void testPlotToFriend() {
+        Plot plot = new Plot(1, "Tomato", plantedTime);
+        assertEquals("Plot{userID=1, plants='Tomato', datePlanted=" + plantedTime + "}", plot.toString());
+    }
 }
