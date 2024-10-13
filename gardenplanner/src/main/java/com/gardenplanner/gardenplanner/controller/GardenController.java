@@ -34,6 +34,9 @@ public class GardenController {
     @FXML
     private Button backButton;
 
+    @FXML
+    private Button addGardenButton;
+
     /**
      * Returns the user to the home page when the back button is clicked.
      * 
@@ -50,4 +53,16 @@ public class GardenController {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
+
+    @FXML
+    public void addGardenButtonClicked(ActionEvent event) throws IOException {
+        Stage stage = (Stage) addGardenButton.getScene().getWindow();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/addgarden.fxml"));
+        loader.setControllerFactory(type -> new GardenAddGardenController(dataStore));
+
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
+    }
+
 }

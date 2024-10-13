@@ -1,0 +1,55 @@
+package com.gardenplanner.gardenplanner.controller;
+
+import com.gardenplanner.gardenplanner.model.DataStore;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+
+/**
+ * GardenAddGardenController is a class that represents a controller for adding a new garden.
+ */
+public class GardenAddGardenController {
+    /**
+     * The data store
+     */
+    private final DataStore dataStore;
+
+    /**
+     * The garden name field
+     */
+    @FXML
+    private TextField gardenNameField;
+
+    /**
+     * The save button
+     */
+    @FXML
+    private Button saveButton;
+
+    /**
+     * Constructs a new GardenAddGardenController with the specified data store.
+     *
+     * @param dataStore the data store
+     */
+    public GardenAddGardenController(DataStore dataStore) {
+        this.dataStore = dataStore;
+    }
+
+    /**
+     * Handles the save button click event.
+     *
+     * @param event the event details
+     */
+    @FXML
+    public void saveButtonClicked(ActionEvent event) {
+        String gardenName = gardenNameField.getText();
+        // Add logic to save the garden name to the data store
+        // dataStore.addGarden(new Garden(gardenName));
+
+        // Close the current window
+        Stage stage = (Stage) saveButton.getScene().getWindow();
+        stage.close();
+    }
+}
