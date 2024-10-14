@@ -72,7 +72,7 @@ public class GardenbookController {
     void addNewPlant(ActionEvent event) throws IOException {
         Stage stage = new Stage();
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbookpage_addplant.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbook_addplantpage.fxml"));
         loader.setControllerFactory(type -> new GardenbookAddplantController(dataStore));
 
         stage.setScene(new Scene(loader.load()));
