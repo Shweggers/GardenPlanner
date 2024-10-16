@@ -26,7 +26,6 @@ public class SQLFriendDAO implements IFriendDAO {
 
     /**
      * Create the friends table
-     *
      */
     public void createTable() {
         try {
@@ -91,12 +90,12 @@ public class SQLFriendDAO implements IFriendDAO {
     /**
      * Check if a user has friended another user
      *
-     * @param userID the user ID
+     * @param userID     the user ID
      * @param friendName the friend name
      * @return true if the user has friended the other user, false otherwise
      */
     @Override
-    public boolean areFriends(int userID , String friendName) {
+    public boolean areFriends(int userID, String friendName) {
         try {
             PreparedStatement areFriends = connection.prepareStatement(
                     "SELECT * FROM friends WHERE userID = ? AND friendName = ?"

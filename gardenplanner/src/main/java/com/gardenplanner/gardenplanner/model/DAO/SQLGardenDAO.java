@@ -3,8 +3,10 @@ package com.gardenplanner.gardenplanner.model.DAO;
 import com.gardenplanner.gardenplanner.model.DatabaseConnection;
 import com.gardenplanner.gardenplanner.model.Garden;
 
-import java.sql.*;
-
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 
 /**
@@ -26,7 +28,6 @@ public class SQLGardenDAO implements IGardenDAO {
 
     /**
      * Create the gardens table
-     *
      */
     public void createTable() {
         try {

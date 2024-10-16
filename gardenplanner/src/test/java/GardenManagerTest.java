@@ -1,5 +1,4 @@
 import com.gardenplanner.gardenplanner.model.DAO.MockGardenDAO;
-
 import com.gardenplanner.gardenplanner.model.Garden;
 import com.gardenplanner.gardenplanner.model.GardenManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,17 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Tests for the GardenManager class
  */
 public class GardenManagerTest {
-    /**
-     * The test garden manager
-     */
-    private GardenManager gardenManager;
-
     /**
      * The test gardens
      */
@@ -35,6 +30,10 @@ public class GardenManagerTest {
             new Garden("Potatoes", 2),
             new Garden("Potatoes 1", 2)
     };
+    /**
+     * The test garden manager
+     */
+    private GardenManager gardenManager;
 
     /**
      * Set up the test garden manager

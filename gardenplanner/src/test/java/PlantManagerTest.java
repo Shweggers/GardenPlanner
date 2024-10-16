@@ -1,5 +1,4 @@
 import com.gardenplanner.gardenplanner.model.DAO.MockPlantDAO;
-import com.gardenplanner.gardenplanner.model.Friend;
 import com.gardenplanner.gardenplanner.model.Plant;
 import com.gardenplanner.gardenplanner.model.PlantManager;
 import org.junit.jupiter.api.BeforeEach;
@@ -7,17 +6,13 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * A class to test the PlantManager class
  */
 public class PlantManagerTest {
-    /**
-     * The PlantManager object to test
-     */
-    private PlantManager plantManager;
-
     /**
      * The Plant objects to use in the tests
      */
@@ -35,6 +30,10 @@ public class PlantManagerTest {
             new Plant(2, "Pineapple"),
             new Plant(2, "Strawberry"),
     };
+    /**
+     * The PlantManager object to test
+     */
+    private PlantManager plantManager;
 
     /**
      * Set up the test

@@ -16,32 +16,44 @@ import java.io.IOException;
 import java.util.Dictionary;
 
 public class GardenbookAddplantController {
+    @FXML
+    TextField addPlantSearch;
+    @FXML
+    ListView<PerenualItem> addPlantSearchList;
+    @FXML
+    Label addPlantCurrentPage;
+    @FXML
+    Button addPlantPreviousPage;
+    @FXML
+    Button addPlantNextPage;
+    @FXML
+    Label addPlantDepth;
+    @FXML
+    Label addPlantWaterRoutine;
+    @FXML
+    Label addPlantWaterVolume;
+    @FXML
+    Label addPlantSunlight;
+    @FXML
+    Label addPlantHarvestSeason;
+    @FXML
+    ImageView addPlantImage;
+    @FXML
+    Button addPlantConfirm;
+    @FXML
+    Button addPlantExit;
+    @FXML
+    GridPane addPlantInformationGridPane;
+    private String lastSearch = "";
+    private int page = 1;
+    private int lastPage = 1;
+
+
     /**
      * Constructs a new GardenbookAddplantController
      */
     public GardenbookAddplantController() {
     }
-
-
-    private String lastSearch = "";
-
-
-    private int page = 1;
-
-
-    private int lastPage = 1;
-
-
-    @FXML
-    TextField addPlantSearch;
-
-
-    @FXML
-    ListView<PerenualItem> addPlantSearchList;
-
-
-    @FXML
-    Label addPlantCurrentPage;
 
     /**
      * Populates the add plant search list with the search results
@@ -79,15 +91,6 @@ public class GardenbookAddplantController {
         lastPage = page;
     }
 
-
-    @FXML
-    Button addPlantPreviousPage;
-
-
-    @FXML
-    Button addPlantNextPage;
-
-
     @FXML
     void previousPage(ActionEvent event) throws IOException, InterruptedException {
         page--;
@@ -95,37 +98,11 @@ public class GardenbookAddplantController {
 
     }
 
-
     @FXML
     void nextPage(ActionEvent event) throws IOException, InterruptedException {
         page++;
         populateList(event);
     }
-
-
-    @FXML
-    Label addPlantDepth;
-
-
-    @FXML
-    Label addPlantWaterRoutine;
-
-
-    @FXML
-    Label addPlantWaterVolume;
-
-
-    @FXML
-    Label addPlantSunlight;
-
-
-    @FXML
-    Label addPlantHarvestSeason;
-
-
-    @FXML
-    ImageView addPlantImage;
-
 
     @FXML
     void showItemInformation(PerenualItem item) {
@@ -142,11 +119,6 @@ public class GardenbookAddplantController {
         }
     }
 
-
-    @FXML
-    Button addPlantConfirm;
-
-
     @FXML
     void confirmAddPlant(ActionEvent event) throws IOException {
         PerenualItem selectedItem = addPlantSearchList.getSelectionModel().getSelectedItem();
@@ -156,23 +128,12 @@ public class GardenbookAddplantController {
         }
     }
 
-    /**
-     * The exit button
-     */
-    @FXML
-    Button addPlantExit;
-
-
     @FXML
     void exitButtonClicked(ActionEvent event) throws IOException {
         Stage stage = (Stage) addPlantExit.getScene().getWindow();
 
         stage.close();
     }
-
-    @FXML
-    GridPane addPlantInformationGridPane;
-
 
     @FXML
     void initialize() {

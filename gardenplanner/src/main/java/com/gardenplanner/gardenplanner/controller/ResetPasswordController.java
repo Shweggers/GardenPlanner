@@ -20,34 +20,31 @@ import java.io.IOException;
 public class ResetPasswordController {
 
     /**
-     * Constructs a new ResetPasswordController
-     */
-    public ResetPasswordController() {
-    }
-
-    /**
      * The username field
      */
     @FXML
     private TextField usernameField;
-
     /**
      * The email field
      */
     @FXML
     private TextField emailField;
-
     /**
      * The password field
      */
     @FXML
     private PasswordField passwordField;
-
     /**
      * The password confirmation field
      */
     @FXML
     private PasswordField confirmPasswordField;
+
+    /**
+     * Constructs a new ResetPasswordController
+     */
+    public ResetPasswordController() {
+    }
 
     /**
      * Reset the user's password with the entered information
@@ -106,7 +103,7 @@ public class ResetPasswordController {
 
     /**
      * Handle the login button click event
-     * 
+     *
      * @throws IOException
      */
     @FXML

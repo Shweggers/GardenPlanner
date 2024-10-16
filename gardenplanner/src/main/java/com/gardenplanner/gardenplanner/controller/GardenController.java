@@ -15,23 +15,21 @@ import java.io.IOException;
 public class GardenController {
 
     /**
-     * Constructs a new GardenController
-     */
-    public GardenController() {
-    }
-
-    /**
      * The back button
      */
     @FXML
     private Button backButton;
-
     @FXML
     private Button addGardenButton;
 
     /**
+     * Constructs a new GardenController
+     */
+    public GardenController() {}
+
+    /**
      * Returns the user to the home page when the back button is clicked.
-     * 
+     *
      * @param event event details
      * @throws IOException if an I/O error occurs
      */

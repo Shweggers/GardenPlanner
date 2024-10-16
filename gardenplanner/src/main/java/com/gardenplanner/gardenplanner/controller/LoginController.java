@@ -21,22 +21,20 @@ import java.io.IOException;
 public class LoginController {
 
     /**
-     * Constructor for the LoginController
-    */
-    public LoginController() {
-    }
-
-    /**
      * The username field
-    */
+     */
     @FXML
     protected TextField usernameField;
-
     /**
      * The password field
-    */
+     */
     @FXML
     protected PasswordField passwordField;
+
+    /**
+     * Constructor for the LoginController
+     */
+    public LoginController() {}
 
     /**
      * Handle the login process
@@ -91,7 +89,7 @@ public class LoginController {
 
     /**
      * Redirect the user to the register page
-     * 
+     *
      * @throws IOException
      */
     @FXML
@@ -107,7 +105,7 @@ public class LoginController {
 
     /**
      * Redirect the user to the reset password page
-     * 
+     *
      * @throws IOException
      */
     @FXML

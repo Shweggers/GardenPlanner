@@ -11,15 +11,6 @@ import java.util.List;
 public class GardenManager {
 
     private static GardenManager instance;
-
-
-    public static GardenManager getInstance() {
-        if (instance == null) {
-            instance = new GardenManager(new SQLGardenDAO());
-        }
-        return instance;
-    }
-
     /**
      * The garden DAO
      */
@@ -32,6 +23,13 @@ public class GardenManager {
      */
     public GardenManager(IGardenDAO gardenDAO) {
         this.gardenDAO = gardenDAO;
+    }
+
+    public static GardenManager getInstance() {
+        if (instance == null) {
+            instance = new GardenManager(new SQLGardenDAO());
+        }
+        return instance;
     }
 
     /**
@@ -56,7 +54,7 @@ public class GardenManager {
      * Get a list of gardens for a user.
      *
      * @param userID the user ID
-     * @param query the query
+     * @param query  the query
      * @return a list of gardens
      */
     public List<Garden> searchGardens(int userID, String query) {
@@ -70,7 +68,7 @@ public class GardenManager {
      * Search for gardens by a query.
      *
      * @param garden the garden object
-     * @param query the query
+     * @param query  the query
      * @return true if the garden matches the query, false otherwise
      */
     private boolean isGardenMatched(Garden garden, String query) {

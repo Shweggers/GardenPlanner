@@ -1,13 +1,16 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.*;
-
 import com.gardenplanner.gardenplanner.model.DAO.SQLGardenDAO;
 import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
+import com.gardenplanner.gardenplanner.model.DataStore;
+import com.gardenplanner.gardenplanner.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,45 +23,39 @@ import java.util.Optional;
 public class HomepageController {
 
     /**
-     * Constructs a new HomepageController
-     */
-    public HomepageController() {
-    }
-
-    /**
      * The garden book button
      */
     @FXML
     private Button gardenBookButton;
-
     /**
      * The logout button
      */
     @FXML
     private Button logOutButton;
-
     /**
      * The friend button
      */
     @FXML
     private Button friendButton;
-
     /**
      * The garden button
      */
     @FXML
     private Button gardenButton;
-
     /**
      * The welcome message
      */
     @FXML
     private Label welcomeMsg;
 
+    /**
+     * Constructs a new HomepageController
+     */
+    public HomepageController() {}
 
     /**
      * Change scene to Garden Book page upon called
-     * 
+     *
      * @throws IOException
      */
     @FXML
@@ -74,11 +71,11 @@ public class HomepageController {
 
     /**
      * Change scene to Friend page upon called
-     * 
+     *
      * @throws IOException
      */
     @FXML
-    void handleFriendpage() throws IOException{
+    void handleFriendpage() throws IOException {
         Stage stage = (Stage) friendButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml"));
@@ -90,7 +87,7 @@ public class HomepageController {
 
     /**
      * Change scene to Garden page upon called
-     * 
+     *
      * @throws IOException
      */
     @FXML
@@ -107,7 +104,7 @@ public class HomepageController {
 
     /**
      * Change scene to Login page upon called
-     * 
+     *
      * @throws IOException
      */
     @FXML
@@ -117,20 +114,19 @@ public class HomepageController {
         ButtonType YesButton = new ButtonType("Yes");
         ButtonType CancelButton = new ButtonType("Cancel");
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure you want to logout?", YesButton, CancelButton);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to logout?", YesButton, CancelButton);
         alert.setTitle("Log out");
         alert.setHeaderText("Log out");
         Optional<ButtonType> result = alert.showAndWait();
 
-        if(result.isPresent()) {
-            if(result.get() == YesButton) {
+        if (result.isPresent()) {
+            if (result.get() == YesButton) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
                 loader.setControllerFactory(type -> new LoginController());
 
                 stage.setScene(new Scene(loader.load(), 900, 600));
                 stage.show();
-            }
-            else {
+            } else {
                 alert.close();
             }
         }

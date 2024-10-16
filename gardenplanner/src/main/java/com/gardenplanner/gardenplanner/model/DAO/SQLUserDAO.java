@@ -24,7 +24,6 @@ public class SQLUserDAO implements IUserDAO {
 
     /**
      * creates the 'users' table in the database if it does not already exist.
-     *
      */
     public void createTable() {
         try {
@@ -92,7 +91,7 @@ public class SQLUserDAO implements IUserDAO {
     /**
      * Method that updates a user's password in the database
      *
-     * @param username the username to search for
+     * @param username       the username to search for
      * @param hashedPassword the new hashed password
      */
     @Override

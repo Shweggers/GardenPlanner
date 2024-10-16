@@ -11,15 +11,6 @@ import java.util.List;
 public class PlotManager {
 
     private static PlotManager instance;
-
-
-    public static PlotManager getInstance() {
-        if (instance == null) {
-            instance = new PlotManager(new SQLPlotDAO());
-        }
-        return instance;
-    }
-
     /**
      * The plot DAO
      */
@@ -32,6 +23,13 @@ public class PlotManager {
      */
     public PlotManager(IPlotDAO plotDAO) {
         this.plotDAO = plotDAO;
+    }
+
+    public static PlotManager getInstance() {
+        if (instance == null) {
+            instance = new PlotManager(new SQLPlotDAO());
+        }
+        return instance;
     }
 
     /**
@@ -56,7 +54,7 @@ public class PlotManager {
      * Get a list of plots for a user.
      *
      * @param userID the user ID
-     * @param query the query
+     * @param query  the query
      * @return a list of plots
      */
     public List<Plot> searchPlots(int userID, String query) {
@@ -69,7 +67,7 @@ public class PlotManager {
     /**
      * Search for plots by a query.
      *
-     * @param plot the plot object
+     * @param plot  the plot object
      * @param query the query
      * @return true if the plot matches the query, false otherwise
      */

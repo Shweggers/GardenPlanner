@@ -19,28 +19,26 @@ import java.io.IOException;
 public class RegisterController {
 
     /**
-     * Constructs a new RegisterController
-     */
-    public RegisterController() {
-    }
-
-    /**
      * The username field
      */
     @FXML
     private TextField usernameField;
-
     /**
      * The email field
      */
     @FXML
     private TextField emailField;
-
     /**
      * The password field
      */
     @FXML
     private PasswordField passwordField;
+
+    /**
+     * Constructs a new RegisterController
+     */
+    public RegisterController() {
+    }
 
     /**
      * Register the user with the entered information
@@ -87,7 +85,7 @@ public class RegisterController {
 
     /**
      * Redirect the user to the login page
-     * 
+     *
      * @throws IOException
      */
     @FXML

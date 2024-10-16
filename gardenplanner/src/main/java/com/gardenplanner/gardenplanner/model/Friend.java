@@ -20,7 +20,7 @@ public record Friend(int userID, int friendID, String friendName) {
 
     /**
      * Returns a string representation of the Friend record.
-     * 
+     *
      * @return a string representation of the Friend record
      */
     @Override

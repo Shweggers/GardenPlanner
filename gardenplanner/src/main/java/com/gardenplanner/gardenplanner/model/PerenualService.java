@@ -18,8 +18,10 @@ import java.nio.charset.StandardCharsets;
  */
 public class PerenualService {
 
+    private static final String API_KEY = "sk-ZtM366ec7a8690cc16915";
+    private static final String BASE_URL = "https://perenual.com/api/";
     private static PerenualService instance;
-
+    private final int page = 1;
 
     public static PerenualService getInstance() {
         if (instance == null) {
@@ -28,17 +30,12 @@ public class PerenualService {
         return instance;
     }
 
-    private static final String API_KEY = "sk-ZtM366ec7a8690cc16915";
-    private static final String BASE_URL = "https://perenual.com/api/";
-
-    private final int page = 1;
-
     /**
      * Get plant data from the Perenual API
      *
      * @param plantID the ID of the plant
      * @return the plant data
-     * @throws IOException if an I/O error occurs
+     * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
      */
     public JsonObject getPlantDataFromID(String plantID) throws IOException, InterruptedException {
@@ -58,7 +55,7 @@ public class PerenualService {
      *
      * @param plantName the name of the plant
      * @return the ID of the plant
-     * @throws IOException if an I/O error occurs
+     * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
      */
     public String getPlantIdFromName(String plantName) throws IOException, InterruptedException {

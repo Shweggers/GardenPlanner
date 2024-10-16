@@ -26,7 +26,6 @@ public class SQLPlantDAO implements IPlantDAO {
 
     /**
      * Creates the 'plants' table in the database if it does not already exist.
-     *
      */
     public void createTable() {
         try {

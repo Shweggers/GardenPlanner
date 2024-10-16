@@ -9,15 +9,6 @@ import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
 public class UserManager {
 
     private static UserManager instance;
-
-
-    public static UserManager getInstance() {
-        if (instance == null) {
-            instance = new UserManager(new SQLUserDAO());
-        }
-        return instance;
-    }
-
     /**
      * The user DAO
      */
@@ -30,6 +21,13 @@ public class UserManager {
      */
     public UserManager(IUserDAO userDAO) {
         this.userDAO = userDAO;
+    }
+
+    public static UserManager getInstance() {
+        if (instance == null) {
+            instance = new UserManager(new SQLUserDAO());
+        }
+        return instance;
     }
 
     /**

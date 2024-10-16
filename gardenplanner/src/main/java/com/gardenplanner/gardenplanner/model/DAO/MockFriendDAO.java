@@ -45,7 +45,7 @@ public class MockFriendDAO implements IFriendDAO {
     /**
      * Check if a user has friended another user
      *
-     * @param userID the user ID
+     * @param userID     the user ID
      * @param friendName the friend name
      * @return true if the user has friended the other user, false otherwise
      */

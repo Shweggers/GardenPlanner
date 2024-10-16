@@ -46,6 +46,7 @@ public class PerenualServiceTest {
 
     /**
      * Test the getPlantData method
+     *
      * @throws IOException
      * @throws InterruptedException
      */
@@ -66,6 +67,7 @@ public class PerenualServiceTest {
 
     /**
      * Test the getPlantIdFromName method
+     *
      * @throws IOException
      * @throws InterruptedException
      */
@@ -85,6 +87,7 @@ public class PerenualServiceTest {
 
     /**
      * Test the getPlantNames method
+     *
      * @throws IOException
      * @throws InterruptedException
      */

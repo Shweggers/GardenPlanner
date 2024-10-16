@@ -11,15 +11,6 @@ import java.util.List;
 public class FriendManager {
 
     private static FriendManager instance;
-
-
-    public static FriendManager getInstance() {
-        if (instance == null) {
-            instance = new FriendManager(new SQLFriendDAO());
-        }
-        return instance;
-    }
-
     /**
      * The friend DAO
      */
@@ -32,6 +23,13 @@ public class FriendManager {
      */
     public FriendManager(IFriendDAO friendDAO) {
         this.friendDAO = friendDAO;
+    }
+
+    public static FriendManager getInstance() {
+        if (instance == null) {
+            instance = new FriendManager(new SQLFriendDAO());
+        }
+        return instance;
     }
 
     /**
@@ -55,7 +53,7 @@ public class FriendManager {
     /**
      * Get a list of friends for a user.
      *
-     * @param userID the user ID
+     * @param userID     the user ID
      * @param friendName the friend name
      * @return a list of friends
      */
@@ -72,7 +70,7 @@ public class FriendManager {
      * Search for friends by a query.
      *
      * @param userID the user ID
-     * @param query the query
+     * @param query  the query
      * @return a list of friends
      */
     public List<Friend> searchFriends(int userID, String query) {
@@ -86,7 +84,7 @@ public class FriendManager {
      * Check if a friend object matches a query.
      *
      * @param friend the friend object
-     * @param query the query
+     * @param query  the query
      * @return true if the friend object matches the query, false otherwise
      */
     private boolean isFriendMatched(Friend friend, String query) {

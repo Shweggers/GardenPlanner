@@ -13,6 +13,16 @@ import java.sql.SQLException;
  */
 public class Main extends Application {
     /**
+     * Main method
+     *
+     * @param args the arguments
+     * @throws SQLException if an SQL exception occurs
+     */
+    public static void main(String[] args) throws SQLException {
+        launch(args);
+    }
+
+    /**
      * Start the application
      *
      * @param primaryStage the primary stage
@@ -25,15 +35,5 @@ public class Main extends Application {
 
         primaryStage.setScene(new Scene(loader.load(), 900, 600));
         primaryStage.show();
-    }
-
-    /**
-     * Main method
-     *
-     * @param args the arguments
-     * @throws SQLException if an SQL exception occurs
-     */
-    public static void main(String[] args) throws SQLException {
-        launch(args);
     }
 }

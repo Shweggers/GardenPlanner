@@ -11,15 +11,6 @@ import java.util.List;
 public class PlantManager {
 
     private static PlantManager instance;
-
-
-    public static PlantManager getInstance() {
-        if (instance == null) {
-            instance = new PlantManager(new SQLPlantDAO());
-        }
-        return instance;
-    }
-
     /**
      * The plant DAO
      */
@@ -32,6 +23,13 @@ public class PlantManager {
      */
     public PlantManager(IPlantDAO plantDAO) {
         this.plantDAO = plantDAO;
+    }
+
+    public static PlantManager getInstance() {
+        if (instance == null) {
+            instance = new PlantManager(new SQLPlantDAO());
+        }
+        return instance;
     }
 
     /**
@@ -56,7 +54,7 @@ public class PlantManager {
      * Get a list of plants for a user.
      *
      * @param userID the user ID
-     * @param query the query
+     * @param query  the query
      * @return a list of plants
      */
     public List<Plant> searchPlants(int userID, String query) {

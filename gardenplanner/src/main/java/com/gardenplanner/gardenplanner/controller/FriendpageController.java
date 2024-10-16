@@ -14,20 +14,19 @@ import java.io.IOException;
 public class FriendpageController {
 
     /**
-     * Constructs a new FriendpageController with the specified data store.
-     */
-    public FriendpageController() {
-    }
-
-    /**
      * The back button
      */
     @FXML
     private Button backButton;
 
     /**
+     * Constructs a new FriendpageController with the specified data store.
+     */
+    public FriendpageController() {}
+
+    /**
      * Returns the user to the home page when the back button is clicked.
-     * 
+     *
      * @throws IOException
      */
     @FXML

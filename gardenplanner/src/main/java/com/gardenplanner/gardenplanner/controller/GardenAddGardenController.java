@@ -26,8 +26,7 @@ public class GardenAddGardenController {
     /**
      * Constructs a new GardenAddGardenController
      */
-    public GardenAddGardenController() {
-    }
+    public GardenAddGardenController() {}
 
     /**
      * Handles the save button click event.

@@ -19,46 +19,40 @@ import java.io.IOException;
 public class GardenbookController {
 
     /**
-     * Constructs a new GardenbookController
-     */
-    public GardenbookController() {
-    }
-
-    /**
      * The add new plant button
      */
     @FXML
     private Button addNewPlantButton;
-
     /**
      * The plant table
      */
     @FXML
     private TableView<Plant> plantTable;
-
     /**
      * The plant column 1
      */
     @FXML
     private TableColumn<Plant, String> plantColumn1;
-
     /**
      * The plant column 2
      */
     @FXML
     private TableColumn<Plant, String> plantColumn2;
-
     /**
      * The plant search text field
      */
     @FXML
     private TextField plantSearch;
-
     /**
      * The back button
      */
     @FXML
     private Button backButton;
+
+    /**
+     * Constructs a new GardenbookController
+     */
+    public GardenbookController() {}
 
     @FXML
     void addNewPlant(ActionEvent event) throws IOException {
@@ -73,7 +67,7 @@ public class GardenbookController {
 
     /**
      * Returns the user to the homepage when the back button is clicked.
-     * 
+     *
      * @param event
      * @throws IOException
      */

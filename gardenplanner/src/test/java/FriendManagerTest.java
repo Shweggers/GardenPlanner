@@ -4,22 +4,14 @@ import com.gardenplanner.gardenplanner.model.FriendManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests for the FriendManager class
  */
 public class FriendManagerTest {
-    /**
-     * The test friend manager
-     */
-    private FriendManager friendManager;
-
     /**
      * The test friends
      */
@@ -40,6 +32,10 @@ public class FriendManagerTest {
             new Friend(4, 3, "JaneSmith"),
             new Friend(5, 1, "John"),
     };
+    /**
+     * The test friend manager
+     */
+    private FriendManager friendManager;
 
     /**
      * Set up the test friend manager
@@ -114,7 +110,7 @@ public class FriendManagerTest {
             friendManager.insert(friend);
         }
 
-        List<Friend> friendslist = friendManager.searchFriends(1 ,null);
+        List<Friend> friendslist = friendManager.searchFriends(1, null);
         assertEquals(6, friendslist.size());
     }
 

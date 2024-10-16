@@ -15,15 +15,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class PlotManagerTest {
     /**
-     * The PlotManager object to test
-     */
-    private PlotManager plotManager;
-
-    /**
      * The planted time of the plots
      */
     LocalDate plantedTime = LocalDate.now();
-
     /**
      * The Plot objects to use in the tests
      */
@@ -38,6 +32,10 @@ public class PlotManagerTest {
             new Plot(2, "Raspberry", plantedTime),
             new Plot(2, "Blueberry", plantedTime),
     };
+    /**
+     * The PlotManager object to test
+     */
+    private PlotManager plotManager;
 
     /**
      * Set up the test

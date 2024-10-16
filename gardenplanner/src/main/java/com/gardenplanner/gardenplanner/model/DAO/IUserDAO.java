@@ -25,7 +25,7 @@ public interface IUserDAO {
     /**
      * Update a user's password
      *
-     * @param username the username
+     * @param username       the username
      * @param hashedPassword the hashed password
      */
     void updatePassword(String username, String hashedPassword);

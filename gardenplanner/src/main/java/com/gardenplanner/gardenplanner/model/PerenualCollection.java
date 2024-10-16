@@ -3,8 +3,7 @@ package com.gardenplanner.gardenplanner.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PerenualCollection
-{
+public class PerenualCollection {
     public List<PerenualItem> perenualItems;
     public int pages;
 
