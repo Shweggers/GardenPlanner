@@ -17,13 +17,7 @@ import java.util.Dictionary;
 
 public class GardenbookAddplantController {
     /**
-     * The Perenual service
-     */
-    private final PerenualService perenualService;
-
-    /**
-     * Constructs a new GardenbookAddplantController with the specified data store and initialises the perenualService.
-
+     * Constructs a new GardenbookAddplantController
      */
     public GardenbookAddplantController() {
         perenualService = new PerenualService();
@@ -142,7 +136,11 @@ public class GardenbookAddplantController {
         addPlantWaterVolume.setText(itemData.get("volumeWaterRequirement"));
         addPlantSunlight.setText(itemData.get("sunRequirement"));
         addPlantHarvestSeason.setText(itemData.get("harvestSeason"));
-        addPlantImage.setImage(new Image(itemData.get("imageURL"), 100, 100, true, true));
+        try {
+            addPlantImage.setImage(new Image(itemData.get("imageURL"), 100, 100, true, true));
+        } catch (IllegalArgumentException e) {
+            addPlantImage.setImage(null);
+        }
     }
 
 

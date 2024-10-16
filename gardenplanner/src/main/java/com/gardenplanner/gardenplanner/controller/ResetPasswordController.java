@@ -20,7 +20,7 @@ import java.io.IOException;
 public class ResetPasswordController {
 
     /**
-     * Constructs a new ResetPasswordController with the specified data store.
+     * Constructs a new ResetPasswordController
      */
     public ResetPasswordController() {
     }

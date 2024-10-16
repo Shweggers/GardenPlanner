@@ -15,7 +15,7 @@ import java.io.IOException;
 public class GardenController {
 
     /**
-     * Constructs a new GardenController with the specified data store.
+     * Constructs a new GardenController
      */
     public GardenController() {
     }

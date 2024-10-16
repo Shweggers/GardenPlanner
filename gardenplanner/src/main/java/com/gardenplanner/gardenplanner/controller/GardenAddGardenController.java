@@ -24,7 +24,7 @@ public class GardenAddGardenController {
     private Button saveButton;
 
     /**
-     * Constructs a new GardenAddGardenController with the specified data store.
+     * Constructs a new GardenAddGardenController
      */
     public GardenAddGardenController() {
     }

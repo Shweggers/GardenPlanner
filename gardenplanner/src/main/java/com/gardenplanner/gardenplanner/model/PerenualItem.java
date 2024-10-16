@@ -76,6 +76,9 @@ public class PerenualItem {
             return "n/a";
         }
         if (itemData.get(field).isJsonObject()) {
+            if (itemData.getAsJsonObject(field).get("thumbnail") == null) {
+                return "n/a";
+            }
             return itemData.getAsJsonObject(field).get("thumbnail").getAsString();
         }
         return itemData.get(field).getAsString();

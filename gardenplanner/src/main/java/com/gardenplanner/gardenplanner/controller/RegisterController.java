@@ -19,7 +19,7 @@ import java.io.IOException;
 public class RegisterController {
 
     /**
-     * Constructs a new RegisterController with the specified data store.
+     * Constructs a new RegisterController
      */
     public RegisterController() {
     }
@@ -67,7 +67,7 @@ public class RegisterController {
         User user = new User(username, email, hashedPassword);
 
         try {
-            // Insert the new user into the database using UserDAO
+            // Insert the new user into the database using the User Manager
             UserManager userManager = UserManager.getInstance();
             userManager.insert(user);
 

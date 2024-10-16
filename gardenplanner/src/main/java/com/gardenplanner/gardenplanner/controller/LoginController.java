@@ -57,7 +57,7 @@ public class LoginController {
         }
 
         try {
-            // Create a new instance of UserDAO to retrieve the users data
+            // get the User Manager instance to retrieve the users data
             UserManager userManager = UserManager.getInstance();
             User user = userManager.getUser(username);
 

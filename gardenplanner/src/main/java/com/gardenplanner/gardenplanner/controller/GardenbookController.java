@@ -19,7 +19,7 @@ import java.io.IOException;
 public class GardenbookController {
 
     /**
-     * Constructs a new GardenbookController with the specified data store.
+     * Constructs a new GardenbookController
      */
     public GardenbookController() {
     }

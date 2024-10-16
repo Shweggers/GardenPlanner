@@ -20,7 +20,7 @@ import java.util.Optional;
 public class HomepageController {
 
     /**
-     * Constructs a new HomepageController with the specified data store.
+     * Constructs a new HomepageController
      */
     public HomepageController() {
     }
