@@ -5,7 +5,8 @@ import java.util.List;
 
 public class PerenualCollection
 {
-    private List<PerenualItem> perenualItems;
+    public List<PerenualItem> perenualItems;
+    public int pages;
 
     public PerenualCollection() {
         perenualItems = new ArrayList<>();

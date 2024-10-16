@@ -12,8 +12,6 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * PerenualService is a class that interacts with the Perenual API.
@@ -65,29 +63,36 @@ public class PerenualService {
         }
     }
 
-    public List<String> getPlantNames(String query) throws IOException, InterruptedException {
-        String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8);
-
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .GET()
-                .build();
-
-        List<String> output = new ArrayList<>();
+    public PerenualCollection getPlantNames(String query, int page) throws IOException, InterruptedException {
+        String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
 
         try {
-            HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-            JsonObject result = new Gson().fromJson(response.body(), JsonObject.class);
+            JsonObject result = getResponse(url);
 
-            result.getAsJsonArray("data").forEach(element -> output.add(element.getAsJsonObject().get("common_name").getAsString()));
+            JsonArray data = result.getAsJsonArray("data");
+
+            PerenualCollection output = new PerenualCollection();
+            output.pages = result.get("last_page").getAsInt();
+
+            data.forEach(plant -> {
+                String plantID = plant.getAsJsonObject().get("id").getAsString();
+                String plantName = plant.getAsJsonObject().get("common_name").getAsString();
+
+                if (!plant.getAsJsonObject().getAsJsonArray("scientific_name").isEmpty()) {
+                    plantName += " (" + plant.getAsJsonObject().getAsJsonArray("scientific_name").get(0).getAsString() + ")";
+                }
+                PerenualItem perenualItem = new PerenualItem(plantID, plantName);
+
+                output.add(perenualItem);
+            });
             return output;
-        } catch (IOException | InterruptedException e) {
-            e.printStackTrace();
+
+        } catch (NullPointerException e) {
+            return null;
         }
-        return output;
     }
 
-    public PerenualCollection debugQuery(String query) throws IOException, InterruptedException {
+    public PerenualCollection debugQuery(String query, int page) throws IOException, InterruptedException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
 
         try {
@@ -100,8 +105,8 @@ public class PerenualService {
                 String plantID = plant.getAsJsonObject().get("id").getAsString();
                 String plantName = plant.getAsJsonObject().get("common_name").getAsString();
 
-                if (plant.getAsJsonObject().getAsJsonArray("scientific_name").size() > 0) {
-                    plantName += " (" + plant.getAsJsonObject().getAsJsonArray("scientific_name").get(0).getAsString() + ")";
+                if (!plant.getAsJsonObject().getAsJsonArray("scientific_name").isEmpty()) {
+                    plantName += "\n(" + plant.getAsJsonObject().getAsJsonArray("scientific_name").get(0).getAsString() + ")";
                 }
                 PerenualItem perenualItem = new PerenualItem(plantID, plantName);
 

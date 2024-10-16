@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -98,7 +97,7 @@ public class PerenualServiceTest {
         when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
                 .thenReturn(httpResponseMock);
 
-        List<String> output = perenualService.getPlantNames(query);
+        PerenualCollection output = perenualService.getPlantNames(query, 1);
 
         assertEquals(jsonResponse, output.toString());
     }
@@ -107,7 +106,7 @@ public class PerenualServiceTest {
     public void debugTest() throws IOException, InterruptedException {
         String query = "banana";
 
-        PerenualCollection output = perenualService.debugQuery(query);
+        PerenualCollection output = perenualService.debugQuery(query, 1);
         System.out.println(output.getItemNames());
     }
 }

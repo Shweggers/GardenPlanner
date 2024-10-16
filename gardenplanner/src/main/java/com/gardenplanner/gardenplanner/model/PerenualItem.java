@@ -63,7 +63,7 @@ public class PerenualItem {
 
     private String validateObject(JsonObject itemData, String field) {
         if (itemData.get(field).isJsonNull() || Objects.equals(itemData.get(field).toString(), "[]")) {
-            return "";
+            return "n/a";
         }
         if (itemData.getAsJsonObject(field).get("value").isJsonNull()) {
             return itemData.getAsJsonObject(field).get("unit").getAsString();
@@ -73,7 +73,7 @@ public class PerenualItem {
 
     private String validateElement(JsonObject itemData, String field) {
         if (itemData.get(field).isJsonNull()) {
-            return "";
+            return "n/a";
         }
         if (itemData.get(field).isJsonObject()) {
             return itemData.getAsJsonObject(field).get("thumbnail").getAsString();
