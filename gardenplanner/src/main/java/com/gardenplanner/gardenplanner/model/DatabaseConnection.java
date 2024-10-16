@@ -7,7 +7,20 @@ import java.sql.SQLException;
  * A class to manage the database connection
  */
 public class DatabaseConnection {
+
     private static Connection instance = null;
+
+    /**
+     * Get the instance of the database connection
+     *
+     * @return the instance of the database connection
+     */
+    public static Connection getInstance() {
+        if (instance == null) {
+            new DatabaseConnection();
+        }
+        return instance;
+    }
 
     /**
      * Create a new database connection
@@ -19,17 +32,5 @@ public class DatabaseConnection {
         } catch (SQLException sqlEx) {
             System.err.println(sqlEx);
         }
-    }
-
-    /**
-     * Get the instance of the database connection
-     * 
-     * @return the instance of the database connection
-     */
-    public static Connection getInstance() {
-        if (instance == null) {
-            new DatabaseConnection();
-        }
-        return instance;
     }
 }

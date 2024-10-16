@@ -1,11 +1,23 @@
 package com.gardenplanner.gardenplanner.model;
 
 import com.gardenplanner.gardenplanner.model.DAO.IUserDAO;
+import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
 
 /**
  * UserManager is a class that manages the User objects.
  */
 public class UserManager {
+
+    private static UserManager instance;
+
+
+    public static UserManager getInstance() {
+        if (instance == null) {
+            instance = new UserManager(new SQLUserDAO());
+        }
+        return instance;
+    }
+
     /**
      * The user DAO
      */

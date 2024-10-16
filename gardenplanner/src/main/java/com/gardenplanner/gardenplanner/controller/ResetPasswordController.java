@@ -1,7 +1,7 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
 import com.gardenplanner.gardenplanner.model.User;
+import com.gardenplanner.gardenplanner.model.UserManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -74,8 +74,8 @@ public class ResetPasswordController {
 
         try {
             // Retrieve the user from the database using the UserDAO
-            SQLUserDAO userDAO = new SQLUserDAO();
-            User user = userDAO.getUser(username);
+            UserManager userManager = UserManager.getInstance();
+            User user = userManager.getUser(username);
 
             // Check if the user exists in the database
             if (user == null) {
@@ -93,7 +93,7 @@ public class ResetPasswordController {
             String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
             // Update the user's password in the database using the UserDAO
-            userDAO.updatePassword(username, hashedPassword);
+            userManager.updatePassword(username, hashedPassword);
 
             // Confirmation message after successful reset
             new Alert(AlertType.INFORMATION, "Password reset successful!").showAndWait();

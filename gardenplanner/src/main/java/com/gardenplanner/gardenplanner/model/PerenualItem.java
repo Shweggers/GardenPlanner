@@ -8,11 +8,11 @@ import java.util.Hashtable;
 import java.util.Objects;
 
 public class PerenualItem {
-    private PerenualService perenualService;
-    private String id;
-    private String commonName;
+    private final PerenualService perenualService;
+    private final String id;
+    private final String commonName;
 
-    private Dictionary<String, String> itemData = new Hashtable<>();
+    private final Dictionary<String, String> itemData = new Hashtable<>();
     private String depthWaterRequirement;
     private String wateringGeneralBenchmark;
     private String volumeWaterRequirement;

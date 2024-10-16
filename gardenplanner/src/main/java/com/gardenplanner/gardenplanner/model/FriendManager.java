@@ -1,6 +1,7 @@
 package com.gardenplanner.gardenplanner.model;
 
 import com.gardenplanner.gardenplanner.model.DAO.IFriendDAO;
+import com.gardenplanner.gardenplanner.model.DAO.SQLFriendDAO;
 
 import java.util.List;
 
@@ -8,6 +9,17 @@ import java.util.List;
  * FriendManager is a class that manages the Friend objects.
  */
 public class FriendManager {
+
+    private static FriendManager instance;
+
+
+    public static FriendManager getInstance() {
+        if (instance == null) {
+            instance = new FriendManager(new SQLFriendDAO());
+        }
+        return instance;
+    }
+
     /**
      * The friend DAO
      */
@@ -16,10 +28,10 @@ public class FriendManager {
     /**
      * Create a new FriendManager object.
      *
-     * @param friendDao the friend DAO
+     * @param friendDAO the friend DAO
      */
-    public FriendManager(IFriendDAO friendDao) {
-        this.friendDAO = friendDao;
+    public FriendManager(IFriendDAO friendDAO) {
+        this.friendDAO = friendDAO;
     }
 
     /**

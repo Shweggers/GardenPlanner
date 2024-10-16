@@ -2,7 +2,7 @@ package com.gardenplanner.gardenplanner.controller;
 
 import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.User;
-import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
+import com.gardenplanner.gardenplanner.model.UserManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -58,8 +58,8 @@ public class LoginController {
 
         try {
             // Create a new instance of UserDAO to retrieve the users data
-            SQLUserDAO SQLUserDAO = new SQLUserDAO();
-            User user = SQLUserDAO.getUser(username);
+            UserManager userManager = UserManager.getInstance();
+            User user = userManager.getUser(username);
 
             // If the user does not exist, show an error alert and stop the login process
             if (user == null) {
@@ -69,6 +69,7 @@ public class LoginController {
 
             // Check if the entered password matches the stored hashed password
             if (BCrypt.checkpw(password, user.hashedPassword())) {
+
                 // If the password is correct, set the current user in the DataStore
                 DataStore.getInstance().setCurrentUser(user);
 

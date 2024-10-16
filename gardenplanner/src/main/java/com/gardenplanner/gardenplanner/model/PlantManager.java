@@ -1,6 +1,7 @@
 package com.gardenplanner.gardenplanner.model;
 
 import com.gardenplanner.gardenplanner.model.DAO.IPlantDAO;
+import com.gardenplanner.gardenplanner.model.DAO.SQLPlantDAO;
 
 import java.util.List;
 
@@ -8,6 +9,17 @@ import java.util.List;
  * PlantManager is a class that manages the Plant objects.
  */
 public class PlantManager {
+
+    private static PlantManager instance;
+
+
+    public static PlantManager getInstance() {
+        if (instance == null) {
+            instance = new PlantManager(new SQLPlantDAO());
+        }
+        return instance;
+    }
+
     /**
      * The plant DAO
      */

@@ -1,6 +1,7 @@
 package com.gardenplanner.gardenplanner.model;
 
 import com.gardenplanner.gardenplanner.model.DAO.IPlotDAO;
+import com.gardenplanner.gardenplanner.model.DAO.SQLPlotDAO;
 
 import java.util.List;
 
@@ -8,6 +9,17 @@ import java.util.List;
  * PlotManager is a class that manages the Plot objects.
  */
 public class PlotManager {
+
+    private static PlotManager instance;
+
+
+    public static PlotManager getInstance() {
+        if (instance == null) {
+            instance = new PlotManager(new SQLPlotDAO());
+        }
+        return instance;
+    }
+
     /**
      * The plot DAO
      */
