@@ -1,16 +1,15 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.Plant;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -18,18 +17,11 @@ import java.io.IOException;
  * GardenbookController is a class that represents a controller for the garden book page.
  */
 public class GardenbookController {
-    /**
-     * The data store
-     */
-    private final DataStore dataStore;
 
     /**
      * Constructs a new GardenbookController with the specified data store.
-     *
-     * @param dataStore the data store
      */
-    public GardenbookController(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public GardenbookController() {
     }
 
     /**
@@ -73,7 +65,7 @@ public class GardenbookController {
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbook_addplantpage.fxml"));
-        loader.setControllerFactory(type -> new GardenbookAddplantController(dataStore));
+        loader.setControllerFactory(type -> new GardenbookAddplantController());
 
         stage.setScene(new Scene(loader.load()));
         stage.show();
@@ -90,7 +82,7 @@ public class GardenbookController {
         Stage stage = (Stage) backButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
-        loader.setControllerFactory(type -> new HomepageController(dataStore));
+        loader.setControllerFactory(type -> new HomepageController());
 
         stage.setScene(new Scene(loader.load()));
         stage.show();

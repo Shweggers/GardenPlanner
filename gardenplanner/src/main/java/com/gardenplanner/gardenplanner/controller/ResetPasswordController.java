@@ -1,15 +1,14 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DataStore;
-import com.gardenplanner.gardenplanner.model.User;
 import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
+import com.gardenplanner.gardenplanner.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -19,18 +18,11 @@ import java.io.IOException;
  * ResetPasswordController is a class that represents a controller for the reset password page.
  */
 public class ResetPasswordController {
-    /**
-     * The data store
-     */
-    private final DataStore dataStore;
 
     /**
      * Constructs a new ResetPasswordController with the specified data store.
-     *
-     * @param dataStore the data store
      */
-    public ResetPasswordController(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public ResetPasswordController() {
     }
 
     /**
@@ -122,7 +114,7 @@ public class ResetPasswordController {
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
-        loader.setControllerFactory(type -> new LoginController(dataStore));
+        loader.setControllerFactory(type -> new LoginController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();

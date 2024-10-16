@@ -21,26 +21,30 @@ public class SQLFriendDAO implements IFriendDAO {
      */
     public SQLFriendDAO() {
         connection = DatabaseConnection.getInstance();
+        createTable();
     }
 
     /**
      * Create the friends table
      *
-     * @throws SQLException if there is an error creating the table
      */
-    public void createTable() throws SQLException {
-        Statement createTable = connection.createStatement();
-        createTable.execute(
-                "CREATE TABLE IF NOT EXISTS friends ("
-                        + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "userID       INTEGER NOT NULL, "
-                        + "friendID     INTEGER NOT NULL, "
-                        + "friendName   STRING  NOT NULL, "
-                        + "FOREIGN KEY(userID) REFERENCES users(id), "
-                        + "FOREIGN KEY(friendID) REFERENCES users(id), "
-                        + "UNIQUE(userID, friendID)"
-                        + ")"
-        );
+    public void createTable() {
+        try {
+            Statement createTable = connection.createStatement();
+            createTable.execute(
+                    "CREATE TABLE IF NOT EXISTS friends ("
+                            + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            + "userID       INTEGER NOT NULL, "
+                            + "friendID     INTEGER NOT NULL, "
+                            + "friendName   STRING  NOT NULL, "
+                            + "FOREIGN KEY(userID) REFERENCES users(id), "
+                            + "FOREIGN KEY(friendID) REFERENCES users(id), "
+                            + "UNIQUE(userID, friendID)"
+                            + ")"
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

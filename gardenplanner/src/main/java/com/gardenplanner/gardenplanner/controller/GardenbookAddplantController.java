@@ -1,6 +1,5 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.PerenualCollection;
 import com.gardenplanner.gardenplanner.model.PerenualItem;
 import com.gardenplanner.gardenplanner.model.PerenualService;
@@ -17,10 +16,6 @@ import java.io.IOException;
 import java.util.Dictionary;
 
 public class GardenbookAddplantController {
-    /**
-     * The data store
-     */
-    private final DataStore dataStore;
 
     /**
      * The Perenual service
@@ -29,11 +24,9 @@ public class GardenbookAddplantController {
 
     /**
      * Constructs a new GardenbookAddplantController with the specified data store and initialises the perenualService.
-     *
-     * @param dataStore the data store
+
      */
-    public GardenbookAddplantController(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public GardenbookAddplantController() {
         perenualService = new PerenualService();
     }
 

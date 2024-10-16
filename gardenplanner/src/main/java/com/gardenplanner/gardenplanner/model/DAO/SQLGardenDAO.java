@@ -21,24 +21,28 @@ public class SQLGardenDAO implements IGardenDAO {
      */
     public SQLGardenDAO() {
         connection = DatabaseConnection.getInstance();
+        createTable();
     }
 
     /**
      * Create the gardens table
      *
-     * @throws SQLException if there is an error creating the table
      */
-    public void createTable() throws SQLException {
-        Statement createTable = connection.createStatement();
-        createTable.execute(
-                "CREATE TABLE IF NOT EXISTS gardens ("
-                        + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "gardenName   TEXT    NOT NULL, "
-                        + "userID       INTEGER NOT NULL, "
-                        + "FOREIGN KEY(userID)  REFERENCES users(id), "
-                        + "UNIQUE(gardenName, userID)"
-                        + ")"
-        );
+    public void createTable() {
+        try {
+            Statement createTable = connection.createStatement();
+            createTable.execute(
+                    "CREATE TABLE IF NOT EXISTS gardens ("
+                            + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            + "gardenName   TEXT    NOT NULL, "
+                            + "userID       INTEGER NOT NULL, "
+                            + "FOREIGN KEY(userID)  REFERENCES users(id), "
+                            + "UNIQUE(gardenName, userID)"
+                            + ")"
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

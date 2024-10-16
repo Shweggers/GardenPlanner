@@ -18,18 +18,11 @@ import java.util.Optional;
  * HomepageController is a class that represents a controller for the homepage.
  */
 public class HomepageController {
-    /**
-     * The data store
-     */
-    private final DataStore dataStore;
 
     /**
      * Constructs a new HomepageController with the specified data store.
-     *
-     * @param dataStore the data store
      */
-    public HomepageController(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public HomepageController() {
     }
 
     /**
@@ -73,7 +66,7 @@ public class HomepageController {
         Stage stage = (Stage) gardenBookButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbookpage.fxml"));
-        loader.setControllerFactory(type -> new GardenbookController(dataStore));
+        loader.setControllerFactory(type -> new GardenbookController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
@@ -89,7 +82,7 @@ public class HomepageController {
         Stage stage = (Stage) friendButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml"));
-        loader.setControllerFactory(type -> new FriendpageController(dataStore));
+        loader.setControllerFactory(type -> new FriendpageController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
@@ -106,7 +99,7 @@ public class HomepageController {
 
         // Load the garden page FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage.fxml"));
-        loader.setControllerFactory(type -> new GardenbookController(dataStore));
+        loader.setControllerFactory(type -> new GardenbookController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));  // Set the garden page scene
         stage.show();  // Show the new scene
@@ -132,7 +125,7 @@ public class HomepageController {
         if(result.isPresent()) {
             if(result.get() == YesButton) {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
-                loader.setControllerFactory(type -> new LoginController(dataStore));
+                loader.setControllerFactory(type -> new LoginController());
 
                 stage.setScene(new Scene(loader.load(), 900, 600));
                 stage.show();
@@ -153,7 +146,7 @@ public class HomepageController {
         SQLGardenDAO SQLGardenDAO = new SQLGardenDAO();
         SQLUserDAO SQLUserDAO = new SQLUserDAO();
 
-        User currentUser = dataStore.getCurrentUser();
+        User currentUser = DataStore.getInstance().getCurrentUser();
 
         welcomeMsg.setText("Welcome " + currentUser.username());
 

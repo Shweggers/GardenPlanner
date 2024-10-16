@@ -21,23 +21,27 @@ public class SQLPlantDAO implements IPlantDAO {
      */
     public SQLPlantDAO() {
         connection = DatabaseConnection.getInstance();
+        createTable();
     }
 
     /**
      * Creates the 'plants' table in the database if it does not already exist.
      *
-     * @throws SQLException if a database access error occurs
      */
-    public void createTable() throws SQLException {
-        Statement createTable = connection.createStatement();
-        createTable.execute(
-                "CREATE TABLE IF NOT EXISTS plants ("
-                        + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "userid       INTEGER NOT NULL, "
-                        + "plantid      STRING  NOT NULL, "
-                        + "FOREIGN KEY(userid) REFERENCES users(id)"
-                        + ")"
-        );
+    public void createTable() {
+        try {
+            Statement createTable = connection.createStatement();
+            createTable.execute(
+                    "CREATE TABLE IF NOT EXISTS plants ("
+                            + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            + "userid       INTEGER NOT NULL, "
+                            + "plantid      STRING  NOT NULL, "
+                            + "FOREIGN KEY(userid) REFERENCES users(id)"
+                            + ")"
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

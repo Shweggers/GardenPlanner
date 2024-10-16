@@ -21,17 +21,9 @@ import java.io.IOException;
 public class LoginController {
 
     /**
-     * Used to hold the logged-in user's session data
-    */
-    private final DataStore dataStore;
-
-    /**
      * Constructor for the LoginController
-     *
-     * @param dataStore the data store
     */
-    public LoginController(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public LoginController() {
     }
 
     /**
@@ -78,11 +70,11 @@ public class LoginController {
             // Check if the entered password matches the stored hashed password
             if (BCrypt.checkpw(password, user.hashedPassword())) {
                 // If the password is correct, set the current user in the DataStore
-                dataStore.setCurrentUser(user);
+                DataStore.getInstance().setCurrentUser(user);
 
                 // Load the homepage FXML file and switch the scene to the homepage
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
-                loader.setControllerFactory(type -> new HomepageController(dataStore));
+                loader.setControllerFactory(type -> new HomepageController());
 
                 stage.setScene(new Scene(loader.load()));
                 stage.show();
@@ -106,7 +98,7 @@ public class LoginController {
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/registerpage.fxml"));
-        loader.setControllerFactory(type -> new RegisterController(dataStore));
+        loader.setControllerFactory(type -> new RegisterController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();
@@ -122,7 +114,7 @@ public class LoginController {
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/resetpasswordpage.fxml"));
-        loader.setControllerFactory(type -> new ResetPasswordController(dataStore));
+        loader.setControllerFactory(type -> new ResetPasswordController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();

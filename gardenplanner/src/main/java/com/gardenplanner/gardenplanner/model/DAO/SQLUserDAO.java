@@ -19,23 +19,27 @@ public class SQLUserDAO implements IUserDAO {
      */
     public SQLUserDAO() {
         connection = DatabaseConnection.getInstance();
+        createTable();
     }
 
     /**
      * creates the 'users' table in the database if it does not already exist.
-     * 
-     * @throws SQLException if an error occurs
+     *
      */
-    public void createTable() throws SQLException {
-        Statement createTable = connection.createStatement();
-        createTable.execute(
-                "CREATE TABLE IF NOT EXISTS users ("
-                        + "id       INTEGER PRIMARY KEY AUTOINCREMENT, "
-                        + "username TEXT NOT NULL UNIQUE, "
-                        + "email    TEXT NOT NULL, "
-                        + "password TEXT NOT NULL"
-                        + ")"
-        );
+    public void createTable() {
+        try {
+            Statement createTable = connection.createStatement();
+            createTable.execute(
+                    "CREATE TABLE IF NOT EXISTS users ("
+                            + "id       INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            + "username TEXT NOT NULL UNIQUE, "
+                            + "email    TEXT NOT NULL, "
+                            + "password TEXT NOT NULL"
+                            + ")"
+            );
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

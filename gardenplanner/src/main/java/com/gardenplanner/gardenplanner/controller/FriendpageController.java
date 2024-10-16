@@ -1,6 +1,5 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DataStore;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -13,18 +12,11 @@ import java.io.IOException;
  * FriendpageController is a class that represents a controller for the friend page.
  */
 public class FriendpageController {
-    /**
-     * The data store
-     */
-    private final DataStore dataStore;
 
     /**
      * Constructs a new FriendpageController with the specified data store.
-     *
-     * @param dataStore the data store
      */
-    public FriendpageController(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public FriendpageController() {
     }
 
     /**
@@ -43,7 +35,7 @@ public class FriendpageController {
         Stage stage = (Stage) backButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/homepage.fxml"));
-        loader.setControllerFactory(type -> new HomepageController(dataStore));
+        loader.setControllerFactory(type -> new HomepageController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();

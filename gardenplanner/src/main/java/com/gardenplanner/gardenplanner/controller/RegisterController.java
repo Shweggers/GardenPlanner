@@ -1,8 +1,7 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DataStore;
-import com.gardenplanner.gardenplanner.model.User;
 import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
+import com.gardenplanner.gardenplanner.model.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -18,18 +17,11 @@ import java.io.IOException;
  * RegisterController is a class that represents a controller for the registration page.
  */
 public class RegisterController {
-    /**
-     * The data store
-     */
-    private final DataStore dataStore;
 
     /**
      * Constructs a new RegisterController with the specified data store.
-     *
-     * @param dataStore the data store
      */
-    public RegisterController(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public RegisterController() {
     }
 
     /**
@@ -84,7 +76,7 @@ public class RegisterController {
 
             // Load the login page FXML and switch to the login scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
-            loader.setControllerFactory(type -> new LoginController(dataStore));
+            loader.setControllerFactory(type -> new LoginController());
 
             stage.setScene(new Scene(loader.load()));
             stage.show();
@@ -103,7 +95,7 @@ public class RegisterController {
         Stage stage = (Stage) usernameField.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
-        loader.setControllerFactory(type -> new LoginController(dataStore));
+        loader.setControllerFactory(type -> new LoginController());
 
         stage.setScene(new Scene(loader.load()));
         stage.show();

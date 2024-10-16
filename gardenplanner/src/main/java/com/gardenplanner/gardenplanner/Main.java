@@ -1,7 +1,6 @@
 package com.gardenplanner.gardenplanner;
 
 import com.gardenplanner.gardenplanner.controller.LoginController;
-import com.gardenplanner.gardenplanner.model.*;
 import com.gardenplanner.gardenplanner.model.DAO.*;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +13,6 @@ import java.sql.SQLException;
  * The main class
  */
 public class Main extends Application {
-    DataStore dataStore = new DataStore();
-
     /**
      * Start the application
      *
@@ -25,7 +22,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/loginpage.fxml"));
-        loader.setControllerFactory(type -> new LoginController(dataStore));
+        loader.setControllerFactory(type -> new LoginController());
 
         primaryStage.setScene(new Scene(loader.load(), 900, 600));
         primaryStage.show();
