@@ -20,7 +20,6 @@ public class GardenbookAddplantController {
      * Constructs a new GardenbookAddplantController
      */
     public GardenbookAddplantController() {
-        perenualService = new PerenualService();
     }
 
 
