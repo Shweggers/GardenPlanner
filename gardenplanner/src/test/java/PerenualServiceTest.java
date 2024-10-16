@@ -91,7 +91,7 @@ public class PerenualServiceTest {
     @Test
     public void testGetPlantName() throws IOException, InterruptedException {
         String query = "t";
-        String jsonResponse = "[White Fir, Candicans White Fir, Fraser Fir, Alpine Fir, Noble Fir, Snakebark Maple, Cutleaf Fullmoon Maple, Attaryi Fullmoon Maple*, Emmett's Pumpkin Fullmoon Maple, Flamingo Boxelder, Kelly's Gold Boxelder, Japanese Maple, Aka Shigitatsu Sawa Japanese Maple, Alpenweiss Variegated Dwarf Japanese Maple*, Ao Shime No Uchi Japanese Maple, Aoyagi Japanese Maple*, Arakawa Cork Bark Japanese Maple, Asahi Zuru Japanese Maple, Ribbon-leaf Japanese Maple*, Purple-Leaf Japanese Maple, Aureum Japanese Maple*, Autumn Fire Japanese Maple, Azuma Murasaki Japanese Maple, Beni Kawa Coral Bark Japanese Maple*, Beni Otake Japanese Maple, Beni Schichihenge Japanese Maple, Beni Tsukasa Japanese Maple*, Bloodgood Japanese Maple, Bonfire Japanese Maple, Brandt's Dwarf Japanese Maple]";
+        String jsonResponse = "[White Fir (Abies concolor), Candicans White Fir (Abies concolor 'Candicans'), Fraser Fir (Abies fraseri), Alpine Fir (Abies lasiocarpa), Noble Fir (Abies procera), Snakebark Maple (Acer davidii), Cutleaf Fullmoon Maple (Acer japonicum 'Aconitifolium'), Attaryi Fullmoon Maple* (Acer japonicum 'Attaryi'), Emmett's Pumpkin Fullmoon Maple (Acer japonicum 'Emmett's Pumpkin'), Flamingo Boxelder (Acer negundo 'Flamingo'), Kelly's Gold Boxelder (Acer negundo 'Kelly's Gold'), Japanese Maple (Acer palmatum), Aka Shigitatsu Sawa Japanese Maple (Acer palmatum 'Aka Shigitatsu Sawa'), Alpenweiss Variegated Dwarf Japanese Maple* (Acer palmatum 'Alpenweiss'), Ao Shime No Uchi Japanese Maple (Acer palmatum 'Ao Shime No Uchi'), Aoyagi Japanese Maple* (Acer palmatum 'Aoyagi'), Arakawa Cork Bark Japanese Maple (Acer palmatum 'Arakawa'), Asahi Zuru Japanese Maple (Acer palmatum 'Asahi Zuru'), Ribbon-leaf Japanese Maple* (Acer palmatum 'Atrolineare'), Purple-Leaf Japanese Maple (Acer palmatum 'Atropurpureum'), Aureum Japanese Maple* (Acer palmatum 'Aureum'), Autumn Fire Japanese Maple (Acer palmatum 'Autumn Fire'), Azuma Murasaki Japanese Maple (Acer palmatum 'Azuma Murasaki'), Beni Kawa Coral Bark Japanese Maple* (Acer palmatum 'Beni Kawa'), Beni Otake Japanese Maple (Acer palmatum 'Beni Otake'), Beni Schichihenge Japanese Maple (Acer palmatum 'Beni Schichihenge'), Beni Tsukasa Japanese Maple* (Acer palmatum 'Beni Tsukasa'), Bloodgood Japanese Maple (Acer palmatum 'Bloodgood'), Bonfire Japanese Maple (Acer palmatum 'Bonfire'), Brandt's Dwarf Japanese Maple (Acer palmatum 'Brandt's Dwarf')]";
 
         when(httpResponseMock.body()).thenReturn(jsonResponse);
         when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
@@ -99,7 +99,7 @@ public class PerenualServiceTest {
 
         PerenualCollection output = perenualService.getPlantNames(query, 1);
 
-        assertEquals(jsonResponse, output.toString());
+        assertEquals(jsonResponse, output.getItemNames().toString());
     }
 
     @Test
