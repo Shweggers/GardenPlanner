@@ -17,20 +17,10 @@ import java.io.IOException;
  * RegisterController is a class that represents a controller for the registration page.
  */
 public class RegisterController {
-
-    /**
-     * The username field
-     */
     @FXML
     private TextField usernameField;
-    /**
-     * The email field
-     */
     @FXML
     private TextField emailField;
-    /**
-     * The password field
-     */
     @FXML
     private PasswordField passwordField;
 

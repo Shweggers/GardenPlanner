@@ -13,10 +13,6 @@ import java.io.IOException;
  * GardenController is a class that represents a controller for the garden page.
  */
 public class GardenController {
-
-    /**
-     * The back button
-     */
     @FXML
     private Button backButton;
     @FXML
@@ -44,6 +40,12 @@ public class GardenController {
         stage.show();
     }
 
+    /**
+     * Adds a new garden when the add garden button is clicked.
+     *
+     * @param event event details
+     * @throws IOException if an I/O error occurs
+     */
     @FXML
     public void addGardenButtonClicked(ActionEvent event) throws IOException {
         Stage stage = (Stage) addGardenButton.getScene().getWindow();

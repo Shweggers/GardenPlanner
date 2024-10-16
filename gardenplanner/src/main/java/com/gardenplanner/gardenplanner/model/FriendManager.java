@@ -9,11 +9,7 @@ import java.util.List;
  * FriendManager is a class that manages the Friend objects.
  */
 public class FriendManager {
-
     private static FriendManager instance;
-    /**
-     * The friend DAO
-     */
     private final IFriendDAO friendDAO;
 
     /**
@@ -25,6 +21,11 @@ public class FriendManager {
         this.friendDAO = friendDAO;
     }
 
+    /**
+     * Get the instance of the FriendManager.
+     *
+     * @return the instance of the FriendManager
+     */
     public static FriendManager getInstance() {
         if (instance == null) {
             instance = new FriendManager(new SQLFriendDAO());

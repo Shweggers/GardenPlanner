@@ -21,8 +21,10 @@ public class PerenualService {
     private static final String API_KEY = "sk-ZtM366ec7a8690cc16915";
     private static final String BASE_URL = "https://perenual.com/api/";
     private static PerenualService instance;
-    private final int page = 1;
 
+    /**
+     * Create a new PerenualService instance.
+     */
     public static PerenualService getInstance() {
         if (instance == null) {
             instance = new PerenualService();
@@ -71,6 +73,15 @@ public class PerenualService {
         }
     }
 
+    /**
+     * Get a list of plant names from the Perenual API
+     *
+     * @param query the query
+     * @param page  the page
+     * @return a list of plant names
+     * @throws IOException          if an I/O error occurs
+     * @throws InterruptedException if the operation is interrupted
+     */
     public PerenualCollection getPlantNames(String query, int page) throws IOException, InterruptedException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
 
@@ -100,6 +111,15 @@ public class PerenualService {
         }
     }
 
+    /**
+     * Get a list of plant names from the Perenual API for debugging purposes
+     *
+     * @param query the query
+     * @param page  the page
+     * @return a list of plant names
+     * @throws IOException          if an I/O error occurs
+     * @throws InterruptedException if the operation is interrupted
+     */
     public PerenualCollection debugQuery(String query, int page) throws IOException, InterruptedException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
 
@@ -127,6 +147,14 @@ public class PerenualService {
         }
     }
 
+    /**
+     * Get the response from a URL
+     *
+     * @param url the URL
+     * @return the response
+     * @throws IOException          if an I/O error occurs
+     * @throws InterruptedException if the operation is interrupted
+     */
     private JsonObject getResponse(String url) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))

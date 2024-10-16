@@ -9,14 +9,7 @@ import java.util.List;
  * Mock class for the GardenDAO class
  */
 public class MockGardenDAO implements IGardenDAO {
-    /**
-     * List of gardens
-     */
     private final ArrayList<Garden> gardens = new ArrayList<>();
-
-    /**
-     * Auto-incremented ID
-     */
     private int autoIncrementedId = 0;
 
     /**

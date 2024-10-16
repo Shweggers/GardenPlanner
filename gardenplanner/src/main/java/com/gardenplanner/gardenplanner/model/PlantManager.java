@@ -9,11 +9,7 @@ import java.util.List;
  * PlantManager is a class that manages the Plant objects.
  */
 public class PlantManager {
-
     private static PlantManager instance;
-    /**
-     * The plant DAO
-     */
     private final IPlantDAO plantDAO;
 
     /**
@@ -25,6 +21,11 @@ public class PlantManager {
         this.plantDAO = plantDAO;
     }
 
+    /**
+     * Get the instance of the PlantManager.
+     *
+     * @return the instance of the PlantManager
+     */
     public static PlantManager getInstance() {
         if (instance == null) {
             instance = new PlantManager(new SQLPlantDAO());

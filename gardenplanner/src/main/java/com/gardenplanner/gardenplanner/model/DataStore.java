@@ -4,10 +4,12 @@ package com.gardenplanner.gardenplanner.model;
  * DataStore is a class that represents a data store.
  */
 public class DataStore {
-
     private static DataStore instance = null;
     private User currentUser;
 
+    /**
+     * Create a new DataStore instance
+     */
     public static DataStore getInstance() {
         if (instance == null) {
             instance = new DataStore();

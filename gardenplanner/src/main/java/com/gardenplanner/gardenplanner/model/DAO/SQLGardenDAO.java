@@ -13,13 +13,10 @@ import java.util.List;
  * SQL class for the GardenDAO class
  */
 public class SQLGardenDAO implements IGardenDAO {
-    /**
-     * Connection to the database
-     */
     private final Connection connection;
 
     /**
-     * Constructor
+     * Constructor for the SQLGardenDAO class
      */
     public SQLGardenDAO() {
         connection = DatabaseConnection.getInstance();

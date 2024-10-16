@@ -1,7 +1,5 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DAO.SQLGardenDAO;
-import com.gardenplanner.gardenplanner.model.DAO.SQLUserDAO;
 import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.User;
 import javafx.fxml.FXML;
@@ -14,37 +12,20 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Optional;
 
 /**
  * HomepageController is a class that represents a controller for the homepage.
  */
 public class HomepageController {
-
-    /**
-     * The garden book button
-     */
     @FXML
     private Button gardenBookButton;
-    /**
-     * The logout button
-     */
     @FXML
     private Button logOutButton;
-    /**
-     * The friend button
-     */
     @FXML
     private Button friendButton;
-    /**
-     * The garden button
-     */
     @FXML
     private Button gardenButton;
-    /**
-     * The welcome message
-     */
     @FXML
     private Label welcomeMsg;
 
@@ -134,14 +115,9 @@ public class HomepageController {
 
     /**
      * Initialize the user data when Homepage is called
-     *
-     * @throws SQLException
      */
     @FXML
-    void initialize() throws SQLException {
-        SQLGardenDAO SQLGardenDAO = new SQLGardenDAO();
-        SQLUserDAO SQLUserDAO = new SQLUserDAO();
-
+    void initialize() {
         User currentUser = DataStore.getInstance().getCurrentUser();
 
         welcomeMsg.setText("Welcome " + currentUser.username());

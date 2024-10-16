@@ -4,9 +4,6 @@ package com.gardenplanner.gardenplanner.model;
  * Garden is a class that represents a garden record.
  */
 public record Garden(String name, int userID) {
-    /**
-     * The ID of the Garden record.
-     */
     public static int ID;
 
     /**

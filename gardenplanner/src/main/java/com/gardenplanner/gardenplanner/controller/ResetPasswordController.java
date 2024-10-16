@@ -18,25 +18,12 @@ import java.io.IOException;
  * ResetPasswordController is a class that represents a controller for the reset password page.
  */
 public class ResetPasswordController {
-
-    /**
-     * The username field
-     */
     @FXML
     private TextField usernameField;
-    /**
-     * The email field
-     */
     @FXML
     private TextField emailField;
-    /**
-     * The password field
-     */
     @FXML
     private PasswordField passwordField;
-    /**
-     * The password confirmation field
-     */
     @FXML
     private PasswordField confirmPasswordField;
 

@@ -10,16 +10,8 @@ import javafx.stage.Stage;
  * GardenAddGardenController is a class that represents a controller for adding a new garden.
  */
 public class GardenAddGardenController {
-
-    /**
-     * The garden name field
-     */
     @FXML
     private TextField gardenNameField;
-
-    /**
-     * The save button
-     */
     @FXML
     private Button saveButton;
 

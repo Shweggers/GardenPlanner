@@ -9,14 +9,7 @@ import java.util.List;
  * Mock implementation of the PlantDAO class
  */
 public class MockPlantDAO implements IPlantDAO {
-    /**
-     * List of plants
-     */
     private final ArrayList<Plant> plants = new ArrayList<Plant>();
-
-    /**
-     * Auto-incremented ID
-     */
     private int autoIncrementedId = 0;
 
     /**

@@ -11,9 +11,6 @@ import java.util.List;
  * SQL implementation of the PlantDAO class
  */
 public class SQLPlantDAO implements IPlantDAO {
-    /**
-     * Connection to the database
-     */
     private final Connection connection;
 
     /**

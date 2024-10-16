@@ -8,14 +8,7 @@ import java.util.ArrayList;
  * Mock implementation of the UserDAO class
  */
 public class MockUserDAO implements IUserDAO {
-    /**
-     * List of users
-     */
     private final ArrayList<User> users = new ArrayList<User>();
-
-    /**
-     * Auto-incremented ID
-     */
     private int autoIncrementedId = 0;
 
     /**

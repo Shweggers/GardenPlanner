@@ -12,15 +12,11 @@ import java.io.IOException;
  * FriendpageController is a class that represents a controller for the friend page.
  */
 public class FriendpageController {
-
-    /**
-     * The back button
-     */
     @FXML
     private Button backButton;
 
     /**
-     * Constructs a new FriendpageController with the specified data store.
+     * Constructs a new FriendpageController
      */
     public FriendpageController() {}
 

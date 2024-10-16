@@ -9,14 +9,7 @@ import java.util.List;
  * Mock class for the PlotDAO class
  */
 public class MockPlotDAO implements IPlotDAO {
-    /**
-     * List of plots
-     */
     private final ArrayList<Plot> plots = new ArrayList<Plot>();
-
-    /**
-     * Auto-incremented ID
-     */
     private int autoIncrementedId = 0;
 
     /**

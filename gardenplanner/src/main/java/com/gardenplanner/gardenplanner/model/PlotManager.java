@@ -9,11 +9,7 @@ import java.util.List;
  * PlotManager is a class that manages the Plot objects.
  */
 public class PlotManager {
-
     private static PlotManager instance;
-    /**
-     * The plot DAO
-     */
     private final IPlotDAO plotDAO;
 
     /**
@@ -25,6 +21,11 @@ public class PlotManager {
         this.plotDAO = plotDAO;
     }
 
+    /**
+     * Get the instance of the PlotManager.
+     *
+     * @return the instance of the PlotManager
+     */
     public static PlotManager getInstance() {
         if (instance == null) {
             instance = new PlotManager(new SQLPlotDAO());

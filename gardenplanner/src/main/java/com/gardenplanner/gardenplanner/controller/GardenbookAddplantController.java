@@ -52,8 +52,7 @@ public class GardenbookAddplantController {
     /**
      * Constructs a new GardenbookAddplantController
      */
-    public GardenbookAddplantController() {
-    }
+    public GardenbookAddplantController() {}
 
     /**
      * Populates the add plant search list with the search results
@@ -91,6 +90,13 @@ public class GardenbookAddplantController {
         lastPage = page;
     }
 
+    /**
+     * Goes to the previous page of search results
+     *
+     * @param event the action event
+     * @throws IOException if an I/O error occurs
+     * @throws InterruptedException if the thread is interrupted
+     */
     @FXML
     void previousPage(ActionEvent event) throws IOException, InterruptedException {
         page--;
@@ -98,12 +104,24 @@ public class GardenbookAddplantController {
 
     }
 
+    /**
+     * Goes to the next page of search results
+     *
+     * @param event the action event
+     * @throws IOException if an I/O error occurs
+     * @throws InterruptedException if the thread is interrupted
+     */
     @FXML
     void nextPage(ActionEvent event) throws IOException, InterruptedException {
         page++;
         populateList(event);
     }
 
+    /**
+     * Shows the information for a selected item
+     *
+     * @param item the selected item
+     */
     @FXML
     void showItemInformation(PerenualItem item) {
         Dictionary<String, String> itemData = item.getItemData();
@@ -119,6 +137,12 @@ public class GardenbookAddplantController {
         }
     }
 
+    /**
+     * Confirms the addition of a plant
+     *
+     * @param event the action event
+     * @throws IOException if an I/O error occurs
+     */
     @FXML
     void confirmAddPlant(ActionEvent event) throws IOException {
         PerenualItem selectedItem = addPlantSearchList.getSelectionModel().getSelectedItem();
@@ -128,6 +152,12 @@ public class GardenbookAddplantController {
         }
     }
 
+    /**
+     * Exits the add plant page
+     *
+     * @param event the action event
+     * @throws IOException if an I/O error occurs
+     */
     @FXML
     void exitButtonClicked(ActionEvent event) throws IOException {
         Stage stage = (Stage) addPlantExit.getScene().getWindow();
@@ -135,6 +165,9 @@ public class GardenbookAddplantController {
         stage.close();
     }
 
+    /**
+     * Initializes the controller
+     */
     @FXML
     void initialize() {
         page = 1;
@@ -149,9 +182,20 @@ public class GardenbookAddplantController {
     }
 
 
+    /**
+     * Renders the cell for the list view
+     *
+     * @param addPlantSearchList the list view
+     * @return the list cell
+     */
     ListCell<PerenualItem> renderCell(ListView<PerenualItem> addPlantSearchList) {
         return new ListCell<>() {
 
+            /**
+             * Handles the mouse event when an item is selected
+             *
+             * @param mouseEvent the mouse event
+             */
             private void onItemSelected(MouseEvent mouseEvent) {
                 ListCell<PerenualItem> clickedCell = (ListCell<PerenualItem>) mouseEvent.getSource();
                 PerenualItem selectedItem = clickedCell.getItem();
@@ -161,7 +205,12 @@ public class GardenbookAddplantController {
                 }
             }
 
-
+            /**
+             * Updates the cell with the new item and sets the mouse event
+             *
+             * @param perenualItem the new item
+             * @param empty        whether the cell is empty
+             */
             @Override
             protected void updateItem(PerenualItem perenualItem, boolean empty) {
                 super.updateItem(perenualItem, empty);

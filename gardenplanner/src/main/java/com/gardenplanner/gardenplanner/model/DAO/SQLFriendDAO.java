@@ -11,9 +11,6 @@ import java.util.List;
  * SQL implementation of the FriendDAO class
  */
 public class SQLFriendDAO implements IFriendDAO {
-    /**
-     * Connection to the database
-     */
     private final Connection connection;
 
     /**

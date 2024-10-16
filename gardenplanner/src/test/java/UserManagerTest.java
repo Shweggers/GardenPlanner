@@ -11,9 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
  * A class to test the UserManager class
  */
 public class UserManagerTest {
-    /**
-     * The User objects to use in the tests
-     */
     private final User[] users = {
             new User("JohnS", "email1", "password1"),
             new User("John824", "email2", "password1"),
@@ -22,9 +19,6 @@ public class UserManagerTest {
             new User("Alex", "email4", "password1"),
             new User("Alexander", "email1email1", "password1"),
     };
-    /**
-     * The UserManager object to test
-     */
     private UserManager userManager;
 
     /**

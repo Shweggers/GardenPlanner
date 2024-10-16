@@ -9,9 +9,6 @@ import java.sql.*;
  * SQL implementation of the UserDAO class
  */
 public class SQLUserDAO implements IUserDAO {
-    /**
-     * The database connection
-     */
     private final Connection connection;
 
     /**

@@ -12,9 +12,6 @@ import static org.junit.jupiter.api.Assertions.*;
  * Tests for the FriendManager class
  */
 public class FriendManagerTest {
-    /**
-     * The test friends
-     */
     private final Friend[] friends = {
             new Friend(1, 2, "Jane"),
             new Friend(1, 3, "JaneSmith"),
@@ -32,9 +29,6 @@ public class FriendManagerTest {
             new Friend(4, 3, "JaneSmith"),
             new Friend(5, 1, "John"),
     };
-    /**
-     * The test friend manager
-     */
     private FriendManager friendManager;
 
     /**

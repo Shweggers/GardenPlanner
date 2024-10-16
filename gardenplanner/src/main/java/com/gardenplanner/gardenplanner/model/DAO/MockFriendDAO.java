@@ -9,14 +9,7 @@ import java.util.List;
  * MockFriendDAO is a mock class for the FriendDAO class. It is used for testing purposes.
  */
 public class MockFriendDAO implements IFriendDAO {
-    /**
-     * The list of friends
-     */
     private final ArrayList<Friend> friends = new ArrayList<>();
-
-    /**
-     * The auto-incremented ID
-     */
     private int autoIncrementedId = 0;
 
     /**

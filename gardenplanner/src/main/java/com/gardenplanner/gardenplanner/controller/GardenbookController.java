@@ -17,35 +17,16 @@ import java.io.IOException;
  * GardenbookController is a class that represents a controller for the garden book page.
  */
 public class GardenbookController {
-
-    /**
-     * The add new plant button
-     */
     @FXML
     private Button addNewPlantButton;
-    /**
-     * The plant table
-     */
     @FXML
     private TableView<Plant> plantTable;
-    /**
-     * The plant column 1
-     */
     @FXML
     private TableColumn<Plant, String> plantColumn1;
-    /**
-     * The plant column 2
-     */
     @FXML
     private TableColumn<Plant, String> plantColumn2;
-    /**
-     * The plant search text field
-     */
     @FXML
     private TextField plantSearch;
-    /**
-     * The back button
-     */
     @FXML
     private Button backButton;
 
@@ -54,6 +35,12 @@ public class GardenbookController {
      */
     public GardenbookController() {}
 
+    /**
+     * Adds a new plant to the garden book when the add new plant button is clicked.
+     *
+     * @param event the event details
+     * @throws IOException if an I/O error occurs
+     */
     @FXML
     void addNewPlant(ActionEvent event) throws IOException {
         Stage stage = new Stage();

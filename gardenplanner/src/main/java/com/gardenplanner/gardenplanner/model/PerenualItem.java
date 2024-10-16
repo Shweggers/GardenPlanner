@@ -20,12 +20,23 @@ public class PerenualItem {
     private String harvestSeason;
     private String imageURL;
 
+    /**
+     * Create a new PerenualItem object.
+     *
+     * @param id         the ID of the item
+     * @param commonName the common name of the item
+     */
     public PerenualItem(String id, String commonName) {
         this.perenualService = new PerenualService();
         this.id = id;
         this.commonName = commonName;
     }
 
+    /**
+     * Get the item data.
+     *
+     * @return the item data or create it if it does not exist
+     */
     public Dictionary<String, String> getItemData() {
         if (itemData.isEmpty()) {
             try {
@@ -45,10 +56,20 @@ public class PerenualItem {
         return itemData;
     }
 
+    /**
+     * Get the common name of the item.
+     *
+     * @return the common name of the item
+     */
     public String getCommonName() {
         return commonName;
     }
 
+    /**
+     * Get the string representation of the item.
+     *
+     * @return the string representation of the item
+     */
     @Override
     public String toString() {
         return "{id: " + id + ", " +
@@ -61,6 +82,13 @@ public class PerenualItem {
                 "imageURL: " + imageURL + "}";
     }
 
+    /**
+     * Validate an object in the item data.
+     *
+     * @param itemData the item data
+     * @param field    the field to validate
+     * @return the validated object
+     */
     private String validateObject(JsonObject itemData, String field) {
         if (itemData.get(field).isJsonNull() || Objects.equals(itemData.get(field).toString(), "[]")) {
             return "n/a";
@@ -71,6 +99,13 @@ public class PerenualItem {
         return itemData.getAsJsonObject(field).get("value").getAsString() + " " + itemData.getAsJsonObject(field).get("unit").getAsString();
     }
 
+    /**
+     * Validate an element in the item data.
+     *
+     * @param itemData the item data
+     * @param field    the field to validate
+     * @return the validated element
+     */
     private String validateElement(JsonObject itemData, String field) {
         if (itemData.get(field).isJsonNull()) {
             return "n/a";
@@ -84,6 +119,11 @@ public class PerenualItem {
         return itemData.get(field).getAsString();
     }
 
+    /**
+     * Set the item data.
+     *
+     * @param itemData the item data
+     */
     private void SetItemData(JsonObject itemData) {
         this.depthWaterRequirement = validateObject(itemData, "depth_water_requirement");
         this.wateringGeneralBenchmark = validateObject(itemData, "watering_general_benchmark");

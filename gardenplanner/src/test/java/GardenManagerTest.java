@@ -13,9 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * Tests for the GardenManager class
  */
 public class GardenManagerTest {
-    /**
-     * The test gardens
-     */
     private final Garden[] gardens = {
             new Garden("Tomatoes 1", 1),
             new Garden("Tomatoes 2", 1),
@@ -30,9 +27,6 @@ public class GardenManagerTest {
             new Garden("Potatoes", 2),
             new Garden("Potatoes 1", 2)
     };
-    /**
-     * The test garden manager
-     */
     private GardenManager gardenManager;
 
     /**

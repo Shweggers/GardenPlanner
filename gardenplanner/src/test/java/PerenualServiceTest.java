@@ -18,20 +18,8 @@ import static org.mockito.Mockito.when;
  * A class to test the PerenualService class
  */
 public class PerenualServiceTest {
-
-    /**
-     * The PerenualService object to test
-     */
     private PerenualService perenualService;
-
-    /**
-     * The HttpClient object to mock
-     */
     private HttpClient httpClientMock;
-
-    /**
-     * The HttpResponse object to mock
-     */
     private HttpResponse<String> httpResponseMock;
 
     /**

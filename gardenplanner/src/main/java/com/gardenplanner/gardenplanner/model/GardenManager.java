@@ -9,11 +9,7 @@ import java.util.List;
  * GardenManager is a class that manages the Garden objects.
  */
 public class GardenManager {
-
     private static GardenManager instance;
-    /**
-     * The garden DAO
-     */
     private final IGardenDAO gardenDAO;
 
     /**
@@ -25,6 +21,11 @@ public class GardenManager {
         this.gardenDAO = gardenDAO;
     }
 
+    /**
+     * Get the instance of the GardenManager.
+     *
+     * @return the instance of the GardenManager
+     */
     public static GardenManager getInstance() {
         if (instance == null) {
             instance = new GardenManager(new SQLGardenDAO());

@@ -4,9 +4,6 @@ package com.gardenplanner.gardenplanner.model;
  * User is a public record class that represents a user.
  */
 public record User(String username, String email, String hashedPassword) {
-    /**
-     * The ID of the User record.
-     */
     private static int ID;
 
     /**
