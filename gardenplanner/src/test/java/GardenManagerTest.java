@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * Tests for the GardenManager class
@@ -154,5 +153,29 @@ public class GardenManagerTest {
     public void testSearchEmptyGardens() {
         List<Garden> gardenList = gardenManager.searchGardens(1, "Tomatoes");
         assertEquals(0, gardenList.size());
+    }
+
+    /**
+     * Test deleting a garden
+     */
+    @Test
+    public void testDeleteGarden() {
+        for (Garden garden : gardens) {
+            gardenManager.insert(garden);
+        }
+
+        gardenManager.delete(gardens[2]);
+        List<Garden> gardenList = gardenManager.searchGardens(1, "New Tomatoes 1");
+        assertEquals(0, gardenList.size());
+
+    }
+
+    /**
+     * Test converting garden object toString
+     */
+    @Test
+    public void testGardenToString() {
+        Garden garden = new Garden("Tomatoes 1", 1);
+        assertEquals("Garden{name='Tomatoes 1', userID=1}", garden.toString());
     }
 }

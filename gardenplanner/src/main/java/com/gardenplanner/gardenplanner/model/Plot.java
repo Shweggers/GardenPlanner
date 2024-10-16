@@ -28,8 +28,8 @@ public record Plot(int userID, String plant, LocalDate datePlanted) {
     @Override
     public String toString() {
         return "Plot{" +
-                ", userID='" + userID + '\'' +
-                ", plants=" + plant + '\'' +
+                "userID=" + userID +
+                ", plants='" + plant + '\'' +
                 ", datePlanted=" + datePlanted +
                 '}';
     }
