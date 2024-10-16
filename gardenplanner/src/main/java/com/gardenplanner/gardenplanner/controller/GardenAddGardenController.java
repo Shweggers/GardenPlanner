@@ -1,6 +1,5 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DataStore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,10 +10,6 @@ import javafx.stage.Stage;
  * GardenAddGardenController is a class that represents a controller for adding a new garden.
  */
 public class GardenAddGardenController {
-    /**
-     * The data store
-     */
-    private final DataStore dataStore;
 
     /**
      * The garden name field
@@ -30,11 +25,8 @@ public class GardenAddGardenController {
 
     /**
      * Constructs a new GardenAddGardenController with the specified data store.
-     *
-     * @param dataStore the data store
      */
-    public GardenAddGardenController(DataStore dataStore) {
-        this.dataStore = dataStore;
+    public GardenAddGardenController() {
     }
 
     /**

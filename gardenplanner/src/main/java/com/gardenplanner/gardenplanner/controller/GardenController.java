@@ -51,7 +51,7 @@ public class GardenController {
         Stage stage = (Stage) addGardenButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/addgarden.fxml"));
-        loader.setControllerFactory(type -> new GardenAddGardenController(dataStore));
+        loader.setControllerFactory(type -> new GardenAddGardenController());
 
         stage.setScene(new Scene(loader.load()));
         stage.show();
