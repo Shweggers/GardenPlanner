@@ -65,7 +65,7 @@ public class GardenbookAddplantController {
             return;
         }
 
-        PerenualCollection perenualCollection = perenualService.getPlantNames(search, page);
+        PerenualCollection perenualCollection = PerenualService.getInstance().getPlantNames(search, page);
         addPlantSearchList.getItems().setAll(perenualCollection.perenualItems);
 
         addPlantCurrentPage.setText(page + "/" + perenualCollection.pages);
