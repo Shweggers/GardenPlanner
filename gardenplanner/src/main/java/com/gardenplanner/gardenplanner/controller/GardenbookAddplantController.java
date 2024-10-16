@@ -153,6 +153,20 @@ public class GardenbookAddplantController {
         addPlantImage.setImage(new Image(itemData.get("imageURL"), 100, 100, true, true));
     }
 
+
+    @FXML
+    Button addPlantConfirm;
+
+
+    @FXML
+    void confirmAddPlant(ActionEvent event) throws IOException {
+        PerenualItem selectedItem = addPlantSearchList.getSelectionModel().getSelectedItem();
+        if (selectedItem != null) {
+            // dataStore.addPlant(selectedItem);
+            exitButtonClicked(event);
+        }
+    }
+
     /**
      * The exit button
      */

@@ -125,7 +125,7 @@
                               <ImageView fx:id="addPlantImage" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
                            </children>
                         </GridPane>
-                        <Button fx:id="addPlantConfirm" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Confirm">
+                        <Button fx:id="addPlantConfirm" onAction="#confirmAddPlant" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Confirm">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin>
