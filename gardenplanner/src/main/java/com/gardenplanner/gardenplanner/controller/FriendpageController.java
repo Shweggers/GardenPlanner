@@ -14,6 +14,8 @@ import java.io.IOException;
 public class FriendpageController {
     @FXML
     private Button backButton;
+    @FXML
+    private  Button addFriendButton;
 
     /**
      * Constructs a new FriendpageController
@@ -33,6 +35,16 @@ public class FriendpageController {
         loader.setControllerFactory(type -> new HomepageController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));
+        stage.show();
+    }
+
+    @FXML
+    void addFriend() throws IOException {
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/addfriend.fxml"));
+        loader.setControllerFactory(type -> new AddFriendController());
+
+        stage.setScene(new Scene(loader.load()));
         stage.show();
     }
 }
