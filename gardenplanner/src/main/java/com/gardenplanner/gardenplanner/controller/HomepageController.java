@@ -77,7 +77,7 @@ public class HomepageController {
 
         // Load the garden page FXML
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage.fxml"));
-        loader.setControllerFactory(type -> new GardenbookController());
+        loader.setControllerFactory(type -> new GardenController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));  // Set the garden page scene
         stage.show();  // Show the new scene
