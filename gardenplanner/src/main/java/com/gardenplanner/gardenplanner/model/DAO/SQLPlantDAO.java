@@ -57,12 +57,20 @@ public class SQLPlantDAO implements IPlantDAO {
     public void insert(Plant plant) {
         try {
             PreparedStatement insertPlant = connection.prepareStatement(
-                    "INSERT INTO plants (userID, plantID)" +
-                            "VALUES (?, ?)"
+                    "INSERT INTO plants (userID, plantID, name, waterDepth, waterAmount, waterVolume, sunlight, careLevel, harvestSeason, imageURL)" +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
 
             insertPlant.setInt(1, plant.userID());
             insertPlant.setString(2, plant.plantID());
+            insertPlant.setString(3, plant.name());
+            insertPlant.setString(4, plant.waterDepth());
+            insertPlant.setString(5, plant.waterAmount());
+            insertPlant.setString(6, plant.waterVolume());
+            insertPlant.setString(7, plant.sunlight());
+            insertPlant.setString(8, plant.careLevel());
+            insertPlant.setString(9, plant.harvestSeason());
+            insertPlant.setString(10, plant.imageURL());
 
             insertPlant.execute();
         } catch (SQLException e) {

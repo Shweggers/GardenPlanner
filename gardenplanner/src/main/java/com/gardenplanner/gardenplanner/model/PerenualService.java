@@ -42,12 +42,15 @@ public class PerenualService {
      */
     public JsonObject getPlantDataFromID(String plantID) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species/details/" + plantID + "?key=" + API_KEY;
-        JsonObject result = getResponse(url);
-
         try {
-            return result;
+            JsonObject result = getResponse(url);
+            try {
+                return result;
+            } catch (NullPointerException e) {
+                throw new LimitExceededException("API Error: API rate limit exceeded");
+            }
         } catch (NullPointerException e) {
-            throw new LimitExceededException("API Error: API rate limit exceeded");
+            throw new NullPointerException("Response Error: Bad response");
         }
     }
 
@@ -61,14 +64,19 @@ public class PerenualService {
      */
     public String getPlantIdFromName(String plantName) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(plantName, StandardCharsets.UTF_8);
-        JsonObject result = getResponse(url);
-
         try {
-            JsonArray plantData = result.getAsJsonArray("data");
-            return plantData.get(0).getAsJsonObject().get("id").getAsString();
+            JsonObject result = getResponse(url);
+            try {
+                JsonArray plantData = result.getAsJsonArray("data");
+                return plantData.get(0).getAsJsonObject().get("id").getAsString();
+            } catch (NullPointerException e) {
+                throw new LimitExceededException("API Error: API rate limit exceeded");
+            }
         } catch (NullPointerException e) {
-            throw new LimitExceededException("API Error: API rate limit exceeded");
+            throw new NullPointerException("Response Error: Bad response");
         }
+
+
     }
 
     /**
@@ -82,65 +90,33 @@ public class PerenualService {
      */
     public PerenualCollection getPlantNames(String query, int page) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
-        JsonObject result = getResponse(url);
-
         try {
-            JsonArray data = result.getAsJsonArray("data");
+            JsonObject result = getResponse(url);
+            try {
+                JsonArray data = result.getAsJsonArray("data");
 
-            PerenualCollection output = new PerenualCollection();
-            output.pages = result.get("last_page").getAsInt();
+                PerenualCollection output = new PerenualCollection();
+                output.pages = result.get("last_page").getAsInt();
 
-            data.forEach(plant -> {
-                String plantID = plant.getAsJsonObject().get("id").getAsString();
-                String plantName = plant.getAsJsonObject().get("common_name").getAsString();
+                data.forEach(plant -> {
+                    String plantID = plant.getAsJsonObject().get("id").getAsString();
+                    String plantName = plant.getAsJsonObject().get("common_name").getAsString();
 
-                if (!plant.getAsJsonObject().getAsJsonArray("scientific_name").isEmpty()) {
-                    plantName += " (" + plant.getAsJsonObject().getAsJsonArray("scientific_name").get(0).getAsString() + ")";
-                }
-                PerenualItem perenualItem = new PerenualItem(plantID, plantName);
+                    if (!plant.getAsJsonObject().getAsJsonArray("scientific_name").isEmpty()) {
+                        plantName += " (" + plant.getAsJsonObject().getAsJsonArray("scientific_name").get(0).getAsString() + ")";
+                    }
+                    PerenualItem perenualItem = new PerenualItem(plantID, plantName);
 
-                output.add(perenualItem);
-            });
-            return output;
-
+                    output.add(perenualItem);
+                });
+                return output;
+            } catch (NullPointerException e) {
+                throw new LimitExceededException("API Error: API rate limit exceeded");
+            }
         } catch (NullPointerException e) {
-            throw new LimitExceededException("API Error: API rate limit exceeded");
+            throw new NullPointerException("Response Error: Bad response");
         }
-    }
 
-    /**
-     * Get a list of plant names from the Perenual API for debugging purposes
-     *
-     * @param query the query
-     * @param page  the page
-     * @return a list of plant names
-     * @throws IOException          if an I/O error occurs
-     * @throws InterruptedException if the operation is interrupted
-     */
-    public PerenualCollection debugQuery(String query, int page) throws IOException, InterruptedException, LimitExceededException {
-        String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
-        JsonObject result = getResponse(url);
-
-        try {
-            JsonArray data = result.getAsJsonArray("data");
-
-            PerenualCollection output = new PerenualCollection();
-            data.forEach(plant -> {
-                String plantID = plant.getAsJsonObject().get("id").getAsString();
-                String plantName = plant.getAsJsonObject().get("common_name").getAsString();
-
-                if (!plant.getAsJsonObject().getAsJsonArray("scientific_name").isEmpty()) {
-                    plantName += "\n(" + plant.getAsJsonObject().getAsJsonArray("scientific_name").get(0).getAsString() + ")";
-                }
-                PerenualItem perenualItem = new PerenualItem(plantID, plantName);
-
-                output.add(perenualItem);
-            });
-            return output;
-
-        } catch (NullPointerException e) {
-            throw new LimitExceededException("API Error: API rate limit exceeded");
-        }
     }
 
     /**
@@ -156,7 +132,6 @@ public class PerenualService {
                 .uri(URI.create(url))
                 .GET()
                 .build();
-
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 
         try {

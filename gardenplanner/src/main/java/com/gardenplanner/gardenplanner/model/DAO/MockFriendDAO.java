@@ -10,7 +10,6 @@ import java.util.List;
  */
 public class MockFriendDAO implements IFriendDAO {
     private final ArrayList<Friend> friends = new ArrayList<>();
-    private int autoIncrementedId = 0;
 
     /**
      * Insert a friend into the database
@@ -19,9 +18,6 @@ public class MockFriendDAO implements IFriendDAO {
      */
     @Override
     public void insert(Friend friend) {
-        friend.setID(autoIncrementedId);
-        autoIncrementedId++;
-
         friends.add(friend);
     }
 

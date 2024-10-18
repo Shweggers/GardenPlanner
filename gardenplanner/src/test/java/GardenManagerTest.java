@@ -14,18 +14,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class GardenManagerTest {
     private final Garden[] gardens = {
-            new Garden("Tomatoes 1", 1),
-            new Garden("Tomatoes 2", 1),
-            new Garden("New Potatoes 1", 1),
-            new Garden("Garden 1", 1),
-            new Garden("Garden 2", 1),
-            new Garden("Carrots", 1),
-            new Garden("Garden 1", 2),
-            new Garden("Garden 2", 2),
-            new Garden("Garden 3", 2),
-            new Garden("Tomatoes", 2),
-            new Garden("Potatoes", 2),
-            new Garden("Potatoes 1", 2)
+            new Garden(1, "Tomatoes 1"),
+            new Garden(1, "Tomatoes 2"),
+            new Garden(1, "New Potatoes 1"),
+            new Garden(1, "Garden 1"),
+            new Garden(1, "Garden 2"),
+            new Garden(1, "Carrots"),
+            new Garden(2, "Garden 1"),
+            new Garden(2, "Garden 2"),
+            new Garden(2, "Garden 3"),
+            new Garden(2, "Tomatoes"),
+            new Garden(2, "Potatoes"),
+            new Garden(2, "Potatoes 1")
     };
     private GardenManager gardenManager;
 
@@ -168,7 +168,7 @@ public class GardenManagerTest {
      */
     @Test
     public void testGardenToString() {
-        Garden garden = new Garden("Tomatoes 1", 1);
+        Garden garden = new Garden(1, "Tomatoes 1");
         assertEquals("Garden{name=Tomatoes 1, userID=1}", garden.toString());
     }
 }

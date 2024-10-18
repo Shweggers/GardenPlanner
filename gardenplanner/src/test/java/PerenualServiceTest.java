@@ -105,16 +105,4 @@ public class PerenualServiceTest {
             assertEquals("API Error: API rate limit exceeded", e.getMessage());
         }
     }
-
-    @Test
-    public void debugTest() throws IOException, InterruptedException {
-        String query = "banana";
-
-        try {
-            PerenualCollection output = perenualService.debugQuery(query, 1);
-            System.out.println(output.getItemNames());
-        } catch (LimitExceededException e) {
-            System.out.println(e.getMessage());
-        }
-    }
 }

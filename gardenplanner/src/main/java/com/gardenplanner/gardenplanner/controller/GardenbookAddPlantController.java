@@ -43,6 +43,7 @@ public class GardenbookAddPlantController {
     Button addPlantExit;
     @FXML
     GridPane addPlantInformationGridPane;
+    private GardenbookController gardenbookController;
     private String lastSearch = "";
     private int page = 1;
     private int lastPage = 1;
@@ -51,7 +52,7 @@ public class GardenbookAddPlantController {
     /**
      * Constructs a new GardenbookAddPlantController
      */
-    public GardenbookAddPlantController() {}
+    public GardenbookAddPlantController(GardenbookController gardenbookController) { this.gardenbookController = gardenbookController; }
 
     /**
      * Populates the add plant search list with the search results
@@ -161,10 +162,9 @@ public class GardenbookAddPlantController {
      * Confirms the addition of a plant
      *
      * @param event the action event
-     * @throws IOException if an I/O error occurs
      */
     @FXML
-    void confirmAddPlant(ActionEvent event) throws IOException {
+    void confirmAddPlant(ActionEvent event) {
         PerenualItem selectedItem = addPlantSearchList.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
             try {
@@ -172,7 +172,7 @@ public class GardenbookAddPlantController {
 
                 Plant plant = new Plant(
                         DataStore.getInstance().getCurrentUser().getID(),
-                        selectedItem.getId(),
+                        selectedItem.getID(),
                         selectedItem.getName(),
                         selectedItemData.get("waterDepth"),
                         selectedItemData.get("waterVolume"),
@@ -183,6 +183,8 @@ public class GardenbookAddPlantController {
                         selectedItemData.get("imageURL")
                 );
                 PlantManager.getInstance().insert(plant);
+
+                gardenbookController.populateList();
 
                 exitButtonClicked(event);
             } catch (LimitExceededException e) {

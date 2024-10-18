@@ -14,18 +14,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class PlantManagerTest {
     private final Plant[] plants = {
-            new Plant(1, "1", "Tomato", "", "", "", "", "", "", ""),
-            new Plant(1, "2", "Potato", "", "", "", "", "", "", ""),
-            new Plant(1, "3", "Carrot", "", "", "", "", "", "", ""),
-            new Plant(1, "4", "Baby Cucumber", "", "", "", "", "", "", ""),
-            new Plant(1, "5", "Cucumber", "", "", "", "", "", "", ""),
-            new Plant(1, "6", "Melon", "", "", "", "", "", "", ""),
-            new Plant(2, "3", "Carrot", "", "", "", "", "", "", ""),
-            new Plant(2, "1", "Tomato", "", "", "", "", "", "", ""),
-            new Plant(2, "7", "Blueberry", "", "", "", "", "", "", ""),
-            new Plant(2, "8", "Banana", "", "", "", "", "", "", ""),
-            new Plant(2, "9", "Pineapple", "", "", "", "", "", "", ""),
-            new Plant(2, "10", "Strawberry", "", "", "", "", "", "", ""),
+            new Plant(1, "Tomato"),
+            new Plant(1, "Potato"),
+            new Plant(1, "Carrot"),
+            new Plant(1, "Baby Cucumber"),
+            new Plant(1, "Cucumber"),
+            new Plant(1, "Melon"),
+            new Plant(2, "Carrot"),
+            new Plant(2, "Tomato"),
+            new Plant(2, "Blueberry"),
+            new Plant(2, "Banana"),
+            new Plant(2, "Pineapple"),
+            new Plant(2, "Strawberry"),
     };
     private PlantManager plantManager;
 

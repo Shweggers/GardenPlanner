@@ -9,7 +9,6 @@ import java.util.ArrayList;
  */
 public class MockUserDAO implements IUserDAO {
     private final ArrayList<User> users = new ArrayList<User>();
-    private int autoIncrementedId = 0;
 
     /**
      * Insert a user into the database
@@ -18,9 +17,6 @@ public class MockUserDAO implements IUserDAO {
      */
     @Override
     public void insert(User user) {
-        user.setID(autoIncrementedId);
-        autoIncrementedId++;
-
         users.add(user);
     }
 

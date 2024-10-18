@@ -33,17 +33,23 @@
                   </Button>
                </children>
             </VBox>
-            <VBox prefWidth="380.0">
+            <VBox fx:id="plantInformationPane" prefWidth="380.0">
                <children>
-                  <Label fx:id="plantName" alignment="CENTER" prefWidth="380.0" text="Label">
+                  <Label fx:id="plantName" alignment="CENTER" prefWidth="380.0" text="Label" VBox.vgrow="SOMETIMES">
                      <font>
-                        <Font name="System Bold" size="24.0" />
+                        <Font name="System Bold" size="20.0" />
                      </font>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
                   </Label>
                   <TableView fx:id="plantTable">
                     <columns>
-                      <TableColumn fx:id="plantInfo" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="184.8" resizable="false" sortable="false" text="Info Type" />
-                      <TableColumn fx:id="plantDetails" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="184.8" resizable="false" sortable="false" text="Details" />
+                      <TableColumn fx:id="plantInfo" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="183.8" resizable="false" sortable="false" text="Info Type" />
+                      <TableColumn fx:id="plantDetails" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="183.8" resizable="false" sortable="false" text="Details" />
                     </columns>
                      <VBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" />
