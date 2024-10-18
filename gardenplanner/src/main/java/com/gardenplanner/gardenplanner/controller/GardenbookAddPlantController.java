@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.naming.LimitExceededException;
 import java.io.IOException;
 import java.util.Dictionary;
 
@@ -65,7 +66,6 @@ public class GardenbookAddPlantController {
 
         if (search.isEmpty()) {
             addPlantSearchList.getItems().clear();
-            addPlantInformationGridPane.setVisible(false);
             addPlantCurrentPage.setText("");
             return;
         }
@@ -74,18 +74,21 @@ public class GardenbookAddPlantController {
             return;
         }
 
-        PerenualCollection perenualCollection = PerenualService.getInstance().getPlantNames(search, page);
-        addPlantSearchList.getItems().setAll(perenualCollection.perenualItems);
+        try {
+            PerenualCollection perenualCollection = PerenualService.getInstance().getPlantNames(search, page);
 
-        addPlantCurrentPage.setText(page + "/" + perenualCollection.pages);
+            addPlantSearchList.getItems().setAll(perenualCollection.perenualItems);
 
-        addPlantPreviousPage.setDisable(page == 1);
-        addPlantNextPage.setDisable(page == perenualCollection.pages);
+            addPlantCurrentPage.setText(page + "/" + perenualCollection.pages);
 
-        addPlantInformationGridPane.setVisible(true);
+            addPlantPreviousPage.setDisable(page == 1);
+            addPlantNextPage.setDisable(page == perenualCollection.pages);
 
-        lastSearch = search;
-        lastPage = page;
+            lastSearch = search;
+            lastPage = page;
+        } catch (LimitExceededException e) {
+            handleAPIError(e);
+        }
     }
 
     /**
@@ -98,7 +101,11 @@ public class GardenbookAddPlantController {
     @FXML
     void previousPage(ActionEvent event) throws IOException, InterruptedException {
         page--;
+
         populateList(event);
+
+        addPlantSearchList.getSelectionModel().clearSelection();
+        addPlantInformationGridPane.setVisible(false);
     }
 
     /**
@@ -111,7 +118,11 @@ public class GardenbookAddPlantController {
     @FXML
     void nextPage(ActionEvent event) throws IOException, InterruptedException {
         page++;
+
         populateList(event);
+
+        addPlantSearchList.getSelectionModel().clearSelection();
+        addPlantInformationGridPane.setVisible(false);
     }
 
     /**
@@ -121,16 +132,28 @@ public class GardenbookAddPlantController {
      */
     @FXML
     void showItemInformation(PerenualItem item) {
-        Dictionary<String, String> itemData = item.getItemData();
-        addPlantDepth.setText(itemData.get("waterDepth"));
-        addPlantWaterRoutine.setText(itemData.get("waterAmount"));
-        addPlantWaterVolume.setText(itemData.get("waterVolume"));
-        addPlantSunlight.setText(itemData.get("sunlight"));
-        addPlantHarvestSeason.setText(itemData.get("harvestSeason"));
+        if (item == null) {
+            addPlantInformationGridPane.setVisible(false);
+            return;
+        }
+
         try {
-            addPlantImage.setImage(new Image(itemData.get("imageURL"), 100, 100, true, true));
-        } catch (IllegalArgumentException e) {
-            addPlantImage.setImage(null);
+            Dictionary<String, String> itemData = item.getItemData();
+
+            addPlantDepth.setText(itemData.get("waterDepth"));
+            addPlantWaterRoutine.setText(itemData.get("waterAmount"));
+            addPlantWaterVolume.setText(itemData.get("waterVolume"));
+            addPlantSunlight.setText(itemData.get("sunlight"));
+            addPlantHarvestSeason.setText(itemData.get("harvestSeason"));
+            try {
+                addPlantImage.setImage(new Image(itemData.get("imageURL"), 100, 100, true, true));
+            } catch (IllegalArgumentException e) {
+                addPlantImage.setImage(null);
+            }
+
+            addPlantInformationGridPane.setVisible(true);
+        } catch (LimitExceededException e) {
+            handleAPIError(e);
         }
     }
 
@@ -144,21 +167,27 @@ public class GardenbookAddPlantController {
     void confirmAddPlant(ActionEvent event) throws IOException {
         PerenualItem selectedItem = addPlantSearchList.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            Plant plant = new Plant(
-                    DataStore.getInstance().getCurrentUser().getID(),
-                    selectedItem.getId(),
-                    selectedItem.getName(),
-                    selectedItem.getItemData().get("waterDepth"),
-                    selectedItem.getItemData().get("waterVolume"),
-                    selectedItem.getItemData().get("waterAmount"),
-                    selectedItem.getItemData().get("sunlight"),
-                    selectedItem.getItemData().get("careLevel"),
-                    selectedItem.getItemData().get("harvestSeason"),
-                    selectedItem.getItemData().get("imageURL")
-            );
-            PlantManager.getInstance().insert(plant);
+            try {
+                Dictionary<String, String> selectedItemData = selectedItem.getItemData();
 
-            exitButtonClicked(event);
+                Plant plant = new Plant(
+                        DataStore.getInstance().getCurrentUser().getID(),
+                        selectedItem.getId(),
+                        selectedItem.getName(),
+                        selectedItemData.get("waterDepth"),
+                        selectedItemData.get("waterVolume"),
+                        selectedItemData.get("waterAmount"),
+                        selectedItemData.get("sunlight"),
+                        selectedItemData.get("careLevel"),
+                        selectedItemData.get("harvestSeason"),
+                        selectedItemData.get("imageURL")
+                );
+                PlantManager.getInstance().insert(plant);
+
+                exitButtonClicked(event);
+            } catch (LimitExceededException e) {
+                handleAPIError(e);
+            }
         }
     }
 
@@ -170,7 +199,6 @@ public class GardenbookAddPlantController {
     @FXML
     void exitButtonClicked(ActionEvent event) {
         Stage stage = (Stage) addPlantExit.getScene().getWindow();
-
         stage.close();
     }
 
@@ -230,5 +258,19 @@ public class GardenbookAddPlantController {
                 }
             }
         };
+    }
+
+
+    void handleAPIError(Exception e) {
+        addPlantSearchList.getSelectionModel().clearSelection();
+        addPlantSearchList.getItems().clear();
+        addPlantCurrentPage.setText("");
+
+        addPlantPreviousPage.setDisable(true);
+        addPlantNextPage.setDisable(true);
+
+        addPlantInformationGridPane.setVisible(false);
+
+        new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
     }
 }

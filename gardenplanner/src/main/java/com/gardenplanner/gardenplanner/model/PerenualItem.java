@@ -2,6 +2,7 @@ package com.gardenplanner.gardenplanner.model;
 
 import com.google.gson.JsonObject;
 
+import javax.naming.LimitExceededException;
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -38,7 +39,7 @@ public class PerenualItem {
      *
      * @return the item data or create it if it does not exist
      */
-    public Dictionary<String, String> getItemData() {
+    public Dictionary<String, String> getItemData() throws LimitExceededException {
         if (itemData.isEmpty()) {
             try {
                 if (itemDataJson == null) {

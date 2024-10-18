@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonSyntaxException;
 
+import javax.naming.LimitExceededException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -39,15 +40,14 @@ public class PerenualService {
      * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
      */
-    public JsonObject getPlantDataFromID(String plantID) throws IOException, InterruptedException {
+    public JsonObject getPlantDataFromID(String plantID) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species/details/" + plantID + "?key=" + API_KEY;
+        JsonObject result = getResponse(url);
 
         try {
-            JsonObject result = getResponse(url);
-
             return result;
         } catch (NullPointerException e) {
-            return null;
+            throw new LimitExceededException("API Error: API rate limit exceeded");
         }
     }
 
@@ -59,16 +59,15 @@ public class PerenualService {
      * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
      */
-    public String getPlantIdFromName(String plantName) throws IOException, InterruptedException {
+    public String getPlantIdFromName(String plantName) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(plantName, StandardCharsets.UTF_8);
+        JsonObject result = getResponse(url);
 
         try {
-            JsonObject result = getResponse(url);
-
             JsonArray plantData = result.getAsJsonArray("data");
             return plantData.get(0).getAsJsonObject().get("id").getAsString();
         } catch (NullPointerException e) {
-            return null;
+            throw new LimitExceededException("API Error: API rate limit exceeded");
         }
     }
 
@@ -81,12 +80,11 @@ public class PerenualService {
      * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
      */
-    public PerenualCollection getPlantNames(String query, int page) throws IOException, InterruptedException {
+    public PerenualCollection getPlantNames(String query, int page) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
+        JsonObject result = getResponse(url);
 
         try {
-            JsonObject result = getResponse(url);
-
             JsonArray data = result.getAsJsonArray("data");
 
             PerenualCollection output = new PerenualCollection();
@@ -106,7 +104,7 @@ public class PerenualService {
             return output;
 
         } catch (NullPointerException e) {
-            return null;
+            throw new LimitExceededException("API Error: API rate limit exceeded");
         }
     }
 
@@ -119,12 +117,11 @@ public class PerenualService {
      * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
      */
-    public PerenualCollection debugQuery(String query, int page) throws IOException, InterruptedException {
+    public PerenualCollection debugQuery(String query, int page) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
+        JsonObject result = getResponse(url);
 
         try {
-            JsonObject result = getResponse(url);
-
             JsonArray data = result.getAsJsonArray("data");
 
             PerenualCollection output = new PerenualCollection();
@@ -142,7 +139,7 @@ public class PerenualService {
             return output;
 
         } catch (NullPointerException e) {
-            return null;
+            throw new LimitExceededException("API Error: API rate limit exceeded");
         }
     }
 
@@ -165,7 +162,7 @@ public class PerenualService {
         try {
             return new Gson().fromJson(response.body(), JsonObject.class);
         } catch (JsonSyntaxException e) {
-            throw new NullPointerException();
+            throw new NullPointerException("Bad response");
         }
     }
 }

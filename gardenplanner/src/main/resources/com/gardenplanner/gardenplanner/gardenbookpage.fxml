@@ -42,8 +42,8 @@
                   </Label>
                   <TableView fx:id="plantTable">
                     <columns>
-                      <TableColumn fx:id="plantInfo" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="185.2" resizable="false" sortable="false" text="Info Type" />
-                      <TableColumn fx:id="plantDetails" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="185.2" resizable="false" sortable="false" text="Details" />
+                      <TableColumn fx:id="plantInfo" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="184.8" resizable="false" sortable="false" text="Info Type" />
+                      <TableColumn fx:id="plantDetails" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="184.8" resizable="false" sortable="false" text="Details" />
                     </columns>
                      <VBox.margin>
                         <Insets bottom="10.0" left="5.0" right="5.0" />
@@ -51,10 +51,10 @@
                   </TableView>
                </children>
             </VBox>
-            <AnchorPane prefHeight="380.0" prefWidth="180.0" style="-fx-border-color: black;">
+            <AnchorPane prefHeight="380.0" prefWidth="180.0">
                <children>
                   <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Back" textAlignment="CENTER" AnchorPane.topAnchor="5.0" />
-                  <ImageView fitHeight="167.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="0.0" />
+                  <ImageView fx:id="plantImage" fitHeight="167.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="0.0" />
                </children>
                <padding>
                   <Insets left="5.0" right="5.0" />

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -16,6 +17,8 @@ import java.io.IOException;
  */
 public class GardenbookController {
     @FXML
+    private TextField plantSearch;
+    @FXML
     ListView<Plant> plantList;
     @FXML
     private Button addNewPlantButton;
@@ -24,13 +27,13 @@ public class GardenbookController {
     @FXML
     private TableView<Plant> plantTable;
     @FXML
-    private TableColumn<Plant, String> plantColumn1;
+    private TableColumn<Plant, String> plantInfo;
     @FXML
-    private TableColumn<Plant, String> plantColumn2;
-    @FXML
-    private TextField plantSearch;
+    private TableColumn<Plant, String> plantDetails;
     @FXML
     private Button backButton;
+    @FXML
+    private ImageView plantImage;
 
     /**
      * Constructs a new GardenbookController
@@ -72,7 +75,7 @@ public class GardenbookController {
     }
 
 
-    ListCell<Plant> renderCell(ListView<Plant> addPlantSearchList) {
+    ListCell<Plant> renderCell(ListView<Plant> plantList) {
         return new ListCell<>() {
             /**
              * Handles the mouse event when an item is selected
@@ -81,27 +84,27 @@ public class GardenbookController {
              */
             private void onItemSelected(MouseEvent mouseEvent) {
                 ListCell<Plant> clickedCell = (ListCell<Plant>) mouseEvent.getSource();
-                Plant selectedItem = clickedCell.getItem();
-                if (selectedItem != null) {
-                    addPlantSearchList.getSelectionModel().select(selectedItem);
-                    // showItemInformation(selectedItem);
+                Plant selectedPlant = clickedCell.getItem();
+                if (selectedPlant != null) {
+                    plantList.getSelectionModel().select(selectedPlant);
+                    // showItemInformation(selectedPlant);
                 }
             }
 
             /**
              * Updates the cell with the new item and sets the mouse event
              *
-             * @param perenualItem the new item
-             * @param empty        whether the cell is empty
+             * @param plant the new item
+             * @param empty whether the cell is empty
              */
             @Override
-            protected void updateItem(Plant perenualItem, boolean empty) {
-                super.updateItem(perenualItem, empty);
-                if (empty || perenualItem == null) {
+            protected void updateItem(Plant plant, boolean empty) {
+                super.updateItem(plant, empty);
+                if (empty || plant == null) {
                     setText(null);
                     super.setOnMouseClicked(this::onItemSelected);
                 } else {
-                    setText(perenualItem.name());
+                    setText(plant.name());
                 }
             }
         };
