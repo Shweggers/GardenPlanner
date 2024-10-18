@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.GardenbookController">
@@ -19,42 +20,45 @@
             <Font name="System Bold" size="50.0" />
          </font>
       </Label>
-      <HBox layoutX="100.0" layoutY="100.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
+      <HBox layoutX="100.0" layoutY="100.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
          <children>
-            <AnchorPane maxWidth="-Infinity" prefHeight="200.0" prefWidth="180.0" style="-fx-border-color: black;">
+            <VBox style="-fx-border-color: black;">
                <children>
-                  <TextField fx:id="plantSearch" prefHeight="30.0" prefWidth="180.0" promptText="Search" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                  <ListView fx:id="plantList" layoutY="30.0" prefHeight="310.0" prefWidth="180.0" translateX="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                  <Button fx:id="addNewPlantButton" onAction="#addNewPlant" mnemonicParsing="false" prefHeight="40.0" text="Add New" textAlignment="CENTER" translateY="-1.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <TextField fx:id="plantSearch" prefHeight="30.0" promptText="Search" />
+                  <ListView fx:id="plantList" prefHeight="310.0" prefWidth="180.0" />
+                  <Button fx:id="addNewPlantButton" mnemonicParsing="false" onAction="#addNewPlant" prefWidth="180.0" text="Add New" textAlignment="CENTER" translateY="-1.0">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Button>
                </children>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </AnchorPane>
-            <AnchorPane prefHeight="380.0" prefWidth="380.0" style="-fx-border-color: black;">
+            </VBox>
+            <VBox prefWidth="380.0">
                <children>
-                  <Label fx:id="gardenName" alignment="CENTER" prefHeight="40.0" text="Label" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <Label fx:id="plantName" alignment="CENTER" prefWidth="380.0" text="Label">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Label>
-                  <TableView fx:id="plantTable" layoutX="6.400000095367432" layoutY="41.599998474121094" prefHeight="326.0" prefWidth="367.2" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="40.0">
+                  <TableView fx:id="plantTable">
                     <columns>
-                      <TableColumn fx:id="plantInfo" editable="false" prefWidth="184.4" resizable="false" text="Info Type" />
-                      <TableColumn fx:id="plantDetails" editable="false" minWidth="0.0" prefWidth="184.4" resizable="false" text="Details" />
+                      <TableColumn fx:id="plantInfo" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="185.2" resizable="false" sortable="false" text="Info Type" />
+                      <TableColumn fx:id="plantDetails" editable="false" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="185.2" resizable="false" sortable="false" text="Details" />
                     </columns>
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="5.0" right="5.0" />
+                     </VBox.margin>
                   </TableView>
                </children>
-            </AnchorPane>
+            </VBox>
             <AnchorPane prefHeight="380.0" prefWidth="180.0" style="-fx-border-color: black;">
                <children>
-                  <Button fx:id="backButton" layoutX="50.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Back" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="5.0" />
-                  <ImageView fitHeight="207.0" fitWidth="166.0" layoutX="7.2" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="11.0" AnchorPane.leftAnchor="6.0" />
+                  <Button fx:id="backButton" alignment="CENTER" contentDisplay="CENTER" layoutX="50.0" layoutY="7.0" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Back" textAlignment="CENTER" AnchorPane.topAnchor="5.0" />
+                  <ImageView fitHeight="167.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="0.0" />
                </children>
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
             </AnchorPane>
          </children>
       </HBox>

@@ -16,7 +16,11 @@ import java.io.IOException;
  */
 public class GardenbookController {
     @FXML
+    ListView<Plant> plantList;
+    @FXML
     private Button addNewPlantButton;
+    @FXML
+    private Label plantName;
     @FXML
     private TableView<Plant> plantTable;
     @FXML
