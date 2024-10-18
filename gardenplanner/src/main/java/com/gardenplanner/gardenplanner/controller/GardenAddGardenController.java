@@ -10,10 +10,11 @@ import javafx.stage.Stage;
  * GardenAddGardenController is a class that represents a controller for adding a new garden.
  */
 public class GardenAddGardenController {
+
     @FXML
-    private TextField gardenNameField;
+    private Button cancelButton;
     @FXML
-    private Button saveButton;
+    private Button addGardenConfirmButton;
 
     /**
      * Constructs a new GardenAddGardenController
@@ -25,14 +26,21 @@ public class GardenAddGardenController {
      *
      * @param event the event details
      */
+
     @FXML
-    public void saveButtonClicked(ActionEvent event) {
-        String gardenName = gardenNameField.getText();
+    public void cancelButtonClicked(ActionEvent event) {
+        // Close the current window
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    public void setAddGardenConfirmButton(ActionEvent event) {
         // Add logic to save the garden name to the data store
         // dataStore.addGarden(new Garden(gardenName));
 
         // Close the current window
-        Stage stage = (Stage) saveButton.getScene().getWindow();
+        Stage stage = (Stage) addGardenConfirmButton.getScene().getWindow();
         stage.close();
     }
 }

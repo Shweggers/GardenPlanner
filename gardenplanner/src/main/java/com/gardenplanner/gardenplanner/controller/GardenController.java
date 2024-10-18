@@ -28,7 +28,7 @@ public class GardenController {
 
     @FXML
     void addGardenButtonClicked(ActionEvent event) throws IOException {
-        Stage stage = (Stage) addGardenButton.getScene().getWindow();
+        Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/addgarden.fxml"));
         loader.setControllerFactory(type -> new GardenAddGardenController());
