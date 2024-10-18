@@ -1,5 +1,6 @@
 package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.model.GardenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,6 +15,16 @@ public class GardenController {
     private Button backButton;
     @FXML
     private Button addGardenButton;
+    @FXML
+    private Button addPlotButton;
+    @FXML
+    private Button editPlotButton;
+    @FXML
+    private Button membersButton;
+    @FXML
+    private Button replantButton;
+    @FXML
+    private Button leaveGarden;
 
     @FXML
     public void backButtonClicked(ActionEvent event) throws IOException {
@@ -36,4 +47,30 @@ public class GardenController {
         stage.setScene(new Scene(loader.load()));
         stage.show();
     }
+
+    @FXML
+    void membersButtonClicked(ActionEvent event) {
+        // Handle the members button click event
+        System.out.println("Members button clicked");
+        // Add your logic here
+    }
+
+    @FXML
+    void replantButtonClicked(ActionEvent event) {
+        // Handle the replant button click event
+        System.out.println("Replant button clicked");
+        // Add your logic here
+    }
+
+    @FXML
+    void leaveGardenButtonClicked(ActionEvent event) {
+        // Handle the leave garden button click event
+        System.out.println("Leave Garden button clicked");
+        // Add your logic here
+    }
+
+    private final GardenManager gardenManager = GardenManager.getInstance();
+
+    @FXML
+
 }
