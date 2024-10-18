@@ -32,10 +32,10 @@ public class SQLGardenDAO implements IGardenDAO {
             createTable.execute(
                     "CREATE TABLE IF NOT EXISTS gardens ("
                             + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
-                            + "gardenName   TEXT    NOT NULL, "
                             + "userID       INTEGER NOT NULL, "
+                            + "gardenName   TEXT    NOT NULL, "
                             + "FOREIGN KEY(userID)  REFERENCES users(id), "
-                            + "UNIQUE(gardenName, userID)"
+                            + "UNIQUE(userID, gardenName)"
                             + ")"
             );
         } catch (SQLException e) {
@@ -52,10 +52,10 @@ public class SQLGardenDAO implements IGardenDAO {
     public void insert(Garden garden) {
         try {
             PreparedStatement insertGarden = connection.prepareStatement(
-                    "INSERT INTO gardens (gardenName, userID) VALUES (?, ?)"
+                    "INSERT INTO gardens (userID, gardenName) VALUES (?, ?)"
             );
-            insertGarden.setString(1, garden.name());
-            insertGarden.setInt(2, garden.userID());
+            insertGarden.setInt(1, garden.userID());
+            insertGarden.setString(2, garden.name());
 
             insertGarden.execute();
         } catch (SQLException e) {
@@ -72,10 +72,11 @@ public class SQLGardenDAO implements IGardenDAO {
     public void delete(Garden garden) {
         try {
             PreparedStatement deleteGarden = connection.prepareStatement(
-                    "DELETE FROM gardens WHERE gardenName = ? AND userID = ?"
+                    "DELETE FROM gardens WHERE userID = ? AND gardenName = ?"
             );
-            deleteGarden.setString(1, garden.name());
-            deleteGarden.setInt(2, garden.userID());
+            deleteGarden.setInt(1, garden.userID());
+            deleteGarden.setString(2, garden.name());
+
 
             deleteGarden.execute();
         } catch (SQLException e) {

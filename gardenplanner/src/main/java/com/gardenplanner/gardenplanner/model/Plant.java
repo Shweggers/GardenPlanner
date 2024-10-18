@@ -1,18 +1,43 @@
 package com.gardenplanner.gardenplanner.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * A class to represent a plant
+ * Plant is a record that represents a plant object.
+ *
+ * @param userID the user ID
+ * @param plantID the plant ID
+ * @param name the name
+ * @param waterDepth the water depth
+ * @param waterVolume the water volume
+ * @param waterAmount the water amount
+ * @param sunlight the sunlight
+ * @param careLevel the care level
+ * @param harvestSeason the harvest season
  */
-public record Plant(int userID, String plantID) {
-    public static int ID;
+public record Plant(int userID, String plantID, String name, String waterDepth, String waterVolume, String waterAmount, String sunlight, String careLevel, String harvestSeason, String imageURL) {
 
     /**
-     * Sets the ID of the Plant record.
+     * Create a new Plant object with only the userID and name.
      *
-     * @param id the ID of the Plant record
+     * @param userID the user ID
+     * @param name the name
      */
-    public void setID(int id) {
-        ID = id;
+    public Plant(int userID, String name) {
+        this(userID, "", name, "", "", "", "", "", "", "");
+    }
+
+
+    public List<PlantProperty> getProperties() {
+        List<PlantProperty> properties = new ArrayList<>();
+        properties.add(new PlantProperty("Water Depth", waterDepth));
+        properties.add(new PlantProperty("Water Volume", waterVolume));
+        properties.add(new PlantProperty("Water Amount", waterAmount));
+        properties.add(new PlantProperty("Sunlight", sunlight));
+        properties.add(new PlantProperty("Care Level", careLevel));
+        properties.add(new PlantProperty("Harvest Season", harvestSeason));
+        return properties;
     }
 
     /**
@@ -24,7 +49,7 @@ public record Plant(int userID, String plantID) {
     public String toString() {
         return "Plant{" +
                 "userid=" + userID +
-                ", plantID='" + plantID + '\'' +
+                ", plantID=" + plantID +
                 '}';
     }
 }

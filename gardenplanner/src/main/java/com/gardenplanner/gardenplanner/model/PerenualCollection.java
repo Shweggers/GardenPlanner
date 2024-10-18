@@ -30,7 +30,7 @@ public class PerenualCollection {
      */
     public List<String> getItemNames() {
         return perenualItems.stream()
-                .map(PerenualItem::getCommonName)
+                .map(PerenualItem::getName)
                 .toList();
     }
 }

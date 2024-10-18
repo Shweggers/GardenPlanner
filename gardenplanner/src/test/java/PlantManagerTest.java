@@ -47,7 +47,7 @@ public class PlantManagerTest {
         List<Plant> plantList = plantManager.searchPlants(1, "Tomato");
         assertEquals(1, plantList.size());
         for (Plant plant : plantList) {
-            assertEquals("Tomato", plant.plantID());
+            assertEquals("Tomato", plant.name());
         }
     }
 
@@ -63,7 +63,7 @@ public class PlantManagerTest {
         List<Plant> plantList = plantManager.searchPlants(1, "Cucumber");
         assertEquals(2, plantList.size());
         for (Plant plant : plantList) {
-            assertTrue(plant.plantID().equals("Cucumber") || plant.plantID().equals("Baby Cucumber"));
+            assertTrue(plant.name().equals("Cucumber") || plant.name().equals("Baby Cucumber"));
         }
     }
 
@@ -118,7 +118,7 @@ public class PlantManagerTest {
         List<Plant> plantList = plantManager.searchPlants(2, "blueberry");
         assertEquals(1, plantList.size());
         for (Plant plant : plantList) {
-            assertEquals("Blueberry", plant.plantID());
+            assertEquals("Blueberry", plant.name());
         }
     }
 
@@ -134,7 +134,7 @@ public class PlantManagerTest {
         List<Plant> plantList = plantManager.searchPlants(2, "berry");
         assertEquals(2, plantList.size());
         for (Plant plant : plantList) {
-            assertTrue(plant.plantID().equals("Blueberry") || plant.plantID().equals("Strawberry"));
+            assertTrue(plant.name().equals("Blueberry") || plant.name().equals("Strawberry"));
         }
     }
 
@@ -166,7 +166,7 @@ public class PlantManagerTest {
      */
     @Test
     public void testPlantToString() {
-        Plant plant = new Plant(1, "Baby Cucumber");
-        assertEquals("Plant{userid=1, plantID='Baby Cucumber'}", plant.toString());
+        Plant plant = new Plant(1, "4", "Baby Cucumber", "", "", "", "", "", "", "");
+        assertEquals("Plant{userid=1, plantID=4}", plant.toString());
     }
 }

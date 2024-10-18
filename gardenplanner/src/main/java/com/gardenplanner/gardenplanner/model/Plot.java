@@ -6,17 +6,6 @@ import java.time.LocalDate;
  * Plot is a class that represents a plot record.
  */
 public record Plot(int userID, String plant, LocalDate datePlanted) {
-    public static int ID;
-
-    /**
-     * Sets the ID of the Plot record.
-     *
-     * @param id the ID of the Plot record
-     */
-    public void setID(int id) {
-        ID = id;
-    }
-
     /**
      * Returns a string representation of the Plot record.
      *
@@ -26,7 +15,7 @@ public record Plot(int userID, String plant, LocalDate datePlanted) {
     public String toString() {
         return "Plot{" +
                 "userID=" + userID +
-                ", plants='" + plant + '\'' +
+                ", plants=" + plant +
                 ", datePlanted=" + datePlanted +
                 '}';
     }

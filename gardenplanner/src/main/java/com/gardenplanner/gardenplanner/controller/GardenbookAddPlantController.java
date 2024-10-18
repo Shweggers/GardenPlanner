@@ -1,8 +1,6 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.PerenualCollection;
-import com.gardenplanner.gardenplanner.model.PerenualItem;
-import com.gardenplanner.gardenplanner.model.PerenualService;
+import com.gardenplanner.gardenplanner.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -12,10 +10,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.naming.LimitExceededException;
 import java.io.IOException;
 import java.util.Dictionary;
 
-public class GardenbookAddplantController {
+public class GardenbookAddPlantController {
     @FXML
     TextField addPlantSearch;
     @FXML
@@ -44,15 +43,16 @@ public class GardenbookAddplantController {
     Button addPlantExit;
     @FXML
     GridPane addPlantInformationGridPane;
+    private GardenbookController gardenbookController;
     private String lastSearch = "";
     private int page = 1;
     private int lastPage = 1;
 
 
     /**
-     * Constructs a new GardenbookAddplantController
+     * Constructs a new GardenbookAddPlantController
      */
-    public GardenbookAddplantController() {}
+    public GardenbookAddPlantController(GardenbookController gardenbookController) { this.gardenbookController = gardenbookController; }
 
     /**
      * Populates the add plant search list with the search results
@@ -67,7 +67,6 @@ public class GardenbookAddplantController {
 
         if (search.isEmpty()) {
             addPlantSearchList.getItems().clear();
-            addPlantInformationGridPane.setVisible(false);
             addPlantCurrentPage.setText("");
             return;
         }
@@ -76,18 +75,21 @@ public class GardenbookAddplantController {
             return;
         }
 
-        PerenualCollection perenualCollection = PerenualService.getInstance().getPlantNames(search, page);
-        addPlantSearchList.getItems().setAll(perenualCollection.perenualItems);
+        try {
+            PerenualCollection perenualCollection = PerenualService.getInstance().getPlantNames(search, page);
 
-        addPlantCurrentPage.setText(page + "/" + perenualCollection.pages);
+            addPlantSearchList.getItems().setAll(perenualCollection.perenualItems);
 
-        addPlantPreviousPage.setDisable(page == 1);
-        addPlantNextPage.setDisable(page == perenualCollection.pages);
+            addPlantCurrentPage.setText(page + "/" + perenualCollection.pages);
 
-        addPlantInformationGridPane.setVisible(true);
+            addPlantPreviousPage.setDisable(page == 1);
+            addPlantNextPage.setDisable(page == perenualCollection.pages);
 
-        lastSearch = search;
-        lastPage = page;
+            lastSearch = search;
+            lastPage = page;
+        } catch (LimitExceededException e) {
+            handleAPIError(e);
+        }
     }
 
     /**
@@ -100,8 +102,11 @@ public class GardenbookAddplantController {
     @FXML
     void previousPage(ActionEvent event) throws IOException, InterruptedException {
         page--;
+
         populateList(event);
 
+        addPlantSearchList.getSelectionModel().clearSelection();
+        addPlantInformationGridPane.setVisible(false);
     }
 
     /**
@@ -114,7 +119,11 @@ public class GardenbookAddplantController {
     @FXML
     void nextPage(ActionEvent event) throws IOException, InterruptedException {
         page++;
+
         populateList(event);
+
+        addPlantSearchList.getSelectionModel().clearSelection();
+        addPlantInformationGridPane.setVisible(false);
     }
 
     /**
@@ -124,16 +133,28 @@ public class GardenbookAddplantController {
      */
     @FXML
     void showItemInformation(PerenualItem item) {
-        Dictionary<String, String> itemData = item.getItemData();
-        addPlantDepth.setText(itemData.get("depthWaterRequirement"));
-        addPlantWaterRoutine.setText(itemData.get("wateringGeneralBenchmark"));
-        addPlantWaterVolume.setText(itemData.get("volumeWaterRequirement"));
-        addPlantSunlight.setText(itemData.get("sunRequirement"));
-        addPlantHarvestSeason.setText(itemData.get("harvestSeason"));
+        if (item == null) {
+            addPlantInformationGridPane.setVisible(false);
+            return;
+        }
+
         try {
-            addPlantImage.setImage(new Image(itemData.get("imageURL"), 100, 100, true, true));
-        } catch (IllegalArgumentException e) {
-            addPlantImage.setImage(null);
+            Dictionary<String, String> itemData = item.getItemData();
+
+            addPlantDepth.setText(itemData.get("waterDepth"));
+            addPlantWaterRoutine.setText(itemData.get("waterAmount"));
+            addPlantWaterVolume.setText(itemData.get("waterVolume"));
+            addPlantSunlight.setText(itemData.get("sunlight"));
+            addPlantHarvestSeason.setText(itemData.get("harvestSeason"));
+            try {
+                addPlantImage.setImage(new Image(itemData.get("imageURL"), 100, 100, true, true));
+            } catch (IllegalArgumentException e) {
+                addPlantImage.setImage(null);
+            }
+
+            addPlantInformationGridPane.setVisible(true);
+        } catch (LimitExceededException e) {
+            handleAPIError(e);
         }
     }
 
@@ -141,14 +162,34 @@ public class GardenbookAddplantController {
      * Confirms the addition of a plant
      *
      * @param event the action event
-     * @throws IOException if an I/O error occurs
      */
     @FXML
-    void confirmAddPlant(ActionEvent event) throws IOException {
+    void confirmAddPlant(ActionEvent event) {
         PerenualItem selectedItem = addPlantSearchList.getSelectionModel().getSelectedItem();
         if (selectedItem != null) {
-            // dataStore.addPlant(selectedItem);
-            exitButtonClicked(event);
+            try {
+                Dictionary<String, String> selectedItemData = selectedItem.getItemData();
+
+                Plant plant = new Plant(
+                        DataStore.getInstance().getCurrentUser().getID(),
+                        selectedItem.getID(),
+                        selectedItem.getName(),
+                        selectedItemData.get("waterDepth"),
+                        selectedItemData.get("waterVolume"),
+                        selectedItemData.get("waterAmount"),
+                        selectedItemData.get("sunlight"),
+                        selectedItemData.get("careLevel"),
+                        selectedItemData.get("harvestSeason"),
+                        selectedItemData.get("imageURL")
+                );
+                PlantManager.getInstance().insert(plant);
+
+                gardenbookController.populateList();
+
+                exitButtonClicked(event);
+            } catch (LimitExceededException e) {
+                handleAPIError(e);
+            }
         }
     }
 
@@ -156,12 +197,10 @@ public class GardenbookAddplantController {
      * Exits the add plant page
      *
      * @param event the action event
-     * @throws IOException if an I/O error occurs
      */
     @FXML
-    void exitButtonClicked(ActionEvent event) throws IOException {
+    void exitButtonClicked(ActionEvent event) {
         Stage stage = (Stage) addPlantExit.getScene().getWindow();
-
         stage.close();
     }
 
@@ -190,7 +229,6 @@ public class GardenbookAddplantController {
      */
     ListCell<PerenualItem> renderCell(ListView<PerenualItem> addPlantSearchList) {
         return new ListCell<>() {
-
             /**
              * Handles the mouse event when an item is selected
              *
@@ -218,9 +256,23 @@ public class GardenbookAddplantController {
                     setText(null);
                     super.setOnMouseClicked(this::onItemSelected);
                 } else {
-                    setText(perenualItem.getCommonName());
+                    setText(perenualItem.getName());
                 }
             }
         };
+    }
+
+
+    void handleAPIError(Exception e) {
+        addPlantSearchList.getSelectionModel().clearSelection();
+        addPlantSearchList.getItems().clear();
+        addPlantCurrentPage.setText("");
+
+        addPlantPreviousPage.setDisable(true);
+        addPlantNextPage.setDisable(true);
+
+        addPlantInformationGridPane.setVisible(false);
+
+        new Alert(Alert.AlertType.ERROR, e.getMessage()).showAndWait();
     }
 }

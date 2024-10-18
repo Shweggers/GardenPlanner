@@ -10,7 +10,6 @@ import java.util.List;
  */
 public class MockGardenDAO implements IGardenDAO {
     private final ArrayList<Garden> gardens = new ArrayList<>();
-    private int autoIncrementedId = 0;
 
     /**
      * Insert a garden into the database
@@ -19,9 +18,6 @@ public class MockGardenDAO implements IGardenDAO {
      */
     @Override
     public void insert(Garden garden) {
-        garden.setID(autoIncrementedId);
-        autoIncrementedId++;
-
         gardens.add(garden);
     }
 

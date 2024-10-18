@@ -1,14 +1,19 @@
 package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.Plant;
+import com.gardenplanner.gardenplanner.model.PlantManager;
+import com.gardenplanner.gardenplanner.model.PlantProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,22 +23,55 @@ import java.io.IOException;
  */
 public class GardenbookController {
     @FXML
-    private Button addNewPlantButton;
-    @FXML
-    private TableView<Plant> plantTable;
-    @FXML
-    private TableColumn<Plant, String> plantColumn1;
-    @FXML
-    private TableColumn<Plant, String> plantColumn2;
-    @FXML
     private TextField plantSearch;
     @FXML
+    private ListView<Plant> plantList;
+    @FXML
+    private Button addNewPlantButton;
+    @FXML
+    private VBox plantInformationPane;
+    @FXML
+    private Label plantName;
+    @FXML
+    private TableView<PlantProperty> plantTable;
+    @FXML
+    private TableColumn<PlantProperty, String> plantInfo;
+    @FXML
+    private TableColumn<PlantProperty, String> plantDetails;
+    @FXML
     private Button backButton;
+    @FXML
+    private ImageView plantImage;
 
     /**
      * Constructs a new GardenbookController
      */
     public GardenbookController() {}
+
+
+    void populateList() {
+        String search = plantSearch.getText();
+
+        plantList.getItems().setAll(PlantManager.getInstance().searchPlants(
+                DataStore.getInstance().getCurrentUser().getID(),
+                search
+        ));
+    }
+
+
+    public void showPlantInformation(Plant plant) {
+        plantInformationPane.setVisible(true);
+        plantImage.setVisible(true);
+
+        plantName.setText(plant.name());
+        try {
+            plantImage.setImage(new Image(plant.imageURL(), 100, 100, true, true));
+        } catch (IllegalArgumentException e) {
+            plantImage.setImage(null);
+        }
+
+        plantTable.getItems().setAll(plant.getProperties());
+    }
 
     /**
      * Adds a new plant to the garden book when the add new plant button is clicked.
@@ -46,7 +84,7 @@ public class GardenbookController {
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenbook_addplantpage.fxml"));
-        loader.setControllerFactory(type -> new GardenbookAddplantController());
+        loader.setControllerFactory(type -> new GardenbookAddPlantController(this));
 
         stage.setScene(new Scene(loader.load()));
         stage.show();
@@ -67,5 +105,63 @@ public class GardenbookController {
 
         stage.setScene(new Scene(loader.load()));
         stage.show();
+    }
+
+    /**
+     * Initializes the controller
+     */
+    @FXML
+    void initialize() {
+        plantList.setCellFactory(this::renderListCell);
+
+        plantInfo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().propertyName()));
+        plantDetails.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().propertyValue()));
+        populateList();
+
+        plantInformationPane.setVisible(false);
+        plantImage.setVisible(false);
+
+        plantSearch.textProperty().addListener((observable, oldValue, newValue) -> populateList());
+    }
+
+    /**
+     * Renders the cell for the plant list
+     *
+     * @param plantList the plant list
+     * @return the list cell
+     */
+    ListCell<Plant> renderListCell(ListView<Plant> plantList) {
+        return new ListCell<>() {
+            /**
+             * Handles the mouse event when an item is selected
+             *
+             * @param mouseEvent the mouse event
+             */
+            private void onItemSelected(MouseEvent mouseEvent) {
+                ListCell<Plant> clickedCell = (ListCell<Plant>) mouseEvent.getSource();
+                Plant selectedPlant = clickedCell.getItem();
+                if (selectedPlant != null) {
+                    plantList.getSelectionModel().select(selectedPlant);
+                    showPlantInformation(selectedPlant);
+                }
+            }
+
+            /**
+             * Updates the cell with the new item and sets the mouse event
+             *
+             * @param plant the new item
+             * @param empty whether the cell is empty
+             */
+            @Override
+            protected void updateItem(Plant plant, boolean empty) {
+                super.updateItem(plant, empty);
+                if (empty || plant == null) {
+                    setText(null);
+                    super.setOnMouseClicked(this::onItemSelected);
+                } else {
+                    setText(plant.name());
+                }
+            }
+        };
     }
 }

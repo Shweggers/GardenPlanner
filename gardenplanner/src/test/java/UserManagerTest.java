@@ -290,6 +290,6 @@ public class UserManagerTest {
     @Test
     public void testUserToString() {
         User user = new User("Sam123", "emailS", "passwordS");
-        assertEquals("User{username='Sam123', email='emailS'}", user.toString());
+        assertEquals("User{username=Sam123, email=emailS}", user.toString());
     }
 }

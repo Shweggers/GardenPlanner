@@ -3,18 +3,7 @@ package com.gardenplanner.gardenplanner.model;
 /**
  * Garden is a class that represents a garden record.
  */
-public record Garden(String name, int userID) {
-    public static int ID;
-
-    /**
-     * Sets the ID of the Garden record.
-     *
-     * @param id the ID of the Garden record
-     */
-    public void setID(int id) {
-        ID = id;
-    }
-
+public record Garden(int userID, String name) {
     /**
      * Returns a string representation of the Garden record.
      *
@@ -23,7 +12,7 @@ public record Garden(String name, int userID) {
     @Override
     public String toString() {
         return "Garden{" +
-                "name='" + name + '\'' +
+                "name=" + name +
                 ", userID=" + userID +
                 '}';
     }

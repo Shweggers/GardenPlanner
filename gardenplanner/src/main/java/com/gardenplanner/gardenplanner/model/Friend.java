@@ -4,17 +4,6 @@ package com.gardenplanner.gardenplanner.model;
  * Friend is a class that represents a friend record.
  */
 public record Friend(int userID, int friendID, String friendName) {
-    public static int ID;
-
-    /**
-     * Sets the ID of the Friend record.
-     *
-     * @param id the ID of the Friend record
-     */
-    public void setID(int id) {
-        ID = id;
-    }
-
     /**
      * Returns a string representation of the Friend record.
      *
@@ -25,7 +14,7 @@ public record Friend(int userID, int friendID, String friendName) {
         return "Friend{" +
                 "userID=" + userID +
                 ", friendID=" + friendID +
-                ", friendName='" + friendName + '\'' +
+                ", friendName=" + friendName +
                 '}';
     }
 }

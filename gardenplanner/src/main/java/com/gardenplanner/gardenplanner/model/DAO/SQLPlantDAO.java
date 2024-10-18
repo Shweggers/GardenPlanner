@@ -29,10 +29,18 @@ public class SQLPlantDAO implements IPlantDAO {
             Statement createTable = connection.createStatement();
             createTable.execute(
                     "CREATE TABLE IF NOT EXISTS plants ("
-                            + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
-                            + "userid       INTEGER NOT NULL, "
-                            + "plantid      STRING  NOT NULL, "
-                            + "FOREIGN KEY(userid) REFERENCES users(id)"
+                            + "id               INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            + "userID           INTEGER NOT NULL, "
+                            + "plantID          STRING  NOT NULL, "
+                            + "name             STRING NOT NULL, "
+                            + "waterDepth       STRING NOT NULL, "
+                            + "waterAmount      STRING NOT NULL, "
+                            + "waterVolume      STRING NOT NULL, "
+                            + "sunlight         STRING NOT NULL, "
+                            + "careLevel        STRING NOT NULL, "
+                            + "harvestSeason    STRING NOT NULL, "
+                            + "imageURL         STRING NOT NULL, "
+                            + "FOREIGN KEY(userID) REFERENCES users(id)"
                             + ")"
             );
         } catch (SQLException e) {
@@ -49,12 +57,20 @@ public class SQLPlantDAO implements IPlantDAO {
     public void insert(Plant plant) {
         try {
             PreparedStatement insertPlant = connection.prepareStatement(
-                    "INSERT INTO plants (userID, plantID, datePlanted)" +
-                            "VALUES (?, ?, ?)"
+                    "INSERT INTO plants (userID, plantID, name, waterDepth, waterAmount, waterVolume, sunlight, careLevel, harvestSeason, imageURL)" +
+                            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
             );
 
             insertPlant.setInt(1, plant.userID());
             insertPlant.setString(2, plant.plantID());
+            insertPlant.setString(3, plant.name());
+            insertPlant.setString(4, plant.waterDepth());
+            insertPlant.setString(5, plant.waterAmount());
+            insertPlant.setString(6, plant.waterVolume());
+            insertPlant.setString(7, plant.sunlight());
+            insertPlant.setString(8, plant.careLevel());
+            insertPlant.setString(9, plant.harvestSeason());
+            insertPlant.setString(10, plant.imageURL());
 
             insertPlant.execute();
         } catch (SQLException e) {
@@ -103,7 +119,15 @@ public class SQLPlantDAO implements IPlantDAO {
             while (rs.next()) {
                 plants.add(new Plant(
                         rs.getInt("userID"),
-                        rs.getString("plantID")
+                        rs.getString("plantID"),
+                        rs.getString("name"),
+                        rs.getString("waterDepth"),
+                        rs.getString("waterAmount"),
+                        rs.getString("waterVolume"),
+                        rs.getString("sunlight"),
+                        rs.getString("careLevel"),
+                        rs.getString("harvestSeason"),
+                        rs.getString("imageURL")
                 ));
             }
         } catch (SQLException e) {

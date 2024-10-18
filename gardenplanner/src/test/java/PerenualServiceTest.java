@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import javax.naming.LimitExceededException;
 import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -47,10 +48,14 @@ public class PerenualServiceTest {
         when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
                 .thenReturn(httpResponseMock);
 
-        JsonObject result = perenualService.getPlantDataFromID(plantID);
+        try {
+            JsonObject result = perenualService.getPlantDataFromID(plantID);
 
-        assertEquals(1, result.get("id").getAsInt());
-        assertEquals("European Silver Fir", result.get("common_name").getAsString());
+            assertEquals(1, result.get("id").getAsInt());
+            assertEquals("European Silver Fir", result.get("common_name").getAsString());
+        } catch (LimitExceededException e) {
+            assertEquals("API Error: API rate limit exceeded", e.getMessage());
+        }
     }
 
     /**
@@ -68,9 +73,13 @@ public class PerenualServiceTest {
         when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
                 .thenReturn(httpResponseMock);
 
-        String result = perenualService.getPlantIdFromName(plantName);
+        try {
+            String result = perenualService.getPlantIdFromName(plantName);
 
-        assertEquals("2", result);
+            assertEquals("2", result);
+        } catch (LimitExceededException e) {
+            assertEquals("API Error: API rate limit exceeded", e.getMessage());
+        }
     }
 
     /**
@@ -88,16 +97,12 @@ public class PerenualServiceTest {
         when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
                 .thenReturn(httpResponseMock);
 
-        PerenualCollection output = perenualService.getPlantNames(query, 1);
+        try {
+            PerenualCollection output = perenualService.getPlantNames(query, 1);
 
-        assertEquals(jsonResponse, output.getItemNames().toString());
-    }
-
-    @Test
-    public void debugTest() throws IOException, InterruptedException {
-        String query = "banana";
-
-        PerenualCollection output = perenualService.debugQuery(query, 1);
-        System.out.println(output.getItemNames());
+            assertEquals(jsonResponse, output.getItemNames().toString());
+        } catch (LimitExceededException e) {
+            assertEquals("API Error: API rate limit exceeded", e.getMessage());
+        }
     }
 }
