@@ -167,6 +167,6 @@ public class PlotManagerTest {
     @Test
     public void testPlotToFriend() {
         Plot plot = new Plot(1, "Tomato", plantedTime);
-        assertEquals("Plot{userID=1, plants='Tomato', datePlanted=" + plantedTime + "}", plot.toString());
+        assertEquals("Plot{userID=1, plants=Tomato, datePlanted=" + plantedTime + "}", plot.toString());
     }
 }

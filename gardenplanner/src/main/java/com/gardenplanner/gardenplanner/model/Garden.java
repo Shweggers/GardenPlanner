@@ -23,7 +23,7 @@ public record Garden(String name, int userID) {
     @Override
     public String toString() {
         return "Garden{" +
-                "name='" + name + '\'' +
+                "name=" + name +
                 ", userID=" + userID +
                 '}';
     }

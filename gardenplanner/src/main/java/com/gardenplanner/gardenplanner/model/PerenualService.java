@@ -17,7 +17,6 @@ import java.nio.charset.StandardCharsets;
  * PerenualService is a class that interacts with the Perenual API.
  */
 public class PerenualService {
-
     private static final String API_KEY = "sk-ZtM366ec7a8690cc16915";
     private static final String BASE_URL = "https://perenual.com/api/";
     private static PerenualService instance;

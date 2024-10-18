@@ -25,7 +25,7 @@ public record Friend(int userID, int friendID, String friendName) {
         return "Friend{" +
                 "userID=" + userID +
                 ", friendID=" + friendID +
-                ", friendName='" + friendName + '\'' +
+                ", friendName=" + friendName +
                 '}';
     }
 }

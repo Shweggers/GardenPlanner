@@ -169,6 +169,6 @@ public class GardenManagerTest {
     @Test
     public void testGardenToString() {
         Garden garden = new Garden("Tomatoes 1", 1);
-        assertEquals("Garden{name='Tomatoes 1', userID=1}", garden.toString());
+        assertEquals("Garden{name=Tomatoes 1, userID=1}", garden.toString());
     }
 }

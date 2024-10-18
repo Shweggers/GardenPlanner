@@ -5,31 +5,32 @@ import com.google.gson.JsonObject;
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
-import java.util.Objects;
 
 public class PerenualItem {
     private final PerenualService perenualService;
     private final String id;
-    private final String commonName;
+    private final String name;
 
     private final Dictionary<String, String> itemData = new Hashtable<>();
-    private String depthWaterRequirement;
-    private String wateringGeneralBenchmark;
-    private String volumeWaterRequirement;
-    private String sunRequirement;
+    private String waterDepth;
+    private String waterVolume;
+    private String waterAmount;
+    private String sunlight;
+    private String careLevel;
     private String harvestSeason;
     private String imageURL;
+    private JsonObject itemDataJson;
 
     /**
      * Create a new PerenualItem object.
      *
      * @param id         the ID of the item
-     * @param commonName the common name of the item
+     * @param name the common name of the item
      */
-    public PerenualItem(String id, String commonName) {
+    public PerenualItem(String id, String name) {
         this.perenualService = new PerenualService();
         this.id = id;
-        this.commonName = commonName;
+        this.name = name;
     }
 
     /**
@@ -40,16 +41,18 @@ public class PerenualItem {
     public Dictionary<String, String> getItemData() {
         if (itemData.isEmpty()) {
             try {
-                JsonObject itemData = perenualService.getPlantDataFromID(id);
-                SetItemData(itemData);
+                if (itemDataJson == null) {
+                    itemDataJson = perenualService.getPlantDataFromID(id);
+                }
+                SetItemData(itemDataJson);
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
-
-            itemData.put("depthWaterRequirement", depthWaterRequirement);
-            itemData.put("wateringGeneralBenchmark", wateringGeneralBenchmark);
-            itemData.put("volumeWaterRequirement", volumeWaterRequirement);
-            itemData.put("sunRequirement", sunRequirement);
+            itemData.put("waterDepth", waterDepth);
+            itemData.put("waterVolume", waterVolume);
+            itemData.put("waterAmount", waterAmount);
+            itemData.put("sunlight", sunlight);
+            itemData.put("careLevel", careLevel);
             itemData.put("harvestSeason", harvestSeason);
             itemData.put("imageURL", imageURL);
         }
@@ -57,12 +60,30 @@ public class PerenualItem {
     }
 
     /**
+     * Get the ID of the item.
+     *
+     * @return the ID of the item
+     */
+    public String getId() {
+        return id;
+    }
+
+    /**
      * Get the common name of the item.
      *
      * @return the common name of the item
      */
-    public String getCommonName() {
-        return commonName;
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Get the item data JSON.
+     *
+     * @return the item data JSON
+     */
+    public JsonObject getItemDataJson() {
+        return itemDataJson;
     }
 
     /**
@@ -73,50 +94,38 @@ public class PerenualItem {
     @Override
     public String toString() {
         return "{id: " + id + ", " +
-                "commonName: " + commonName + ", " +
-                "depthWaterRequirement: " + depthWaterRequirement + ", " +
-                "wateringGeneralBenchmark: " + wateringGeneralBenchmark + ", " +
-                "volumeWaterRequirement: " + volumeWaterRequirement + ", " +
-                "sunRequirement: " + sunRequirement + ", " +
+                "name: " + name + ", " +
+                "waterDepth: " + waterDepth + ", " +
+                "waterVolume: " + waterVolume + ", " +
+                "waterAmount: " + waterAmount + ", " +
+                "sunlight: " + sunlight + ", " +
+                "careLevel: " + careLevel + ", " +
                 "harvestSeason: " + harvestSeason + ", " +
                 "imageURL: " + imageURL + "}";
     }
 
-    /**
-     * Validate an object in the item data.
-     *
-     * @param itemData the item data
-     * @param field    the field to validate
-     * @return the validated object
-     */
-    private String validateObject(JsonObject itemData, String field) {
-        if (itemData.get(field).isJsonNull() || Objects.equals(itemData.get(field).toString(), "[]")) {
-            return "n/a";
-        }
-        if (itemData.getAsJsonObject(field).get("value").isJsonNull()) {
-            return itemData.getAsJsonObject(field).get("unit").getAsString();
-        }
-        return itemData.getAsJsonObject(field).get("value").getAsString() + " " + itemData.getAsJsonObject(field).get("unit").getAsString();
-    }
-
-    /**
-     * Validate an element in the item data.
-     *
-     * @param itemData the item data
-     * @param field    the field to validate
-     * @return the validated element
-     */
-    private String validateElement(JsonObject itemData, String field) {
-        if (itemData.get(field).isJsonNull()) {
-            return "n/a";
-        }
-        if (itemData.get(field).isJsonObject()) {
-            if (itemData.getAsJsonObject(field).get("thumbnail") == null) {
+    private String validateField(JsonObject itemData, String field) {
+        try {
+            return itemData.get(field).getAsString();
+        } catch (UnsupportedOperationException uoe) {
+            try {
+                return itemData.getAsJsonObject(field).get("value").getAsString() + " " + itemData.getAsJsonObject(field).get("unit").getAsString();
+            } catch (NullPointerException npe) {
+                try {
+                    return itemData.getAsJsonObject(field).get("thumbnail").getAsString();
+                } catch (NullPointerException npe2) {
+                    return "n/a";
+                }
+            } catch (ClassCastException cce) {
                 return "n/a";
             }
-            return itemData.getAsJsonObject(field).get("thumbnail").getAsString();
+        } catch (IllegalStateException ise) {
+            try {
+                return itemData.getAsJsonArray(field).get(0).getAsString();
+            } catch (IndexOutOfBoundsException ioobe) {
+                return "n/a";
+            }
         }
-        return itemData.get(field).getAsString();
     }
 
     /**
@@ -125,11 +134,12 @@ public class PerenualItem {
      * @param itemData the item data
      */
     private void SetItemData(JsonObject itemData) {
-        this.depthWaterRequirement = validateObject(itemData, "depth_water_requirement");
-        this.wateringGeneralBenchmark = validateObject(itemData, "watering_general_benchmark");
-        this.volumeWaterRequirement = validateObject(itemData, "volume_water_requirement");
-        this.sunRequirement = itemData.getAsJsonArray("sunlight").get(0).getAsString();
-        this.harvestSeason = validateElement(itemData, "harvest_season");
-        this.imageURL = validateElement(itemData, "default_image");
+        waterDepth =    validateField(itemData, "depth_water_requirement");
+        waterVolume =   validateField(itemData, "volume_water_requirement");
+        waterAmount =   validateField(itemData, "watering_general_benchmark");
+        sunlight =      validateField(itemData, "sunlight");
+        careLevel =     validateField(itemData, "care_level");
+        harvestSeason = validateField(itemData, "harvest_season");
+        imageURL =      validateField(itemData, "default_image");
     }
 }

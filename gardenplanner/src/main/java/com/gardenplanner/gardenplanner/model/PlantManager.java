@@ -74,6 +74,6 @@ public class PlantManager {
      */
     private boolean isPlantMatched(Plant plant, String query) {
         query = query == null ? "" : query.toLowerCase();
-        return query.isEmpty() || plant.plantID().toLowerCase().contains(query);
+        return query.isEmpty() || plant.name().toLowerCase().contains(query);
     }
 }

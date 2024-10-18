@@ -3,7 +3,7 @@ package com.gardenplanner.gardenplanner.model;
 /**
  * A class to represent a plant
  */
-public record Plant(int userID, String plantID) {
+public record Plant(int userID, String plantID, String name, String waterDepth, String waterVolume, String waterAmount, String sunlight, String careLevel, String harvestSeason, String imageURL) {
     public static int ID;
 
     /**
@@ -24,7 +24,7 @@ public record Plant(int userID, String plantID) {
     public String toString() {
         return "Plant{" +
                 "userid=" + userID +
-                ", plantID='" + plantID + '\'' +
+                ", plantID=" + plantID +
                 '}';
     }
 }

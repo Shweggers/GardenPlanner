@@ -26,7 +26,7 @@ public record Plot(int userID, String plant, LocalDate datePlanted) {
     public String toString() {
         return "Plot{" +
                 "userID=" + userID +
-                ", plants='" + plant + '\'' +
+                ", plants=" + plant +
                 ", datePlanted=" + datePlanted +
                 '}';
     }
