@@ -4,6 +4,10 @@ import java.time.LocalDate;
 
 /**
  * Plot is a class that represents a plot record.
+ *
+ * @param userID the user ID
+ * @param plant the plant
+ * @param datePlanted the date planted
  */
 public record Plot(int userID, String plant, LocalDate datePlanted) {
     /**

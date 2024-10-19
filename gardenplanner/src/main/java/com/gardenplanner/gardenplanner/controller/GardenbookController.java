@@ -48,7 +48,9 @@ public class GardenbookController {
      */
     public GardenbookController() {}
 
-
+    /**
+     * Populates the plant list with the search results
+     */
     void populateList() {
         String search = plantSearch.getText();
 
@@ -58,7 +60,11 @@ public class GardenbookController {
         ));
     }
 
-
+    /**
+     * Shows the plant information when a plant is selected
+     *
+     * @param plant the selected plant
+     */
     public void showPlantInformation(Plant plant) {
         plantInformationPane.setVisible(true);
         plantImage.setVisible(true);

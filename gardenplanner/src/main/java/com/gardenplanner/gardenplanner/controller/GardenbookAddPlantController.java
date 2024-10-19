@@ -14,6 +14,9 @@ import javax.naming.LimitExceededException;
 import java.io.IOException;
 import java.util.Dictionary;
 
+/**
+ * GardenbookAddPlantController is a class that represents a controller for adding a new plant to the garden book.
+ */
 public class GardenbookAddPlantController {
     @FXML
     TextField addPlantSearch;
@@ -56,10 +59,10 @@ public class GardenbookAddPlantController {
 
     /**
      * Populates the add plant search list with the search results
-     * Executed when a key is pressed
      *
      * @param event the key event
      * @throws IOException if an I/O error occurs
+     * @throws InterruptedException if the thread is interrupted
      */
     @FXML
     void populateList(ActionEvent event) throws IOException, InterruptedException {
@@ -262,7 +265,11 @@ public class GardenbookAddPlantController {
         };
     }
 
-
+    /**
+     * Handles an API error
+     *
+     * @param e the exception
+     */
     void handleAPIError(Exception e) {
         addPlantSearchList.getSelectionModel().clearSelection();
         addPlantSearchList.getItems().clear();

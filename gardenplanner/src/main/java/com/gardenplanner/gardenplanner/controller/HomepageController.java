@@ -121,9 +121,5 @@ public class HomepageController {
         User currentUser = DataStore.getInstance().getCurrentUser();
 
         welcomeMsg.setText("Welcome " + currentUser.username());
-
-        /*if (SQLGardenDAO.getGardens(SQLUserDAO.returnID(currentUser.username())) == null) {
-            SQLGardenDAO.insert(new Garden("My Garden", SQLUserDAO.returnID(currentUser.username())));
-        }*/
     }
 }

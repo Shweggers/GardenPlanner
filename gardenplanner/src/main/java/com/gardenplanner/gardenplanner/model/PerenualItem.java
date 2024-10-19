@@ -59,7 +59,13 @@ public class PerenualItem {
         return name;
     }
 
-
+    /**
+     * Validate a field in the item data.
+     *
+     * @param itemData the item data
+     * @param field    the field to validate
+     * @return the validated field value
+     */
     private String validateField(JsonObject itemData, String field) {
         try {
             return itemData.get(field).getAsString();

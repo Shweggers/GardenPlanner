@@ -38,6 +38,11 @@ public class AddFriendController {
         stage.close();
     }
 
+    /**
+     * Handles the cancel button click event.
+     *
+     * @param event the event details
+     */
     @FXML
     public void cancelButtonClicked(ActionEvent event) {
         // Close the current window

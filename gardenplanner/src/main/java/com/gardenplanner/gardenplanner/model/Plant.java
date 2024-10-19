@@ -29,6 +29,11 @@ public record Plant(int userID, String plantID, String name, String waterDepth, 
     }
 
 
+    /**
+     * Get the properties of the Plant record.
+     *
+     * @return a list of PlantProperty objects
+     */
     public List<PlantProperty> getProperties() {
         List<PlantProperty> properties = new ArrayList<>();
         properties.add(new PlantProperty("Water Depth", waterDepth));

@@ -1,6 +1,5 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.GardenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,6 +25,11 @@ public class GardenController {
     @FXML
     private Button leaveGarden;
 
+    /**
+     * handle the back button click event
+     *
+     * @param event the event details
+     */
     @FXML
     public void backButtonClicked(ActionEvent event) throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
@@ -37,6 +41,11 @@ public class GardenController {
         stage.show();
     }
 
+    /**
+     * handle the add garden button click event
+     *
+     * @param event the event details
+     */
     @FXML
     void addGardenButtonClicked(ActionEvent event) throws IOException {
         Stage stage = new Stage();
@@ -48,6 +57,11 @@ public class GardenController {
         stage.show();
     }
 
+    /**
+     * handle the members button click event
+     *
+     * @param event the event details
+     */
     @FXML
     void membersButtonClicked(ActionEvent event) {
         // Handle the members button click event
@@ -55,6 +69,11 @@ public class GardenController {
         // Add your logic here
     }
 
+    /**
+     * handle the replant button click event
+     *
+     * @param event the event details
+     */
     @FXML
     void replantButtonClicked(ActionEvent event) {
         // Handle the replant button click event
@@ -62,15 +81,15 @@ public class GardenController {
         // Add your logic here
     }
 
+    /**
+     * handle the leave garden button click event
+     *
+     * @param event the event details
+     */
     @FXML
     void leaveGardenButtonClicked(ActionEvent event) {
         // Handle the leave garden button click event
         System.out.println("Leave Garden button clicked");
         // Add your logic here
     }
-
-    private final GardenManager gardenManager = GardenManager.getInstance();
-
-    @FXML
-
 }

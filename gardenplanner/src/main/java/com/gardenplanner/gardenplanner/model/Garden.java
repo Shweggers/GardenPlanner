@@ -2,6 +2,9 @@ package com.gardenplanner.gardenplanner.model;
 
 /**
  * Garden is a class that represents a garden record.
+ *
+ * @param userID the user ID
+ * @param name the garden name
  */
 public record Garden(int userID, String name) {
     /**

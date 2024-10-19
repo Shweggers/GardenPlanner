@@ -38,6 +38,11 @@ public class FriendpageController {
         stage.show();
     }
 
+    /**
+     * Adds a new friend to the friend list when the add friend button is clicked.
+     *
+     * @throws IOException if an I/O error occurs
+     */
     @FXML
     void addFriend() throws IOException {
         Stage stage = new Stage();

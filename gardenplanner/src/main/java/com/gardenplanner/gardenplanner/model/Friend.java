@@ -2,6 +2,10 @@ package com.gardenplanner.gardenplanner.model;
 
 /**
  * Friend is a class that represents a friend record.
+ *
+ * @param userID the user ID
+ * @param friendID the friend ID
+ * @param friendName the friend name
  */
 public record Friend(int userID, int friendID, String friendName) {
     /**
