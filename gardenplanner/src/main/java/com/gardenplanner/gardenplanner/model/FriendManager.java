@@ -1,3 +1,4 @@
+// Java
 package com.gardenplanner.gardenplanner.model;
 
 import com.gardenplanner.gardenplanner.model.DAO.IFriendDAO;
@@ -52,19 +53,14 @@ public class FriendManager {
     }
 
     /**
-     * Get a list of friends for a user.
+     * Check if two users are friends.
      *
      * @param userID     the user ID
      * @param friendName the friend name
-     * @return a list of friends
+     * @return true if they are friends, false otherwise
      */
     public boolean areFriends(int userID, String friendName) {
         return friendDAO.areFriends(userID, friendName);
-    }
-
-    public boolean areMutual(Friend friend, String friendName) {
-        // TODO: Implement this method
-        return false;
     }
 
     /**
@@ -89,7 +85,9 @@ public class FriendManager {
      * @return true if the friend object matches the query, false otherwise
      */
     private boolean isFriendMatched(Friend friend, String query) {
-        query = query == null ? "" : query.toLowerCase();
-        return query.isEmpty() || friend.friendName().toLowerCase().contains(query);
+        if (query == null || query.isEmpty()) {
+            return true;
+        }
+        return friend.friendName().toLowerCase().contains(query.toLowerCase());
     }
 }

@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.FriendpageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.FriendpageController">
    <children>
       <HBox layoutX="100.0" layoutY="170.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
          <children>
             <VBox prefHeight="467.0" prefWidth="180.0" style="-fx-border-color: black;">
                <children>
-                  <TextField fx:id="friendsSearch" prefHeight="30.0" prefWidth="179.0" promptText="Search" />
-                  <ListView fx:id="friendsList" prefHeight="306.0" prefWidth="178.0" />
+                  <TextField fx:id="searchFriends" prefHeight="30.0" prefWidth="179.0" promptText="Search" />
+                  <ListView fx:id="friendList" prefHeight="306.0" prefWidth="178.0" />
                   <Button fx:id="addFriendButton" mnemonicParsing="false"  onAction="#addFriend" prefHeight="40.0" prefWidth="180.0" text="Add New Friend" translateY="-1.0" />
                </children>
             </VBox>

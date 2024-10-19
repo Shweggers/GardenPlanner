@@ -1,6 +1,5 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.GardenManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,22 +9,26 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * GardenController is a class that represents a controller for the garden page.
+ */
 public class GardenController {
     @FXML
     private Button backButton;
     @FXML
     private Button addGardenButton;
-    @FXML
-    private Button addPlotButton;
-    @FXML
-    private Button editPlotButton;
-    @FXML
-    private Button membersButton;
-    @FXML
-    private Button replantButton;
-    @FXML
-    private Button leaveGarden;
 
+    /**
+     * Constructs a new GardenController
+     */
+    public GardenController() {}
+
+    /**
+     * Returns the user to the home page when the back button is clicked.
+     *
+     * @param event event details
+     * @throws IOException if an I/O error occurs
+     */
     @FXML
     public void backButtonClicked(ActionEvent event) throws IOException {
         Stage stage = (Stage) backButton.getScene().getWindow();
@@ -37,8 +40,14 @@ public class GardenController {
         stage.show();
     }
 
+    /**
+     * Adds a new garden when the add garden button is clicked.
+     *
+     * @param event event details
+     * @throws IOException if an I/O error occurs
+     */
     @FXML
-    void addGardenButtonClicked(ActionEvent event) throws IOException {
+    public void addGardenButtonClicked(ActionEvent event) throws IOException {
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/addgarden.fxml"));
@@ -48,29 +57,6 @@ public class GardenController {
         stage.show();
     }
 
-    @FXML
-    void membersButtonClicked(ActionEvent event) {
-        // Handle the members button click event
-        System.out.println("Members button clicked");
-        // Add your logic here
-    }
 
-    @FXML
-    void replantButtonClicked(ActionEvent event) {
-        // Handle the replant button click event
-        System.out.println("Replant button clicked");
-        // Add your logic here
-    }
-
-    @FXML
-    void leaveGardenButtonClicked(ActionEvent event) {
-        // Handle the leave garden button click event
-        System.out.println("Leave Garden button clicked");
-        // Add your logic here
-    }
-
-    private final GardenManager gardenManager = GardenManager.getInstance();
-
-    @FXML
 
 }

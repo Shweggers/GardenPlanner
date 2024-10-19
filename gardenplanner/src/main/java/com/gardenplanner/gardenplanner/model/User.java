@@ -6,6 +6,14 @@ package com.gardenplanner.gardenplanner.model;
 public record User(String username, String email, String hashedPassword) {
     private static int ID;
 
+    public static User getCurrentUser() {
+        return new User("test", "   ", "test");
+    }
+
+    public static User findUser(String name) {
+        return new User("test", "   ", "test");
+    }
+
     /**
      * Sets the ID of the User record.
      *

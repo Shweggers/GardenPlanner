@@ -1,31 +1,28 @@
+// Java
 package com.gardenplanner.gardenplanner.model;
 
-/**
- * Friend is a class that represents a friend record.
- */
-public record Friend(int userID, int friendID, String friendName) {
-    public static int ID;
+public class Friend {
+    private final int userID;
+    private final String friendName;
 
-    /**
-     * Sets the ID of the Friend record.
-     *
-     * @param id the ID of the Friend record
-     */
-    public void setID(int id) {
-        ID = id;
+    public Friend(int userID, String friendName) {
+        this.userID = userID;
+        this.friendName = friendName;
     }
 
-    /**
-     * Returns a string representation of the Friend record.
-     *
-     * @return a string representation of the Friend record
-     */
-    @Override
-    public String toString() {
-        return "Friend{" +
-                "userID=" + userID +
-                ", friendID=" + friendID +
-                ", friendName='" + friendName + '\'' +
-                '}';
+    public int getUserID() {
+        return userID;
+    }
+
+    public String getFriendName() {
+        return friendName;
+    }
+
+    public int userID() {
+        return userID;
+    }
+
+    public String friendName() {
+        return friendName;
     }
 }
