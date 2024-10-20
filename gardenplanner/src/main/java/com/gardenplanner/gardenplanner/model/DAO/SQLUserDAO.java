@@ -86,6 +86,27 @@ public class SQLUserDAO implements IUserDAO {
         return null;
     }
 
+
+    public User getUserFromID(int id) {
+        try {
+            PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE id = ?");
+            getUser.setInt(1, id);
+
+            ResultSet rs = getUser.executeQuery();
+            if (rs.next()) {
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("username"),
+                        rs.getString("email"),
+                        rs.getString("password")
+                );
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     /**
      * Method that updates a user's password in the database
      *

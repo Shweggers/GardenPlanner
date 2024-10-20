@@ -39,6 +39,22 @@ public class MockUserDAO implements IUserDAO {
     }
 
     /**
+     * Get a user from the database
+     *
+     * @param id the ID of the user
+     * @return the user
+     */
+    @Override
+    public User getUserFromID(int id) {
+        for (User user : users) {
+            if (user.ID() == id) {
+                return user;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Update a user's password
      *
      * @param username the username

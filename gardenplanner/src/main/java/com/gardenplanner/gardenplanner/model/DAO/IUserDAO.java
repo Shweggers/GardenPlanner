@@ -29,4 +29,12 @@ public interface IUserDAO {
      * @param hashedPassword the hashed password
      */
     void updatePassword(String username, String hashedPassword);
+
+    /**
+     * Get a user by ID
+     *
+     * @param id the user ID
+     * @return the user
+     */
+    User getUserFromID(int id);
 }

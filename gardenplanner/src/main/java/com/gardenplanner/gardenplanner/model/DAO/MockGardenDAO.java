@@ -1,6 +1,7 @@
 package com.gardenplanner.gardenplanner.model.DAO;
 
 import com.gardenplanner.gardenplanner.model.Garden;
+import com.gardenplanner.gardenplanner.model.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,5 +49,22 @@ public class MockGardenDAO implements IGardenDAO {
             }
         }
         return gardenList;
+    }
+
+    /**
+     * Get a list of users
+     *
+     * @param userID the user ID
+     * @return a list of users
+     */
+    @Override
+    public List<User> getUsers(int userID) {
+        ArrayList<User> userList = new ArrayList<>();
+        for (Garden garden : gardens) {
+            if (garden.userID() == userID) {
+                userList.add(new User(garden.userID()));
+            }
+        }
+        return userList;
     }
 }

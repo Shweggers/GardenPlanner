@@ -103,22 +103,14 @@ public class GardenController {
      * @param event the event details
      */
     @FXML
-    void membersButtonClicked(ActionEvent event) {
-        // Handle the members button click event
-        System.out.println("Members button clicked");
-        // Add your logic here
-    }
+    void membersButtonClicked(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
 
-    /**
-     * handle the replant button click event
-     *
-     * @param event the event details
-     */
-    @FXML
-    void replantButtonClicked(ActionEvent event) {
-        // Handle the replant button click event
-        System.out.println("Replant button clicked");
-        // Add your logic here
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage_memberlist.fxml"));
+        loader.setControllerFactory(type -> new GardenMemberController());
+
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
     }
 
     /**
@@ -128,9 +120,9 @@ public class GardenController {
      */
     @FXML
     void leaveGardenButtonClicked(ActionEvent event) {
-        // Handle the leave garden button click event
-        System.out.println("Leave Garden button clicked");
-        // Add your logic here
+        GardenManager.getInstance().delete(gardenList.getSelectionModel().getSelectedItem());
+
+        gardenList.getSelectionModel().select(null);
     }
 
     /**
