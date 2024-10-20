@@ -74,6 +74,7 @@ public class SQLUserDAO implements IUserDAO {
             ResultSet rs = getUser.executeQuery();
             if (rs.next()) {
                 return new User(
+                        rs.getInt("id"),
                         rs.getString("username"),
                         rs.getString("email"),
                         rs.getString("password")
@@ -102,27 +103,5 @@ public class SQLUserDAO implements IUserDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    }
-
-    /**
-     * Method that returns the ID of a user
-     *
-     * @param username the username to search for
-     * @return the ID of the user
-     */
-    @Override
-    public int returnID(String username) {
-        try {
-            PreparedStatement returnID = connection.prepareStatement("SELECT id FROM users WHERE username = ?");
-            returnID.setString(1, username);
-
-            ResultSet rs = returnID.executeQuery();
-            if (rs.next()) {
-                return rs.getInt("id");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return -1;
     }
 }

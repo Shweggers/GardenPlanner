@@ -1,8 +1,8 @@
 package com.gardenplanner.gardenplanner.controller;
 
 import com.gardenplanner.gardenplanner.model.DataStore;
-import com.gardenplanner.gardenplanner.model.Garden;
-import com.gardenplanner.gardenplanner.model.GardenManager;
+import com.gardenplanner.gardenplanner.model.Plot;
+import com.gardenplanner.gardenplanner.model.PlotManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -12,19 +12,19 @@ import javafx.stage.Stage;
 /**
  * GardenAddGardenController is a class that represents a controller for adding a new garden.
  */
-public class GardenAddGardenController {
+public class GardenAddPlotController {
     @FXML
-    private TextField addGardenName;
+    private TextField addPlotName;
     @FXML
     private Button cancelButton;
     @FXML
-    private Button addGardenConfirmButton;
-    private GardenController gardenController;
+    private Button addPlotConfirmButton;
+    private final GardenController gardenController;
 
     /**
      * Constructs a new GardenAddGardenController
      */
-    public GardenAddGardenController(GardenController gardenController) { this.gardenController = gardenController; }
+    public GardenAddPlotController(GardenController gardenController) {this.gardenController = gardenController;}
 
     /**
      * Handles the save button click event.
@@ -51,8 +51,12 @@ public class GardenAddGardenController {
      */
     @FXML
     public void setAddGardenConfirmButton(ActionEvent event) {
-        Garden garden = new Garden(DataStore.getInstance().getCurrentUser().ID(), addGardenName.getText());
-        GardenManager.getInstance().insert(garden);
+        Plot plot = new Plot(
+                DataStore.getInstance().getCurrentUser().ID(),
+                gardenController.gardenList.getSelectionModel().getSelectedItem().ID(),
+                addPlotName.getText()
+        );
+        PlotManager.getInstance().insert(plot);
 
         gardenController.populateList();
 

@@ -46,8 +46,8 @@ public class FriendpageController {
     @FXML
     void addFriend() throws IOException {
         Stage stage = new Stage();
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/addfriend.fxml"));
-        loader.setControllerFactory(type -> new AddFriendController());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage_addfriend.fxml"));
+        loader.setControllerFactory(type -> new FriendAddFriendController());
 
         stage.setScene(new Scene(loader.load()));
         stage.show();

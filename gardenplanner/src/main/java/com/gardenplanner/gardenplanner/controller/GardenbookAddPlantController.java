@@ -174,7 +174,7 @@ public class GardenbookAddPlantController {
                 Dictionary<String, String> selectedItemData = selectedItem.getItemData();
 
                 Plant plant = new Plant(
-                        DataStore.getInstance().getCurrentUser().getID(),
+                        DataStore.getInstance().getCurrentUser().ID(),
                         selectedItem.getID(),
                         selectedItem.getName(),
                         selectedItemData.get("waterDepth"),

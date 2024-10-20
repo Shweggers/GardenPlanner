@@ -1,89 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.ProgressBar?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gardenplanner.gardenplanner.controller.GardenController">
+    <children>
+        <Label layoutX="350.0" layoutY="24.0" prefHeight="80.0" text="PLANT IT" textFill="#499a52"
+               AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="15.0">
+            <font>
+                <Font name="System Bold" size="50.0"/>
+            </font>
+        </Label>
+        <HBox layoutX="1.0" layoutY="1.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="120.0"
+              AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
+            <VBox style="-fx-border-color: black;">
+                <children>
+                    <TextField fx:id="gardenSearchField" onAction="#populateList" promptText="Search"/>
+                    <ListView fx:id="gardenList" prefWidth="200.0"/>
+                    <Button fx:id="addGardenButton" mnemonicParsing="false" onAction="#addGardenButtonClicked"
+                            prefHeight="30.0" prefWidth="200.0" text="Add New">
+                        <font>
+                            <Font name="System Bold" size="14.0"/>
+                        </font>
+                    </Button>
+                </children>
+            </VBox>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.GardenController">
-   <children>
-      <Label layoutX="350.0" layoutY="24.0" prefHeight="80.0" text="PLANT IT" textFill="#499a52" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="15.0">
-         <font>
-            <Font name="System Bold" size="50.0" />
-         </font>
-      </Label>
-        <HBox layoutX="1.0" layoutY="1.0" prefHeight="600.0" prefWidth="900.0" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
-         <AnchorPane prefHeight="508.0" prefWidth="180.0" style="-fx-border-color: black;">
-            <children>
-               <ListView fx:id="gardenList" prefHeight="349.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                        <Button fx:id="addGardenButton" mnemonicParsing="false" onAction="#addGardenButtonClicked" prefHeight="30.0" text="Add New" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                  <font>
-                     <Font name="System Bold" size="14.0" />
-                  </font>
-               </Button>
-            </children>
-         </AnchorPane>
-
-                        <!-- Right side: Garden details -->
+            <!-- Right side: Garden details -->
             <VBox prefHeight="600.0" prefWidth="560.0" style="-fx-border-color: black;">
-            <AnchorPane prefHeight="40.0">
-               <children>
+                <AnchorPane prefHeight="40.0">
+                    <children>
                         <!-- Garden Title -->
-                        <Label fx:id="gardenTitleLabel" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="280.0" style="-fx-font-size: 24px;" text="Garden Name" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="277.2">
-                     <padding>
-                        <Insets left="5.0" />
-                     </padding></Label>
-                  <HBox alignment="CENTER" layoutX="254.39999389648438" prefHeight="40.0" prefWidth="272.2" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="277.2" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Button fx:id="editPlotButton" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Edit Plot" />
-                        <Button fx:id="addPlotButton" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Add Plot" />
-                        <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Back" />
-                     </children>
-                  </HBox>
-               </children>
-               <VBox.margin>
-                  <Insets right="5.0" />
-               </VBox.margin>
-            </AnchorPane>
-
-                            <!-- Plots TabPane -->
-                <TabPane fx:id="plotsTabPane" prefHeight="227.0" prefWidth="568.8" tabMaxHeight="30.0" tabMaxWidth="568.8" tabMinHeight="30.0" tabMinWidth="80.0" VBox.vgrow="ALWAYS">
-                    <!-- Tabs for Plot 1, Plot 2, Plot 3 -->
-                    <Tab fx:id="plot1" closable="false" text="Plot 1">
-                        <AnchorPane prefHeight="227.0" prefWidth="558.0">
-                     <TableView fx:id="plotTable" prefHeight="180.0" prefWidth="569.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                       <columns>
-                         <TableColumn fx:id="plantColumn" editable="false" prefWidth="150.0" resizable="false" text="Planted" />
-                         <TableColumn fx:id="harvestColumn" editable="false" prefWidth="399.6" resizable="false" text="Harvest Date" />
-                       </columns>
-                     </TableView>
-                     <ListView fx:id="scheduleList" layoutY="170.0" orientation="HORIZONTAL" prefHeight="71.0" prefWidth="200.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="171.2" />
-         
-                                     <!-- Progress Bar -->
-                         <ProgressBar fx:id="scheduleProgress" layoutX="120.0" layoutY="249.0" prefHeight="20.0" prefWidth="569.0" progress="0.5" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" />
-                        </AnchorPane>
-                    </Tab>
-               <VBox.margin>
-                  <Insets left="5.0" right="5.0" />
-               </VBox.margin>
+                        <Label fx:id="gardenTitleLabel" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0"
+                               prefWidth="280.0" style="-fx-font-size: 24px;" text="Garden Name" textAlignment="CENTER"
+                               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="277.2">
+                            <padding>
+                                <Insets left="5.0"/>
+                            </padding>
+                        </Label>
+                        <HBox alignment="CENTER" layoutX="254.39999389648438" prefHeight="40.0" prefWidth="272.2"
+                              spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="277.2"
+                              AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Button fx:id="addPlotButton" alignment="CENTER" mnemonicParsing="false"
+                                        onAction="#addPlotButtonClicked" prefHeight="30.0" prefWidth="80.0"
+                                        text="Add Plot"/>
+                                <Button fx:id="editPlotButton" alignment="CENTER" mnemonicParsing="false"
+                                        prefHeight="30.0" prefWidth="80.0" text="Edit Plot"/>
+                                <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false"
+                                        onAction="#backButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Back"/>
+                            </children>
+                        </HBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets right="5.0"/>
+                    </VBox.margin>
+                </AnchorPane>
+                <!-- Plots TabPane -->
+                <TabPane fx:id="plotsTabPane" prefHeight="227.0" prefWidth="568.8" tabMaxHeight="30.0"
+                         tabMaxWidth="568.8" tabMinHeight="30.0" tabMinWidth="80.0" VBox.vgrow="ALWAYS">
+                    <VBox.margin>
+                        <Insets left="5.0" right="5.0"/>
+                    </VBox.margin>
                 </TabPane>
-            <HBox spacing="10.0" translateY="-1.0">
-               <children>
-                       <Button fx:id="membersButton" minHeight="-Infinity" prefHeight="30.0" prefWidth="175.0" text="Members" translateX="2.0" />
-                       <Button fx:id="replantButton" minHeight="-Infinity" prefHeight="30.0" prefWidth="175.0" text="Replant" translateX="6.0" />
-                       <Button fx:id="leaveGarden" minHeight="-Infinity" prefHeight="30.0" prefWidth="175.0" style="-fx-background-color: red;" text="Leave Garden" translateX="10.0" />
-               </children>
-            </HBox>
+                <HBox spacing="5.0" translateY="-1.0">
+                    <children>
+                        <Button fx:id="membersButton" minHeight="-Infinity" prefHeight="30.0" prefWidth="175.0"
+                                text="Members" translateX="2.0"/>
+                        <Button fx:id="replantButton" minHeight="-Infinity" prefHeight="30.0" prefWidth="175.0"
+                                text="Replant" translateX="6.0"/>
+                        <Button fx:id="leaveGarden" minHeight="-Infinity" prefHeight="30.0" prefWidth="175.0"
+                                style="-fx-background-color: red;" text="Leave Garden" translateX="10.0"/>
+                    </children>
+                </HBox>
             </VBox>
         </HBox>
-   </children>
+    </children>
 </AnchorPane>

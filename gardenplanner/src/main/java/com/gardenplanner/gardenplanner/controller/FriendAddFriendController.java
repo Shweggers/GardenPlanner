@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 /**
  * GardenAddGardenController is a class that represents a controller for adding a new garden.
  */
-public class AddFriendController {
+public class FriendAddFriendController {
     @FXML
     private TextField AddFriendName;
     @FXML
@@ -20,7 +20,7 @@ public class AddFriendController {
     /**
      * Constructs a new GardenAddGardenController
      */
-    public AddFriendController() {}
+    public FriendAddFriendController() {}
 
     /**
      * Handles the save button click event.

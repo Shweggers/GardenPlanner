@@ -42,7 +42,7 @@ public class PerenualServiceTest {
     @Test
     public void testGetPlantDataFromID() throws IOException, InterruptedException {
         String plantID = "1";
-        String jsonResponse = "{\"id\": 1, \"common_name\": \"European Silver Fir\"}";
+        String jsonResponse = "{\"ID\": 1, \"common_name\": \"European Silver Fir\"}";
 
         when(httpResponseMock.body()).thenReturn(jsonResponse);
         when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))
@@ -67,7 +67,7 @@ public class PerenualServiceTest {
     @Test
     public void testGetPlantIdFromName() throws IOException, InterruptedException {
         String plantName = "Pyramidalis Silver Fir";
-        String jsonResponse = "{\"id\": 2, \"common_name\": \"Pyramidalis Silver Fir\"}";
+        String jsonResponse = "{\"ID\": 2, \"common_name\": \"Pyramidalis Silver Fir\"}";
 
         when(httpResponseMock.body()).thenReturn(jsonResponse);
         when(httpClientMock.send(any(HttpRequest.class), any(HttpResponse.BodyHandler.class)))

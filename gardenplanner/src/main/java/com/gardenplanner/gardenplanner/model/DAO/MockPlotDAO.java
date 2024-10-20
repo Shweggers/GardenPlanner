@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class MockPlotDAO implements IPlotDAO {
     private final ArrayList<Plot> plots = new ArrayList<Plot>();
+    private int autoIncrementID = 1;
 
     /**
      * Insert a plot into the database
@@ -18,7 +19,8 @@ public class MockPlotDAO implements IPlotDAO {
      */
     @Override
     public void insert(Plot plot) {
-        plots.add(plot);
+        Plot newPlot = plot.withID(autoIncrementID++);
+        plots.add(newPlot);
     }
 
     /**
@@ -28,7 +30,13 @@ public class MockPlotDAO implements IPlotDAO {
      */
     @Override
     public void delete(Plot plot) {
-        plots.remove(plot);
+        Plot testPlot = plot.withID(0);
+        for (Plot p : plots) {
+            if (p.withID(0).equals(testPlot)) {
+                plots.remove(p);
+                break;
+            }
+        }
     }
 
     /**

@@ -47,7 +47,7 @@ public class GardenManagerTest {
         List<Garden> gardenList = gardenManager.searchGardens(1, "Tomatoes 1");
         assertEquals(1, gardenList.size());
         for (Garden garden : gardenList) {
-            assertEquals(gardens[0], garden);
+            assertEquals(gardens[0].toString(), garden.toString());
         }
     }
 
