@@ -7,6 +7,7 @@ module com.gardenplanner.gardenplanner {
     requires java.net.http;
     requires com.google.gson;
     requires java.naming;
+    requires org.apache.commons.compress;
 
     opens com.gardenplanner.gardenplanner to javafx.fxml;
     exports com.gardenplanner.gardenplanner;
