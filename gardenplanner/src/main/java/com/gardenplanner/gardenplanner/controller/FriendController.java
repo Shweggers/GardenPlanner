@@ -7,10 +7,7 @@ import com.gardenplanner.gardenplanner.model.FriendManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -24,9 +21,13 @@ public class FriendController {
     @FXML
     private Button addFriendButton;
     @FXML
+    private Button removeFriendButton;
+    @FXML
     private ListView<Friend> friendList;
     @FXML
     private TextField searchFriends;
+    @FXML
+    private Label friendNameLabel;
 
     /**
      * Constructs a new FriendController
@@ -65,6 +66,19 @@ public class FriendController {
     }
 
     /**
+     * Handles the remove friend event.
+     *
+     */
+    @FXML
+    void removeFriend() {
+        Friend selectedFriend = friendList.getSelectionModel().getSelectedItem();
+        if (selectedFriend != null) {
+            FriendManager.getInstance().delete(selectedFriend);
+            friendNameLabel.setText("");
+        }
+    }
+
+    /**
      * Initializes the friend page.
      */
     @FXML
@@ -81,6 +95,16 @@ public class FriendController {
                 }
             }
         });
+
+        friendList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                friendNameLabel.setText(newValue.friendName());
+            } else {
+                friendNameLabel.setText("");
+            }
+
+        });
+
         populateFriends();
     }
 
@@ -88,10 +112,4 @@ public class FriendController {
         friendList.getItems().setAll(FriendManager.getInstance().searchFriends(DataStore.getInstance().getCurrentUser().ID(), searchFriends.getText()));
 
     }
-
-
-
-
-
-
 }

@@ -24,7 +24,7 @@
                     <children>
                         <AnchorPane minHeight="-Infinity" prefHeight="40.0" prefWidth="560.0">
                             <children>
-                                <Label alignment="CENTER" prefWidth="300.0" text="Friend Name"
+                                <Label fx:id="friendNameLabel" alignment="CENTER" prefWidth="300.0" text="Friend's Name"
                                        AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
                                        AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
                                     <font>
