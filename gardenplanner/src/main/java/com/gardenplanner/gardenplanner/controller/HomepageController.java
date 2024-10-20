@@ -60,7 +60,7 @@ public class HomepageController {
         Stage stage = (Stage) friendButton.getScene().getWindow();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml"));
-        loader.setControllerFactory(type -> new FriendpageController());
+        loader.setControllerFactory(type -> new FriendController());
 
         stage.setScene(new Scene(loader.load(), 900, 600));
         stage.show();

@@ -123,7 +123,7 @@ public class SQLFriendDAO implements IFriendDAO {
 
             ResultSet rs = getFriends.executeQuery();
             while (rs.next()) {
-                friends.add(new Friend(rs.getInt("userID"), rs.getString("friendName")));
+                friends.add(new Friend(rs.getInt("userID"), rs.getInt("friendID"), rs.getString("friendName")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

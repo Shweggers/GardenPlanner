@@ -1,9 +1,7 @@
 // Java
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.Friend;
-import com.gardenplanner.gardenplanner.model.FriendManager;
-import com.gardenplanner.gardenplanner.model.User;
+import com.gardenplanner.gardenplanner.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,7 +23,7 @@ public class FriendAddFriendController {
     /**
      * Constructs a new AddFriendController
      */
-    public FriendFriendController() {
+    public FriendAddFriendController() {
         this.friendManager = FriendManager.getInstance();
     }
 
@@ -40,13 +38,12 @@ public class FriendAddFriendController {
         if (friendName != null && !friendName.trim().isEmpty()) {
 
             // Get the friend's user ID // THIS NEED TO BE CHANGED TO THE FRIEND'S USER ID
-            int userId = getCurrentUser().getID();
+            int userId = DataStore.getInstance().getCurrentUser().ID();
 
             // NEED LOGIC TO CHECK IF USE EXISTS IN DATABASE
 
-
             // Create a new Friend object
-            Friend newFriend = new Friend(userId, friendName);
+            Friend newFriend = new Friend(userId, UserManager.getInstance().getUser(friendName).ID(), friendName);
             friendManager.insert(newFriend);
 
             // Close the current window

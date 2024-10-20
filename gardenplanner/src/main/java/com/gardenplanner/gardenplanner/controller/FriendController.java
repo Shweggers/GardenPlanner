@@ -16,9 +16,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 /**
- * FriendpageController is a class that represents a controller for the friend page.
+ * FriendController is a class that represents a controller for the friend page.
  */
-public class FriendpageController {
+public class FriendController {
     @FXML
     private Button backButton;
     @FXML
@@ -29,9 +29,9 @@ public class FriendpageController {
     private TextField searchFriends;
 
     /**
-     * Constructs a new FriendpageController
+     * Constructs a new FriendController
      */
-    public FriendpageController() {}
+    public FriendController() {}
 
     /**
      * Returns the user to the home page when the back button is clicked.
@@ -70,7 +70,7 @@ public class FriendpageController {
     void populateFriends() {
         String search = searchFriends.getText();
         friendList.getItems().setAll(FriendManager.getInstance().searchFriends(
-                DataStore.getInstance().getCurrentUser().getID(), search));
+                DataStore.getInstance().getCurrentUser().ID(), search));
     }
 
     /**
@@ -96,7 +96,7 @@ public class FriendpageController {
                 if (empty || friend == null) {
                     setText(null);
                 } else {
-                    setText(friend.getFriendName());
+                    setText(friend.friendName());
                 }
             }
         };
