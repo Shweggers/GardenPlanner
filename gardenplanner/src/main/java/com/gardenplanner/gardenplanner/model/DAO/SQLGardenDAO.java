@@ -3,10 +3,8 @@ package com.gardenplanner.gardenplanner.model.DAO;
 import com.gardenplanner.gardenplanner.model.DatabaseConnection;
 import com.gardenplanner.gardenplanner.model.Garden;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -77,7 +75,6 @@ public class SQLGardenDAO implements IGardenDAO {
             deleteGarden.setInt(1, garden.userID());
             deleteGarden.setString(2, garden.name());
 
-
             deleteGarden.execute();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -92,6 +89,20 @@ public class SQLGardenDAO implements IGardenDAO {
      */
     @Override
     public List<Garden> getGardens(int userID) {
-        return null;
+        List<Garden> gardens = new ArrayList<>();
+        try {
+            PreparedStatement getGardens = connection.prepareStatement(
+                    "SELECT * FROM gardens WHERE userID = ?"
+            );
+            getGardens.setInt(1, userID);
+
+            ResultSet rs = getGardens.executeQuery();
+            while (rs.next()) {
+                gardens.add(new Garden(rs.getInt("userID"), rs.getString("gardenName")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return gardens;
     }
 }

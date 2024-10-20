@@ -55,7 +55,7 @@ public class GardenbookController {
         String search = plantSearch.getText();
 
         plantList.getItems().setAll(PlantManager.getInstance().searchPlants(
-                DataStore.getInstance().getCurrentUser().getID(),
+                DataStore.getInstance().getCurrentUser().ID(),
                 search
         ));
     }
@@ -118,16 +118,16 @@ public class GardenbookController {
      */
     @FXML
     void initialize() {
+        plantSearch.textProperty().addListener((observable, oldValue, newValue) -> populateList());
+        populateList();
+
         plantList.setCellFactory(this::renderListCell);
 
         plantInfo.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().propertyName()));
         plantDetails.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().propertyValue()));
-        populateList();
 
         plantInformationPane.setVisible(false);
         plantImage.setVisible(false);
-
-        plantSearch.textProperty().addListener((observable, oldValue, newValue) -> populateList());
     }
 
     /**

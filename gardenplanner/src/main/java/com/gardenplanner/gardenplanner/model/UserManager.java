@@ -62,14 +62,4 @@ public class UserManager {
         }
         userDAO.updatePassword(username, password);
     }
-
-    /**
-     * Get the userID of a username.
-     *
-     * @param username the username
-     * @return the userID
-     */
-    public int returnID(String username) {
-        return userDAO.returnID(username);
-    }
 }

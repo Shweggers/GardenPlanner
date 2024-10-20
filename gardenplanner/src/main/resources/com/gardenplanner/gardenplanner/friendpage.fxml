@@ -1,71 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.FriendpageController">
-   <children>
-      <HBox layoutX="100.0" layoutY="170.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
-         <children>
-            <VBox prefHeight="467.0" prefWidth="180.0" style="-fx-border-color: black;">
-               <children>
-                  <TextField fx:id="friendsSearch" prefHeight="30.0" prefWidth="179.0" promptText="Search" />
-                  <ListView fx:id="friendsList" prefHeight="306.0" prefWidth="178.0" />
-                  <Button fx:id="addFriendButton" mnemonicParsing="false"  onAction="#addFriend" prefHeight="40.0" prefWidth="180.0" text="Add New Friend" translateY="-1.0" />
-               </children>
-            </VBox>
-            <VBox prefHeight="508.0" prefWidth="560.0" style="-fx-border-color: black;">
-               <children>
-                  <AnchorPane minHeight="-Infinity" prefHeight="40.0" prefWidth="560.0">
-                     <children>
-                        <Label alignment="CENTER" prefWidth="300.0" text="Friend Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Label>
-                        <Button fx:id="backButton" layoutX="524.0" layoutY="8.0" mnemonicParsing="false" onAction="#backHome" prefWidth="80.0" text="Back" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="340.0" prefWidth="560.0">
-                     <VBox.margin>
-                        <Insets bottom="5.0" left="5.0" right="5.0" />
-                     </VBox.margin>
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="360.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Label prefHeight="30.0" prefWidth="550.0" text="These are your friends gardens">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                                 <VBox.margin>
-                                    <Insets left="10.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
-                                 <VBox.margin>
-                                    <Insets left="10.0" />
-                                 </VBox.margin>
-                              </HBox>
-                           </children>
-                        </VBox>
-                        <Button layoutX="484.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Remove Friend" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </VBox>
-         </children>
-      </HBox>
-      <Label layoutX="350.0" layoutY="24.0" prefHeight="80.0" text="PLANT IT" textFill="#499a52" AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="15.0">
-         <font>
-            <Font name="System Bold" size="50.0" />
-         </font>
-      </Label>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
+            prefWidth="900.0" AnchorPane.leftAnchor="0.0" xmlns="http://javafx.com/javafx/22"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gardenplanner.gardenplanner.controller.FriendController">
+    <children>
+        <HBox layoutX="100.0" layoutY="170.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="120.0"
+              AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="100.0">
+            <children>
+                <VBox prefHeight="467.0" prefWidth="180.0" style="-fx-border-color: black;">
+                    <children>
+                        <TextField fx:id="searchFriends" prefHeight="30.0" prefWidth="179.0" promptText="Search"/>
+                        <ListView fx:id="friendList" prefHeight="306.0" prefWidth="178.0"/>
+                        <Button fx:id="addFriendButton" mnemonicParsing="false" onAction="#addFriend" prefHeight="40.0"
+                                prefWidth="180.0" text="Add New Friend" translateY="-1.0"/>
+                    </children>
+                </VBox>
+                <VBox prefHeight="508.0" prefWidth="560.0" style="-fx-border-color: black;">
+                    <children>
+                        <AnchorPane minHeight="-Infinity" prefHeight="40.0" prefWidth="560.0">
+                            <children>
+                                <Label alignment="CENTER" prefWidth="300.0" text="Friend Name"
+                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
+                                       AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
+                                    <font>
+                                        <Font name="System Bold" size="24.0"/>
+                                    </font>
+                                </Label>
+                                <Button fx:id="backButton" layoutX="524.0" layoutY="8.0" mnemonicParsing="false"
+                                        onAction="#backHome" prefWidth="80.0" text="Back" AnchorPane.bottomAnchor="5.0"
+                                        AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="340.0" prefWidth="560.0">
+                            <VBox.margin>
+                                <Insets bottom="5.0" left="5.0" right="5.0"/>
+                            </VBox.margin>
+                            <children>
+                                <VBox prefHeight="200.0" prefWidth="360.0" AnchorPane.bottomAnchor="35.0"
+                                      AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
+                                      AnchorPane.topAnchor="0.0">
+                                    <children>
+                                        <Label prefHeight="30.0" prefWidth="550.0"
+                                               text="These are your friends gardens">
+                                            <font>
+                                                <Font size="14.0"/>
+                                            </font>
+                                            <VBox.margin>
+                                                <Insets left="10.0"/>
+                                            </VBox.margin>
+                                        </Label>
+                                        <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
+                                            <VBox.margin>
+                                                <Insets left="10.0"/>
+                                            </VBox.margin>
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                                <Button layoutX="484.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0"
+                                        prefWidth="120.0" text="Remove Friend" AnchorPane.bottomAnchor="0.0"
+                                        AnchorPane.rightAnchor="0.0"/>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+        <Label layoutX="350.0" layoutY="24.0" prefHeight="80.0" text="PLANT IT" textFill="#499a52"
+               AnchorPane.leftAnchor="340.0" AnchorPane.rightAnchor="340.0" AnchorPane.topAnchor="15.0">
+            <font>
+                <Font name="System Bold" size="50.0"/>
+            </font>
+        </Label>
+    </children>
 </AnchorPane>

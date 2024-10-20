@@ -4,7 +4,6 @@ import com.gardenplanner.gardenplanner.model.PlotManager;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,17 +13,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  * A class to test the PlotManager class
  */
 public class PlotManagerTest {
-    LocalDate plantedTime = LocalDate.now();
     private final Plot[] plots = {
-            new Plot(1, "Tomato", plantedTime),
-            new Plot(1, "Potato", plantedTime),
-            new Plot(1, "Potato", plantedTime),
-            new Plot(1, "Raspberry", plantedTime),
-            new Plot(1, "Blueberry", plantedTime),
-            new Plot(1, "Blackberry", plantedTime),
-            new Plot(2, "Tomato", plantedTime),
-            new Plot(2, "Raspberry", plantedTime),
-            new Plot(2, "Blueberry", plantedTime),
+            new Plot(1, 1, "Tomato"),
+            new Plot(1, 1, "Potato"),
+            new Plot(1, 1, "Potato"),
+            new Plot(1, 1, "Raspberry"),
+            new Plot(1, 1, "Blueberry"),
+            new Plot(1, 1, "Blackberry"),
+            new Plot(2, 1, "Tomato"),
+            new Plot(2, 1, "Raspberry"),
+            new Plot(2, 1, "Blueberry"),
     };
     private PlotManager plotManager;
 
@@ -158,15 +156,14 @@ public class PlotManagerTest {
         plotManager.delete(plots[0]);
         List<Plot> plotList = plotManager.searchPlots(1, "Tomato");
         assertEquals(0, plotList.size());
-
     }
 
     /**
      * Test converting plot object toString
      */
     @Test
-    public void testPlotToFriend() {
-        Plot plot = new Plot(1, "Tomato", plantedTime);
-        assertEquals("Plot{userID=1, plants=Tomato, datePlanted=" + plantedTime + "}", plot.toString());
+    public void testPlotToString() {
+        Plot plot = new Plot(1, 1, "Tomato");
+        assertEquals("Plot{userID=1, gardenID=1, plant=Tomato}", plot.toString());
     }
 }

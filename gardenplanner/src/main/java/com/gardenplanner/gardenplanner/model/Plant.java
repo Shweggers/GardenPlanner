@@ -17,7 +17,6 @@ import java.util.List;
  * @param harvestSeason the harvest season
  */
 public record Plant(int userID, String plantID, String name, String waterDepth, String waterVolume, String waterAmount, String sunlight, String careLevel, String harvestSeason, String imageURL) {
-
     /**
      * Create a new Plant object with only the userID and name.
      *

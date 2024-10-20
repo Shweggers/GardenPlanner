@@ -9,6 +9,7 @@ import java.util.ArrayList;
  */
 public class MockUserDAO implements IUserDAO {
     private final ArrayList<User> users = new ArrayList<User>();
+    private int autoIncrementID = 1;
 
     /**
      * Insert a user into the database
@@ -17,7 +18,8 @@ public class MockUserDAO implements IUserDAO {
      */
     @Override
     public void insert(User user) {
-        users.add(user);
+        User newUser = user.withID(autoIncrementID++);
+        users.add(newUser);
     }
 
     /**
@@ -49,21 +51,9 @@ public class MockUserDAO implements IUserDAO {
             return;
         }
 
-        User newUser = new User(username, user.email(), password);
-        newUser.setID(user.getID());
+        User newUser = new User(user.ID(), username, user.email(), password);
 
         users.remove(user);
         users.add(newUser);
-    }
-
-    /**
-     * Check if a user exists
-     *
-     * @param username the username
-     * @return true if the user exists, false otherwise
-     */
-    @Override
-    public int returnID(String username) {
-        return getUser(username).getID();
     }
 }
