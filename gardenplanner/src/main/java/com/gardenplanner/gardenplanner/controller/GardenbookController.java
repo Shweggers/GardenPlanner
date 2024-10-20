@@ -99,8 +99,8 @@ public class GardenbookController {
     /**
      * Returns the user to the homepage when the back button is clicked.
      *
-     * @param event
-     * @throws IOException
+     * @param event the event details
+     * @throws IOException if an I/O error occurs
      */
     @FXML
     void backButtonClicked(ActionEvent event) throws IOException {

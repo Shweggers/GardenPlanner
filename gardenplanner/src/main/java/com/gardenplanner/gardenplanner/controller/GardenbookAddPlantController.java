@@ -54,6 +54,8 @@ public class GardenbookAddPlantController {
 
     /**
      * Constructs a new GardenbookAddPlantController
+     *
+     * @param gardenbookController the garden book controller
      */
     public GardenbookAddPlantController(GardenbookController gardenbookController) { this.gardenbookController = gardenbookController; }
 

@@ -39,12 +39,12 @@ public class GardenController {
     private Button replantButton;
     @FXML
     private Button leaveGarden;
-    private String lastSearch;
 
     /**
      * handle the back button click event
      *
      * @param event the event details
+     * @throws IOException if an I/O error occurs
      */
     @FXML
     public void backButtonClicked(ActionEvent event) throws IOException {
@@ -59,30 +59,22 @@ public class GardenController {
 
     /**
      * Adds a new garden when the add garden button is clicked.
-     *
-     * @param event event details
-     * @throws IOException if an I/O error occurs
      */
     @FXML
     public void populateList() {
         String search = gardenSearchField.getText();
 
-        if (search.equals(lastSearch)) {
-            return;
-        }
-
         gardenList.getItems().setAll(GardenManager.getInstance().searchGardens(
                 DataStore.getInstance().getCurrentUser().ID(),
                 search
         ));
-
-        lastSearch = search;
     }
 
     /**
      * handle the add garden button click event
      *
      * @param event the event details
+     * @throws IOException if an I/O error occurs
      */
     @FXML
     void addGardenButtonClicked(ActionEvent event) throws IOException {
@@ -95,7 +87,11 @@ public class GardenController {
         stage.show();
     }
 
-
+    /**
+     * handle the add plot button click event
+     *
+     * @param event the event details
+     */
     @FXML
     void addPlotButtonClicked(ActionEvent event) {
         // plotsTabPane.getTabs().add(new Tab("New Plot"));
@@ -137,6 +133,9 @@ public class GardenController {
         // Add your logic here
     }
 
+    /**
+     * Initializes the controller
+     */
     @FXML
     void initialize() {
         gardenSearchField.textProperty().addListener((observable, oldValue, newValue) -> populateList());

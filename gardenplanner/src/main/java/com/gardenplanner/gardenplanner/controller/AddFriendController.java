@@ -68,12 +68,4 @@ public class AddFriendController {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
-
-    public void setAddFriendName(String name) {
-        addFriendName.setText(name);
-    }
-
-    public String getAddFriendName() {
-        return addFriendName.getText();
-    }
 }

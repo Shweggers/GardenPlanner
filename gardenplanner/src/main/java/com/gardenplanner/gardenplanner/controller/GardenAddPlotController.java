@@ -23,6 +23,8 @@ public class GardenAddPlotController {
 
     /**
      * Constructs a new GardenAddGardenController
+     *
+     * @param gardenController the garden controller
      */
     public GardenAddPlotController(GardenController gardenController) {this.gardenController = gardenController;}
 

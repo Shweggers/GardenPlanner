@@ -9,6 +9,8 @@ public class DataStore {
 
     /**
      * Create a new DataStore instance
+     *
+     * @return the DataStore instance
      */
     public static DataStore getInstance() {
         if (instance == null) {

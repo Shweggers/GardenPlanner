@@ -19,8 +19,15 @@ import java.io.IOException;
  * The LoginController class is a controller for the login page
  */
 public class LoginController {
+    /**
+     * The username field
+     */
     @FXML
     protected TextField usernameField;
+
+    /**
+     * The password field
+     */
     @FXML
     protected PasswordField passwordField;
 

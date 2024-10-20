@@ -3,8 +3,18 @@ package com.gardenplanner.gardenplanner.model;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PerenualCollection is a class that represents a collection of PerenualItem objects.
+ */
 public class PerenualCollection {
+    /**
+     * The PerenualItem objects in the collection.
+     */
     public List<PerenualItem> perenualItems;
+
+    /**
+     * The number of pages in the collection.
+     */
     public int pages;
 
     /**

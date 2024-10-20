@@ -21,6 +21,9 @@ public class SQLPlotDAO implements IPlotDAO {
         createTable();
     }
 
+    /**
+     * Create the plots table
+     */
     public void createTable() {
         try {
             Statement createTable = connection.createStatement();
@@ -40,6 +43,11 @@ public class SQLPlotDAO implements IPlotDAO {
         }
     }
 
+    /**
+     * Insert a plot into the database
+     *
+     * @param plot the plot to insert
+     */
     @Override
     public void insert(Plot plot) {
         try {
@@ -56,6 +64,11 @@ public class SQLPlotDAO implements IPlotDAO {
         }
     }
 
+    /**
+     * Delete a plot from the database
+     *
+     * @param plot the plot to delete
+     */
     @Override
     public void delete(Plot plot) {
         try {
@@ -71,6 +84,12 @@ public class SQLPlotDAO implements IPlotDAO {
         }
     }
 
+    /**
+     * Get a list of plots for a user
+     *
+     * @param userID the user ID
+     * @return a list of plots
+     */
     @Override
     public List<Plot> getPlots(int userID) {
         List<Plot> plots = new ArrayList<>();

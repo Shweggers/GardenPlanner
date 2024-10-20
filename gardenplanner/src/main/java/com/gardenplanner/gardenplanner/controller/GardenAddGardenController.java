@@ -23,14 +23,10 @@ public class GardenAddGardenController {
 
     /**
      * Constructs a new GardenAddGardenController
+     *
+     * @param gardenController the garden controller
      */
     public GardenAddGardenController(GardenController gardenController) { this.gardenController = gardenController; }
-
-    /**
-     * Handles the save button click event.
-     *
-     * @param event the event details
-     */
 
     /**
      * Handles the cancel button click event.

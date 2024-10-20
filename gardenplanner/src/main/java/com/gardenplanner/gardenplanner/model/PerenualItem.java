@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.Dictionary;
 import java.util.Hashtable;
 
+/**
+ * PerenualItem is a class that represents a PerenualItem object.
+ */
 public class PerenualItem {
     private final String id;
     private final String name;
@@ -27,6 +30,7 @@ public class PerenualItem {
      * Get the item data.
      *
      * @return the item data or create it if it does not exist
+     * @throws LimitExceededException if the limit is exceeded
      */
     public Dictionary<String, String> getItemData() throws LimitExceededException {
         if (itemData.isEmpty()) {

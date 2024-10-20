@@ -24,6 +24,8 @@ public class PerenualService {
 
     /**
      * Create a new PerenualService instance.
+     *
+     * @return the PerenualService instance
      */
     public static PerenualService getInstance() {
         if (instance == null) {
@@ -39,6 +41,7 @@ public class PerenualService {
      * @return the plant data
      * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
+     * @throws LimitExceededException if the limit is exceeded
      */
     public JsonObject getPlantDataFromID(String plantID) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species/details/" + plantID + "?key=" + API_KEY;
@@ -61,6 +64,7 @@ public class PerenualService {
      * @return the ID of the plant
      * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
+     * @throws LimitExceededException if the limit is exceeded
      */
     public String getPlantIdFromName(String plantName) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(plantName, StandardCharsets.UTF_8);
@@ -87,6 +91,7 @@ public class PerenualService {
      * @return a list of plant names
      * @throws IOException          if an I/O error occurs
      * @throws InterruptedException if the operation is interrupted
+     * @throws LimitExceededException if the limit is exceeded
      */
     public PerenualCollection getPlantNames(String query, int page) throws IOException, InterruptedException, LimitExceededException {
         String url = BASE_URL + "species-list" + "?key=" + API_KEY + "&q=" + URLEncoder.encode(query, StandardCharsets.UTF_8) + "&page=" + page;
