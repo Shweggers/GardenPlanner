@@ -17,18 +17,21 @@
         </image>
     </ImageView>
 
+    <ImageView fitHeight="45.0" fitWidth="477.0" layoutX="308.0" layoutY="14.0" pickOnBounds="true"
+               preserveRatio="true">
+        <image>
+            <Image url="@plantitlogo.png"/>
+        </image>
+    </ImageView>
+
     <!-- Form Area -->
     <VBox alignment="CENTER" layoutX="80.0" layoutY="100.0" prefHeight="405.0" prefWidth="740.0" spacing="15.0"
           style="-fx-border-color: lightgrey; -fx-background-color: white; -fx-border-width: 2; -fx-border-radius: 5; -fx-background-radius: 5; -fx-padding: 20;"
           AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0"
           AnchorPane.topAnchor="100.0">
 
-        <!-- Logo -->
-        <ImageView fitHeight="45.0" fitWidth="477.0" pickOnBounds="true" preserveRatio="true">
-            <image>
-                <Image url="@plantitlogo.png"/>
-            </image>
-        </ImageView>
+
+
 
         <!-- Welcome Label -->
         <Label fx:id="welcomeMsg" text="Welcome, USER" textFill="#499a52" style="-fx-font-size: 23px;">
@@ -79,7 +82,7 @@
 
             <!-- Logout Button -->
             <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#handleLogOut" prefHeight="100.0"
-                    prefWidth="250.0" style="-fx-background-color: #A52A2A; -fx-text-fill: white; -fx-font-size: 18px;"
+                    prefWidth="250.0"  style="-fx-background-color: #ff5733; -fx-text-fill: white; -fx-font-size: 18px;"
                     text="Logout" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1"
                     GridPane.valignment="CENTER">
                 <font>
