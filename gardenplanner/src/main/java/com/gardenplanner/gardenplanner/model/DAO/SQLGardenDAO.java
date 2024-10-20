@@ -2,6 +2,8 @@ package com.gardenplanner.gardenplanner.model.DAO;
 
 import com.gardenplanner.gardenplanner.model.DatabaseConnection;
 import com.gardenplanner.gardenplanner.model.Garden;
+import com.gardenplanner.gardenplanner.model.User;
+import com.gardenplanner.gardenplanner.model.UserManager;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -104,5 +106,29 @@ public class SQLGardenDAO implements IGardenDAO {
             e.printStackTrace();
         }
         return gardens;
+    }
+
+    /**
+     * Search for users in a garden
+     *
+     * @param gardenID the garden ID
+     * @return a list of users
+     */
+    public List<User> getUsers(int gardenID) {
+        List<User> users = new ArrayList<>();
+        try {
+            PreparedStatement searchGardens = connection.prepareStatement(
+                    "SELECT * FROM gardens WHERE id = ?"
+            );
+            searchGardens.setInt(1, gardenID);
+
+            ResultSet rs = searchGardens.executeQuery();
+            while (rs.next()) {
+                users.add(UserManager.getInstance().getUserFromID(rs.getInt("userID")));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 }

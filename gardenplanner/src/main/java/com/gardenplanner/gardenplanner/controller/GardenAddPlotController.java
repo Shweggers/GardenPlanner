@@ -53,6 +53,9 @@ public class GardenAddPlotController {
      */
     @FXML
     public void setAddGardenConfirmButton(ActionEvent event) {
+        if (addPlotName.getText().trim().isEmpty()) {
+            return;
+        }
         Plot plot = new Plot(
                 DataStore.getInstance().getCurrentUser().ID(),
                 gardenController.gardenList.getSelectionModel().getSelectedItem().ID(),

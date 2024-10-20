@@ -20,6 +20,10 @@ public record User(int ID, String username, String email, String hashedPassword)
         this(0, username, email, hashedPassword);
     }
 
+    public User(int id) {
+        this(id, "", "", "");
+    }
+
     /**
      * Create a new User object with the given ID.
      *

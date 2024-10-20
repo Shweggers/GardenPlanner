@@ -65,6 +65,11 @@ public class GardenManager {
                 .toList();
     }
 
+
+    public List<User> getUsers(int userID) {
+        return gardenDAO.getUsers(userID);
+    }
+
     /**
      * Search for gardens by a query.
      *

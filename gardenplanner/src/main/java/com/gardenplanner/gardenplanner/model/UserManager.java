@@ -51,6 +51,16 @@ public class UserManager {
     }
 
     /**
+     * Get a user object from the database.
+     *
+     * @param id the user ID
+     * @return the user object
+     */
+    public User getUserFromID(int id) {
+        return userDAO.getUserFromID(id);
+    }
+
+    /**
      * Update a user object in the database.
      *
      * @param username the user's username

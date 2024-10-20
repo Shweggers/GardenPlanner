@@ -47,6 +47,9 @@ public class GardenAddGardenController {
      */
     @FXML
     public void setAddGardenConfirmButton(ActionEvent event) {
+        if (addGardenName.getText().trim().isEmpty()) {
+            return;
+        }
         Garden garden = new Garden(DataStore.getInstance().getCurrentUser().ID(), addGardenName.getText());
         GardenManager.getInstance().insert(garden);
 

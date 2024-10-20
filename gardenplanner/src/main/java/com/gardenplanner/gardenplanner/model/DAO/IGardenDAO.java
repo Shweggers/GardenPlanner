@@ -1,6 +1,7 @@
 package com.gardenplanner.gardenplanner.model.DAO;
 
 import com.gardenplanner.gardenplanner.model.Garden;
+import com.gardenplanner.gardenplanner.model.User;
 
 import java.util.List;
 
@@ -29,5 +30,13 @@ public interface IGardenDAO {
      * @param userid the user ID
      * @return a list of gardens
      */
-    List<Garden> getGardens(int userid);
+    List<Garden> getGardens(int userID);
+
+    /**
+     * Get a list of users
+     *
+     * @param userID the user ID
+     * @return a list of users
+     */
+    List<User> getUsers(int userID);
 }
