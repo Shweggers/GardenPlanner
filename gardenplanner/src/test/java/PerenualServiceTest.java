@@ -33,6 +33,9 @@ public class PerenualServiceTest {
         httpResponseMock = mock(HttpResponse.class);
     }
 
+    public void testGetInstance() {
+    }
+
     /**
      * Test the getPlantData method
      *

@@ -280,8 +280,22 @@ public class UserManagerTest {
         assertNull(user);
     }
 
+    /**
+     * Test getInstance which will return a null user
+     */
     @Test
-    public void testGetID() {
+    public void testGetInstance() {
+        User user = UserManager.getInstance().getUser("");
+        assertNull(user);
+    }
+
+    /**
+     * Test create User object with ID, and getUserFromID method
+     */
+    @Test
+    public void testGetUserFromID() {
+        userManager.insert(new User(1));
+        assertEquals(new User(1), userManager.getUserFromID(1));
     }
 
     /**

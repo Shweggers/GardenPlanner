@@ -1,9 +1,11 @@
 import com.gardenplanner.gardenplanner.model.DAO.MockPlantDAO;
 import com.gardenplanner.gardenplanner.model.Plant;
 import com.gardenplanner.gardenplanner.model.PlantManager;
+import com.gardenplanner.gardenplanner.model.PlantProperty;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -159,6 +161,32 @@ public class PlantManagerTest {
         plantManager.delete(plants[0]);
         List<Plant> plantList = plantManager.searchPlants(1, "Tomato");
         assertEquals(0, plantList.size());
+    }
+
+    /**
+     * Test getInstance which will return an empty list
+     */
+    @Test
+    public void testGetInstanceEmptyList() {
+        List<Plant> plantList = PlantManager.getInstance().searchPlants(0, "");
+        assertEquals(0, plantList.size());
+    }
+
+    /**
+     * Test get the properties of a plant
+     */
+    @Test
+    public void testGetProperties() {
+        Plant plant = new Plant(1, "Tomato");
+        List<PlantProperty> properties = new ArrayList<>();
+        properties.add(new PlantProperty("Water Depth", ""));
+        properties.add(new PlantProperty("Water Volume", ""));
+        properties.add(new PlantProperty("Water Amount", ""));
+        properties.add(new PlantProperty("Sunlight", ""));
+        properties.add(new PlantProperty("Care Level", ""));
+        properties.add(new PlantProperty("Harvest Season", ""));
+
+        assertEquals(plant.getProperties(), properties);
     }
 
     /**

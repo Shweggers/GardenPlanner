@@ -1,6 +1,8 @@
 import com.gardenplanner.gardenplanner.model.DAO.MockGardenDAO;
+import com.gardenplanner.gardenplanner.model.FriendManager;
 import com.gardenplanner.gardenplanner.model.Garden;
 import com.gardenplanner.gardenplanner.model.GardenManager;
+import com.gardenplanner.gardenplanner.model.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -161,6 +163,28 @@ public class GardenManagerTest {
         List<Garden> gardenList = gardenManager.searchGardens(1, "New Tomatoes 1");
         assertEquals(0, gardenList.size());
 
+    }
+
+    /**
+     * Test getInstance which will return an empty garden list
+     */
+    @Test
+    public void testGetInstanceEmptyList() {
+        List<Garden> gardenList = GardenManager.getInstance().searchGardens(0, "");
+        assertEquals(0, gardenList.size());
+    }
+
+    /**
+     * Test getting a user list with userID
+     */
+    @Test
+    public void testGetUsers() {
+        for (Garden garden : gardens) {
+            gardenManager.insert(garden);
+        }
+
+        List<User> userlist = gardenManager.getUsers(1);
+        assertEquals(6, userlist.size());
     }
 
     /**

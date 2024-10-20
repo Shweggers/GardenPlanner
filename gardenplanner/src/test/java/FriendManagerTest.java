@@ -254,6 +254,15 @@ public class FriendManagerTest {
     }
 
     /**
+     * Test getInstance which will return an empty friend list
+     */
+    @Test
+    public void testGetInstanceEmptyList() {
+        List<Friend> friendslist = FriendManager.getInstance().searchFriends(0, "");
+        assertEquals(0, friendslist.size());
+    }
+
+    /**
      * Test converting friend object toString
      */
     @Test

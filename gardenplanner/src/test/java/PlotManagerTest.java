@@ -159,6 +159,15 @@ public class PlotManagerTest {
     }
 
     /**
+     * Test getInstance which will return an empty list
+     */
+    @Test
+    public void testGetInstanceEmptyList() {
+        List<Plot> plotList = PlotManager.getInstance().searchPlots(0, "");
+        assertEquals(0, plotList.size());
+    }
+
+    /**
      * Test converting plot object toString
      */
     @Test
