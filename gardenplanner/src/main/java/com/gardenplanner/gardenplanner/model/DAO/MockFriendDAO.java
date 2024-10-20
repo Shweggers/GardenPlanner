@@ -16,7 +16,7 @@ public class MockFriendDAO implements IFriendDAO {
      *
      * @param friend the friend to insert
      */
-    @Override
+    //@Override
     public void insert(Friend friend) {
         friends.add(friend);
     }

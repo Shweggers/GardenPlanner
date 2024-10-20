@@ -1,9 +1,16 @@
+// Java
 package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.model.DataStore;
+import com.gardenplanner.gardenplanner.model.Friend;
+import com.gardenplanner.gardenplanner.model.FriendManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,7 +22,11 @@ public class FriendpageController {
     @FXML
     private Button backButton;
     @FXML
-    private  Button addFriendButton;
+    private Button addFriendButton;
+    @FXML
+    private ListView<Friend> friendList;
+    @FXML
+    private TextField searchFriends;
 
     /**
      * Constructs a new FriendpageController
@@ -39,9 +50,9 @@ public class FriendpageController {
     }
 
     /**
-     * Adds a new friend to the friend list when the add friend button is clicked.
+     * Opens the add friend page when the add friend button is clicked.
      *
-     * @throws IOException if an I/O error occurs
+     * @throws IOException
      */
     @FXML
     void addFriend() throws IOException {
@@ -51,5 +62,43 @@ public class FriendpageController {
 
         stage.setScene(new Scene(loader.load()));
         stage.show();
+    }
+
+    /**
+     * Populates the friend list based on the search query.
+     */
+    void populateFriends() {
+        String search = searchFriends.getText();
+        friendList.getItems().setAll(FriendManager.getInstance().searchFriends(
+                DataStore.getInstance().getCurrentUser().getID(), search));
+    }
+
+    /**
+     * Initializes the controller after the root element has been completely processed.
+     */
+    @FXML
+    void initialize() {
+        friendList.setCellFactory(this::renderListCell);
+        populateFriends();
+    }
+
+    /**
+     * Renders each friend in the ListView.
+     *
+     * @param list the ListView of friends
+     * @return a ListCell for each friend
+     */
+    ListCell<Friend> renderListCell(ListView<Friend> list) {
+        return new ListCell<>() {
+            @Override
+            protected void updateItem(Friend friend, boolean empty) {
+                super.updateItem(friend, empty);
+                if (empty || friend == null) {
+                    setText(null);
+                } else {
+                    setText(friend.getFriendName());
+                }
+            }
+        };
     }
 }

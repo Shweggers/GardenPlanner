@@ -29,13 +29,12 @@ public class SQLFriendDAO implements IFriendDAO {
             Statement createTable = connection.createStatement();
             createTable.execute(
                     "CREATE TABLE IF NOT EXISTS friends ("
-                            + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
+                            //+ "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
                             + "userID       INTEGER NOT NULL, "
-                            + "friendID     INTEGER NOT NULL, "
                             + "friendName   STRING  NOT NULL, "
                             + "FOREIGN KEY(userID) REFERENCES users(id), "
-                            + "FOREIGN KEY(friendID) REFERENCES users(id), "
-                            + "UNIQUE(userID, friendID)"
+                            + "FOREIGN KEY(friendName) REFERENCES users(id), "
+                            + "UNIQUE(userID, friendName)"
                             + ")"
             );
         } catch (SQLException e) {
@@ -52,10 +51,9 @@ public class SQLFriendDAO implements IFriendDAO {
     public void insert(Friend friend) {
         try {
             PreparedStatement insertFriend = connection.prepareStatement(
-                    "INSERT INTO friends (userID, friendID, friendName) VALUES (?, ?, ?)"
+                    "INSERT INTO friends (userID, friendName) VALUES (?, ?)"
             );
             insertFriend.setInt(1, friend.userID());
-            insertFriend.setInt(2, friend.friendID());
             insertFriend.setString(2, friend.friendName());
 
             insertFriend.execute();
@@ -73,10 +71,10 @@ public class SQLFriendDAO implements IFriendDAO {
     public void delete(Friend friend) {
         try {
             PreparedStatement deleteFriend = connection.prepareStatement(
-                    "DELETE FROM friends WHERE userID = ? AND friendID = ?"
+                    "DELETE FROM friends WHERE userID = ? AND friendName = ?"
             );
             deleteFriend.setInt(1, friend.userID());
-            deleteFriend.setInt(2, friend.friendID());
+            deleteFriend.setString(2, friend.friendName());
 
             deleteFriend.execute();
         } catch (SQLException e) {
@@ -116,21 +114,20 @@ public class SQLFriendDAO implements IFriendDAO {
      */
     @Override
     public List<Friend> getFriends(int userID) {
-        ArrayList<Friend> friends = new ArrayList<>();
-
+        List<Friend> friends = new ArrayList<>();
         try {
             PreparedStatement getFriends = connection.prepareStatement(
-                    "SELECT friendName FROM friends WHERE userID = ?"
+                    "SELECT * FROM friends WHERE userID = ?"
             );
             getFriends.setInt(1, userID);
 
             ResultSet rs = getFriends.executeQuery();
             while (rs.next()) {
-                friends.add(new Friend(userID, rs.getInt("friendID"), rs.getString("friendName")));
+                friends.add(new Friend(rs.getInt("userID"), rs.getString("friendName")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+    }
         return friends;
     }
 }

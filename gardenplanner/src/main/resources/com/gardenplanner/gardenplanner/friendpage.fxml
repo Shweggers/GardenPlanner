@@ -14,8 +14,8 @@
             <children>
                 <VBox prefHeight="467.0" prefWidth="180.0" style="-fx-border-color: black;">
                     <children>
-                        <TextField fx:id="friendsSearch" prefHeight="30.0" prefWidth="179.0" promptText="Search"/>
-                        <ListView fx:id="friendsList" prefHeight="306.0" prefWidth="178.0"/>
+                        <TextField fx:id="searchFriends" prefHeight="30.0" prefWidth="179.0" promptText="Search"/>
+                        <ListView fx:id="friendList" prefHeight="306.0" prefWidth="178.0"/>
                         <Button fx:id="addFriendButton" mnemonicParsing="false" onAction="#addFriend" prefHeight="40.0"
                                 prefWidth="180.0" text="Add New Friend" translateY="-1.0"/>
                     </children>

@@ -13,21 +13,21 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class FriendManagerTest {
     private final Friend[] friends = {
-            new Friend(1, 2, "Jane"),
-            new Friend(1, 3, "JaneSmith"),
-            new Friend(1, 4, "Smith"),
-            new Friend(1, 5, "Smithers"),
-            new Friend(1, 6, "Williams"),
-            new Friend(1, 7, "Will"),
-            new Friend(2, 1, "John"),
-            new Friend(2, 3, "JaneSmith"),
-            new Friend(2, 4, "Smith"),
-            new Friend(2, 5, "Smithers"),
-            new Friend(3, 2, "Jane"),
-            new Friend(3, 4, "Smith"),
-            new Friend(4, 2, "Jane"),
-            new Friend(4, 3, "JaneSmith"),
-            new Friend(5, 1, "John"),
+            new Friend(1, "Jane"),
+            new Friend(1, "JaneSmith"),
+            new Friend(1, "Smith"),
+            new Friend(1, "Smithers"),
+            new Friend(1, "Williams"),
+            new Friend(1, "Will"),
+            new Friend(2, "John"),
+            new Friend(2, "JaneSmith"),
+            new Friend(2, "Smith"),
+            new Friend(2, "Smithers"),
+            new Friend(3, "Jane"),
+            new Friend(3, "Smith"),
+            new Friend(4, "Jane"),
+            new Friend(4, "JaneSmith"),
+            new Friend(5, "John"),
     };
     private FriendManager friendManager;
 
