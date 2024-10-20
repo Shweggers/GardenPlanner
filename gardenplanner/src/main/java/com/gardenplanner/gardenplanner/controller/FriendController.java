@@ -65,40 +65,33 @@ public class FriendController {
     }
 
     /**
-     * Populates the friend list based on the search query.
-     */
-    void populateFriends() {
-        String search = searchFriends.getText();
-        friendList.getItems().setAll(FriendManager.getInstance().searchFriends(
-                DataStore.getInstance().getCurrentUser().ID(), search));
-    }
-
-    /**
-     * Initializes the controller after the root element has been completely processed.
+     * Initializes the friend page.
      */
     @FXML
-    void initialize() {
-        friendList.setCellFactory(this::renderListCell);
-        populateFriends();
-    }
-
-    /**
-     * Renders each friend in the ListView.
-     *
-     * @param list the ListView of friends
-     * @return a ListCell for each friend
-     */
-    ListCell<Friend> renderListCell(ListView<Friend> list) {
-        return new ListCell<>() {
+    public void initialize() {
+        friendList.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Friend friend, boolean empty) {
                 super.updateItem(friend, empty);
+
                 if (empty || friend == null) {
                     setText(null);
                 } else {
                     setText(friend.friendName());
                 }
             }
-        };
+        });
+        populateFriends();
     }
+
+    private void populateFriends() {
+        friendList.getItems().setAll(FriendManager.getInstance().searchFriends(DataStore.getInstance().getCurrentUser().ID(), searchFriends.getText()));
+
+    }
+
+
+
+
+
+
 }

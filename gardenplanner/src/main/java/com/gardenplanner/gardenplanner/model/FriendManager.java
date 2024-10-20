@@ -75,6 +75,8 @@ public class FriendManager {
                 .stream()
                 .filter(friend -> isFriendMatched(friend, query))
                 .toList();
+
+
     }
 
     /**
