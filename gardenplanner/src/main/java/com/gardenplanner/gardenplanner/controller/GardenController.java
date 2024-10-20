@@ -117,7 +117,7 @@ public class GardenController {
         if (selectedGarden == null) {
             return;
         }
-        
+
         plotsTabPane.getTabs().clear();
         PlotManager.getInstance().searchPlots(selectedGarden.ID(), "").forEach(plot -> {
             Tab tab = new Tab(plot.name());
