@@ -86,7 +86,13 @@ public class SQLUserDAO implements IUserDAO {
         return null;
     }
 
-
+    /**
+     * Method that gets a user from the database using their ID
+     *
+     * @param id the ID to search for
+     * @return the user
+     */
+    @Override
     public User getUserFromID(int id) {
         try {
             PreparedStatement getUser = connection.prepareStatement("SELECT * FROM users WHERE id = ?");

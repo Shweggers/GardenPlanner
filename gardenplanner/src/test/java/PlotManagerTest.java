@@ -14,15 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class PlotManagerTest {
     private final Plot[] plots = {
-            new Plot(1, 1, "Tomato"),
-            new Plot(1, 1, "Potato"),
-            new Plot(1, 1, "Potato"),
-            new Plot(1, 1, "Raspberry"),
-            new Plot(1, 1, "Blueberry"),
-            new Plot(1, 1, "Blackberry"),
-            new Plot(2, 1, "Tomato"),
-            new Plot(2, 1, "Raspberry"),
-            new Plot(2, 1, "Blueberry"),
+            new Plot(1, 1, "", "Tomato"),
+            new Plot(1, 1, "", "Potato"),
+            new Plot(1, 1, "", "Potato"),
+            new Plot(1, 1, "", "Raspberry"),
+            new Plot(1, 1, "", "Blueberry"),
+            new Plot(1, 1, "", "Blackberry"),
+            new Plot(2, 1, "", "Tomato"),
+            new Plot(2, 1, "", "Raspberry"),
+            new Plot(2, 1, "", "Blueberry"),
     };
     private PlotManager plotManager;
 
@@ -163,7 +163,7 @@ public class PlotManagerTest {
      */
     @Test
     public void testPlotToString() {
-        Plot plot = new Plot(1, 1, "Tomato");
+        Plot plot = new Plot(1, 1, "", "Tomato");
         assertEquals("Plot{userID=1, gardenID=1, plant=Tomato}", plot.toString());
     }
 }
