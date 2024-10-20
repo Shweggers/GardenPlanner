@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="88.0" prefWidth="240.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.AddFriendNotFoundController">
+    <children>
+        <Button fx:id="okButton" layoutX="104.0" layoutY="44.0" onAction="#okButtonClicked" text="Ok" />
+        <Label layoutX="11.0" layoutY="14.0" text="That user does not exists please try again" />
+    </children>
+</AnchorPane>
