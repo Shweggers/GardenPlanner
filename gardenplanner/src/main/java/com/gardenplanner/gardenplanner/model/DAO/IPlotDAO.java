@@ -26,8 +26,8 @@ public interface IPlotDAO {
     /**
      * Get a list of plots for a user
      *
-     * @param userID the user ID
+     * @param gardenID the user ID
      * @return a list of plots
      */
-    List<Plot> getPlots(int userID);
+    List<Plot> getPlots(int gardenID);
 }

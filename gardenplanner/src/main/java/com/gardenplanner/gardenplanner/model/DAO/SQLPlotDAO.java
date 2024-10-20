@@ -89,17 +89,17 @@ public class SQLPlotDAO implements IPlotDAO {
     /**
      * Get a list of plots for a user
      *
-     * @param userID the user ID
+     * @param gardenID the user ID
      * @return a list of plots
      */
     @Override
-    public List<Plot> getPlots(int userID) {
+    public List<Plot> getPlots(int gardenID) {
         List<Plot> plots = new ArrayList<>();
         try {
             PreparedStatement getGardens = connection.prepareStatement(
-                    "SELECT * FROM plots WHERE userID = ?"
+                    "SELECT * FROM plots WHERE gardenID = ?"
             );
-            getGardens.setInt(1, userID);
+            getGardens.setInt(1, gardenID);
 
             ResultSet rs = getGardens.executeQuery();
             while (rs.next()) {

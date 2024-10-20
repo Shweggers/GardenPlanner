@@ -100,7 +100,7 @@ public class SQLGardenDAO implements IGardenDAO {
 
             ResultSet rs = getGardens.executeQuery();
             while (rs.next()) {
-                gardens.add(new Garden(rs.getInt("userID"), rs.getString("gardenName")));
+                gardens.add(new Garden(rs.getInt("id"), rs.getInt("userID"), rs.getString("gardenName")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

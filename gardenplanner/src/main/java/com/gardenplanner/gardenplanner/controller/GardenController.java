@@ -117,9 +117,9 @@ public class GardenController {
         if (selectedGarden == null) {
             return;
         }
-
+        
         plotsTabPane.getTabs().clear();
-        PlotManager.getInstance().searchPlots(DataStore.getInstance().getCurrentUser().ID(), selectedGarden.name()).forEach(plot -> {
+        PlotManager.getInstance().searchPlots(selectedGarden.ID(), "").forEach(plot -> {
             Tab tab = new Tab(plot.name());
             plotsTabPane.getTabs().add(tab);
         });
@@ -163,8 +163,13 @@ public class GardenController {
         populateList();
 
         gardenList.setCellFactory(this::renderListCell);
+
         plotsTabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             try {
+                Tab selectedTab = plotsTabPane.getSelectionModel().getSelectedItem();
+                if (selectedTab == null) {
+                    return;
+                }
                 plotsTabPane.getSelectionModel().getSelectedItem().setContent(
                         new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage_tab.fxml")).load());
             } catch (IOException e) {

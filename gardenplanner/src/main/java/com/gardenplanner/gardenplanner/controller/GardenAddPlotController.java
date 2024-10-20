@@ -76,6 +76,5 @@ public class GardenAddPlotController {
 
     @FXML
     void initialize() {
-        addPlotPlant.getItems().setAll(PlantManager.getInstance().searchPlants(DataStore.getInstance().getCurrentUser().ID(), ""));
-    }
+        addPlotPlant.getItems().setAll(PlantManager.getInstance().searchPlants(DataStore.getInstance().getCurrentUser().ID(), ""));}
 }

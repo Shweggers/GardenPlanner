@@ -7,9 +7,9 @@
     <TableView fx:id="plotTable" prefHeight="180.0" prefWidth="569.0" AnchorPane.bottomAnchor="100.0"
                AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columns>
-            <TableColumn fx:id="plantColumn" editable="false" prefWidth="150.0" resizable="false" text="Planted"/>
-            <TableColumn fx:id="harvestColumn" editable="false" prefWidth="399.6" resizable="false"
-                         text="Harvest Date"/>
+            <TableColumn fx:id="typeColumn" editable="false" prefWidth="150.0" resizable="false" text="Info Type"/>
+            <TableColumn fx:id="detailsColumn" editable="false" prefWidth="399.6" resizable="false"
+                         text="Details"/>
         </columns>
     </TableView>
     <ListView fx:id="scheduleList" layoutY="170.0" orientation="HORIZONTAL" prefHeight="71.0" prefWidth="200.0"
