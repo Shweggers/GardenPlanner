@@ -42,14 +42,14 @@ public class MockPlotDAO implements IPlotDAO {
     /**
      * Get a list of plots for a user
      *
-     * @param userID the user ID
+     * @param gardenID the user ID
      * @return a list of plots
      */
     @Override
-    public List<Plot> getPlots(int userID) {
+    public List<Plot> getPlots(int gardenID) {
         ArrayList<Plot> plotsList = new ArrayList<Plot>();
         for (Plot plot : plots) {
-            if (plot.userID() == userID) {
+            if (plot.gardenID() == gardenID) {
                 plotsList.add(plot);
             }
         }

@@ -14,15 +14,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 public class PlotManagerTest {
     private final Plot[] plots = {
-            new Plot(1, 1, "", "Tomato"),
-            new Plot(1, 1, "", "Potato"),
-            new Plot(1, 1, "", "Potato"),
-            new Plot(1, 1, "", "Raspberry"),
-            new Plot(1, 1, "", "Blueberry"),
-            new Plot(1, 1, "", "Blackberry"),
-            new Plot(2, 1, "", "Tomato"),
-            new Plot(2, 1, "", "Raspberry"),
-            new Plot(2, 1, "", "Blueberry"),
+            new Plot(1, 1, "Tomato", "Tomato"),
+            new Plot(1, 1, "Potato", "Potato"),
+            new Plot(1, 1, "Potato", "Potato"),
+            new Plot(1, 1, "Raspberry", "Raspberry"),
+            new Plot(1, 1, "Blueberry", "Blueberry"),
+            new Plot(1, 2, "Blackberry", "Blackberry"),
+            new Plot(2, 3, "Tomato", "Tomato"),
+            new Plot(2, 3, "Raspberry", "Raspberry"),
+            new Plot(2, 3, "Blueberry", "Blueberry"),
     };
     private PlotManager plotManager;
 
@@ -87,7 +87,7 @@ public class PlotManagerTest {
         }
 
         List<Plot> plotList = plotManager.searchPlots(1, "");
-        assertEquals(6, plotList.size());
+        assertEquals(5, plotList.size());
     }
 
     /**
@@ -100,7 +100,7 @@ public class PlotManagerTest {
         }
 
         List<Plot> plotList = plotManager.searchPlots(1, null);
-        assertEquals(6, plotList.size());
+        assertEquals(5, plotList.size());
     }
 
     /**
@@ -129,7 +129,7 @@ public class PlotManagerTest {
         }
 
         List<Plot> plotList = plotManager.searchPlots(1, "berry");
-        assertEquals(3, plotList.size());
+        assertEquals(2, plotList.size());
         for (Plot plot : plotList) {
             assertTrue(plot.plant().equals("Blueberry") || plot.plant().equals("Blackberry") || plot.plant().equals("Raspberry"));
         }
@@ -174,5 +174,18 @@ public class PlotManagerTest {
     public void testPlotToString() {
         Plot plot = new Plot(1, 1, "", "Tomato");
         assertEquals("Plot{userID=1, gardenID=1, plant=Tomato}", plot.toString());
+    }
+
+    /**
+     * Test searching for plot from name
+     */
+    @Test
+    public void testGetPlotFromName() {
+        for (Plot plot : plots) {
+            plotManager.insert(plot);
+        }
+
+        Plot plot = plotManager.getPlotFromName(1, "Tomato");
+        assertEquals("Tomato", plot.plant());
     }
 }

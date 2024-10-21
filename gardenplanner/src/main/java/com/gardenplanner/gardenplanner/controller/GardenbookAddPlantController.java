@@ -153,7 +153,7 @@ public class GardenbookAddPlantController {
             addPlantHarvestSeason.setText(itemData.get("harvestSeason"));
             try {
                 addPlantImage.setImage(new Image(itemData.get("imageURL"), 100, 100, true, true));
-            } catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException | NullPointerException e) {
                 addPlantImage.setImage(null);
             }
 

@@ -82,6 +82,8 @@ public class PerenualServiceTest {
             assertEquals("2", result);
         } catch (LimitExceededException e) {
             assertEquals("API Error: API rate limit exceeded", e.getMessage());
+        } catch (NullPointerException e) {
+            assertEquals("Response Error: Bad response", e.getMessage());
         }
     }
 

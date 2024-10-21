@@ -181,7 +181,7 @@ public class PlantManagerTest {
         List<PlantProperty> properties = new ArrayList<>();
         properties.add(new PlantProperty("Water Depth", ""));
         properties.add(new PlantProperty("Water Volume", ""));
-        properties.add(new PlantProperty("Water Amount", ""));
+        properties.add(new PlantProperty("Water Frequency", ""));
         properties.add(new PlantProperty("Sunlight", ""));
         properties.add(new PlantProperty("Care Level", ""));
         properties.add(new PlantProperty("Harvest Season", ""));
@@ -196,5 +196,18 @@ public class PlantManagerTest {
     public void testPlantToString() {
         Plant plant = new Plant(1, "4", "Baby Cucumber", "", "", "", "", "", "", "");
         assertEquals("Plant{userid=1, plantID=4}", plant.toString());
+    }
+
+    /**
+     * Test getting plant from name
+     */
+    @Test
+    public void testGetPlantFromName() {
+        for (Plant plant : plants) {
+            plantManager.insert(plant);
+        }
+
+        Plant plant = plantManager.getPlantFromName(1, "Tomato");
+        assertEquals("Tomato", plant.name());
     }
 }
