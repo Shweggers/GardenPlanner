@@ -1,13 +1,12 @@
 import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.DatabaseConnection;
 import com.gardenplanner.gardenplanner.model.User;
-import com.gardenplanner.gardenplanner.model.UserManager;
 import org.junit.jupiter.api.Test;
 
-import javax.xml.crypto.Data;
 import java.sql.Connection;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class DatabaseTest {
     DataStore instance = null;
