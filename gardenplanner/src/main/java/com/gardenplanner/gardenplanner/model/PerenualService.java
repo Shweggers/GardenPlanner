@@ -79,8 +79,6 @@ public class PerenualService {
         } catch (NullPointerException e) {
             throw new NullPointerException("Response Error: Bad response");
         }
-
-
     }
 
     /**
@@ -121,7 +119,6 @@ public class PerenualService {
         } catch (NullPointerException e) {
             throw new NullPointerException("Response Error: Bad response");
         }
-
     }
 
     /**

@@ -1,4 +1,5 @@
 import com.gardenplanner.gardenplanner.model.PerenualCollection;
+import com.gardenplanner.gardenplanner.model.PerenualItem;
 import com.gardenplanner.gardenplanner.model.PerenualService;
 import com.google.gson.JsonObject;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,8 +10,11 @@ import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.Dictionary;
+import java.util.Hashtable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -75,7 +79,6 @@ public class PerenualServiceTest {
 
         try {
             String result = perenualService.getPlantIdFromName(plantName);
-
             assertEquals("2", result);
         } catch (LimitExceededException e) {
             assertEquals("API Error: API rate limit exceeded", e.getMessage());
@@ -104,5 +107,52 @@ public class PerenualServiceTest {
         } catch (LimitExceededException e) {
             assertEquals("API Error: API rate limit exceeded", e.getMessage());
         }
+    }
+
+    /**
+     * Test getting a not null instance
+     */
+    @Test
+    public void testGetInstance() {
+        perenualService = PerenualService.getInstance();
+        assertNotNull(perenualService);
+    }
+
+    /**
+     * Test getting an item's data
+     * @throws LimitExceededException
+     */
+    @Test
+    public void testGetItemData() throws LimitExceededException {
+        Dictionary<String, String> theData = new Hashtable<>();
+        theData.put("waterDepth", "n/a");
+        theData.put("waterAmount", "7-10 days");
+        theData.put("sunlight", "full sun");
+        theData.put("imageURL", "https://perenual.com/storage/species_image/1_abies_alba/thumbnail/1536px-Abies_alba_SkalitC3A9.jpg");
+        theData.put("waterVolume", "n/a");
+        theData.put("careLevel", "Medium");
+        theData.put("harvestSeason", "n/a");
+
+        PerenualItem item = new PerenualItem("1", "Pyramidalis Silver Fir");
+        Dictionary<String, String> theItemData = item.getItemData();
+        assertEquals(theData, theItemData);
+    }
+
+    /**
+     * Test getting item's id
+     */
+    @Test
+    public void testGetID() {
+        PerenualItem item = new PerenualItem("1", "");
+        assertEquals("1", item.getID());
+    }
+
+    /**
+     * Test getting item's name
+     */
+    @Test
+    public void testGetName() {
+        PerenualItem item = new PerenualItem("", "Pyramidalis Silver Fir");
+        assertEquals("Pyramidalis Silver Fir", item.getName());
     }
 }
