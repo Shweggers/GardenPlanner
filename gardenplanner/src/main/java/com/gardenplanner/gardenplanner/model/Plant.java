@@ -37,7 +37,7 @@ public record Plant(int userID, String plantID, String name, String waterDepth, 
         List<PlantProperty> properties = new ArrayList<>();
         properties.add(new PlantProperty("Water Depth", waterDepth));
         properties.add(new PlantProperty("Water Volume", waterVolume));
-        properties.add(new PlantProperty("Water Amount", waterAmount));
+        properties.add(new PlantProperty("Water Frequency", waterAmount));
         properties.add(new PlantProperty("Sunlight", sunlight));
         properties.add(new PlantProperty("Care Level", careLevel));
         properties.add(new PlantProperty("Harvest Season", harvestSeason));

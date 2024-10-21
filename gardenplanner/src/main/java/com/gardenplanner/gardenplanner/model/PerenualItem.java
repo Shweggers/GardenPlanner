@@ -40,6 +40,8 @@ public class PerenualItem {
             }
             catch (IOException | InterruptedException e) {
                 e.printStackTrace();
+            } catch (NullPointerException e) {
+                System.out.println("Response Error: Bad response");
             }
         }
         return itemData;
@@ -82,7 +84,7 @@ public class PerenualItem {
                 } catch (NullPointerException npe2) {
                     return "n/a";
                 }
-            } catch (ClassCastException cce) {
+            } catch (ClassCastException | UnsupportedOperationException cce) {
                 return "n/a";
             }
         } catch (IllegalStateException ise) {

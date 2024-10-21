@@ -20,6 +20,8 @@ public class GardenMemberController {
 
     /**
      * Constructs a new GardenAddGardenController
+     *
+     * @param gardenController the garden controller
      */
     public GardenMemberController(GardenController gardenController) {
         this.gardenController = gardenController;
@@ -38,7 +40,9 @@ public class GardenMemberController {
         stage.close();
     }
 
-
+    /**
+     * Initializes the controller.
+     */
     @FXML
     void initialize() {
         memberList.getItems().setAll(

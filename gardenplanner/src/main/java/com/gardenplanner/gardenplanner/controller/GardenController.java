@@ -20,6 +20,9 @@ import java.io.IOException;
 public class GardenController {
     @FXML
     private TextField gardenSearchField;
+    /**
+     * The garden list
+     */
     @FXML
     public ListView<Garden> gardenList;
     @FXML
@@ -34,6 +37,9 @@ public class GardenController {
     private Button backButton;
     @FXML
     private TabPane plotsTabPane;
+    /**
+     * The current tab
+     */
     @FXML
     public Tab currentTab;
     @FXML

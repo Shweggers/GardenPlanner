@@ -27,7 +27,7 @@ public interface IGardenDAO {
     /**
      * Get a list of gardens for a user
      *
-     * @param userid the user ID
+     * @param userID the user ID
      * @return a list of gardens
      */
     List<Garden> getGardens(int userID);

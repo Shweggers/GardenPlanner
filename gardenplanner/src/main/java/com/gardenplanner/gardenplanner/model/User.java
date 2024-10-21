@@ -23,7 +23,7 @@ public record User(int ID, String username, String email, String hashedPassword)
     /**
      * Create a new User object with the given ID.
      *
-     * @param ID the user ID
+     * @param id the user ID
      */
     public User(int id) {
         this(id, "", "", "");
