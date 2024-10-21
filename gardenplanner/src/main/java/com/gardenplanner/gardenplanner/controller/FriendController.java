@@ -7,10 +7,7 @@ import com.gardenplanner.gardenplanner.model.FriendManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 
@@ -23,9 +20,13 @@ public class FriendController {
     @FXML
     private Button addFriendButton;
     @FXML
+    private Button removeFriendButton;
+    @FXML
     private ListView<Friend> friendList;
     @FXML
     private TextField searchFriends;
+    @FXML
+    private Label friendNameLabel;
 
     /**
      * Constructs a new FriendController
@@ -64,40 +65,50 @@ public class FriendController {
     }
 
     /**
-     * Populates the friend list based on the search query.
-     */
-    void populateFriends() {
-        String search = searchFriends.getText();
-        friendList.getItems().setAll(FriendManager.getInstance().searchFriends(
-                DataStore.getInstance().getCurrentUser().ID(), search));
-    }
-
-    /**
-     * Initializes the controller after the root element has been completely processed.
+     * Handles the remove friend event.
+     *
      */
     @FXML
-    void initialize() {
-        friendList.setCellFactory(this::renderListCell);
-        populateFriends();
+    void removeFriend() {
+        Friend selectedFriend = friendList.getSelectionModel().getSelectedItem();
+        if (selectedFriend != null) {
+            FriendManager.getInstance().delete(selectedFriend);
+            friendNameLabel.setText("");
+        }
     }
 
     /**
-     * Renders each friend in the ListView.
-     *
-     * @param list the ListView of friends
-     * @return a ListCell for each friend
+     * Initializes the friend page.
      */
-    ListCell<Friend> renderListCell(ListView<Friend> list) {
-        return new ListCell<>() {
+    @FXML
+    public void initialize() {
+        friendList.setCellFactory(param -> new ListCell<>() {
             @Override
             protected void updateItem(Friend friend, boolean empty) {
                 super.updateItem(friend, empty);
+
                 if (empty || friend == null) {
                     setText(null);
                 } else {
                     setText(friend.friendName());
                 }
             }
-        };
+        });
+
+        friendList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                friendNameLabel.setText(newValue.friendName());
+            } else {
+                friendNameLabel.setText("");
+            }
+
+        });
+
+        populateFriends();
+    }
+
+    private void populateFriends() {
+        friendList.getItems().setAll(FriendManager.getInstance().searchFriends(DataStore.getInstance().getCurrentUser().ID(), searchFriends.getText()));
+
     }
 }

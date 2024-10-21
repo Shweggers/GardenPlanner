@@ -43,10 +43,10 @@ public class AddFriendController {
                 new Alert(Alert.AlertType.ERROR, "Friend not found!").showAndWait();
                 return;
             }
-
+            System.out.println("Friend found: " + friend);
             // Create a new Friend object
-            Friend newFriend = new Friend(user.ID(), friend.ID(), friendName);
-            FriendManager.getInstance().insert(newFriend);
+            FriendManager.getInstance().insert(new Friend(user.ID(), friend.ID(), addFriendName.getText()));
+
 
             // Close the current window
             Stage stage = (Stage) confirmButton.getScene().getWindow();
@@ -55,6 +55,7 @@ public class AddFriendController {
             // Handle the case where friendName is null or empty
             new Alert(Alert.AlertType.ERROR, "Friend name cannot be empty.").showAndWait();
         }
+
     }
 
     /**

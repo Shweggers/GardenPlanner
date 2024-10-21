@@ -31,9 +31,10 @@ public class SQLFriendDAO implements IFriendDAO {
                     "CREATE TABLE IF NOT EXISTS friends ("
                             //+ "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
                             + "userID       INTEGER NOT NULL, "
+                            + "friendID     INTEGER NOT NULL, "
                             + "friendName   STRING  NOT NULL, "
                             + "FOREIGN KEY(userID) REFERENCES users(id), "
-                            + "FOREIGN KEY(friendName) REFERENCES users(id), "
+                            + "FOREIGN KEY(friendID) REFERENCES users(id), "
                             + "UNIQUE(userID, friendName)"
                             + ")"
             );
@@ -51,10 +52,11 @@ public class SQLFriendDAO implements IFriendDAO {
     public void insert(Friend friend) {
         try {
             PreparedStatement insertFriend = connection.prepareStatement(
-                    "INSERT INTO friends (userID, friendName) VALUES (?, ?)"
+                    "INSERT INTO friends (userID, friendID, friendName) VALUES (?, ?, ?)"
             );
             insertFriend.setInt(1, friend.userID());
-            insertFriend.setString(2, friend.friendName());
+            insertFriend.setInt(2, friend.friendID());
+            insertFriend.setString(3, friend.friendName());
 
             insertFriend.execute();
         } catch (SQLException e) {
@@ -74,6 +76,7 @@ public class SQLFriendDAO implements IFriendDAO {
                     "DELETE FROM friends WHERE userID = ? AND friendName = ?"
             );
             deleteFriend.setInt(1, friend.userID());
+            deleteFriend.setInt(2, friend.friendID());
             deleteFriend.setString(2, friend.friendName());
 
             deleteFriend.execute();

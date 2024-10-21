@@ -15,7 +15,6 @@ public interface IFriendDAO {
      * @param friend the friend to insert
      */
     void insert(Friend friend);
-
     /**
      * Delete a friend from the database
      *

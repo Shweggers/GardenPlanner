@@ -22,4 +22,31 @@ public record Friend(int userID, int friendID, String friendName) {
                 ", friendName=" + friendName +
                 '}';
     }
+
+    /**
+     * Returns the user ID.
+     *
+     * @return the user ID
+     */
+    public int userID() {
+        return userID;
+    }
+
+    /**
+     * Returns the friend ID.
+     *
+     * @return the friend ID
+     */
+    public int friendID() {
+        return friendID;
+    }
+
+    /**
+     * Returns the friend name.
+     *
+     * @return the friend name
+     */
+    public String friendName() {
+        return friendName;
+    }
 }
