@@ -1,5 +1,7 @@
 package com.gardenplanner.gardenplanner.controller;
 
+import com.gardenplanner.gardenplanner.model.GardenManager;
+import com.gardenplanner.gardenplanner.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,14 +13,19 @@ import javafx.stage.Stage;
  */
 public class GardenMemberController {
     @FXML
-    ListView memberList;
+    ListView<String> memberList;
     @FXML
     Button confirmButton;
+    private GardenController gardenController;
 
     /**
      * Constructs a new GardenAddGardenController
+     *
+     * @param gardenController the garden controller
      */
-    public GardenMemberController() {}
+    public GardenMemberController(GardenController gardenController) {
+        this.gardenController = gardenController;
+    }
 
 
     /**
@@ -31,5 +38,19 @@ public class GardenMemberController {
         // Close the current window
         Stage stage = (Stage) confirmButton.getScene().getWindow();
         stage.close();
+    }
+
+    /**
+     * Initializes the controller.
+     */
+    @FXML
+    void initialize() {
+        memberList.getItems().setAll(
+                GardenManager.getInstance()
+                        .getUsers(gardenController.gardenList.getSelectionModel().getSelectedItem().ID())
+                        .stream()
+                        .map(User::username)
+                        .toList()
+        );
     }
 }

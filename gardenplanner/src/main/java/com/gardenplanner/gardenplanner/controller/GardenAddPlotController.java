@@ -1,13 +1,14 @@
 package com.gardenplanner.gardenplanner.controller;
 
-import com.gardenplanner.gardenplanner.model.DataStore;
-import com.gardenplanner.gardenplanner.model.Plot;
-import com.gardenplanner.gardenplanner.model.PlotManager;
+import com.gardenplanner.gardenplanner.model.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * GardenAddGardenController is a class that represents a controller for adding a new garden.
@@ -15,6 +16,8 @@ import javafx.stage.Stage;
 public class GardenAddPlotController {
     @FXML
     private TextField addPlotName;
+    @FXML
+    private ChoiceBox<String> addPlotPlant;
     @FXML
     private Button cancelButton;
     @FXML
@@ -50,22 +53,36 @@ public class GardenAddPlotController {
      * Handles the add garden button click event.
      *
      * @param event the event details
+     * @throws IOException if an I/O error occurs
      */
     @FXML
-    public void setAddGardenConfirmButton(ActionEvent event) {
+    public void setAddPlotConfirmButton(ActionEvent event) throws IOException {
         if (addPlotName.getText().trim().isEmpty()) {
             return;
         }
         Plot plot = new Plot(
                 DataStore.getInstance().getCurrentUser().ID(),
                 gardenController.gardenList.getSelectionModel().getSelectedItem().ID(),
-                addPlotName.getText()
+                addPlotName.getText(),
+                PlantManager.getInstance().getPlantFromName(
+                        DataStore.getInstance().getCurrentUser().ID(),
+                        addPlotPlant.getSelectionModel().getSelectedItem()
+                ).name()
         );
         PlotManager.getInstance().insert(plot);
 
-        gardenController.populateList();
+        gardenController.populateTabs();
 
         // Close the current window
         cancelButtonClicked(event);
+    }
+
+    @FXML
+    void initialize() {
+        addPlotPlant.getItems().setAll(PlantManager.getInstance().searchPlants(DataStore.getInstance().getCurrentUser().ID(), "")
+                .stream()
+                .map(Plant::name)
+                .toList()
+        );
     }
 }

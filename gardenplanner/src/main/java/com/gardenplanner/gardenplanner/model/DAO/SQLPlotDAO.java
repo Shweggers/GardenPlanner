@@ -32,6 +32,7 @@ public class SQLPlotDAO implements IPlotDAO {
                             + "id           INTEGER PRIMARY KEY AUTOINCREMENT, "
                             + "userID       INTEGER NOT NULL, "
                             + "gardenID     INTEGER NOT NULL, "
+                            + "name         TEXT    NOT NULL, "
                             + "plant        TEXT    NOT NULL, "
                             + "FOREIGN KEY(userID)      REFERENCES users(id), "
                             + "FOREIGN KEY(gardenID)    REFERENCES gardens(id), "
@@ -52,11 +53,12 @@ public class SQLPlotDAO implements IPlotDAO {
     public void insert(Plot plot) {
         try {
             PreparedStatement insertGarden = connection.prepareStatement(
-                    "INSERT INTO plots (userID, gardenID, plant) VALUES (?, ?, ?)"
+                    "INSERT INTO plots (userID, gardenID, name, plant) VALUES (?, ?, ?, ?)"
             );
             insertGarden.setInt(1, plot.userID());
             insertGarden.setInt(2, plot.gardenID());
-            insertGarden.setString(3, plot.plant());
+            insertGarden.setString(3, plot.name());
+            insertGarden.setString(4, plot.plant());
 
             insertGarden.execute();
         } catch (SQLException e) {
@@ -87,21 +89,21 @@ public class SQLPlotDAO implements IPlotDAO {
     /**
      * Get a list of plots for a user
      *
-     * @param userID the user ID
+     * @param gardenID the user ID
      * @return a list of plots
      */
     @Override
-    public List<Plot> getPlots(int userID) {
+    public List<Plot> getPlots(int gardenID) {
         List<Plot> plots = new ArrayList<>();
         try {
             PreparedStatement getGardens = connection.prepareStatement(
-                    "SELECT * FROM plots WHERE userID = ?"
+                    "SELECT * FROM plots WHERE gardenID = ?"
             );
-            getGardens.setInt(1, userID);
+            getGardens.setInt(1, gardenID);
 
             ResultSet rs = getGardens.executeQuery();
             while (rs.next()) {
-                plots.add(new Plot(rs.getInt("userID"), rs.getInt("gardenID"), rs.getString("plant")));
+                plots.add(new Plot(rs.getInt("userID"), rs.getInt("gardenID"), rs.getString("name"), rs.getString("plant")));
             }
         } catch (SQLException e) {
             e.printStackTrace();

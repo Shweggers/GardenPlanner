@@ -66,6 +66,21 @@ public class PlantManager {
     }
 
     /**
+     * Get a plant object from the database by name.
+     *
+     * @param userID    the user ID
+     * @param plantName the plant name
+     * @return the plant object
+     */
+    public Plant getPlantFromName(int userID, String plantName) {
+        return plantDAO.getPlants(userID)
+                .stream()
+                .filter(plant -> plant.name().equals(plantName))
+                .findFirst()
+                .orElse(null);
+    }
+
+    /**
      * Search for plants by a query.
      *
      * @param plant the plant object

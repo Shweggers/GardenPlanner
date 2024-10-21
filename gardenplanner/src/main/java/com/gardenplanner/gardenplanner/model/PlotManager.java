@@ -54,15 +54,29 @@ public class PlotManager {
     /**
      * Get a list of plots for a user.
      *
-     * @param userID the user ID
+     * @param gardenID the user ID
      * @param query  the query
      * @return a list of plots
      */
-    public List<Plot> searchPlots(int userID, String query) {
-        return plotDAO.getPlots(userID)
+    public List<Plot> searchPlots(int gardenID, String query) {
+        return plotDAO.getPlots(gardenID)
                 .stream()
                 .filter(plot -> isPlotMatched(plot, query))
                 .toList();
+    }
+
+    /**
+     * Get a plot from a garden by name.
+     *
+     * @param gardenID the garden ID
+     * @param name     the name of the plot
+     * @return the plot object
+     */
+    public Plot getPlotFromName(int gardenID, String name) {
+        return plotDAO.getPlots(gardenID)
+                .stream()
+                .filter(plot -> plot.name().equals(name))
+                .findFirst().orElse(null);
     }
 
     /**
@@ -74,6 +88,6 @@ public class PlotManager {
      */
     private boolean isPlotMatched(Plot plot, String query) {
         query = query == null ? "" : query.toLowerCase();
-        return query.isEmpty() || plot.plant().toLowerCase().contains(query);
+        return query.isEmpty() || plot.name().toLowerCase().contains(query);
     }
 }

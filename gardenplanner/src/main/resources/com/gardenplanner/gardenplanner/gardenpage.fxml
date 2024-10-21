@@ -49,12 +49,15 @@
                                 <Insets left="5.0" />
                             </padding>
                         </Label>
-                        <HBox alignment="CENTER" layoutX="254.39999389648438" prefHeight="40.0" prefWidth="272.2" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="277.2" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <HBox alignment="CENTER_RIGHT" layoutX="254.39999389648438" prefHeight="40.0" prefWidth="272.2" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                             <children>
                                 <Button fx:id="addPlotButton" alignment="CENTER" mnemonicParsing="false" onAction="#addPlotButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Add Plot" />
                                 <!--<Button fx:id="editPlotButton" alignment="CENTER" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Edit Plot" />-->
                                 <Button fx:id="backButton" alignment="CENTER" mnemonicParsing="false" onAction="#backButtonClicked" prefHeight="30.0" prefWidth="80.0" text="Back" />
                             </children>
+                     <padding>
+                        <Insets right="5.0" />
+                     </padding>
                         </HBox>
                     </children>
                     <VBox.margin>

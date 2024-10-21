@@ -65,9 +65,14 @@ public class GardenManager {
                 .toList();
     }
 
-
-    public List<User> getUsers(int userID) {
-        return gardenDAO.getUsers(userID);
+    /**
+     * Get a list of users for a garden.
+     *
+     * @param gardenID the garden ID
+     * @return a list of users
+     */
+    public List<User> getUsers(int gardenID) {
+        return gardenDAO.getUsers(gardenID);
     }
 
     /**

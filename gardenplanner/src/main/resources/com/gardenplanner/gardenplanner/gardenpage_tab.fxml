@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Tabs for Plot 1, Plot 2, Plot 3 -->
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<Tab text="Plot 1" closable="false" xmlns:fx="http://javafx.com/fxml/1">
-    <AnchorPane prefHeight="227.0" prefWidth="558.0">
-        <TableView fx:id="plotTable" prefHeight="180.0" prefWidth="569.0" AnchorPane.bottomAnchor="100.0"
-                   AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-            <columns>
-                <TableColumn fx:id="plantColumn" editable="false" prefWidth="150.0" resizable="false" text="Planted"/>
-                <TableColumn fx:id="harvestColumn" editable="false" prefWidth="399.6" resizable="false"
-                             text="Harvest Date"/>
-            </columns>
-        </TableView>
-        <ListView fx:id="scheduleList" layoutY="170.0" orientation="HORIZONTAL" prefHeight="71.0" prefWidth="200.0"
-                  AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                  AnchorPane.topAnchor="171.2"/>
 
-        <!-- Progress Bar -->
-        <ProgressBar fx:id="scheduleProgress" layoutX="120.0" layoutY="249.0" prefHeight="20.0" prefWidth="569.0"
-                     progress="0.5" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="120.0"
-                     AnchorPane.rightAnchor="120.0"/>
-    </AnchorPane>
-</Tab>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="276.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.GardenTabController">
+   <HBox alignment="TOP_CENTER" AnchorPane.topAnchor="10.0">
+      <children>
+          <TableView fx:id="plotTable" prefHeight="176.0">
+              <columns>
+                  <TableColumn fx:id="typeColumn" editable="false" prefWidth="150.0" resizable="false" text="Info Type" />
+                  <TableColumn fx:id="detailsColumn" editable="false" prefWidth="207.0" resizable="false" text="Details" />
+              </columns>
+          </TableView>
+         <ImageView fx:id="plotImage" fitHeight="177.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true" />
+      </children>
+   </HBox>
+   <HBox fx:id="scheduleBox" alignment="CENTER" layoutY="211.1999969482422" prefHeight="60.0" prefWidth="532.0" spacing="30.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
+</AnchorPane>

@@ -3,6 +3,7 @@ package com.gardenplanner.gardenplanner.controller;
 import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.Garden;
 import com.gardenplanner.gardenplanner.model.GardenManager;
+import com.gardenplanner.gardenplanner.model.PlotManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +20,13 @@ import java.io.IOException;
 public class GardenController {
     @FXML
     private TextField gardenSearchField;
+    /**
+     * The garden list
+     */
     @FXML
-    ListView<Garden> gardenList;
+    public ListView<Garden> gardenList;
+    @FXML
+    private Label gardenTitleLabel;
     @FXML
     private Button addGardenButton;
     @FXML
@@ -28,17 +34,21 @@ public class GardenController {
     @FXML
     private Button editPlotButton;
     @FXML
-    private Tab currentTab;
-    @FXML
     private Button backButton;
     @FXML
     private TabPane plotsTabPane;
+    /**
+     * The current tab
+     */
+    @FXML
+    public Tab currentTab;
     @FXML
     private Button membersButton;
     @FXML
     private Button replantButton;
     @FXML
     private Button leaveGarden;
+    private FXMLLoader newLoader;
 
     /**
      * handle the back button click event
@@ -91,23 +101,52 @@ public class GardenController {
      * handle the add plot button click event
      *
      * @param event the event details
+     * @throws IOException if an I/O error occurs
      */
     @FXML
-    void addPlotButtonClicked(ActionEvent event) {
-        // plotsTabPane.getTabs().add(new Tab("New Plot"));
+    void addPlotButtonClicked(ActionEvent event) throws IOException {
+        Stage stage = new Stage();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage_addplot.fxml"));
+        loader.setControllerFactory(type -> new GardenAddPlotController(this));
+
+        stage.setScene(new Scene(loader.load()));
+        stage.show();
+    }
+
+
+    /**
+     * handle the edit plot button click event
+     *
+     * @throws IOException if an I/O error occurs
+     */
+    @FXML
+    public void populateTabs() throws IOException {
+        Garden selectedGarden = gardenList.getSelectionModel().getSelectedItem();
+        if (selectedGarden == null) {
+            return;
+        }
+        gardenTitleLabel.setText(selectedGarden.name());
+
+        plotsTabPane.getTabs().clear();
+        PlotManager.getInstance().searchPlots(selectedGarden.ID(), "").forEach(plot -> {
+            Tab tab = new Tab(plot.name());
+            plotsTabPane.getTabs().add(tab);
+        });
     }
 
     /**
      * handle the members button click event
      *
      * @param event the event details
+     * @throws IOException if an I/O error occurs
      */
     @FXML
     void membersButtonClicked(ActionEvent event) throws IOException {
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage_memberlist.fxml"));
-        loader.setControllerFactory(type -> new GardenMemberController());
+        loader.setControllerFactory(type -> new GardenMemberController(this));
 
         stage.setScene(new Scene(loader.load()));
         stage.show();
@@ -123,6 +162,7 @@ public class GardenController {
         GardenManager.getInstance().delete(gardenList.getSelectionModel().getSelectedItem());
 
         gardenList.getSelectionModel().select(null);
+        populateList();
     }
 
     /**
@@ -134,6 +174,24 @@ public class GardenController {
         populateList();
 
         gardenList.setCellFactory(this::renderListCell);
+
+        plotsTabPane.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                Tab selectedTab = plotsTabPane.getSelectionModel().getSelectedItem();
+                if (selectedTab == null) {
+                    return;
+                }
+                currentTab = selectedTab;
+
+                newLoader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage_tab.fxml"));
+                newLoader.setControllerFactory(type -> new GardenTabController(this));
+                selectedTab.setContent(
+                        newLoader.load()
+                );
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     /**
@@ -154,7 +212,11 @@ public class GardenController {
                 Garden selectedGarden = clickedCell.getItem();
                 if (selectedGarden != null) {
                     gardenList.getSelectionModel().select(selectedGarden);
-                    // showPlantInformation(selectedPlant);
+                    try {
+                        populateTabs();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
