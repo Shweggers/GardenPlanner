@@ -66,6 +66,20 @@ public class PlotManager {
     }
 
     /**
+     * Get a plot from a garden by name.
+     *
+     * @param gardenID the garden ID
+     * @param name     the name of the plot
+     * @return the plot object
+     */
+    public Plot getPlotFromName(int gardenID, String name) {
+        return plotDAO.getPlots(gardenID)
+                .stream()
+                .filter(plot -> plot.name().equals(name))
+                .findFirst().orElse(null);
+    }
+
+    /**
      * Search for plots by a query.
      *
      * @param plot  the plot object

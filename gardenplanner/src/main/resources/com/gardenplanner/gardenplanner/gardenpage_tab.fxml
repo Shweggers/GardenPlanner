@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!-- Tabs for Plot 1, Plot 2, Plot 3 -->
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<AnchorPane prefHeight="227.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.GardenTabController">
-    <TableView fx:id="plotTable" prefHeight="180.0" prefWidth="569.0" AnchorPane.bottomAnchor="100.0"
-               AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="227.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.GardenTabController">
+    <TableView fx:id="plotTable" prefHeight="176.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="177.0">
         <columns>
-            <TableColumn fx:id="typeColumn" editable="false" prefWidth="150.0" resizable="false" text="Info Type"/>
-            <TableColumn fx:id="detailsColumn" editable="false" prefWidth="399.6" resizable="false"
-                         text="Details"/>
+            <TableColumn fx:id="typeColumn" editable="false" prefWidth="150.0" resizable="false" text="Info Type" />
+            <TableColumn fx:id="detailsColumn" editable="false" prefWidth="209.0" resizable="false" text="Details" />
         </columns>
     </TableView>
-    <ListView fx:id="scheduleList" layoutY="170.0" orientation="HORIZONTAL" prefHeight="71.0" prefWidth="200.0"
-              AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-              AnchorPane.topAnchor="171.2"/>
+   <ImageView fx:id="plotImage" fitHeight="177.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    <ListView fx:id="scheduleList" layoutY="127.2" orientation="HORIZONTAL" prefHeight="60.0" prefWidth="558.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
 
     <!-- Progress Bar -->
-    <ProgressBar fx:id="scheduleProgress" layoutX="120.0" layoutY="249.0" prefHeight="20.0" prefWidth="569.0"
-                 progress="0.5" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="120.0"
-                 AnchorPane.rightAnchor="120.0"/>
+    <ProgressBar fx:id="scheduleProgress" layoutX="120.0" layoutY="249.0" prefHeight="20.0" prefWidth="569.0" progress="0.5" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="120.0" AnchorPane.rightAnchor="120.0" />
 </AnchorPane>
-

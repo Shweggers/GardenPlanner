@@ -21,7 +21,9 @@ public class GardenController {
     @FXML
     private TextField gardenSearchField;
     @FXML
-    ListView<Garden> gardenList;
+    public ListView<Garden> gardenList;
+    @FXML
+    private Label gardenTitleLabel;
     @FXML
     private Button addGardenButton;
     @FXML
@@ -33,13 +35,14 @@ public class GardenController {
     @FXML
     private TabPane plotsTabPane;
     @FXML
-    private Tab currentTab;
+    public Tab currentTab;
     @FXML
     private Button membersButton;
     @FXML
     private Button replantButton;
     @FXML
     private Button leaveGarden;
+    private FXMLLoader newLoader;
 
     /**
      * handle the back button click event
@@ -117,6 +120,7 @@ public class GardenController {
         if (selectedGarden == null) {
             return;
         }
+        gardenTitleLabel.setText(selectedGarden.name());
 
         plotsTabPane.getTabs().clear();
         PlotManager.getInstance().searchPlots(selectedGarden.ID(), "").forEach(plot -> {
@@ -136,7 +140,7 @@ public class GardenController {
         Stage stage = new Stage();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage_memberlist.fxml"));
-        loader.setControllerFactory(type -> new GardenMemberController());
+        loader.setControllerFactory(type -> new GardenMemberController(this));
 
         stage.setScene(new Scene(loader.load()));
         stage.show();
@@ -152,6 +156,7 @@ public class GardenController {
         GardenManager.getInstance().delete(gardenList.getSelectionModel().getSelectedItem());
 
         gardenList.getSelectionModel().select(null);
+        populateList();
     }
 
     /**
@@ -170,12 +175,16 @@ public class GardenController {
                 if (selectedTab == null) {
                     return;
                 }
-                plotsTabPane.getSelectionModel().getSelectedItem().setContent(
-                        new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage_tab.fxml")).load());
+                currentTab = selectedTab;
+
+                newLoader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/gardenpage_tab.fxml"));
+                newLoader.setControllerFactory(type -> new GardenTabController(this));
+                selectedTab.setContent(
+                        newLoader.load()
+                );
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            currentTab = newValue;
         });
     }
 

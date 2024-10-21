@@ -17,7 +17,7 @@ public class GardenAddPlotController {
     @FXML
     private TextField addPlotName;
     @FXML
-    private ChoiceBox<Plant> addPlotPlant;
+    private ChoiceBox<String> addPlotPlant;
     @FXML
     private Button cancelButton;
     @FXML
@@ -64,7 +64,10 @@ public class GardenAddPlotController {
                 DataStore.getInstance().getCurrentUser().ID(),
                 gardenController.gardenList.getSelectionModel().getSelectedItem().ID(),
                 addPlotName.getText(),
-                addPlotPlant.getSelectionModel().getSelectedItem().name()
+                PlantManager.getInstance().getPlantFromName(
+                        DataStore.getInstance().getCurrentUser().ID(),
+                        addPlotPlant.getSelectionModel().getSelectedItem()
+                ).name()
         );
         PlotManager.getInstance().insert(plot);
 
@@ -76,5 +79,10 @@ public class GardenAddPlotController {
 
     @FXML
     void initialize() {
-        addPlotPlant.getItems().setAll(PlantManager.getInstance().searchPlants(DataStore.getInstance().getCurrentUser().ID(), ""));}
+        addPlotPlant.getItems().setAll(PlantManager.getInstance().searchPlants(DataStore.getInstance().getCurrentUser().ID(), "")
+                .stream()
+                .map(Plant::name)
+                .toList()
+        );
+    }
 }
