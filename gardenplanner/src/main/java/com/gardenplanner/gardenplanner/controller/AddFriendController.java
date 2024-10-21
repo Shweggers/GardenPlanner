@@ -46,6 +46,7 @@ public class AddFriendController {
             System.out.println("Friend found: " + friend);
             // Create a new Friend object
             FriendManager.getInstance().insert(new Friend(user.ID(), friend.ID(), addFriendName.getText()));
+            new Alert(Alert.AlertType.ERROR, friendName + " has been added!").showAndWait();
 
 
             // Close the current window
@@ -68,5 +69,13 @@ public class AddFriendController {
         // Close the current window
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
+    }
+
+    public void setAddFriendName(String name) {
+        addFriendName.setText(name);
+    }
+
+    public String getAddFriendName() {
+        return addFriendName.getText();
     }
 }

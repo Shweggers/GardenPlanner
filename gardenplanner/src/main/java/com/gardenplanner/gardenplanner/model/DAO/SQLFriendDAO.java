@@ -130,7 +130,7 @@ public class SQLFriendDAO implements IFriendDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-    }
+        }
         return friends;
     }
 }
