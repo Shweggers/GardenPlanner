@@ -4,6 +4,7 @@ package com.gardenplanner.gardenplanner.controller;
 import com.gardenplanner.gardenplanner.model.DataStore;
 import com.gardenplanner.gardenplanner.model.Friend;
 import com.gardenplanner.gardenplanner.model.FriendManager;
+import com.gardenplanner.gardenplanner.model.GardenManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -69,12 +70,20 @@ public class FriendController {
      *
      */
     @FXML
-    void removeFriend() {
+    void removeFriend() throws IOException {
         Friend selectedFriend = friendList.getSelectionModel().getSelectedItem();
         if (selectedFriend != null) {
             FriendManager.getInstance().delete(selectedFriend);
             friendNameLabel.setText("");
         }
+
+        Stage stage = (Stage) friendList.getScene().getWindow();
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/gardenplanner/gardenplanner/friendpage.fxml"));
+        loader.setControllerFactory(type -> new FriendController());
+
+        stage.setScene(new Scene(loader.load(), 900, 600));
+        stage.show();
     }
 
     /**
@@ -108,7 +117,12 @@ public class FriendController {
     }
 
     public void populateFriends() {
+        String search = searchFriends.getText();
         friendList.getItems().setAll(FriendManager.getInstance().searchFriends(DataStore.getInstance().getCurrentUser().ID(), searchFriends.getText()));
 
+    }
+
+    public void setSearchFriends(String search) {
+        searchFriends.setText(search);
     }
 }
