@@ -11,7 +11,7 @@
     <children>
         <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
             <image>
-                <Image url="@newbackgroundjpeg.jpg"/>
+                <Image url="@../../../img/newbackgroundjpeg.jpg"/>
             </image>
         </ImageView>
 
@@ -48,13 +48,13 @@
         <ImageView fitHeight="28.0" fitWidth="138.0" layoutX="381.0" layoutY="76.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
-                <Image url="@loginlogo.png"/>
+                <Image url="@../../../img/loginlogo.png"/>
             </image>
         </ImageView>
         <ImageView fitHeight="45.0" fitWidth="477.0" layoutX="308.0" layoutY="14.0" pickOnBounds="true"
                    preserveRatio="true">
             <image>
-                <Image url="@plantitlogo.png"/>
+                <Image url="@../../../img/plantitlogo.png"/>
             </image>
         </ImageView>
     </children>
