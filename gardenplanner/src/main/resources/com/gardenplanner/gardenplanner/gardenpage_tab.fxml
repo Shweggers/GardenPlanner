@@ -14,7 +14,7 @@
           <TableView fx:id="plotTable" prefHeight="176.0">
               <columns>
                   <TableColumn fx:id="typeColumn" editable="false" prefWidth="150.0" resizable="false" text="Info Type" />
-                  <TableColumn fx:id="detailsColumn" editable="false" prefWidth="207.0" resizable="false" text="Details" />
+                  <TableColumn fx:id="detailsColumn" editable="false" prefWidth="200.0" resizable="false" text="Details" />
               </columns>
           </TableView>
          <ImageView fx:id="plotImage" fitHeight="177.0" fitWidth="177.0" pickOnBounds="true" preserveRatio="true" />

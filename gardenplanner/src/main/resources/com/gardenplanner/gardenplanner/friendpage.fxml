@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.image.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.FriendController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" AnchorPane.leftAnchor="0.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.gardenplanner.gardenplanner.controller.FriendController">
     <children>
         <ImageView fitHeight="600.0" fitWidth="900.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -34,9 +39,7 @@
                     <children>
                         <AnchorPane minHeight="-Infinity" prefHeight="40.0" prefWidth="560.0">
                             <children>
-                                <Label fx:id="friendNameLabel" alignment="CENTER" prefWidth="300.0" text="Friend's Name"
-                                       AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-                                       AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
+                                <Label fx:id="friendNameLabel" alignment="CENTER" prefWidth="300.0" text="Friend's Name" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="70.0" AnchorPane.topAnchor="0.0">
                                     <font>
                                         <Font name="System Bold" size="24.0" />
                                     </font>
@@ -49,24 +52,39 @@
                                 <Insets bottom="5.0" left="5.0" right="5.0" />
                             </VBox.margin>
                             <children>
-                                <VBox prefHeight="200.0" prefWidth="360.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                <VBox fx:id="friendGardenContainer" prefHeight="200.0" prefWidth="360.0" AnchorPane.bottomAnchor="35.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                     <children>
                                         <Label prefHeight="30.0" prefWidth="550.0" text="These are your friends gardens">
                                             <font>
                                                 <Font size="14.0" />
                                             </font>
                                             <VBox.margin>
-                                                <Insets left="10.0" />
+                                                <Insets />
                                             </VBox.margin>
                                         </Label>
-                                        <HBox prefHeight="100.0" VBox.vgrow="ALWAYS">
-                                            <VBox.margin>
-                                                <Insets left="10.0" />
-                                            </VBox.margin>
+                                        <HBox prefHeight="135.0">
+                                 <children>
+                                    <ListView fx:id="friendsGardens" prefHeight="135.0" prefWidth="125.0" />
+                                    <ListView fx:id="friendsGardenPlots" prefHeight="200.0" prefWidth="125.0" />
+                                 </children>
                                         </HBox>
+                              <HBox spacing="5.0">
+                                 <children>
+                                    <TableView fx:id="friendGardenTable" prefHeight="135.0" prefWidth="300.0">
+                                      <columns>
+                                        <TableColumn fx:id="typeColumn" prefWidth="150.0" text="Info Type" />
+                                        <TableColumn fx:id="detailsColumn" prefWidth="150.0" text="Details" />
+                                      </columns>
+                                    </TableView>
+                                    <ImageView fx:id="plantImage" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" />
+                                 </children>
+                              </HBox>
                                     </children>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
                                 </VBox>
-                                <Button layoutX="484.0" layoutY="295.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="120.0" text="Remove Friend" onAction="#removeFriend" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" style="-fx-background-color: #ff5733;"/>
+                                <Button layoutX="484.0" layoutY="295.0" mnemonicParsing="false" onAction="#removeFriend" prefHeight="30.0" prefWidth="120.0" style="-fx-background-color: #ff5733;" text="Remove Friend" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                             </children>
                         </AnchorPane>
                     </children>
