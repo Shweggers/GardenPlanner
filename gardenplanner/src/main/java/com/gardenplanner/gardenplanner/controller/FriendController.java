@@ -107,7 +107,7 @@ public class FriendController {
         populateFriends();
     }
 
-    private void populateFriends() {
+    public void populateFriends() {
         friendList.getItems().setAll(FriendManager.getInstance().searchFriends(DataStore.getInstance().getCurrentUser().ID(), searchFriends.getText()));
 
     }
